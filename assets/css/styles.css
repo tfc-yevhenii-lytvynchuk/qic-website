@@ -198,7 +198,7 @@ i.bi:hover {
   padding-bottom: 20px
 }
 
-.qic-nav-bar nav .demo-page-logo {
+.qic-nav-bar nav .qic-logo {
   height: 24px
 }
 
@@ -221,7 +221,7 @@ i.bi:hover {
   background-color: #fff
 }
 
-.qic-nav-bar .main-demo-nav-menu {
+.qic-nav-bar .main-nav-menu {
   max-height: 456px
 }
 .nav-shop-link {
@@ -261,112 +261,4 @@ select.form-select {
 .form-control:focus, .form-select:focus {
 	border-color: var(--primary-color) !important;
 	box-shadow: none !important;
-}
-
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 0%
-  }
-
-  to {
-    background-position: 100% 0%
-  }
-}
-
-.demo-page-main #demo-page-banner {
-  background-image: var(--check-in-background-image-url);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  border-radius: var(--default-border-radius);
-}
-
-.demo-page-main #demo-page-banner .check-in {
-  border-radius: var(--default-border-radius);
-}
-.demo-page-main #demo-page-banner .check-in .text-green {
-  color: var(--success-color)
-}
-
-.demo-page-main #demo-page-banner .check-in-image {
-  width: 40px;
-  height: 40px
-}
-
-.demo-page-main #demo-page-banner .check-in .check-in-btn {
-  color: #fff;
-  background: linear-gradient(90deg, #7fb512, #126eb5);
-  animation: gradient 2s ease infinite;
-  border-radius: var(--default-border-radius);
-}
-
-.demo-page-main #demo-page-banner .check-in .check-in-btn-inactive {
-  border-radius: var(--default-border-radius);
-}
-
-.demo-page-main #reward-program .welcome {
-  flex: 7;
-  border-radius: var(--default-border-radius);
-}
-
-.demo-page-main #reward-program .welcome .step-circle {
-  min-width: 48px;
-  min-height: 48px;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 24px;
-  background-color: var(--primary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center
-}
-
-.demo-page-main #reward-program .points-summary {
-  flex: 3;
-  border-radius: var(--default-border-radius);
-}
-
-.demo-page-main #reward-program .points-summary .points-summary-icon {
-  width: 32px;
-  height: 32px
-}
-
-.demo-page-main #personalized-offers .products-sorting-links {
-  height: 36px
-}
-
-.demo-page-main #personalized-offers .products-sorting-links a {
-  height: fit-content
-}
-
-.demo-page-main #personalized-offers .product-card {
-  background-color: #fff;
-  color: black;
-  width: 230px;
-  min-width: 230px;
-  height: 330px;
-  position: relative;
-  border-radius: var(--default-border-radius);
-}
-
-.demo-page-main #personalized-offers .product-card .product-image-container {
-  min-height: 0
-}
-
-.demo-page-main #personalized-offers .product-card .product-card-favorite {
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 40px;
-  min-width: 40px;
-  height: 40px;
-  min-height: 40px;
-  background-color: #f7f5f7;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center
 }

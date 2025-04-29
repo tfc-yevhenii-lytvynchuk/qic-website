@@ -8,7 +8,7 @@
 
 :root {
   --font-family: FontExample1;
-  --logo-url: url(../images/Logo.png);
+  --logo-url: url(/assets/images/Logo.png);
   --primary-color: #FF4026;
   --secondary-color: #0A5DD0;
   --success-color: #3BB512;
@@ -19,8 +19,8 @@
   --body-background-color: #F3F5F5;
   --default-border-radius: 0px;
 
-  --nav-support-background-image-url: url(../images/bg_support.png);
-  --check-in-background-image-url: url(../images/bg_banner.png);
+  --nav-support-background-image-url: url(/assets/images/bg_support.png);
+  --check-in-background-image-url: url(/assets/images/bg_banner.png);
   --about-program-block-text-color: black;
 }
 

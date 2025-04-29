@@ -10,14 +10,121 @@
 
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+
+  <style>
+    
+    .dashboard-main #dashboard-banner {
+      background-image: var(--check-in-background-image-url);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border-radius: var(--default-border-radius);
+    }
+
+    .dashboard-main #dashboard-banner .check-in {
+      border-radius: var(--default-border-radius);
+    }
+    .dashboard-main #dashboard-banner .check-in .text-green {
+      color: var(--success-color)
+    }
+
+    .dashboard-main #dashboard-banner .check-in-image {
+      width: 40px;
+      height: 40px
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 0%
+      }
+
+      to {
+        background-position: 100% 0%
+      }
+    }
+
+    .dashboard-main #dashboard-banner .check-in .check-in-btn {
+      color: #fff;
+      background: linear-gradient(90deg, #7fb512, #126eb5);
+      animation: gradient 2s ease infinite;
+      border-radius: var(--default-border-radius);
+    }
+
+    .dashboard-main #dashboard-banner .check-in .check-in-btn-inactive {
+      border-radius: var(--default-border-radius);
+    }
+    .dashboard-main #reward-program .welcome {
+      flex: 7;
+      border-radius: var(--default-border-radius);
+    }
+
+    .dashboard-main #reward-program .welcome .step-circle {
+      min-width: 48px;
+      min-height: 48px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 24px;
+      background-color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center
+    }
+
+    .dashboard-main #reward-program .points-summary {
+      flex: 3;
+      border-radius: var(--default-border-radius);
+    }
+
+    .dashboard-main #reward-program .points-summary .points-summary-icon {
+      width: 32px;
+      height: 32px
+    }
+    .dashboard-main #personalized-offers .products-sorting-links {
+      height: 36px
+    }
+
+    .dashboard-main #personalized-offers .products-sorting-links a {
+      height: fit-content
+    }
+
+    .dashboard-main #personalized-offers .product-card {
+      background-color: #fff;
+      color: black;
+      width: 230px;
+      min-width: 230px;
+      height: 330px;
+      position: relative;
+      border-radius: var(--default-border-radius);
+    }
+
+    .dashboard-main #personalized-offers .product-card .product-image-container {
+      min-height: 0
+    }
+
+    .dashboard-main #personalized-offers .product-card .product-card-favorite {
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      min-width: 40px;
+      height: 40px;
+      min-height: 40px;
+      background-color: #f7f5f7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+  </style>
 </head>
 
 <body>
-
   <div class="qic-nav-bar d-flex align-items-center">
     <nav class="qic-container d-flex gap-5 align-items-center align-items-start w-100">
-      <div class="nav-logo d-flex demo-page-logo h-2rem me-sm-1 me-auto"></div>
-      <!-- <img src="assets/images/Logo.png" alt class="d-flex demo-page-logo h-2rem me-sm-1 me-auto"> -->
+      <div class="nav-logo d-flex qic-logo h-2rem me-sm-1 me-auto"></div>
+      <!-- <img src="assets/images/Logo.png" alt class="d-flex qic-logo h-2rem me-sm-1 me-auto"> -->
       <ul class="d-none d-sm-flex gap-3 gap-lg-5 align-items-center me-auto">
         <li><a href="#" class="nav-item-link active-link">Dashboard</a></li>
         <li><a href="form.html" class="nav-item-link">Form</a></li>
@@ -29,7 +136,7 @@
                 <div class="d-flex justify-content-between">
                   <div class="d-flex gap-5 flex-wrap">
                     <div class="d-flex flex-column"><span class="text-body-secondary fs-7">CATEGORIES</span>
-                      <div class="d-flex flex-column overflow-y-auto main-demo-nav-menu">
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
                         <a href="#" id="category1Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="mock-box"></div>
                           <div class="d-flex flex-column">
@@ -62,7 +169,7 @@
                     </div>
                     <div class="d-flex flex-column">
                       <span class="text-body-secondary fs-7">Category 1 /</span>
-                      <div class="d-flex flex-column overflow-y-auto main-demo-nav-menu">
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
                         <a href="#" id="subcategory1Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="mock-box"></div>
                           <div class="d-flex flex-column">
@@ -118,7 +225,7 @@
                       </div>
                     </div>
                     <div class="d-flex flex-column"><span class="text-body-secondary fs-7">PERSONAL</span>
-                      <div class="d-flex flex-column overflow-y-auto main-demo-nav-menu">
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
                         <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="mock-box"></div>
                           <div class="d-flex flex-column">
@@ -173,7 +280,7 @@
                   <div class="d-flex gap-5 flex-wrap">
                     <div class="d-flex flex-column">
                       <span class="text-body-secondary fs-7">GENERAL</span>
-                      <div class="d-flex flex-column overflow-y-auto main-demo-nav-menu">
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
                         <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="mock-box"></div>
                           <div class="d-flex flex-column">
@@ -276,9 +383,9 @@
     </nav>
   </div>
 
-  <main class="demo-page-main mt-3">
+  <main class="dashboard-main mt-3">
     <div class="qic-container">
-      <section id="demo-page-banner"
+      <section id="dashboard-banner"
         class="px-3 px-sm-5 py-3 py-sm-4 d-flex justify-content-sm-between justify-content-center align-items-center">
         <div class="d-none d-lg-flex flex-column gap-2 text-white">
           <h4>Good afternoon, James Torquinn</h4><span>Jan 7, 2025 <span class="text-primary">|</span> 04:30
@@ -474,107 +581,6 @@
               <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
             </div>
             <p class="fs-7 fw-bold m-0">In cart/in vaforites product example</p>
-            <span class="d-flex align-items-center gap-1 fw-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
-                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
-                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
-                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
-              </svg>1,500
-            </span>
-            <div href class="button-success px-3 py-2 fw-medium">
-              <i class="bi bi-check2 text-success me-1"></i> InCart
-            </div>
-          </div>
-          <div class="product-card p-3 d-flex flex-column gap-2 relative">
-            <form  class="product-card-favorite cursor-pointer">
-              <input type="hidden" name="productId" value="000-000-000-000">
-              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-            </form>
-            <div class="product-image-container flex-grow-1">
-              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
-            </div>
-            <p class="fs-7 fw-bold m-0">Not in cart/in vaforites product example</p>
-            <span class="d-flex align-items-center gap-1 fw-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
-                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
-                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
-                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
-              </svg>1,500
-            </span>
-            <form class="w-100" action="">
-              <input type="hidden" name="productId" value="000-000-000-000">
-              <button type="submit" class="button-outlined w-100 px-3 py-2"> Add to Cart </button>
-            </form>
-          </div>
-          <div class="product-card p-3 d-flex flex-column gap-2 relative">
-            <form  class="product-card-favorite cursor-pointer">
-              <input type="hidden" name="productId" value="000-000-000-000">
-              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-            </form>
-            <div class="product-image-container flex-grow-1">
-              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
-            </div>
-            <p class="fs-7 fw-bold m-0">In cart/not in vaforites product example</p>
-            <span class="d-flex align-items-center gap-1 fw-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
-                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
-                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
-                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
-              </svg>1,500
-            </span>
-            <div href class="button-success px-3 py-2 fw-medium">
-              <i class="bi bi-check2 text-success me-1"></i> InCart
-            </div>
-          </div>
-          <div class="product-card p-3 d-flex flex-column gap-2 relative">
-            <form  class="product-card-favorite cursor-pointer">
-              <input type="hidden" name="productId" value="000-000-000-000">
-              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-            </form>
-            <div class="product-image-container flex-grow-1">
-              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
-            </div>
-            <p class="fs-7 fw-bold m-0">In cart/not in vaforites product example</p>
-            <span class="d-flex align-items-center gap-1 fw-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
-                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
-                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
-                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
-              </svg>1,500
-            </span>
-            <div href class="button-success px-3 py-2 fw-medium">
-              <i class="bi bi-check2 text-success me-1"></i> InCart
-            </div>
-          </div>
-          <div class="product-card p-3 d-flex flex-column gap-2 relative">
-            <form  class="product-card-favorite cursor-pointer">
-              <input type="hidden" name="productId" value="000-000-000-000">
-              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-            </form>
-            <div class="product-image-container flex-grow-1">
-              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
-            </div>
-            <p class="fs-7 fw-bold m-0">In cart/not in vaforites product example</p>
-            <span class="d-flex align-items-center gap-1 fw-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
-                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
-                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
-                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
-              </svg>1,500
-            </span>
-            <div href class="button-success px-3 py-2 fw-medium">
-              <i class="bi bi-check2 text-success me-1"></i> InCart
-            </div>
-          </div>
-          <div class="product-card p-3 d-flex flex-column gap-2 relative">
-            <form  class="product-card-favorite cursor-pointer">
-              <input type="hidden" name="productId" value="000-000-000-000">
-              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-            </form>
-            <div class="product-image-container flex-grow-1">
-              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
-            </div>
-            <p class="fs-7 fw-bold m-0">In cart/not in vaforites product example</p>
             <span class="d-flex align-items-center gap-1 fw-medium">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
                 <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
