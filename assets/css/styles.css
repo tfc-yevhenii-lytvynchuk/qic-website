@@ -12,14 +12,14 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.demo-page-container {
+.qic-container {
   max-width: var(--page-container-width);
   margin: 0 auto;
   padding: 0 64px;
 }
 
 @media (max-width: 768px) {
-  .demo-page-container {
+  .qic-container {
     padding: 0 18px;
   }
 }
