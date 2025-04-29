@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-beasties-container>
+
+<head>
+  <meta charset="utf-8">
+  <title>Login - Turner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/config.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .turner-logo {
+      width: 48px;
+      height: 48px;
+      background-color: #0d6efd;
+      margin-bottom: 1rem;
+    }
+
+    .form-control {
+      padding: 0.75rem 1rem;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+    }
+
+    .password-field {
+      position: relative;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #6c757d;
+    }
+
+    .login-btn {
+      background-color: #ff4d4f;
+      border: none;
+      padding: 0.75rem;
+      width: 100%;
+      color: white;
+      font-weight: 500;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+
+    .forgot-password {
+      color: #000;
+      text-decoration: none;
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .forgot-password:hover {
+      color: #0d6efd;
+    }
+
+    .register-section {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #dee2e6;
+      text-align: center;
+    }
+
+    .register-btn {
+      background-color: #0d6efd;
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="turner-logo"></div>
+    <h4 class="mb-2">Welcome back!</h4>
+    <p class="text-secondary mb-4">Let's login to the system</p>
+
+    <form>
+      <div class="mb-3">
+        <label for="login" class="form-label">Login</label>
+        <input type="text" class="form-control" id="login" placeholder="Your ID, email or telefon">
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <div class="password-field">
+          <input type="password" class="form-control" id="password">
+          <i class="bi bi-eye password-toggle"></i>
+        </div>
+      </div>
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="rememberMe">
+        <label class="form-check-label" for="rememberMe">
+          Remember me for 30 days
+        </label>
+      </div>
+
+      <button type="submit" class="login-btn">Log In</button>
+
+      <div class="text-center mt-3">
+        <a href="#" class="forgot-password">
+          FORGOT PASSWORD? <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="register-section">
+        <p class="text-secondary mb-1">Don't have account?</p>
+        <small class="text-secondary d-block mb-2">Just register in 5 min</small>
+        <a href="#" class="register-btn">Register</a>
+      </div>
+    </form>
+  </div>
+
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Password visibility toggle
+    document.querySelector('.password-toggle').addEventListener('click', function() {
+      const passwordInput = document.querySelector('#password');
+      const icon = this;
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('bi-eye');
+        icon.classList.add('bi-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('bi-eye-slash');
+        icon.classList.add('bi-eye');
+      }
+    });
+  </script>
+</body>
+
+</html>

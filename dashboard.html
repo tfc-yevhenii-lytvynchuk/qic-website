@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" data-beasties-container>
+
+<head>
+  <meta charset="utf-8">
+  <title>Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/config.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+  </noscript>
+</head>
+
+<body>
+
+  <div class="demo-page-nav-bar d-flex align-items-center">
+    <nav class="demo-page-container d-flex gap-5 align-items-center align-items-start w-100">
+      <div class="nav-logo d-flex demo-page-logo h-2rem me-sm-1 me-auto"></div>
+      <!-- <img src="assets/images/Logo.png" alt class="d-flex demo-page-logo h-2rem me-sm-1 me-auto"> -->
+      <ul class="d-none d-sm-flex gap-3 gap-lg-5 align-items-center me-auto">
+        <li><a href="#" class="nav-item-link active-link">Dashboard</a></li>
+        <li><a href="form.html" class="nav-item-link">Form</a></li>
+        <li>
+          <div class="dropdown">
+            <a data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-offset="0,30" href="#" class="dropdown-toggle nav-item-link">Shop</a>
+            <div class="dropdown-menu min-vw-100 fixed-top">
+              <div class="demo-page-container w-100 py-4">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex gap-5 flex-wrap">
+                    <div class="d-flex flex-column"><span class="text-body-secondary fs-7">CATEGORIES</span>
+                      <div class="d-flex flex-column overflow-y-auto main-demo-nav-menu">
+                        <a href="#" id="category1Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Category 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                          <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
+                          <script>
+                            document.getElementById('category1Link').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              alert('Category 1 selected');
+                            });
+                          </script>
+                        </a>
+                        <a href="#" id="category2Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Category 2</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                          <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
+                          <script>
+                            document.getElementById('category2Link').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              alert('Category 2 selected');
+                            });
+                          </script>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">Category 1 /</span>
+                      <div class="d-flex flex-column overflow-y-auto main-demo-nav-menu">
+                        <a href="#" id="subcategory1Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <script>
+                          document.getElementById('subcategory1Link').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            alert('Subcategory 1 selected');
+                          });
+                        </script>
+                        <a href="#" id="subcategory2Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <script>
+                          document.getElementById('subcategory2Link').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            alert('Subcategory 2 selected');
+                          });
+                        </script>
+                        <a href="#" id="subcategory3Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <script>
+                          document.getElementById('subcategory3Link').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            alert('Subcategory 3 selected');
+                          });
+                        </script>
+                        <a href="#" id="subcategory4Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                          <script>
+                            document.getElementById('subcategory4Link').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              alert('Subcategory 4 selected');
+                            });
+                          </script>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column"><span class="text-body-secondary fs-7">PERSONAL</span>
+                      <div class="d-flex flex-column overflow-y-auto main-demo-nav-menu">
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">My Orders</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">My Wishlist</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-none d-lg-block"><span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">PROGRAM GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">SALES REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">LATEST NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100">
+                          <i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                          <a href="form.html" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <a data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-offset="0,30" class="dropdown-toggle nav-item-link">Points</a>
+            <div class="dropdown-menu min-vw-100 fixed-top">
+              <div class="demo-page-container w-100 py-4">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex gap-5 flex-wrap">
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">GENERAL</span>
+                      <div class="d-flex flex-column overflow-y-auto main-demo-nav-menu">
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Points Summary</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Quizzes</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Ranking</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-none d-lg-block"><span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a 
+                        class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">PROGRAM
+                          GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a  class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">SALES
+                          REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">LATEST
+                          NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100"><i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                           <a href="form.html" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+      <div class="d-xl-flex d-none">
+        <div class="nav-points-count d-flex align-items-center gap-2 py-2 px-3 bg-body-secondary text-black">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+            <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+            <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+            </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+          </svg>
+          <span>14,245</span></div><a href="#" class="nav-shop-link d-flex align-items-center py-2 px-3 button-primary">
+          Shop </a>
+      </div>
+      <div class="d-lg-flex d-none justify-content-center gap-4">
+        <a href="#"><i class="bi bi-bell-fill"></i></a>
+        <a href="#"><i class="bi bi-search"></i></a>
+      </div>
+      <div class="dropdown">
+        <a data-bs-toggle="dropdown" href="#" class="dropdown-toggle d-flex align-items-center gap-3 cursor-pointer">
+          <i class="bi bi-person-fill"></i>
+          <span class="text-nowrap d-lg-flex d-none"> My Profile </span>
+        </a>
+        <div class="dropdown-menu">
+          <div class="p-3 pb-1"><a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
+              <div class="mock-box"></div>
+              <div class="d-flex flex-column text-black"><span class="fw-bold">Profile Settings</span>
+                <span class="text-body-secondary fs-7">Subinfo</span>
+              </div>
+            </a>
+            <a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
+              <div class="mock-box"></div>
+              <div class="d-flex flex-column text-black"><span class="fw-bold">Program Guide</span><span
+                  class="text-body-secondary fs-7">Subinfo</span></div>
+            </a>
+          </div>
+          <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white">
+            <span>Need to Exit?</span>
+            <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
+            <script>
+              document.getElementById('logoutLink').addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Logout');
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="d-lg-flex d-none"><i class="bi bi-bag-fill"></i></a>
+    </nav>
+  </div>
+
+  <main class="demo-page-main mt-3">
+    <div class="demo-page-container">
+      <section id="demo-page-banner"
+        class="px-3 px-sm-5 py-3 py-sm-4 d-flex justify-content-sm-between justify-content-center align-items-center">
+        <div class="d-none d-lg-flex flex-column gap-2 text-white">
+          <h4>Good afternoon, James Torquinn</h4><span>Jan 7, 2025 <span class="text-primary">|</span> 04:30
+            PM</span>
+        </div>
+        <div class="check-in bg-white text-black p-3 p-sm-4 d-flex gap-2 align-items-center flex-column flex-sm-row">
+          <img src="assets/images/check-in.png" alt class="check-in-image d-none d-xl-flex">
+          <div class="d-flex flex-column me-4">
+            <span class="fw-bold">Daily check-in: <span class="text-green fw-medium">12 days</span></span>
+            <span class="fs-7 text-body-secondary">Complete 3 more days to claim bonus points!</span>
+          </div>
+          <a href="#" id="checkInBtn" class="check-in-btn d-flex align-items-center gap-2 px-3 py-2">
+            <span>Claim</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 4.17285C6.78689 4.17285 4.17285 6.78689 4.17285 10C4.17285 13.2131 6.78689 15.8271 10 15.8271C13.2131 15.8271 15.8271 13.2131 15.8271 10C15.8271 6.78689 13.2131 4.17285 10 4.17285ZM12.6292 10L10 12.6292L7.37077 10L10 7.37077L12.6292 10Z" fill="white" />
+              <path d="M16.364 3.63602C14.6641 1.93618 12.404 1 10 1C7.59602 1 5.33593 1.93618 3.63602 3.63602C1.93618 5.33593 1 7.59602 1 10C1 12.404 1.93618 14.6641 3.63602 16.364C5.33593 18.0638 7.59602 19 10 19C12.404 19 14.6641 18.0638 16.364 16.364C18.0638 14.6641 19 12.404 19 10C19 7.59602 18.0638 5.33593 16.364 3.63602ZM10 16.8818C6.20534 16.8818 3.11816 13.7947 3.11816 10C3.11816 6.20534 6.20534 3.11816 10 3.11816C13.7947 3.11816 16.8818 6.20534 16.8818 10C16.8818 13.7947 13.7947 16.8818 10 16.8818Z" fill="white" />
+            </svg>
+            <span>+50</span>
+          </a>
+          <script>
+            document.getElementById('checkInBtn').addEventListener('click', function(event) {
+              event.preventDefault();
+              alert('Daily check-in button clicked');
+            });
+          </script>
+          <div class="check-in-btn-inactive d-flex align-items-center gap-2 px-3 py-2 bg-body-secondary">
+            <i class="bi bi-alarm-fill"></i><span class="text-nowrap">23h 59m</span>
+          </div>
+        </div>
+      </section>
+      <section id="reward-program" class="mt-5">
+        <div class="d-flex gap-4 flex-column flex-lg-row">
+          <div class="welcome p-4 p-md-5 bg-white text-black d-flex gap-2 flex-column">
+            <h2>Welcome to Rewards Program!</h2>
+            <p class="text-body-secondary">We are glad to see you here! Earn points for activity and exchange them
+              for valuable gifts. Your first rewards are already waiting for you!</p>
+            <div class="d-flex gap-3 flex-wrap">
+              <div class="d-flex gap-3 align-items-center">
+                <div class="step-circle">1</div>
+                <div class="d-flex flex-column"><span class="fw-bold fs-5">Earn Points</span><span
+                    class="fs-7 text-body-secondary">By quizzes and tasks</span></div><svg
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z"
+                    fill="var(--primary-color)" style="opacity: 0.5;" />
+                </svg>
+              </div>
+              <div class="d-flex gap-3 align-items-center">
+                <div class="step-circle">2</div>
+                <div class="d-flex flex-column"><span class="fw-bold fs-5">Track your Progress</span><span
+                    class="fs-7 text-body-secondary">To manage your Points</span></div><svg
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z"
+                    fill="var(--primary-color)" style="opacity: 0.5;" />
+                </svg>
+              </div>
+              <div class="d-flex gap-3 align-items-center">
+                <div class="step-circle">3</div>
+                <div class="d-flex flex-column"><span class="fw-bold fs-5">Spend Points</span><span
+                    class="fs-7 text-body-secondary">Shop, Badges, etc!</span></div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between flex-wrap mt-3"><a href
+                class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">LEARN
+                  MORE</span><i class="bi bi-arrow-right text-primary fs-4"></i></a><a href
+                class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">ONBOARDING
+                  AGAIN</span><i class="bi bi-arrow-right text-primary fs-4"></i></a></div>
+          </div>
+          <div class="points-summary p-4 p-md-5 bg-white text-black d-flex flex-column gap-3">
+            <h5 class="fw-bold">Points Summary</h5>
+            <div class="d-flex align-items-start gap-3">
+              <svg class="points-summary-icon mt-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+              </svg>
+              <div class="d-flex flex-column"><span class="fs-3 fw-bold">14,245</span><span
+                  class="fs-7 text-body-secondary fw-medium">Total Balance</span></div>
+            </div>
+            <div class="d-flex flex-column gap-2">
+              <div class="row align-items-center">
+                <div class="col-8"><span class="fw-medium">Earned</span></div>
+                <div class="col-4">
+                  <span class="d-flex align-items-center gap-1 fw-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                      <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                      <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                      </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+                    </svg>
+                    12,245
+                  </span>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-8"><span class="fw-medium">Awarded</span></div>
+                <div class="col-4">
+                  <span class="d-flex align-items-center gap-1 fw-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                      <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                      <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                      </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+                    </svg>
+                      1,500
+                    </span>
+                  </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-8"><span class="fw-medium">Available for Redemption</span></div>
+                <div class="col-4">
+                  <span class="d-flex align-items-center gap-1 fw-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                      <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                      <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                      </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+                    </svg>
+                    500
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="personalized-offers" class="p-lg-5 p-md-3 p-0 mt-5 mt-lg-0">
+        <div class="d-flex justify-content-between mb-3">
+          <span class="fs-4">Personalized offers</span><a href class="button-outlined px-3 py-2"> Go to Shop </a>
+        </div>
+        <div class="products-sorting-links d-flex gap-3 w-100 overflow-x-auto">
+          <a href="#" id="headphonesSortLinkLink" class="nav-item-link fw-medium h-max active-link">
+            Headphones
+            <script>
+              document.getElementById('headphonesSortLinkLink').addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Headphones Sorting Link clicked');
+              });
+            </script>
+          </a>
+          <a href="#" id="gameConsolesSortLinkLink" class="nav-item-link fw-medium h-max">
+            Game Consoles
+            <script>
+              document.getElementById('gameConsolesSortLinkLink').addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Game Consoles Sorting Link clicked');
+              });
+            </script>
+          </a>
+          <a href="#" id="boardGamesSortLinkLink" class="nav-item-link fw-medium h-max">Board Games
+            <script>
+              document.getElementById('boardGamesSortLinkLink').addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Board Games Sorting Link clicked');
+              });
+            </script>
+          </a>
+          <a href="#" id="cookwareBakewareSortLinkLink" class="nav-item-link fw-medium h-max">Cookware &amp; Bakeware
+            <script>
+              document.getElementById('cookwareBakewareSortLinkLink').addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Cookware &amp; Bakeware Sorting Link clicked');
+              });
+            </script>
+          </a>
+        </div>
+        <div class="d-flex gap-3 mt-3 w-100 overflow-x-auto pb-2">
+          <div class="product-card p-3 d-flex flex-column gap-2 relative">
+            <form  class="product-card-favorite cursor-pointer">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
+            </form>
+            <div class="product-image-container flex-grow-1">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
+            </div>
+            <p class="fs-7 fw-bold m-0">Not in cart/in vaforites product example</p>
+            <span class="d-flex align-items-center gap-1 fw-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+              </svg>1,500
+            </span>
+            <form class="w-100" action="">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="button-outlined w-100 px-3 py-2"> Add to Cart </button>
+            </form>
+          </div>
+          <div class="product-card p-3 d-flex flex-column gap-2 relative">
+            <form  class="product-card-favorite cursor-pointer">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+            </form>
+            <div class="product-image-container flex-grow-1">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
+            </div>
+            <p class="fs-7 fw-bold m-0">In cart/in vaforites product example</p>
+            <span class="d-flex align-items-center gap-1 fw-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+              </svg>1,500
+            </span>
+            <div href class="button-success px-3 py-2 fw-medium">
+              <i class="bi bi-check2 text-success me-1"></i> InCart
+            </div>
+          </div>
+          <div class="product-card p-3 d-flex flex-column gap-2 relative">
+            <form  class="product-card-favorite cursor-pointer">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+            </form>
+            <div class="product-image-container flex-grow-1">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
+            </div>
+            <p class="fs-7 fw-bold m-0">Not in cart/in vaforites product example</p>
+            <span class="d-flex align-items-center gap-1 fw-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+              </svg>1,500
+            </span>
+            <form class="w-100" action="">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="button-outlined w-100 px-3 py-2"> Add to Cart </button>
+            </form>
+          </div>
+          <div class="product-card p-3 d-flex flex-column gap-2 relative">
+            <form  class="product-card-favorite cursor-pointer">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
+            </form>
+            <div class="product-image-container flex-grow-1">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
+            </div>
+            <p class="fs-7 fw-bold m-0">In cart/not in vaforites product example</p>
+            <span class="d-flex align-items-center gap-1 fw-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+              </svg>1,500
+            </span>
+            <div href class="button-success px-3 py-2 fw-medium">
+              <i class="bi bi-check2 text-success me-1"></i> InCart
+            </div>
+          </div>
+          <div class="product-card p-3 d-flex flex-column gap-2 relative">
+            <form  class="product-card-favorite cursor-pointer">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
+            </form>
+            <div class="product-image-container flex-grow-1">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
+            </div>
+            <p class="fs-7 fw-bold m-0">In cart/not in vaforites product example</p>
+            <span class="d-flex align-items-center gap-1 fw-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+              </svg>1,500
+            </span>
+            <div href class="button-success px-3 py-2 fw-medium">
+              <i class="bi bi-check2 text-success me-1"></i> InCart
+            </div>
+          </div>
+          <div class="product-card p-3 d-flex flex-column gap-2 relative">
+            <form  class="product-card-favorite cursor-pointer">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
+            </form>
+            <div class="product-image-container flex-grow-1">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
+            </div>
+            <p class="fs-7 fw-bold m-0">In cart/not in vaforites product example</p>
+            <span class="d-flex align-items-center gap-1 fw-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+              </svg>1,500
+            </span>
+            <div href class="button-success px-3 py-2 fw-medium">
+              <i class="bi bi-check2 text-success me-1"></i> InCart
+            </div>
+          </div>
+          <div class="product-card p-3 d-flex flex-column gap-2 relative">
+            <form  class="product-card-favorite cursor-pointer">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
+            </form>
+            <div class="product-image-container flex-grow-1">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
+            </div>
+            <p class="fs-7 fw-bold m-0">In cart/not in vaforites product example</p>
+            <span class="d-flex align-items-center gap-1 fw-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+                <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+                <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+                </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+              </svg>1,500
+            </span>
+            <div href class="button-success px-3 py-2 fw-medium">
+              <i class="bi bi-check2 text-success me-1"></i> InCart
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+</body>
+
+</html>

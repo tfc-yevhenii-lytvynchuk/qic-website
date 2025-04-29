@@ -1,0 +1,71 @@
+
+/* EXAPMLE CONFIG VARIANT 1*/
+
+@font-face {
+  font-family: FontExample1;
+  src: url("../fonts/font1.ttf") format("truetype");
+}
+
+:root {
+  --font-family: FontExample1;
+  --logo-url: url(../images/Logo.png);
+  --primary-color: #FF4026;
+  --secondary-color: #0A5DD0;
+  --success-color: #3BB512;
+  --primary-button-text-color: white;
+  --nav-bar-background-color: white;
+  --main-text-color: black;
+  --page-container-width: 1440px;
+  --body-background-color: #F3F5F5;
+  --default-border-radius: 0px;
+
+  --nav-support-background-image-url: url(../images/bg_support.png);
+  --check-in-background-image-url: url(../images/bg_banner.png);
+  --about-program-block-text-color: black;
+}
+
+/* EXAPMLE CONFIG VARIANT 2*/
+
+/* @font-face {
+  font-family: FontExample2;
+  src: url("../fonts/font2.ttf") format("truetype");
+}
+
+:root {
+  --font-family: FontExample2;
+  --logo-url: url(../images/bosch-logo.svg);
+  --primary-color: #0A5DD0;
+  --secondary-color: #FF4026;
+  --success-color: #1c6604;
+  --primary-button-text-color: white;
+  --nav-bar-background-color: rgb(231, 228, 228);
+  --main-text-color: black;
+  --page-container-width: 1800px;
+  --body-background-color: #dfe2e2;
+  --default-border-radius: 8px;
+
+  --nav-support-background-image-url: url(../images/bg_support2.webp);
+  --check-in-background-image-url: url(../images/bg_banner3.webp);
+  --about-program-block-text-color: white;
+} */
+
+/* EXAPMLE CONFIG VARIANT 3*/
+
+/* @font-face {
+  font-family: FontExample2;
+  src: url("../fonts/font2.ttf") format("truetype");
+}
+
+:root {
+  --font-family: FontExample2;
+  --logo-url: url(../images/siemens-logo.png);
+  --primary-color: #3BC8BE;
+  --secondary-color: #000028;
+  --success-color: #1c6604;
+  --primary-button-text-color: white;
+  --nav-bar-background-color: #000028;
+  --main-text-color: white;
+  --page-container-width: 1800px;
+  --body-background-color: #000028;
+  --default-border-radius: 8px; 
+} */
