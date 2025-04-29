@@ -34,7 +34,7 @@ body .text-success {
 body .text-secondary {
   color: var(--secondary-color) !important;
 }
-.demo-page-nav-bar {
+.qic-nav-bar {
   background: var(--nav-bar-background-color);
   z-index: 999;
   position: sticky;
@@ -193,35 +193,35 @@ i.bi:hover {
 	border-radius: var(--default-border-radius) !important;
 }
 
-.demo-page-nav-bar nav {
+.qic-nav-bar nav {
   padding-top: 20px;
   padding-bottom: 20px
 }
 
-.demo-page-nav-bar nav .demo-page-logo {
+.qic-nav-bar nav .demo-page-logo {
   height: 24px
 }
 
-.demo-page-nav-bar .mock-box {
+.qic-nav-bar .mock-box {
   width: 40px;
   height: 40px;
   background-color: #f3f5f5;
   border-radius: var(--default-border-radius);
 }
 
-.demo-page-nav-bar .mock-item {
+.qic-nav-bar .mock-item {
   border-radius: var(--default-border-radius);
   color: black;
 }
-.demo-page-nav-bar .mock-item:hover {
+.qic-nav-bar .mock-item:hover {
   background-color: #f3f5f5
 }
 
-.demo-page-nav-bar .mock-item:hover .mock-box {
+.qic-nav-bar .mock-item:hover .mock-box {
   background-color: #fff
 }
 
-.demo-page-nav-bar .main-demo-nav-menu {
+.qic-nav-bar .main-demo-nav-menu {
   max-height: 456px
 }
 .nav-shop-link {
@@ -231,7 +231,7 @@ i.bi:hover {
   border-radius: var(--default-border-radius) 0 0  var(--default-border-radius);
 
 }
-.demo-page-nav-bar .about-program-block {
+.qic-nav-bar .about-program-block {
   margin-top: 16px;
   width: 365px;
   height: 216px;
@@ -241,11 +241,11 @@ i.bi:hover {
   color: var(--about-program-block-text-color);
 }
 
- .demo-page-nav-bar .about-program-block span {
+ .qic-nav-bar .about-program-block span {
   color: var(--about-program-block-text-color) !important;
 }
 
-.demo-page-nav-bar .about-program-block .bi {
+.qic-nav-bar .about-program-block .bi {
   transition: .3s
 }
 input.form-control {
@@ -263,11 +263,11 @@ select.form-select {
 	box-shadow: none !important;
 }
 
-.demo-page-form .avatar-container {
+.profile-settings .avatar-container {
   background: #f7f5f7
 }
 
-.demo-page-form .avatar-container .avatar-container-img {
+.profile-settings .avatar-container .avatar-container-img {
   width: 40px;
   height: 40px;
   min-height: 40px;
@@ -275,20 +275,20 @@ select.form-select {
   border-radius: 50%
 }
 
-.demo-page-form #demo-page-form {
+.profile-settings #profile-settings {
   background-color: #fdfdfd;
   border-radius: var(--default-border-radius);
 }
 
-.demo-page-form #demo-page-form .demo-page-form-links {
+.profile-settings #profile-settings .profile-settings-links {
   height: 36px
 }
 
-.demo-page-form #demo-page-form .demo-page-form-links a {
+.profile-settings #profile-settings .profile-settings-links a {
   height: fit-content
 }
 
-.demo-page-form #demo-page-form .secondary-circle {
+.profile-settings #profile-settings .secondary-circle {
   width: 40px;
   height: 40px;
   display: flex;
@@ -300,7 +300,7 @@ select.form-select {
   background: #d9e4f1
 }
 
-.demo-page-form #demo-page-form .form-row-description {
+.profile-settings #profile-settings .form-row-description {
   min-width: 250px
 }
 @keyframes gradient {
