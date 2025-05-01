@@ -29,7 +29,7 @@
 
 /* EXAPMLE CONFIG VARIANT 2*/
 
-@font-face {
+/* @font-face {
   font-family: FontExample2;
   src: url("../fonts/font2.ttf") format("truetype");
 }
@@ -50,7 +50,7 @@
   --nav-support-background-image-url: url(../images/bg_support2.webp);
   --check-in-background-image-url: url(../images/bg_banner3.webp);
   --about-program-block-text-color: white;
-}
+} */
 
 /* EXAPMLE CONFIG VARIANT 3*/
 

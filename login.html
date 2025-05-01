@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-beasties-container>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -27,13 +27,12 @@
     .login-card {
       background: #fff;
       border-radius: var(--default-border-radius) var(--default-border-radius) 0 0;
-      padding: 56px 96px 40px;
+      padding: 40px;
     }
     .login-register {
       background: #f7f5f7;
-      padding: 28px 96px 28px;
+      padding: 40px;
       border-radius: 0 0 var(--default-border-radius) var(--default-border-radius);
-
     }
     .login-logo {
       width: 80px;
@@ -43,7 +42,6 @@
     .form-check-label {
       user-select: none;
     }
-
     .toggle-password {
       background: transparent;
       border: none;
@@ -80,7 +78,7 @@
 </head>
 
 <body class="login-bg d-flex align-items-center justify-content-center w-100">
-  <main class="d-flex flex-column justify-content-center align-items-center min-vh-100 w-100">
+  <main class="d-flex flex-column justify-content-center align-items-center min-vh-100 w-100 gap-1">
     <div class="qic-login-container">
       <form class="login-card w-100" autocomplete="on">
         <div class="d-flex gap-3 align-content-center mb-4 flex-column flex-sm-row justify-content-center align-items-center">
@@ -92,36 +90,52 @@
             <div class="text-body-secondary">Let's login to the system</div>
           </div>
         </div>
-  
-        <div class="mb-3">
-          <div class="d-flex justify-content-between">
-            <label for="login" class="form-label fw-semibold">Login</label>
-            <small class="text-muted">Your ID, email or telefon</small>
+        <div class="d-flex flex-column gap-4">
+          <div>
+            <div class="d-flex justify-content-between">
+              <label for="login" class="form-label fw-semibold">Login</label>
+              <small class="text-muted">Your ID, email or telefon</small>
+            </div>
+            <input type="text" class="form-control" id="login" name="login" autocomplete="on" placeholder="Your ID, email or telefon" required autofocus>
           </div>
-          <input type="text" class="form-control" id="login" name="login" autocomplete="on" placeholder="Your ID, email or telefon" required autofocus>
-        </div>
-        <div class="mb-2">
-          <label for="password" class="form-label fw-semibold">Password</label>
-          <div class="input-group relative">
-            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" autocomplete="current-password">
-            <button class="toggle-password" type="button" id="togglePassword" tabindex="-1" aria-label="Show password">
-              <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
-            </button>
+          <div>
+            <label for="password" class="form-label fw-semibold">Password</label>
+            <div class="input-group relative">
+              <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" autocomplete="current-password" required>
+              <button class="toggle-password" type="button" id="togglePassword" tabindex="-1" aria-label="Show password">
+                <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+              </button>
+            </div>
           </div>
+          <div class="d-flex align-items-center gap-2">
+            <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe" value="true">
+            <label class="form-check-label" for="rememberMe">
+              Remember me for 30 days
+            </label>
+          </div>
+          <div class="mt-auto">
+            <button type="submit" class="button-primary w-100 h-3rem">Log In</button>
+          </div>
+          <a href="#" class="animated-link-with-arrow d-flex gap-3 align-items-center justify-content-center">
+            <span class="fw-bold">FORGOT PASSWORD?</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+          </a>
         </div>
-        <div class="d-flex align-items-center gap-2 my-3">
-          <input class="form-check-input" type="checkbox" value="" id="rememberMe">
-          <label class="form-check-label" for="rememberMe">
-            Remember me for 30 days
-          </label>
-        </div>
-        <div class="mt-auto ">
-          <button type="submit" class="button-primary w-100 h-3rem">Log In</button>
-        </div>
-        <a href="#" class="animated-link-with-arrow d-flex gap-3 align-items-center justify-content-center mt-3">
-          <span class="fw-bold">FORGOT PASSWORD?</span><i class="bi bi-arrow-right text-primary fs-4"></i>
-        </a>
+        <script>
+          // Password visibility toggle
+          document.addEventListener('DOMContentLoaded', function() {
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+            const icon = document.getElementById('togglePasswordIcon');
+            togglePassword.addEventListener('click', function() {
+              const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+              passwordInput.setAttribute('type', type);
+              icon.classList.toggle('bi-eye');
+              icon.classList.toggle('bi-eye-slash');
+            });
+          });
+        </script>
       </form>
+
       <div class="login-register w-100 d-flex justify-content-between align-items-center">
         <div class="d-flex flex-column">
           <div class="font-bold">Don't have account?</div>
@@ -130,24 +144,136 @@
         <a href="#" class="button-secondary px-4">Register</a>
       </div>
     </div>
-
-
+    <div class="qic-login-container">
+      <form class="login-card w-100" autocomplete="on">
+        <div class="d-flex flex-column gap-4 mb-5">
+          <div class="d-flex flex-column">
+            <h1 class="fs-5">Reset Password</h1>
+            <div class="text-body-secondary">To reset your password, let's first confirm that it's you.</div>
+          </div>
+          <div>
+            <label for="email" class="form-label fw-semibold">Your Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required autocomplete="on">
+          </div> 
+        </div>
+ 
+        <div class="d-flex justify-content-between">
+          <a href="#" class="button-outlined px-4">Cancel</a>
+          <button type="submit" class="button-primary px-4" id="set-new-password-submit">Set New Password</button>
+        </div>
+      </form>
+    </div>
+    <div class="qic-login-container">
+      <form class="login-card w-100" autocomplete="on">
+        <div class="d-flex flex-column gap-4 mb-5">
+          <div class="d-flex flex-column">
+            <h1 class="fs-5">Reset Password</h1>
+            <div class="text-body-secondary">To reset your password, let's first confirm that it's you.</div>
+          </div>
+          <div>
+            <label for="confirmation-code" class="form-label fw-semibold">Enter Confirmation Code</label>
+            <input type="text" id="confirmation-code" name="confirmation-code" class="form-control" placeholder="Enter your confirmation code" required>
+          </div> 
+        </div>
+ 
+        <div class="d-flex justify-content-between">
+          <a href="#" class="button-outlined px-4">Cancel</a>
+          <button type="submit" class="button-primary px-4" id="set-new-password-submit">Set New Password</button>
+        </div>
+      </form>
+    </div>
+    <div class="qic-login-container">
+      <form class="login-card w-100" autocomplete="on">
+        <div class="d-flex flex-column gap-4 mb-5">
+          <div class="d-flex flex-column">
+            <h1 class="fs-5">Change password</h1>
+            <div class="text-body-secondary">Let's update your password to keep your account secure.</div>
+          </div>
+          <div>
+            <label for="old-password" class="form-label fw-semibold">Old Password</label>
+            <input type="password" id="old-password" name="old-password" class="form-control" placeholder="Enter your old password" required autofocus>
+          </div>
+          <div>
+            <label for="new-password" class="form-label fw-semibold">New Password</label>
+            <input type="password" id="new-password" name="new-password" class="form-control" placeholder="Enter your new password" required minlength="8">
+          </div>
+          <div>
+            <label for="confirm-new-password" class="form-label fw-semibold">Confirm New Password</label>
+            <input type="password" id="confirm-new-password" name="confirm-new-password" class="form-control" placeholder="Enter your new password again" required minlength="8">
+          </div> 
+        </div>
+ 
+        <div class="d-flex justify-content-between">
+          <a href="#" class="button-outlined px-4">Cancel</a>
+          <button type="submit" class="button-primary px-4" id="set-new-password-submit">Set New Password</button>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const setNewPasswordSubmit = document.getElementById('set-new-password-submit');
+            const oldPassword = document.getElementById('old-password');
+            const newPassword = document.getElementById('new-password');
+            const confirmNewPassword = document.getElementById('confirm-new-password');
+            
+            setNewPasswordSubmit.addEventListener('click', function(e) {
+              e.preventDefault();
+              
+              // Clear any previous error messages
+              document.querySelectorAll('.error-message').forEach(el => el.remove());
+              
+              // Validate old password (in a real app, this would be checked against the server)
+              if (!oldPassword.value) {
+                showError(oldPassword, 'Please enter your current password');
+                return;
+              }
+              
+              // Validate new password
+              if (!newPassword.value) {
+                showError(newPassword, 'Please enter a new password');
+                return;
+              }
+              
+              // Check password strength
+              if (newPassword.value.length < 8) {
+                showError(newPassword, 'Password must be at least 8 characters long');
+                return;
+              }
+              
+              // Check if passwords match
+              if (newPassword.value !== confirmNewPassword.value) {
+                showError(confirmNewPassword, 'Passwords do not match');
+                return;
+              }
+              
+              // If all validations pass, you would typically submit to server here
+              // For demo purposes, we'll just show a success message
+              alert('Password change request submitted successfully!');
+            });
+            
+            function showError(input, message) {
+              const errorDiv = document.createElement('div');
+              errorDiv.className = 'error-message text-danger mt-1';
+              errorDiv.textContent = message;
+              input.parentNode.appendChild(errorDiv);
+              input.focus();
+            }
+          });
+        </script>
+      </form>
+    </div>
+    <div class="qic-login-container">
+      <div class="login-card w-100">
+        <div class="d-flex flex-column text-center mb-3">
+          <h1 class="fs-5">Changes confirmed</h1>
+          <div class="text-body-secondary">Your new password is set! You can now use it to log in.</div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <a href="" class="button-primary px-4">Login</a>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>
-  <script>
-    // Password visibility toggle
-    document.addEventListener('DOMContentLoaded', function() {
-      const togglePassword = document.getElementById('togglePassword');
-      const passwordInput = document.getElementById('password');
-      const icon = document.getElementById('togglePasswordIcon');
-      togglePassword.addEventListener('click', function() {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        icon.classList.toggle('bi-eye');
-        icon.classList.toggle('bi-eye-slash');
-      });
-    });
-  </script>
+
 </body>
 
 </html>
