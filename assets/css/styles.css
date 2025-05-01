@@ -3,6 +3,7 @@
 body {
   background-color: var(--body-background-color) !important;
   font-family: var(--font-family) !important;
+  min-height: 100vh;
 }
 .nav-logo {
   background-image: var(--logo-url);
@@ -250,6 +251,7 @@ i.bi:hover {
 }
 input.form-control {
   border: 1px solid #DFDFDF;
+  height: 40px;
   background: #f7f5f7;
   border-radius: var(--default-border-radius);
 }
@@ -258,7 +260,19 @@ select.form-select {
   background: #f7f5f7;
   border-radius: var(--default-border-radius);
 }
-.form-control:focus, .form-select:focus {
+.form-control:focus, .form-select:focus, .form-check-input:focus {
 	border-color: var(--primary-color) !important;
 	box-shadow: none !important;
+}
+.form-check-input[type=checkbox] {
+  width: 32px;
+  height: 32px;
+  box-shadow: none !important;
+  border-radius: var(--default-border-radius) !important;
+  background-size: 85%;
+}
+.form-check-input:checked {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  cursor: pointer;
 }
