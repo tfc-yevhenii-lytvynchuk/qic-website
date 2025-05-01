@@ -13,9 +13,6 @@
   <style>
     body.login-bg {
       min-height: 100vh;
-      background: #F3F5F5;
-    }
-    body.login-bg {
       background: var(--login-background-image-url) center center/cover no-repeat, #F3F5F5;
     }
     .qic-login-container {
@@ -38,9 +35,6 @@
       width: 80px;
       height: 80px;
       background-color: var(--secondary-color);
-    }
-    .form-check-label {
-      user-select: none;
     }
     .toggle-password {
       background: transparent;
@@ -70,15 +64,13 @@
       .login-register {
         padding: 16px;
       }
-      body.login-bg {
-        background: white;
-      }
     }
   </style>
 </head>
 
 <body class="login-bg d-flex align-items-center justify-content-center w-100">
   <main class="d-flex flex-column justify-content-center align-items-center min-vh-100 w-100 gap-1">
+    <!-- LOGIN FORM -->
     <div class="qic-login-container">
       <form class="login-card w-100" autocomplete="on">
         <div class="d-flex gap-3 align-content-center mb-4 flex-column flex-sm-row justify-content-center align-items-center">
@@ -109,7 +101,7 @@
           </div>
           <div class="d-flex align-items-center gap-2">
             <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe" value="true">
-            <label class="form-check-label" for="rememberMe">
+            <label for="rememberMe">
               Remember me for 30 days
             </label>
           </div>
@@ -144,6 +136,7 @@
         <a href="#" class="button-secondary px-4">Register</a>
       </div>
     </div>
+    <!-- RESET PASSWORD EMAIL FORM -->
     <div class="qic-login-container">
       <form class="login-card w-100" autocomplete="on">
         <div class="d-flex flex-column gap-4 mb-5">
@@ -159,10 +152,11 @@
  
         <div class="d-flex justify-content-between">
           <a href="#" class="button-outlined px-4">Cancel</a>
-          <button type="submit" class="button-primary px-4" id="set-new-password-submit">Set New Password</button>
+          <button type="submit" class="button-primary px-4" id="reset-password-email-submit">Send Email</button>
         </div>
       </form>
     </div>
+    <!-- RESET PASSWORD CODE FORM -->
     <div class="qic-login-container">
       <form class="login-card w-100" autocomplete="on">
         <div class="d-flex flex-column gap-4 mb-5">
@@ -178,10 +172,11 @@
  
         <div class="d-flex justify-content-between">
           <a href="#" class="button-outlined px-4">Cancel</a>
-          <button type="submit" class="button-primary px-4" id="set-new-password-submit">Set New Password</button>
+          <button type="submit" class="button-primary px-4" id="reset-password-code-submit">Verify Code</button>
         </div>
       </form>
     </div>
+    <!-- SET NEW PASSWORD FORM -->
     <div class="qic-login-container">
       <form class="login-card w-100" autocomplete="on">
         <div class="d-flex flex-column gap-4 mb-5">
@@ -260,11 +255,12 @@
         </script>
       </form>
     </div>
+    <!-- SET NEW PASSWORD SUCCESS -->
     <div class="qic-login-container">
       <div class="login-card w-100">
         <div class="d-flex flex-column text-center mb-3">
           <h1 class="fs-5">Changes confirmed</h1>
-          <div class="text-body-secondary">Your new password is set! You can now use it to log in.</div>
+          <div class="text-body-secondary">Your new password is set! <br> You can now use it to log in.</div>
         </div>
         <div class="d-flex justify-content-center">
           <a href="" class="button-primary px-4">Login</a>
