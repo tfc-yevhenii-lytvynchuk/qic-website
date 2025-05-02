@@ -35,6 +35,9 @@ body .text-success {
 body .text-secondary {
   color: var(--secondary-color) !important;
 }
+body .text-danger {
+  color: var(--danger-color) !important;
+}
 .qic-nav-bar {
   background: var(--nav-bar-background-color);
   z-index: 999;

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>QIC Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/config.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/fonts/bootstrap-icons.css">
+  <link rel="stylesheet" href="/assets/css/login-styles.css">
+
+  <style>
+    #new-password + span.pasword-reliability {
+      position: absolute;
+      right: 10px;
+      top: 9px;
+      display: none;
+    }
+    #new-password[data-password-reliability="unreliable"] + span.pasword-reliability,
+    #new-password[data-password-reliability="reliable"] + span.pasword-reliability {
+      display: block;
+    }
+    #new-password[data-password-reliability="reliable"] + span.pasword-reliability .text-danger,
+    #new-password[data-password-reliability="unreliable"] + span.pasword-reliability .text-success {
+      display: none;
+    }
+    #new-password[data-password-reliability="reliable"] + span.pasword-reliability svg path{
+      fill: var(--success-color);
+    }
+    #new-password[data-password-reliability="unreliable"] + span.pasword-reliability svg path{
+      fill: var(--danger-color);
+    }
+  </style>
+</head>
+
+<body class="login-bg d-flex align-items-center justify-content-center w-100">
+  <main class="d-flex flex-column justify-content-center align-items-center min-vh-100 w-100 gap-1">
+    <!-- SET NEW PASSWORD FORM -->
+    <div class="qic-login-container">
+      <form class="login-card w-100" autocomplete="on" id="set-new-password-form">
+        <div class="d-flex flex-column gap-4 mb-5">
+          <div class="d-flex flex-column">
+            <h1 class="fs-5">Change password</h1>
+            <div class="text-body-secondary">Let's update your password to keep your account secure.</div>
+          </div>
+          <div>
+            <label for="password" class="form-label fw-semibold">Old Password</label>
+            <div class="input-group relative">
+              <input type="password" id="old-password" name="old-password" class="form-control" placeholder="Enter your old password" autocomplete="current-password" required>
+              <button class="toggle-password" type="button" id="togglePassword" tabindex="-1" aria-label="Show password">
+                <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+              </button>
+            </div>
+          </div>
+          <div>
+            <label for="new-password" class="form-label fw-semibold">New Password</label>
+            <div class="position-relative">
+              <input type="password" id="new-password" name="new-password" class="form-control" placeholder="Enter your new password" required minlength="8">
+              <span class="pasword-reliability">
+                <span class="text-success">Strong</span>
+                <span class="text-danger">Weak</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 14.4998H3.25C4.07501 14.4998 4.75 13.8248 4.75 12.9998V8.5498C4.75 7.71982 4.07501 7.0498 3.25 7.0498H2C1.17499 7.0498 0.5 7.71982 0.5 8.5498V12.9998C0.5 13.8248 1.17499 14.4998 2 14.4998Z"/>
+                  <path d="M8.625 4.27539H7.375C6.54999 4.27539 5.875 4.95038 5.875 5.77539V13.0004C5.875 13.8254 6.54999 14.5004 7.375 14.5004H8.625C9.45001 14.5004 10.125 13.8254 10.125 13.0004V5.77539C10.125 4.95038 9.45001 4.27539 8.625 4.27539Z"/>
+                  <path d="M14 1.5H12.75C11.925 1.5 11.25 2.17499 11.25 3V13C11.25 13.825 11.925 14.5 12.75 14.5H14C14.825 14.5 15.5 13.825 15.5 13V3C15.5 2.17499 14.825 1.5 14 1.5Z"/>
+                </svg>
+              </span>
+
+            </div>
+          </div>
+          <div>
+            <label for="confirm-new-password" class="form-label fw-semibold">Confirm New Password</label>
+            <input type="password" id="confirm-new-password" name="confirm-new-password" class="form-control" placeholder="Enter your new password again" required minlength="8">
+          </div> 
+        </div>
+ 
+        <div class="d-flex justify-content-between">
+          <a href="#" class="button-outlined px-4">Cancel</a>
+          <button type="submit" class="button-primary px-4" id="set-new-password-submit">Set New Password</button>
+        </div>
+        <script>
+          // SET NEW PASSWORD FORM SUBMIT EVENT
+          document.addEventListener('DOMContentLoaded', function() {
+            const setNewPasswordForm = document.getElementById('set-new-password-form');
+            const oldPassword = document.getElementById('old-password');
+            const newPassword = document.getElementById('new-password');
+            const confirmNewPassword = document.getElementById('confirm-new-password');
+            newPassword.addEventListener('input', function() {
+              const password = newPassword.value;
+              // PLACEHOLDER CODE, PLEASE IMPLEMENT PASSWORD STRENGTH CHECKING
+              const strong = password.length >= 8;
+              if (strong) {
+                newPassword.dataset.passwordReliability = 'reliable';
+              } else {
+                newPassword.dataset.passwordReliability = 'unreliable';
+              }
+            });
+            setNewPasswordForm.addEventListener('submit', function(e) {
+              e.preventDefault();
+              
+              // Clear any previous error messages
+              document.querySelectorAll('.error-message').forEach(el => el.remove());
+
+              // PLACEHOLDER CODE, PLEASE IMPLEMENT
+              // Validate old password (in a real app, this would be checked against the server)
+              if (!oldPassword.value) {
+                showError(oldPassword, 'Please enter your current password');
+                return;
+              }
+
+              // Check if passwords match
+              if (newPassword.value !== confirmNewPassword.value) {
+                showError(confirmNewPassword, 'Passwords do not match');
+                showError(newPassword, 'Passwords do not match');
+                return;
+              }
+              
+              // PLACEHOLDER CODE, PLEASE IMPLEMENT
+              alert('New password set successfully: ' + newPassword.value);
+              window.location.href = '/login/login-reset-success.html';
+            });
+            
+            function showError(input, message) {
+              const errorDiv = document.createElement('div');
+              errorDiv.className = 'error-message text-danger mt-1';
+              errorDiv.textContent = message;
+              input.parentNode.appendChild(errorDiv);
+              input.focus();
+            }
+          });
+        </script>
+          <script>
+            // Password visibility toggle
+            document.addEventListener('DOMContentLoaded', function() {
+              const togglePassword = document.getElementById('togglePassword');
+              const passwordInput = document.getElementById('old-password');
+              const icon = document.getElementById('togglePasswordIcon');
+              togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                icon.classList.toggle('bi-eye');
+                icon.classList.toggle('bi-eye-slash');
+              });
+            });
+          </script>
+      </form>
+    </div>
+  </main>
+  <script src="/assets/js/bootstrap.bundle.min.js" defer></script>
+
+</body>
+
+</html>
