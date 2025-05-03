@@ -12,6 +12,8 @@ body.login-bg {
   background: #fff;
   border-radius: var(--default-border-radius) var(--default-border-radius) 0 0;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
 }
 .login-register {
   background: #f7f5f7;
