@@ -26,6 +26,8 @@
   --nav-support-background-image-url: url(/assets/images/bg_support.png);
   --check-in-background-image-url: url(/assets/images/bg_banner.png);
   --about-program-block-text-color: black;
+
+  --login-footer-background-image-url: url(/assets/images/login-bg.png);
 }
 
 /* EXAPMLE CONFIG VARIANT 2*/

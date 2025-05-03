@@ -38,6 +38,12 @@ body .text-secondary {
 body .text-danger {
   color: var(--danger-color) !important;
 }
+body .bg-primary {
+  background-color: var(--primary-color) !important;
+}
+body .bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
 .qic-nav-bar {
   background: var(--nav-bar-background-color);
   z-index: 999;
@@ -144,7 +150,16 @@ button {
   border: 0;
   border-radius: var(--default-border-radius);
 }
-
+.qic-icon-bg-circle {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 body ul {
   padding: 0;
   margin: 0;
@@ -170,6 +185,10 @@ body p {
 
 .fs-7 {
   font-size: 14px !important
+}
+
+.fs-8 {
+  font-size: 12px !important
 }
 
 .text-primary {
@@ -278,4 +297,35 @@ select.form-select {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
   cursor: pointer;
+}
+
+.qic-footer {
+  /* background: var(--login-footer-background-image-url) center center/cover no-repeat, #F3F5F5; */
+
+}
+.qic-footer-baner {
+  background: var(--login-footer-background-image-url) center center/cover no-repeat, #F3F5F5;
+  padding: 124px 0
+}
+.qic-footer-content {
+  background-color: var(--secondary-color);
+  padding: 54px 0;
+}
+.qic-footer-logo {
+  width: 84px;
+}
+.qic-footer-secondary-text {
+  color: rgba(241, 241, 241, 0.72);
+  font-size: 12px;
+}
+.qic-footer-bottom {
+  border-top: 2px solid #2770D5;
+}
+@media (max-width: 576px) {
+  .qic-footer-baner {
+    padding: 72px 0
+  }
+  .qic-footer-content {
+    padding: 46px 0;
+  }
 }
