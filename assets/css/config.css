@@ -10,7 +10,7 @@
   --font-family: FontExample1;
   --logo-url: url(/assets/images/Logo.png);
 
-  --login-background-image-url: url(/assets/images/login-bg.png);
+  --login-background-image-url: url(/assets/images/turner-reception-bg.png);
   
   --primary-color: #FF4026;
   --secondary-color: #0A5DD0;
@@ -24,10 +24,10 @@
   --default-border-radius: 0px;
 
   --nav-support-background-image-url: url(/assets/images/bg_support.png);
-  --check-in-background-image-url: url(/assets/images/bg_banner.png);
+  --check-in-background-image-url: url(/assets/images/turner-reception-bg.png);
   --about-program-block-text-color: black;
 
-  --login-footer-background-image-url: url(/assets/images/login-bg.png);
+  --login-footer-background-image-url: url(/assets/images/turner-reception-bg.png);
 }
 
 /* EXAPMLE CONFIG VARIANT 2*/
@@ -39,7 +39,7 @@
 
 :root {
   --font-family: FontExample2;
-  --logo-url: url(../images/bosch-logo.svg);
+  --logo-url: url(/assets/images/samples-temp/bosch-logo.svg);
   --primary-color: #0A5DD0;
   --secondary-color: #FF4026;
   --success-color: #1c6604;
@@ -50,8 +50,8 @@
   --body-background-color: #dfe2e2;
   --default-border-radius: 8px;
 
-  --nav-support-background-image-url: url(../images/bg_support2.webp);
-  --check-in-background-image-url: url(../images/bg_banner3.webp);
+  --nav-support-background-image-url: url(/assets/images/samples-temp/bg_support2.webp);
+  --check-in-background-image-url: url(/assets/images/samples-temp/bg_banner3.webp);
   --about-program-block-text-color: white;
 } */
 
@@ -64,7 +64,7 @@
 
 :root {
   --font-family: FontExample2;
-  --logo-url: url(../images/siemens-logo.png);
+  --logo-url: url(/assets/images/samples-temp/siemens-logo.png);
   --primary-color: #3BC8BE;
   --secondary-color: #000028;
   --success-color: #1c6604;

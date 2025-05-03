@@ -1,7 +1,7 @@
-# Demo Project
+# QIC UI HTML, CSS, JS project
 
 ## Description
-A demonstration project showcasing pure html, css, js website wich can be used as template for .NET .asp pages, with some level of css configurability.
+Project showcasing pure html, css, js website wich can be used as template for .NET .asp pages, with some level of css configurability.
 
 ## Features
 - Pure HTML, CSS, and JavaScript pages
@@ -13,11 +13,9 @@ A demonstration project showcasing pure html, css, js website wich can be used a
     ```html
     <link rel="stylesheet" href="assets/css/config.css">
     ```
-  - This demo contains 3 versions in one file but it is possible to create separate files for each version and just change link href when including it on some page. Just be sure that structure(names of variables) is the same.
+  - config.css contains 3 versions in one file but it is possible to create separate files for each version and just change link href when including it on some page. Just be sure that structure(names of variables) is the same.
 
 - To avoid managing/editing multiple css files for all pages in applicatio(in this demo its only 2 but can be much more) styles fow all pages are in one file called styles.css. This way blocks from one page can be copied into another if needed without looking what css must be copied too. This increases css sizes on all pages but this should not become an issue since bootstrap css classes are mostly used for styling the UI.
-
-
   
 
 ## Technologies Used
@@ -33,4 +31,8 @@ Required files for proper UI functionality:
 
 Documentation: [Bootstrap v5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 
+### Bootstrap icons
+> **Note**: To reduce assets folder and size of html templates - Free, high quality, open source icon library with over 2,000 icons is used
+
+Documentation: [Bootstrap v5.3](https://icons.getbootstrap.com/?q=home#usage)
 
