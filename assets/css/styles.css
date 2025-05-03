@@ -321,10 +321,11 @@ select.form-select {
   font-size: 12px;
 }
 .qic-footer-bottom {
-  border-top: 2px solid #2770D5;
+  border-top: 2px solid #e2e2e2;
 }
 .qic-footer-newsletter {
   max-width: 400px;
+  border-radius: var(--default-border-radius);
 }
 @media (max-width: 576px) {
   .qic-footer-baner {
