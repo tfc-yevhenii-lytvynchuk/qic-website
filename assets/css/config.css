@@ -22,6 +22,7 @@
   --page-container-width: 1440px;
   --body-background-color: #F3F5F5;
   --default-border-radius: 0px;
+  --default-border-color: #DFDFDF;
 
   --nav-support-background-image-url: url(/assets/images/bg_support.png);
   --check-in-background-image-url: url(/assets/images/turner-reception-bg.png);

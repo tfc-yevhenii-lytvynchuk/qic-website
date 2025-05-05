@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>QIC Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/config.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/fonts/bootstrap-icons.css">
+
+  <style>
+    #badges-summary-banner .award-badge-link {
+      max-width: 252px;
+    }
+    @media (max-width: 992px) {
+      #badges-summary-banner .award-badge-link {
+       width: 100%;
+       max-width: 100%;
+      }
+      .badges-summary-info {
+        width: 100%;
+      }
+    }
+    .badges-view-switch {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .badges-view-switch.active-badges-view {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    .badges-view-switch.active-badges-view i {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="qic-nav-bar d-flex align-items-center">
+    <nav class="qic-container d-flex gap-5 align-items-center align-items-start w-100">
+      <div class="nav-logo d-flex qic-logo h-2rem me-sm-1 me-auto"></div>
+      <!-- <img src="assets/images/Logo.png" alt class="d-flex qic-logo h-2rem me-sm-1 me-auto"> -->
+      <ul class="d-none d-sm-flex gap-3 gap-lg-5 align-items-center me-auto">
+        <li><a href="#" class="nav-item-link active-link">Dashboard</a></li>
+        <li><a href="/form.html" class="nav-item-link">Form</a></li>
+        <li>
+          <div class="dropdown">
+            <a data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-offset="0,30" href="#" class="dropdown-toggle nav-item-link">Shop</a>
+            <div class="dropdown-menu min-vw-100 fixed-top">
+              <div class="qic-container w-100 py-4">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex gap-5 flex-wrap">
+                    <div class="d-flex flex-column"><span class="text-body-secondary fs-7">CATEGORIES</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="#" id="category1Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Category 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                          <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
+                          <script>
+                            document.getElementById('category1Link').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              alert('Category 1 selected');
+                            });
+                          </script>
+                        </a>
+                        <a href="#" id="category2Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Category 2</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                          <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
+                          <script>
+                            document.getElementById('category2Link').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              alert('Category 2 selected');
+                            });
+                          </script>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">Category 1 /</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="#" id="subcategory1Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <script>
+                          document.getElementById('subcategory1Link').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            alert('Subcategory 1 selected');
+                          });
+                        </script>
+                        <a href="#" id="subcategory2Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <script>
+                          document.getElementById('subcategory2Link').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            alert('Subcategory 2 selected');
+                          });
+                        </script>
+                        <a href="#" id="subcategory3Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <script>
+                          document.getElementById('subcategory3Link').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            alert('Subcategory 3 selected');
+                          });
+                        </script>
+                        <a href="#" id="subcategory4Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                          <script>
+                            document.getElementById('subcategory4Link').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              alert('Subcategory 4 selected');
+                            });
+                          </script>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column"><span class="text-body-secondary fs-7">PERSONAL</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">My Orders</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">My Wishlist</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-none d-lg-block"><span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">PROGRAM GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">SALES REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">LATEST NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100">
+                          <i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                          <a href="/form.html" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <a data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-offset="0,30" class="dropdown-toggle nav-item-link">Points</a>
+            <div class="dropdown-menu min-vw-100 fixed-top">
+              <div class="qic-container w-100 py-4">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex gap-5 flex-wrap">
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">GENERAL</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Points Summary</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Quizzes</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="mock-box"></div>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Ranking</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-none d-lg-block"><span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a 
+                        class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">PROGRAM
+                          GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a  class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">SALES
+                          REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">LATEST
+                          NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100"><i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                           <a href="/form.html" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+      <div class="d-xl-flex d-none">
+        <div class="nav-points-count d-flex align-items-center gap-2 py-2 px-3 bg-body-secondary text-black">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
+            <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
+            <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
+            </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
+          </svg>
+          <span>14,245</span></div><a href="#" class="nav-shop-link d-flex align-items-center py-2 px-3 button-primary">
+          Shop </a>
+      </div>
+      <div class="d-lg-flex d-none justify-content-center gap-4">
+        <a href="#"><i class="bi bi-bell-fill"></i></a>
+        <a href="#"><i class="bi bi-search"></i></a>
+      </div>
+      <div class="dropdown">
+        <a data-bs-toggle="dropdown" href="#" class="dropdown-toggle d-flex align-items-center gap-3 cursor-pointer">
+          <i class="bi bi-person-fill"></i>
+          <span class="text-nowrap d-lg-flex d-none"> My Profile </span>
+        </a>
+        <div class="dropdown-menu">
+          <div class="p-3 pb-1"><a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
+              <div class="mock-box"></div>
+              <div class="d-flex flex-column text-black"><span class="fw-bold">Profile Settings</span>
+                <span class="text-body-secondary fs-7">Subinfo</span>
+              </div>
+            </a>
+            <a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
+              <div class="mock-box"></div>
+              <div class="d-flex flex-column text-black"><span class="fw-bold">Program Guide</span><span
+                  class="text-body-secondary fs-7">Subinfo</span></div>
+            </a>
+          </div>
+          <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white">
+            <span>Need to Exit?</span>
+            <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
+            <script>
+              document.getElementById('logoutLink').addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Logout');
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="d-lg-flex d-none"><i class="bi bi-bag-fill"></i></a>
+    </nav>
+  </div>
+
+  <main class="mt-3">
+    <div class="qic-container">
+      <header id="badges-summary-banner" class="qic-header-banner justify-content-between">
+        <div class="d-flex flex-column gap-2 text-white gap-3">
+          <h1 class="fs-4">Badges Summary</h1>
+          <span>All your badges are collected here. View earned and awarded badges in detail!</span>
+          <div class="award-badge-link qic-card-small-container d-flex gap-3 align-items-center justify-content-between text-black py-3">
+            <div class="d-flex flex-column">
+              <p class="fw-medium">Award a Badge</p>
+              <p class="text-body-secondary fs-7">With or without points</p>
+            </div>
+            <a class="qic-icon-bg-circle bg-primary" href="#"><i class="bi bi-arrow-right-circle-fill text-white"></i></a>
+          </div>
+        </div>
+        <div class="qic-card-small-container badges-summary-info ">
+          <div class="d-flex gap-3 align-items-center pb-3 border-bottom border-light-subtle">
+            <div class="qic-icon-bg-circle bg-blue-transparent">
+              <i class="bi bi-lightbulb-fill text-secondary"></i>
+            </div>
+            <div class="d-flex flex-column">
+              <p class="fw-medium">Want more info about Badges?</p>
+              <p class="text-body-secondary fs-7">We summarize all information below.</p>
+            </div>
+          </div>
+          <div class="d-flex flex-column gap-3 pt-3">
+            <div class="d-flex justify-content-between fw-medium">
+              <span>Earned</span>
+              <span><i class="bi bi-patch-check-fill text-success"></i> 6 badges</span>
+            </div>
+            <div class="d-flex justify-content-between fw-medium">
+              <span>Awarded</span>
+              <span><i class="bi bi-patch-check-fill text-secondary"></i> 3 badges</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section id="badges-summary-content">
+        <div class="qic-card-container">
+          <div class="d-flex justify-content-between gap-3 mb-3 mb-lg-4 flex-column flex-lg-row">
+            <span class="fs-5 fw-medium text-nowrap">9 Badges</span>
+            <div class="d-flex gap-4">
+              <form id="sortBadgesForm" action="">
+                <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="sortBadges" name="sortBadges">
+                  <option value="newest">Sort by newest</option>
+                  <option value="oldest">Sort by oldest</option>
+                  <option value="name">Sort by name</option>
+                  <option value="points">Sort by points</option>
+                </select>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('sortBadges').addEventListener('change', function(event) {
+                      alert(event.target.value);
+                    });
+                  });
+                </script>
+              </form>
+              <div class="d-flex align-items-center border-default border border-1">
+                <span id="badgesGridView" class="badges-view-switch">
+                  <i class="bi bi-grid-fill"></i>
+                </span>
+                <span id="badgesListView" class="badges-view-switch active-badges-view">
+                  <i class="bi bi-list-ul"></i>
+                </span>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    const badgesGridView = document.getElementById('badgesGridView');
+                    const badgesListView = document.getElementById('badgesListView');
+                    if (!badgesGridView || !badgesListView) return;
+
+                    badgesGridView.addEventListener('click', function(event) {
+                      alert('Grid view selected');
+                      badgesGridView.classList.add('active-badges-view');
+                      badgesListView.classList.remove('active-badges-view');
+                    });
+                    badgesListView.addEventListener('click', function(event) {
+                      alert('List view selected');
+                      badgesListView.classList.add('active-badges-view');
+                      badgesGridView.classList.remove('active-badges-view');
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="qic-tab-links d-flex gap-3 mt-4 w-100 overflow-x-auto">
+            <a href="#" id="AllBadgesLink" class="nav-item-link fw-medium h-max text-black active-link">
+              All
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('AllBadgesLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('All Badges Link clicked');
+                  });
+                });
+              </script>
+            </a>
+            <a href="#" id="EarnedBadgesLink" class="nav-item-link fw-medium h-max text-black">
+              Earned
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('EarnedBadgesLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('Earned Badges Link clicked');
+                  });
+                });
+              </script>
+            </a>
+
+            <a href="#" id="AwardedBadgesLink" class="nav-item-link fw-medium h-max text-black">
+              Awarded
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('AwardedBadgesLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('Awarded Badges Link clicked');
+                  });
+                });
+              </script>
+            </a>
+           
+          </div>
+          <div class="badges-summary-table">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th scope="col">BADGE NAME</th>
+                    <th scope="col">SOURCE</th>
+                    <th scope="col">POINTS</th>
+                    <th scope="col">DATE</th>
+                    <th scope="col">DESCRIPTION</th>
+                    <th scope="col">DETAILS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-nowrap">Sample Badge</td>
+                    <td class="text-nowrap">Training</td>
+                    <td>100</td>
+                    <td class="text-nowrap">2024-03-20</td>
+                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia exercitationem fugit magnam voluptate nobis doloribus provident quod, aliquid ducimus optio nesciunt fugiat inventore reiciendis porro asperiores dolor error alias a!</td>
+                    <td class="text-center">
+                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <footer id="qic-footer" class="mt-auto">
+    <div class="qic-footer-baner">
+      <div class="qic-container">
+        <h2 class="text-white">
+          Making a Difference <br> in the Lives of Our People, <br> Customers, and Community
+        </h2>
+      </div>
+    </div>
+    <div class="qic-footer-content">
+      <div class="qic-container">
+        <div class="d-flex gap-5 flex-wrap align-items-start">
+          <div class="d-flex flex-column gap-4 gap-sm-5">
+            <div class="d-flex">
+              <img class="qic-footer-logo me-4" src="/assets/images/logo-white.svg" alt="QIC Logo" class="qic-footer-logo">
+              <span class="qic-footer-secondary-text">
+                Custom Employee Rewards <br> and Recognition Programs
+              </span>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="qic-footer-secondary-text text-uppercase fw-medium">social</span>
+              <ul class="d-flex gap-3 fs-4">
+                <li><a href="#"><i class="bi bi-globe text-white"></i></a></li>
+                <li><a href="#"><i class="bi bi-facebook text-white"></i></a></li>
+                <li><a href="#"><i class="bi bi-instagram text-white"></i></a></li>
+                <li><a href="#"><i class="bi bi-twitter-x text-white"></i></a></li>
+              </ul>
+            </div> 
+          </div>
+          <div class="d-flex flex-column gap-3">
+            <span class="qic-footer-secondary-text text-uppercase fw-medium">about</span>
+            <ul class="d-flex flex-column gap-3 text-white">
+              <li><a class="text-white" href="#">About Program</a></li>
+              <li><a class="text-white" href="#">About QIC</a></li>
+              <li><a class="text-white" href="#">Latest News</a></li>
+            </ul>
+          </div>
+          <div class="d-flex flex-column gap-3">
+            <span class="qic-footer-secondary-text text-uppercase fw-medium">help</span>
+            <ul class="d-flex flex-column gap-3 text-white">
+              <li><a class="text-white" href="#">Contacts</a></li>
+              <li><a class="text-white" href="#">FAQ Center</a></li>
+              <li><a class="text-white" href="#">Feedback</a></li>
+            </ul>
+          </div>
+          <div class="d-flex flex-column gap-3 me-auto">
+            <span class="qic-footer-secondary-text text-uppercase fw-medium">terms</span>
+            <ul class="d-flex flex-column gap-3 text-white">
+              <li><a class="text-white" href="#">Terms of Use</a></li>
+              <li><a class="text-white" href="#">Privacy Policy</a></li>
+              <li><a class="text-white" href="#">Program Terms</a></li>
+            </ul>
+          </div>
+          <div class="qic-footer-newsletter p-4 bg-white d-flex flex-column gap-3 flex-grow-1">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="qic-icon-bg-circle bg-primary">
+                <i class="bi bi-newspaper text-white fs-4"></i>
+              </div>
+              <div class="d-flex flex-column">
+                <span class="fw-medium">Get our latest news!</span>
+                <span class="fs-8 text-body-secondary">Join our newsletter for updates.</span>
+              </div>
+            </div>
+            <form id="qic-footer-newsletter-form" class="d-flex">
+              <input type="email" name="email" placeholder="Enter your email" class="form-control" required autocomplete="email">
+              <button type="submit" class="button-primary">Subscribe</button>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('qic-footer-newsletter-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert(event.target.email.value);
+                  });
+                });
+              </script>
+            </form>
+          </div>
+        </div>
+        <div class="qic-footer-bottom d-flex flex-wrap align-items-center justify-content-between pt-4 mt-4">
+          <a href="/dashboard.html" class="text-white d-flex align-items-center gap-2 text-decoration-underline">
+            <i class="bi bi-house-door-fill text-white"></i>
+            To Home Page
+          </a>
+          <div id="qic-footer-copyright" class="qic-footer-secondary-text">© yyyy QIC. All rights reserved.</div>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const currentYear = new Date().getFullYear();
+              const copyrightText = `© ${currentYear} QIC. All rights reserved.`;
+              const copyrightTextElement = document.getElementById('qic-footer-copyright');
+              if (copyrightTextElement) {
+                copyrightTextElement.innerHTML = copyrightText;
+              }
+            });
+          </script>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <script src="/assets/js/bootstrap.bundle.min.js" defer></script>
+</body>
+</html>

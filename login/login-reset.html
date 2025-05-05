@@ -27,11 +27,11 @@
     #new-password[data-password-reliability="unreliable"] + span.pasword-reliability .text-success {
       display: none;
     }
-    #new-password[data-password-reliability="reliable"] + span.pasword-reliability svg path{
-      fill: var(--success-color);
+    #new-password[data-password-reliability="reliable"] + span.pasword-reliability .bi.bi-bar-chart-fill {
+      color: var(--success-color);
     }
-    #new-password[data-password-reliability="unreliable"] + span.pasword-reliability svg path{
-      fill: var(--danger-color);
+    #new-password[data-password-reliability="unreliable"] + span.pasword-reliability .bi.bi-bar-chart-fill {
+      color: var(--danger-color);
     }
   </style>
 </head>
@@ -62,13 +62,8 @@
               <span class="pasword-reliability">
                 <span class="text-success">Strong</span>
                 <span class="text-danger">Weak</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M2 14.4998H3.25C4.07501 14.4998 4.75 13.8248 4.75 12.9998V8.5498C4.75 7.71982 4.07501 7.0498 3.25 7.0498H2C1.17499 7.0498 0.5 7.71982 0.5 8.5498V12.9998C0.5 13.8248 1.17499 14.4998 2 14.4998Z"/>
-                  <path d="M8.625 4.27539H7.375C6.54999 4.27539 5.875 4.95038 5.875 5.77539V13.0004C5.875 13.8254 6.54999 14.5004 7.375 14.5004H8.625C9.45001 14.5004 10.125 13.8254 10.125 13.0004V5.77539C10.125 4.95038 9.45001 4.27539 8.625 4.27539Z"/>
-                  <path d="M14 1.5H12.75C11.925 1.5 11.25 2.17499 11.25 3V13C11.25 13.825 11.925 14.5 12.75 14.5H14C14.825 14.5 15.5 13.825 15.5 13V3C15.5 2.17499 14.825 1.5 14 1.5Z"/>
-                </svg>
+                <i class="bi bi-bar-chart-fill"></i>
               </span>
-
             </div>
           </div>
           <div>
