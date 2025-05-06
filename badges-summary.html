@@ -42,6 +42,17 @@
     .badges-view-switch.active-badges-view i {
       color: white;
     }
+    .badges-summary-table-badge-image {
+      border-radius: 3px;
+      border: 1px solid #F3F5F5;
+      background: #FDFDFD;
+      width: 24px;
+      height: 24px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
 
@@ -51,7 +62,7 @@
       <div class="nav-logo d-flex qic-logo h-2rem me-sm-1 me-auto"></div>
       <!-- <img src="assets/images/Logo.png" alt class="d-flex qic-logo h-2rem me-sm-1 me-auto"> -->
       <ul class="d-none d-sm-flex gap-3 gap-lg-5 align-items-center me-auto">
-        <li><a href="#" class="nav-item-link active-link">Dashboard</a></li>
+        <li><a href="/dashboard.html" class="nav-item-link">Dashboard</a></li>
         <li><a href="/form.html" class="nav-item-link">Form</a></li>
         <li>
           <div class="dropdown">
@@ -445,11 +456,66 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="text-nowrap">Sample Badge</td>
-                    <td class="text-nowrap">Training</td>
-                    <td>100</td>
-                    <td class="text-nowrap">2024-03-20</td>
+                    <td class="text-nowrap">
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="badges-summary-table-badge-image">
+                          <img src="/assets/images/badges/teamwork.svg" alt="Badge 1">
+                        </div>
+                        <span>Teamwork!</span>
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Mike Minson</td>
+                    <td>
+                      <div class="qic-table-points-item points-neutral">
+                        No points
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Jan 12, 2025</td>
                     <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia exercitationem fugit magnam voluptate nobis doloribus provident quod, aliquid ducimus optio nesciunt fugiat inventore reiciendis porro asperiores dolor error alias a!</td>
+                    <td class="text-center">
+                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-nowrap">
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="badges-summary-table-badge-image">
+                          <img src="/assets/images/badges/collaboration.svg" alt="Badge 1">
+                        </div>
+                        <span>Collaboration Rocks!</span>
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Hanna Franci</td>
+                    <td>
+                      <div class="qic-table-points-item points-positive">
+                        <img src="/assets/images/points-icon-neautral-white.svg" alt="Points Icon">
+                        +700
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Jan 12, 2025</td>
+                    <td>Lorem ipsum </td>
+                    <td class="text-center">
+                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-nowrap">
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="badges-summary-table-badge-image">
+                          <img src="/assets/images/badges/together-we-thrive.svg" alt="Badge 1">
+                        </div>
+                        <span>Together We Thrive!</span>
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Ahmad Bergson</td>
+                    <td>
+                      <div class="qic-table-points-item points-negative">
+                        <img src="/assets/images/points-icon-neautral-white.svg" alt="Points Icon">
+                        -1500
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Jan 12, 2025</td>
+                    <td>Lorem ipsum </td>
                     <td class="text-center">
                       <i class="bi bi-three-dots-vertical cursor-pointer"></i>
                     </td>

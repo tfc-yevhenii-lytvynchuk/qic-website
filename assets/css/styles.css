@@ -83,6 +83,25 @@ body .table>tbody tr td {
   padding: 24px;
   font-weight: 500;
 }
+.qic-table-points-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 8px;
+  color: white;
+  text-wrap: nowrap;
+}
+.qic-table-points-item.points-positive {
+  background-color: var(--success-color);
+}
+.qic-table-points-item.points-negative {
+  background-color: var(--secondary-color);
+}
+.qic-table-points-item.points-neutral {
+  background-color: #F3F5F5;
+  color: #AFAFAF;
+}
 html,
 body {
   scrollbar-width: thin !important;
