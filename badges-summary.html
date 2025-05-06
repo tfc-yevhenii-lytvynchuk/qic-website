@@ -53,6 +53,42 @@
       align-items: center;
       justify-content: center;
     }
+    .badges-summary-description-text {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      line-clamp: 5;
+      -webkit-box-orient: vertical;
+      font-style: italic;
+      min-width: 220px;
+    }
+    .badges-summary-card {
+      padding: 24px;
+      background: #F3F5F5;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-radius: var(--default-border-radius);
+      height: 100%;
+    }
+    .badges-summary-card-image {
+      width: 64px;
+      height: 64px;
+      min-width: 64px;
+      min-height: 64px;
+      border-radius: var(--default-border-radius);
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .badges-summary-card-image img {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      min-height: 32px;
+    }
   </style>
 </head>
 
@@ -377,27 +413,34 @@
                 </script>
               </form>
               <div class="d-flex align-items-center border-default border border-1">
-                <span id="badgesGridView" class="badges-view-switch">
+                <span id="badges-grid-view" class="badges-view-switch">
                   <i class="bi bi-grid-fill"></i>
                 </span>
-                <span id="badgesListView" class="badges-view-switch active-badges-view">
+                <span id="badges-list-view" class="badges-view-switch active-badges-view">
                   <i class="bi bi-list-ul"></i>
                 </span>
                 <script>
                   document.addEventListener('DOMContentLoaded', function() {
-                    const badgesGridView = document.getElementById('badgesGridView');
-                    const badgesListView = document.getElementById('badgesListView');
-                    if (!badgesGridView || !badgesListView) return;
+                    // PLACEHOLDER VIEW SWITCH LOGIC
+                    const badgesGridView = document.getElementById('badges-grid-view');
+                    const badgesListView = document.getElementById('badges-list-view');
+                    const badgesSummaryTable = document.getElementById('badges-summary-table');
+                    const badgesSummaryCards = document.getElementById('badges-summary-cards');
+                    if (!badgesGridView || !badgesListView || !badgesSummaryTable || !badgesSummaryCards) return;
 
                     badgesGridView.addEventListener('click', function(event) {
                       alert('Grid view selected');
                       badgesGridView.classList.add('active-badges-view');
                       badgesListView.classList.remove('active-badges-view');
+                      badgesSummaryTable.classList.add('d-none');
+                      badgesSummaryCards.classList.remove('d-none');
                     });
                     badgesListView.addEventListener('click', function(event) {
                       alert('List view selected');
                       badgesListView.classList.add('active-badges-view');
                       badgesGridView.classList.remove('active-badges-view');
+                      badgesSummaryTable.classList.remove('d-none');
+                      badgesSummaryCards.classList.add('d-none');
                     });
                   });
                 </script>
@@ -441,7 +484,8 @@
             </a>
            
           </div>
-          <div class="badges-summary-table">
+
+          <div id="badges-summary-table" class="badges-summary-table">
             <div class="table-responsive">
               <table class="table table-hover align-middle">
                 <thead>
@@ -471,7 +515,11 @@
                       </div>
                     </td>
                     <td class="text-nowrap">Jan 12, 2025</td>
-                    <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia exercitationem fugit magnam voluptate nobis doloribus provident quod, aliquid ducimus optio nesciunt fugiat inventore reiciendis porro asperiores dolor error alias a!</td>
+                    <td>
+                      <span class="badges-summary-description-text">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia exercitationem fugit magnam voluptate nobis doloribus provident quod, aliquid ducimus optio nesciunt fugiat inventore reiciendis porro asperiores dolor error alias a!
+                      </span>
+                    </td>
                     <td class="text-center">
                       <i class="bi bi-three-dots-vertical cursor-pointer"></i>
                     </td>
@@ -493,7 +541,9 @@
                       </div>
                     </td>
                     <td class="text-nowrap">Jan 12, 2025</td>
-                    <td>Lorem ipsum </td>
+                    <td>
+                      <span class="badges-summary-description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</span>
+                    </td>
                     <td class="text-center">
                       <i class="bi bi-three-dots-vertical cursor-pointer"></i>
                     </td>
@@ -515,7 +565,9 @@
                       </div>
                     </td>
                     <td class="text-nowrap">Jan 12, 2025</td>
-                    <td>Lorem ipsum </td>
+                    <td>
+                      <span class="badges-summary-description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</span>
+                    </td>
                     <td class="text-center">
                       <i class="bi bi-three-dots-vertical cursor-pointer"></i>
                     </td>
@@ -523,7 +575,89 @@
                 </tbody>
               </table>
             </div>
-        </div>
+          </div>
+
+          <div id="badges-summary-cards" class="badges-summary-cards">
+            <div class="row g-3">
+              <div class="col-12 col-md-6 col-xl-4">
+                <div class="badges-summary-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="badges-summary-card-image">
+                      <img src="/assets/images/badges/teamwork.svg" alt="Badge 1">
+                    </div>
+                    <div class="qic-table-points-item points-positive">
+                      <img src="/assets/images/points-icon-neautral-white.svg" alt="Points Icon">
+                      +700
+                    </div>
+                    <span class="text-body-secondary fs-7 ms-auto text-nowrap">Jan 12, 2025</span>
+                  </div>
+                  <div class="d-flex flex-column mt-auto">
+                    <span>Collaboration Rocks!</span>
+                    <span class="text-body-secondary fs-8">for Kaylynn Dorwart</span>
+                    <span class="badges-summary-description-text fs-8 mt-2">"Awesome job! It's fantastic working together with you!""Awesome job! It's fantastic working together with you!""Awesome job! It's fantastic working together with you!""Awesome job! It's fantastic working together with you!""Awesome job! It's fantastic working together with you!""Awesome job! It's fantastic working together with you!"</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4">
+                <div class="badges-summary-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="badges-summary-card-image">
+                      <img src="/assets/images/badges/collaboration.svg" alt="Badge 1">
+                    </div>
+                    <div class="qic-table-points-item points-negative">
+                      <img src="/assets/images/points-icon-neautral-white.svg" alt="Points Icon">
+                      -1500
+                    </div>
+                    <span class="text-body-secondary fs-7 ms-auto text-nowrap">Jan 12, 2025</span>
+                  </div>
+                  <div class="d-flex flex-column mt-auto">
+                    <span>Teamwork!</span>
+                    <span class="text-body-secondary fs-8">for Brandon Philips</span>
+                    <span class="badges-summary-description-text fs-8 mt-2">"Awesome job! It's fantastic working together with you!"</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4">
+                <div class="badges-summary-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="badges-summary-card-image">
+                      <img src="/assets/images/badges/together-we-thrive.svg" alt="Badge 1">
+                    </div>
+                    <div class="qic-table-points-item points-positive">
+                      <img src="/assets/images/points-icon-neautral-white.svg" alt="Points Icon">
+                      +700
+                    </div>
+                    <span class="text-body-secondary fs-7 ms-auto text-nowrap">Jan 12, 2025</span>
+                  </div>
+                  <div class="d-flex flex-column mt-auto">
+                    <span>Teamwork!</span>
+                    <span class="text-body-secondary fs-8">for Brandon Philips</span>
+                    <span class="badges-summary-description-text fs-8 mt-2">"Awesome job! It's fantastic working together with you!"</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4">
+                <div class="badges-summary-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="badges-summary-card-image">
+                      <img src="/assets/images/badges/united-we-stand.svg" alt="Badge 1">
+                    </div>
+                    <div class="qic-table-points-item points-neutral">
+                      No points
+                    </div>
+                    <span class="text-body-secondary fs-7 ms-auto text-nowrap">Jan 12, 2025</span>
+                  </div>
+                  <div class="d-flex flex-column mt-auto">
+                    <span>Teamwork!</span>
+                    <span class="text-body-secondary fs-8">for Brandon Philips</span>
+                    <span class="badges-summary-description-text fs-8 mt-2">"Awesome job! It's fantastic working together with you!"</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          
+          </div>
         </div>
       </section>
     </div>

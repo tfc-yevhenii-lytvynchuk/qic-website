@@ -88,9 +88,16 @@ body .table>tbody tr td {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 5px 8px;
+  padding: 4px 8px;
   color: white;
   text-wrap: nowrap;
+  font-size: 12px;
+}
+.qic-table-points-item img {
+  width: 12px;
+  height: 12px;
+  min-width: 12px;
+  min-height: 12px;
 }
 .qic-table-points-item.points-positive {
   background-color: var(--success-color);
