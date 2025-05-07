@@ -1,5 +1,10 @@
 # QIC UI HTML, CSS, JS project
 
+## Milestone 1
+[Login Page](/login/login.html)
+[Dashboard](/dashboard.html)
+[Badges](/badges-summary.html)
+
 ## Description
 Project showcasing pure html, css, js website wich can be used as template for .NET .asp pages, with some level of css configurability.
 
