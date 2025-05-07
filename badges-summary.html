@@ -767,7 +767,7 @@
             </div>
 
             <div class="modal-footer d-flex gap-3 justify-content-between">
-              <button class="button-outlined px-4" data-bs-toggle="modal">Back</button>
+              <a class="button-outlined px-4" data-bs-toggle="modal">Back</a>
               <button type="submit" id="submit-badge-type-btn" class="button-secondary px-4">Next</button>
               <!-- NEXT MODAL TRIGGER HIDDEN BUTTON -->
               <button id="go-to-award-badge-user-select-modal" class="d-none" data-bs-target="#awardBadgeUserSelectModal" data-bs-toggle="modal"></button>
@@ -813,11 +813,11 @@
             <div class="award-badge-user-select-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
               <div class="d-flex align-items-center gap-3">
                 <span class="award-badge-user-select-step-number">1</span>
-                <div class="d-flex flex-column">
+                <div class="d-flex flex-column me-auto">
                   <span>Select a User</span>
                   <span class="text-body-secondary fs-8">Select user who you wants to award with a Badge</span>
                 </div>
-                <a class="ms-auto py-1 px-2 bg-body-secondary" data-bs-toggle="collapse" href="#first-step-collapse" role="button" aria-expanded="false" aria-controls="first-step-collapse">
+                <a class="py-1 px-2 bg-body-secondary" data-bs-toggle="collapse" href="#first-step-collapse" role="button" aria-expanded="false" aria-controls="first-step-collapse">
                   <i class="bi bi-chevron-down text-primary"></i>
                 </a>
               </div>
@@ -825,7 +825,7 @@
                 <label for="userSearch" class="form-label fs-8 text-uppercase fw-medium">user search</label>
                 <div class="d-flex">
                   <input type="text" id="userSearch" name="userSearch" required class="form-control" placeholder="Search user by First Name, Last Name, Location or User ID">
-                  <button class="button-secondary px-2">Search</button>
+                  <button class="button-secondary px-2" disabled>Search</button>
                 </div>
               </div>
             </div>
@@ -854,13 +854,11 @@
                   <div>
                     <label for="addPoints" class="form-label fs-8 text-uppercase fw-medium">add points</label>
                     <div class="d-flex gap-4 align-items-center">
-                      <input type="text" id="addPoints" name="addPoints" required class="form-control" placeholder="Add points" required>
-                      <span class="text-nowrap">5 turns left</span>
+                      <input type="number" id="addPoints" name="addPoints" required class="form-control" placeholder="Add points" required>
+                      <span class="text-nowrap"><i class="bi bi-arrow-left-right text-success"></i> 5 turns left</span>
                     </div>
                   </div>
                 </div>
-
-  
               </div>
             </div>
             <!-- STEP 3 -->
@@ -877,7 +875,7 @@
               </div>
               <div class="collapse" id="third-step-collapse">
                 <label for="badgeComment" class="form-label fs-8 text-uppercase fw-medium">ADD COMMENT (OPTIONAL)</label>
-                 <input type="text" id="badgeComment" name="badgeComment" class="form-control" placeholder="Add comment here, 100 symbols max" maxlength="100">
+                <input type="text" id="badgeComment" name="badgeComment" class="form-control" placeholder="Add comment here, 100 symbols max" maxlength="100">
               </div>
             </div>
             <div class="modal-footer d-flex gap-3 justify-content-between">
