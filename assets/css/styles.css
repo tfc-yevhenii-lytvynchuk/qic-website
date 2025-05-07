@@ -475,5 +475,17 @@ select.form-select {
 .qic-paginator .bi.bi-three-dots {
   pointer-events: none;
 }
-
-
+body .modal-content {
+  border-radius: var(--default-border-radius) !important;
+}
+body .modal-header {
+  border-bottom: none !important;
+}
+body .modal-dialog {
+  max-width: 900px !important;
+}
+@media (max-width: 576px) {
+  body .modal-dialog {
+    margin: 0 !important;
+  }
+}

@@ -71,6 +71,7 @@
       gap: 16px;
       border-radius: var(--default-border-radius);
       height: 100%;
+      max-width: 400px;
     }
     .badges-summary-card-image {
       width: 64px;
@@ -88,6 +89,38 @@
       height: 32px;
       min-width: 32px;
       min-height: 32px;
+    }
+    .select-badge-type-card {
+      flex: 1;
+    }
+    .select-badge-type-card .form-check-input {
+      width: 32px;
+      height: 32px;
+    }
+    .select-badge-type-card:has(input[type="radio"]:checked) {
+      border-color: var(--primary-color) !important;
+    }
+    .award-badge-user-select-step {
+      min-width: 800px;
+      max-width: 100%;
+    }
+    @media (max-width: 992px) {
+      .award-badge-user-select-step {
+        min-width: 100%;
+      }
+    }
+    .award-badge-user-select-step-number {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      min-height: 48px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
     }
   </style>
 </head>
@@ -366,7 +399,7 @@
               <p class="fw-medium">Award a Badge</p>
               <p class="text-body-secondary fs-7">With or without points</p>
             </div>
-            <a class="qic-icon-bg-circle bg-primary" href="#"><i class="bi bi-arrow-right-circle-fill text-white"></i></a>
+            <a data-bs-target="#selectBadgeTypeModal" data-bs-toggle="modal" class="qic-icon-bg-circle bg-primary"><i class="bi bi-arrow-right-circle-fill text-white"></i></a>
           </div>
         </div>
         <div class="qic-card-small-container badges-summary-info ">
@@ -705,7 +738,238 @@
 
     </div>
   </main>
+
+  <!-- SELECT BADGE TYPE MODAL -->
+  <div class="modal fade" id="selectBadgeTypeModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-flex flex-column gap-2 align-items-start">
+          <h1 class="modal-title fs-5" >Select a Badge type</h1>
+          <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+        </div>
+        <div class="modal-body">
+          <form action="" id="select-badge-type-form">
+            <div class="d-flex gap-4 flex-wrap mb-3">
+              <div class="select-badge-type-card p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle">
+                <input class="form-check-input" type="radio" name="badgeType" id="withPoints" value="withPoints" checked>
+                <label class="form-check-label fw-bold " for="withPoints">
+                  Point Badge
+                  <p class="fs-8 text-body-secondary fw-normal text-nowrap">Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+                </label>
+              </div>
+              <div class="select-badge-type-card p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle">
+                <input class="form-check-input" type="radio" name="badgeType" id="withoutPoints" value="withoutPoints">
+                <label class="form-check-label fw-bold" for="withoutPoints">
+                  Non-Point Badge
+                  <p class="fs-8 text-body-secondary fw-normal text-nowrap">Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+                </label>
+              </div>
+            </div>
+
+            <div class="modal-footer d-flex gap-3 justify-content-between">
+              <button class="button-outlined px-4" data-bs-toggle="modal">Back</button>
+              <button type="submit" id="submit-badge-type-btn" class="button-secondary px-4">Next</button>
+              <!-- NEXT MODAL TRIGGER HIDDEN BUTTON -->
+              <button id="go-to-award-badge-user-select-modal" class="d-none" data-bs-target="#awardBadgeUserSelectModal" data-bs-toggle="modal"></button>
+              <!-- NEXT MODAL TRIGGER HIDDEN BUTTON -->
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  const submitSelectBadgeTypeBtn = document.getElementById('submit-badge-type-btn');
+                  const selectBadgeTypeForm = document.getElementById('select-badge-type-form');
+                  const goToAwardBadgeUserSelectModal = document.getElementById('go-to-award-badge-user-select-modal');
+                  if (!submitSelectBadgeTypeBtn || !selectBadgeTypeForm || !goToAwardBadgeUserSelectModal) return;
+                  //PLACEHOLDER BADGE TYPE FORM SUBMIT LOGIC
+                  selectBadgeTypeForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const badgeType = selectBadgeTypeForm.badgeType.value;
+                    if (badgeType) {
+                      alert(badgeType);
+                      //OPEN NEXT MODAL
+                      goToAwardBadgeUserSelectModal.click();
+                    }
+                  });
+                });
+              </script>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- AWARD BADGE USER SELECT MODAL -->
+  <div class="modal fade" id="awardBadgeUserSelectModal" aria-hidden="true" aria-labelledby="awardBadgeUserSelectModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-flex flex-column gap-2 align-items-start">
+          <h1 class="modal-title fs-5" >Award a Badge</h1>
+          <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+        </div>
+        <div class="modal-body">
+          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="award-badge-user-select-form">
+            <!-- STEP 1 -->
+            <div class="award-badge-user-select-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
+              <div class="d-flex align-items-center gap-3">
+                <span class="award-badge-user-select-step-number">1</span>
+                <div class="d-flex flex-column">
+                  <span>Select a User</span>
+                  <span class="text-body-secondary fs-8">Select user who you wants to award with a Badge</span>
+                </div>
+                <a class="ms-auto py-1 px-2 bg-body-secondary" data-bs-toggle="collapse" href="#first-step-collapse" role="button" aria-expanded="false" aria-controls="first-step-collapse">
+                  <i class="bi bi-chevron-down text-primary"></i>
+                </a>
+              </div>
+              <div class="collapse" id="first-step-collapse">
+                <label for="userSearch" class="form-label fs-8 text-uppercase fw-medium">user search</label>
+                <div class="d-flex">
+                  <input type="text" id="userSearch" name="userSearch" required class="form-control" placeholder="Search user by First Name, Last Name, Location or User ID">
+                  <button class="button-secondary px-2">Search</button>
+                </div>
+              </div>
+            </div>
+            <!-- STEP 2 -->
+            <div class="award-badge-user-select-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
+              <div class="d-flex align-items-center gap-3">
+                <span class="award-badge-user-select-step-number">2</span>
+                <div class="d-flex flex-column">
+                  <span>Select a Badge</span>
+                  <span class="text-body-secondary fs-8">You can select a Badge with or without points amount</span>
+                </div>
+                <a class="ms-auto py-1 px-2 bg-body-secondary" data-bs-toggle="collapse" href="#second-step-collapse" role="button" aria-expanded="false" aria-controls="second-step-collapse">
+                  <i class="bi bi-chevron-down text-primary"></i>
+                </a>
+              </div>
+              <div class="collapse" id="second-step-collapse">
+                <div class="d-flex flex-column gap-3">
+                  <div>
+                    <label for="badgeSearch" class="form-label fs-8 text-uppercase fw-medium">badge Select</label>
+                    <select type="text" id="badgeSearch" name="badgeSearch" required class="form-select" placeholder="Select Badge" required>
+                      <option value="1">Teamwork!</option>
+                      <option value="2">Collaboration Rocks!</option>
+                      <option value="3">Together We Thrive!</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="addPoints" class="form-label fs-8 text-uppercase fw-medium">add points</label>
+                    <div class="d-flex gap-4 align-items-center">
+                      <input type="text" id="addPoints" name="addPoints" required class="form-control" placeholder="Add points" required>
+                      <span class="text-nowrap">5 turns left</span>
+                    </div>
+                  </div>
+                </div>
+
   
+              </div>
+            </div>
+            <!-- STEP 3 -->
+            <div class="award-badge-user-select-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
+              <div class="d-flex align-items-center gap-3">
+                <span class="award-badge-user-select-step-number">3</span>
+                <div class="d-flex flex-column">
+                  <span>Add personal wish</span>
+                  <span class="text-body-secondary fs-8">Say something with your badge!</span>
+                </div>
+                <a class="ms-auto py-1 px-2 bg-body-secondary" data-bs-toggle="collapse" href="#third-step-collapse" role="button" aria-expanded="false" aria-controls="third-step-collapse">
+                  <i class="bi bi-chevron-down text-primary"></i>
+                </a>
+              </div>
+              <div class="collapse" id="third-step-collapse">
+                <label for="badgeComment" class="form-label fs-8 text-uppercase fw-medium">ADD COMMENT (OPTIONAL)</label>
+                 <input type="text" id="badgeComment" name="badgeComment" class="form-control" placeholder="Add comment here, 100 symbols max" maxlength="100">
+              </div>
+            </div>
+            <div class="modal-footer d-flex gap-3 justify-content-between">
+              <button class="button-outlined px-4" data-bs-target="#selectBadgeTypeModal" data-bs-toggle="modal">Back</button>
+              <button id="send-badge-btn" class="button-primary px-4">Send Badge</button>
+              <!-- SEND BADGE BUTTON HIDDEN TRIGGER -->
+              <button id="go-to-badge-award-success-modal" class="d-none" data-bs-target="#badgeAwardSuccessModal" data-bs-toggle="modal"></button>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const sendBadgeBtn = document.getElementById('send-badge-btn');
+                const goToBadgeAwardSuccessModal = document.getElementById('go-to-badge-award-success-modal');
+                const awardBadgeUserSelectForm = document.getElementById('award-badge-user-select-form');
+                if (!sendBadgeBtn || !goToBadgeAwardSuccessModal || !awardBadgeUserSelectForm) return;
+
+                sendBadgeBtn.addEventListener('click', function(event) {
+                  if (!awardBadgeUserSelectForm.checkValidity()) {
+                    //OPEN ALL STEPS IF FORM IS NOT VALID
+                    const allStepsCollapses = document.querySelectorAll('.award-badge-user-select-step .collapse');
+                    allStepsCollapses.forEach(collapse => {
+                      collapse.classList.add('show');
+                    });
+                  }
+                });
+
+                //PLACEHOLDER SEND BADGE BUTTON FORM SUBMIT LOGIC
+                awardBadgeUserSelectForm.addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  alert(event.target.userSearch.value + ' ' + event.target.badgeSearch.value + ' ' + event.target.addPoints.value + ' ' + event.target.badgeComment.value);
+                  //OPEN NEXT MODAL
+                  goToBadgeAwardSuccessModal.click();
+                });
+              });
+            </script>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- BADGE AWARD SUCCESS MODAL -->
+  <div class="modal fade" id="badgeAwardSuccessModal" aria-hidden="true" aria-labelledby="badgeAwardSuccessModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3 p-sm-5">
+        <div class="modal-header d-flex flex-column gap-2 align-items-start text-center">
+          <h1 class="modal-title fs-3 w-100 text-center" >Badge sended!</h1>
+          <p class="text-center w-100">Lorem ipsum odor amet, consectetuer adipiscing elit..</p>
+        </div>
+        <div class="modal-body d-flex flex-column align-items-center justify-content-center">
+          <div class="badges-summary-card">
+            <div class="d-flex align-items-start gap-3">
+              <div class="badges-summary-card-image">
+                <img src="/assets/images/badges/teamwork.svg" alt="Badge 1">
+              </div>
+              <div class="qic-table-points-item points-positive">
+                <img src="/assets/images/points-icon-neautral-white.svg" alt="Points Icon">
+                +700
+              </div>
+            </div>
+            <div class="d-flex flex-column mt-auto">
+              <span>Collaboration Rocks!</span>
+              <span class="text-body-secondary fs-8">for Brandon Philips</span>
+              <span class="badges-summary-description-text fs-8 mt-2">"Awesome job! It's fantastic working together with you!"</span>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mt-4">
+            <button id="badge-award-finish-btn" class="button-outlined px-4" data-bs-toggle="modal">Close</button>
+            <button id="award-another-badge-btn" class="button-primary px-4" data-bs-toggle="modal"  data-bs-target="#selectBadgeTypeModal">Send another Badge</button>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const badgeAwardFinishBtn = document.getElementById('badge-award-finish-btn');
+                const awardBadgeUserSelectForm = document.getElementById('award-badge-user-select-form');
+                const awardAnotherBadgeBtn = document.getElementById('award-another-badge-btn');
+                if (!badgeAwardFinishBtn || !awardBadgeUserSelectForm) return;
+                badgeAwardFinishBtn.addEventListener('click', function(event) {
+                  //RESET USER SELECT FORM
+                  awardBadgeUserSelectForm.reset();
+                });
+                awardAnotherBadgeBtn.addEventListener('click', function(event) {
+                  //RESET USER SELECT FORM
+                  awardBadgeUserSelectForm.reset();
+                });
+              });
+            </script>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <footer id="qic-footer" class="mt-auto">
     <div class="qic-footer-baner">
       <div class="qic-container">
@@ -787,23 +1051,12 @@
             <i class="bi bi-house-door-fill text-white"></i>
             To Home Page
           </a>
-          <div id="qic-footer-copyright" class="qic-footer-secondary-text">© yyyy QIC. All rights reserved.</div>
-          <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              const currentYear = new Date().getFullYear();
-              const copyrightText = `© ${currentYear} QIC. All rights reserved.`;
-              const copyrightTextElement = document.getElementById('qic-footer-copyright');
-              if (copyrightTextElement) {
-                copyrightTextElement.innerHTML = copyrightText;
-              }
-            });
-          </script>
+          <div class="qic-footer-secondary-text">© 2025 QIC. All rights reserved.</div>
         </div>
       </div>
     </div>
 
   </footer>
-
   <script src="/assets/js/bootstrap.bundle.min.js" defer></script>
 </body>
 </html>
