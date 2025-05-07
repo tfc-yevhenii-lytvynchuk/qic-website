@@ -20,10 +20,21 @@ body {
   margin: 0 auto;
   padding: 0 64px;
 }
-
+section {
+  padding-top: 64px;
+}
+section:last-of-type {
+  padding-bottom: 64px;
+}
 @media (max-width: 768px) {
   .qic-container {
     padding: 0 18px;
+  }
+  section {
+    padding: 16px 0px;
+  }
+  section:last-of-type {
+    padding-bottom: 16px;
   }
 }
 
@@ -150,6 +161,12 @@ a.animated-link-with-arrow:not(.button-secondary):hover .bi {
 button {
 	border-radius: var(--default-border-radius) !important;
 	border: 0;
+}
+button:disabled {
+  opacity: .5 !important;
+  pointer-events: none !important;
+  border-color: #AFAFAF !important;
+  color: #AFAFAF !important;
 }
 .button-primary {
   display: flex;
@@ -428,3 +445,35 @@ select.form-select {
     padding: 46px 0;
   }
 }
+.qic-paginator  {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+@media (max-width: 576px) {
+  .qic-paginator {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.qic-paginator #page-size-select {
+  max-width: 200px;
+}
+
+.qic-paginator .page-link {
+  border: none !important;
+  border-radius: var(--default-border-radius) !important;
+  color: var(--main-text-color) !important;
+}
+.qic-paginator .page-link .active>.page-link, .page-link.active {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+.qic-paginator .bi.bi-three-dots {
+  pointer-events: none;
+}
+
+

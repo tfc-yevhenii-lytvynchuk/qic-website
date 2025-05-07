@@ -447,6 +447,7 @@
               </div>
             </div>
           </div>
+
           <div class="qic-tab-links d-flex gap-3 mt-4 w-100 overflow-x-auto">
             <a href="#" id="AllBadgesLink" class="nav-item-link fw-medium h-max text-black active-link">
               All
@@ -658,8 +659,50 @@
             </div>
           
           </div>
+
+          <nav class="qic-paginator" aria-label="badges pagination">
+            <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page">
+              <option value="15">15 per page</option>
+              <option value="30">30 per page</option>
+              <option value="45">45 per page</option>
+            </select>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link active" href="#" aria-current="page">1</a></li>
+              <li class="page-item"><a class="page-link" href="?page=2" >2</a></li>
+              <li class="page-item"><a class="page-link" href="?page=3" >3</a></li>
+              <i class="bi bi-three-dots d-flex align-items-end mx-3 pointer-events-none"></i>
+              <li class="page-item"><a class="page-link" href="?page=9" >9</a></li>
+              <li class="page-item"><a class="page-link" href="?page=10" >10</a></li>
+            </ul>
+            <div class="d-flex gap-3">
+              <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4">Previous</button>
+              <button id="qic-paginator-next-page-button" class="button-outlined px-4">Next</button>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                // PLACEHOLDER PAGINATION LOGIC
+                const previousPageButton = document.getElementById('qic-paginator-previous-page-button');
+                const nextPageButton = document.getElementById('qic-paginator-next-page-button');
+                const pageSizeSelect = document.getElementById('page-size-select');
+                if (!previousPageButton || !nextPageButton || !pageSizeSelect) return;
+                previousPageButton.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Previous page button clicked');
+                });
+                nextPageButton.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Next page button clicked');
+                });
+                pageSizeSelect.addEventListener('change', function(event) {
+                  event.preventDefault();
+                  alert(event.target.value);
+                });
+              });
+            </script>
+          </nav>
         </div>
       </section>
+
     </div>
   </main>
   
