@@ -470,9 +470,11 @@
             <span>+50</span>
           </a>
           <script>
-            document.getElementById('checkInBtn').addEventListener('click', function(event) {
-              event.preventDefault();
-              alert('Daily check-in button clicked');
+            document.addEventListener('DOMContentLoaded', function() {
+              document.getElementById('checkInBtn').addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Daily check-in button clicked');
+              });
             });
           </script>
           <div class="check-in-btn-inactive d-flex align-items-center gap-2 px-3 py-2 bg-body-secondary">
@@ -584,34 +586,42 @@
           <a href="#" id="headphonesSortLinkLink" class="nav-item-link fw-medium h-max active-link">
             Headphones
             <script>
-              document.getElementById('headphonesSortLinkLink').addEventListener('click', function(event) {
-                event.preventDefault();
-                alert('Headphones Sorting Link clicked');
-              });
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('headphonesSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Headphones Sorting Link clicked');
+                });
+              });  
             </script>
           </a>
           <a href="#" id="gameConsolesSortLinkLink" class="nav-item-link fw-medium h-max">
             Game Consoles
             <script>
-              document.getElementById('gameConsolesSortLinkLink').addEventListener('click', function(event) {
-                event.preventDefault();
-                alert('Game Consoles Sorting Link clicked');
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('gameConsolesSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Game Consoles Sorting Link clicked');
+                });
               });
             </script>
           </a>
           <a href="#" id="boardGamesSortLinkLink" class="nav-item-link fw-medium h-max">Board Games
             <script>
-              document.getElementById('boardGamesSortLinkLink').addEventListener('click', function(event) {
-                event.preventDefault();
-                alert('Board Games Sorting Link clicked');
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('boardGamesSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Board Games Sorting Link clicked');
+                });
               });
             </script>
           </a>
           <a href="#" id="cookwareBakewareSortLinkLink" class="nav-item-link fw-medium h-max">Cookware &amp; Bakeware
             <script>
-              document.getElementById('cookwareBakewareSortLinkLink').addEventListener('click', function(event) {
-                event.preventDefault();
-                alert('Cookware &amp; Bakeware Sorting Link clicked');
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('cookwareBakewareSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Cookware &amp; Bakeware Sorting Link clicked');
+                });
               });
             </script>
           </a>
@@ -817,18 +827,22 @@
                       <a href="#" id="instantRewardSortLinkLink" class="nav-item-link fw-medium h-max active-link">
                         Instant Reward
                         <script>
-                          document.getElementById('instantRewardSortLinkLink').addEventListener('click', function(event) {
-                            event.preventDefault();
-                            alert('Instant Reward Sorting Link clicked');
+                          document.addEventListener('DOMContentLoaded', function() {
+                            document.getElementById('instantRewardSortLinkLink').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              alert('Instant Reward Sorting Link clicked');
+                            });
                           });
                         </script>
                       </a>
                       <a href="#" id="rewardCodeSortLinkLink" class="nav-item-link fw-medium h-max">
                         Reward Code
                         <script>
-                          document.getElementById('rewardCodeSortLinkLink').addEventListener('click', function(event) {
-                            event.preventDefault();
-                            alert('Reward Code Sorting Link clicked');
+                          document.addEventListener('DOMContentLoaded', function() {
+                            document.getElementById('rewardCodeSortLinkLink').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              alert('Reward Code Sorting Link clicked');
+                            });
                           });
                         </script>
                       </a>
@@ -878,18 +892,22 @@
                 <a href="#" id="earnedBadgeSortLinkLink" class="nav-item-link fw-medium h-max active-link">
                   Earned
                   <script>
-                    document.getElementById('earnedBadgeSortLinkLink').addEventListener('click', function(event) {
-                      event.preventDefault();
-                      alert('Earned Badge Sorting Link clicked');
+                    document.addEventListener('DOMContentLoaded', function() {
+                      document.getElementById('earnedBadgeSortLinkLink').addEventListener('click', function(event) {
+                        event.preventDefault();
+                        alert('Earned Badge Sorting Link clicked');
+                      });
                     });
                   </script>
                 </a>
                 <a href="#" id="awardedBadgeSortLinkLink" class="nav-item-link fw-medium h-max">
                   Awarded
                   <script>
-                    document.getElementById('awardedBadgeSortLinkLink').addEventListener('click', function(event) {
-                      event.preventDefault();
-                      alert('Awarded Badge Sorting Link clicked');
+                    document.addEventListener('DOMContentLoaded', function() {
+                      document.getElementById('awardedBadgeSortLinkLink').addEventListener('click', function(event) {
+                        event.preventDefault();
+                        alert('Awarded Badge Sorting Link clicked');
+                      });
                     });
                   </script>
                 </a>
@@ -973,6 +991,38 @@
           </div>
         </div>
       </section>
+      
+      <section id="your-quizes">
+        <div class="d-flex justify-content-between mb-3">
+          <span class="fs-4">Your Quizzes</span><a href class="button-outlined px-3 py-2"> View all </a>
+        </div>
+        <div class="qic-tab-links gap-3">
+          <a href="#" id="startedSortLinkLink" class="nav-item-link fw-medium h-max active-link">
+            Started
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('startedSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Started Sorting Link clicked');
+                });
+              });
+            </script>
+          </a>
+          <a href="#" id="failedSortLinkLink" class="nav-item-link fw-medium h-max">
+            Failed
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('failedSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Failed Sorting Link clicked');
+                });
+              });
+            </script>
+          </a>
+        </div>
+
+      </section>
+
     </div>
   </main>
 
