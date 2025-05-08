@@ -22,7 +22,7 @@ Project showcasing pure html, css, js website wich can be used as template for .
     ```
   - config.css contains 3 versions in one file but it is possible to create separate files for each version and just change link href when including it on some page. Just be sure that structure(names of variables) is the same.
 
-- To avoid managing/editing multiple css files for all pages in applicatio(in this demo its only 2 but can be much more) styles fow all pages are in one file called styles.css. This way blocks from one page can be copied into another if needed without looking what css must be copied too. This increases css sizes on all pages but this should not become an issue since bootstrap css classes are mostly used for styling the UI.
+<!-- - To avoid managing/editing multiple css files for all pages in applicatio(in this demo its only 2 but can be much more) styles fow all pages are in one file called styles.css. This way blocks from one page can be copied into another if needed without looking what css must be copied too. This increases css sizes on all pages but this should not become an issue since bootstrap css classes are mostly used for styling the UI. -->
   
 
 ## Technologies Used
