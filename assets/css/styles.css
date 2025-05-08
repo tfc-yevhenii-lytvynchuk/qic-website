@@ -544,3 +544,33 @@ body .modal-dialog {
   line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+.qic-qiz-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: var(--default-border-radius);
+  height: 100%;
+}
+@media (max-width: 576px) {
+  .qic-qiz-card {
+    padding: 16px;
+  }
+}
+.qic-points-icon {
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(circle at center, transparent 40%, red 40%, red 60%, transparent 60%);
+  position: relative;
+}
+
+.qic-points-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at center, transparent 50%, red 50%);
+  transform: translate(-50%, -50%);
+}
