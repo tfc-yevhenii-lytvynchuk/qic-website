@@ -71,13 +71,6 @@
       width: 32px;
       height: 32px
     }
-    .dashboard-main #personalized-offers .products-sorting-links {
-      height: 36px
-    }
-
-    .dashboard-main #personalized-offers .products-sorting-links a {
-      height: fit-content
-    }
 
     .dashboard-main #personalized-offers .product-card {
       background-color: #fff;
@@ -145,6 +138,34 @@
       border-radius: 50%;
       background: white;
       border: 6px solid var(--primary-color);
+    }
+    .dashboard-badge-card {
+      background-color: #F3F5F5;
+      border-radius: var(--default-border-radius);
+    }
+    .dashboard-badge-card .qic-table-points-item {
+      width: fit-content;
+    }
+
+    #badges-summary-container:not(:only-child) {
+      max-width:33.333333333333336%;
+    }
+
+    @media (max-width: 1200px) {
+      #badges-summary-container:not(:only-child) {
+        max-width: 50%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      #badges-summary-container {
+        max-width: 100% !important;
+      }
+      .summary-section-grid {
+        flex-direction: column;
+        display: flex;
+        gap: 24px;
+      }
     }
   </style>
 </head>
@@ -544,7 +565,7 @@
         <div class="d-flex justify-content-between mb-3">
           <span class="fs-4">Personalized offers</span><a href class="button-outlined px-3 py-2"> Go to Shop </a>
         </div>
-        <div class="products-sorting-links d-flex gap-3 w-100 overflow-x-auto">
+        <div class="qic-tab-links gap-3">
           <a href="#" id="headphonesSortLinkLink" class="nav-item-link fw-medium h-max active-link">
             Headphones
             <script>
@@ -626,11 +647,11 @@
       </section>
 
       <section id="summary-section">
-        <div class="row">
-          <div class="col-8 d-flex flex-column gap-4">
-            <div class="row h-100">
-              <div class="col">
-                <div class="qic-card-container h-100">
+        <div class="summary-section-grid row">
+          <div class="col d-flex flex-column gap-4" style="order: 1;">
+            <div class="row h-100  row-gap-4 flex-column flex-sm-row"  style="order: 1;">
+              <div style="order: 1;" class="col">
+                <div class="qic-card-container h-100 d-flex flex-column">
                   <h5>Progress to Goal</h5>
                   <div class="d-flex align-items gap-3">
                     <div class="progress-goal-image">
@@ -657,32 +678,203 @@
                   <button class="button-outlined w-100 mt-auto">See progress bonuses</button>
                 </div>
               </div>
-              <div class="col">
-                <div class="qic-card-container h-100">
+              <div style="order: var(--dashboard-summary-section-ranking-order);" class="col">
+                <div class="qic-card-container h-100 d-flex flex-column">
                   <h5 class="text-center">Your Ranking</h5>
-                  <div class="d-flex justify-content-between">
-                    <div class="d-lfex flex-column">
-                      <img src="/assets/images/dashboard/rank-1.png" alt="">
+                  <div class="d-flex justify-content-around">
+
+                    <div class="d-flex flex-column align-items-center gap-1">
+                      <div style="background: #0C57CF4D;" class="qic-icon-bg-circle">
+                        <img width="24" height="24" src="/assets/images/dashboard/rank-1.png" alt="">
+                      </div>
                       <span class="fs-8 text-body-secondary">-1,231</span>
                     </div>
+
+                    <div class="d-flex flex-column mb-2">
+                      <div style="background: linear-gradient(155deg, #0CCF5A 8.48%, #06692E 91.52%); width: 64px; height: 64px;" class="qic-icon-bg-circle">
+                        <img width="42" height="42" src="/assets/images/dashboard/rank-2.png" alt="">
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center gap-1">
+                      <div style="background: #0CA5CF4D;" class="qic-icon-bg-circle">
+                        <img width="24" height="24" src="/assets/images/dashboard/rank-3.png" alt="">
+                      </div>
+                      <span class="fs-8 text-body-secondary">+711</span>
+                    </div>
+
                   </div>
+
+                  <div class="d-flex flex-column align-items-center gap-2 mb-2">
+                    <h6 class="fs-5 fw-medium">14th place</h6>
+                    <p class="fs-8 text-body-secondary">You better than 56% of users!</p>
+                  </div>
+
                   <button class="button-primary w-100 mt-auto">Leaderboard</button>
                 </div>
               </div>
             </div>
-            <div class="row h-100">
+            <div style="order: var(--dashboard-summary-section-instant-reward-order);" class="row h-100">
               <div class="col">
-                <div class="qic-card-container h-100">
-                  <h5>Instant Reward Code</h5>
-                  <button class="button-outlined px-4">See all claimed rewards</button>
+                <div class="qic-card-container h-100 d-flex flex-column">
+                  <div class="d-flex justify-content-between mb-3 flex-wrap">
+                    <h5>Instant Reward Code</h5>
+                    <div class="qic-tab-links gap-3">
+                      <a href="#" id="instantRewardSortLinkLink" class="nav-item-link fw-medium h-max active-link">
+                        Instant Reward
+                        <script>
+                          document.getElementById('instantRewardSortLinkLink').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            alert('Instant Reward Sorting Link clicked');
+                          });
+                        </script>
+                      </a>
+                      <a href="#" id="rewardCodeSortLinkLink" class="nav-item-link fw-medium h-max">
+                        Reward Code
+                        <script>
+                          document.getElementById('rewardCodeSortLinkLink').addEventListener('click', function(event) {
+                            event.preventDefault();
+                            alert('Reward Code Sorting Link clicked');
+                          });
+                        </script>
+                      </a>
+                    </div>
+                  </div>
+                  <form action="" id="instantRewardCodeForm">
+                    <div class="d-flex mb-4">
+                      <input type="text" name="rewardCode" id="rewardCode" placeholder="Enter your code here" class="form-control" required minlength="6" maxlength="6">
+                      <button type="submit" class="button-primary text-nowrap px-2">Submit Code</button>
+                    </div>
+                  </form>
+                  <div class="d-flex gap-3 justify-content-between flex-wrap mb-3 mt-auto">
+                    <div class="d-flex gap-2">
+                      <div class="qic-secondary-circle">
+                        <i class="bi bi-question-circle-fill text-secondary"></i>
+                      </div>
+                      <div class="d-flex flex-column">
+                        <span class="fs-7 fw-medium">Need your Rewards history?</span>
+                        <span class="fs-8 text-body-secondary">We store data about all the codes you enter</span>
+                      </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <div class="qic-secondary-circle">
+                        <i class="bi bi-gift-fill text-secondary"></i>
+                      </div>
+                      <div class="d-flex flex-column">
+                        <span class="fs-7 fw-medium">You have <span class="text-primary fw-bold">2</span> Reward Code</span>
+                        <span class="fs-8 text-body-secondary">Redeem this codes to have your rewards!</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between gap-3 flex-wrap">
+                    <button class="button-outlined px-4">See all claimed rewards</button>
+                    <a href="" class="animated-link-with-arrow d-flex gap-3 align-items-center text-uppercase"><span class="fw-bold">Learn more</span><i class="bi bi-arrow-right text-primary fs-4"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-4">
-            <div class="qic-card-container h-100">
-              <h5>Badges</h5>
-              <button class="button-secondary w-100">Awarded Badge</button>
+          <div id="badges-summary-container" class="col" style="order: var(--dashboard-summary-section-badges-order);">
+            <div class="qic-card-container h-100 d-flex flex-column">
+              <div class="d-flex justify-content-between gap-3 flex-wrap align-items-center mb-2">
+                <h5>Badges</h5>
+                <a href="/badges-summary.html" class="button-outlined px-3">View all</a>
+              </div>
+              <div class="qic-tab-links gap-3">
+                <a href="#" id="earnedBadgeSortLinkLink" class="nav-item-link fw-medium h-max active-link">
+                  Earned
+                  <script>
+                    document.getElementById('earnedBadgeSortLinkLink').addEventListener('click', function(event) {
+                      event.preventDefault();
+                      alert('Earned Badge Sorting Link clicked');
+                    });
+                  </script>
+                </a>
+                <a href="#" id="awardedBadgeSortLinkLink" class="nav-item-link fw-medium h-max">
+                  Awarded
+                  <script>
+                    document.getElementById('awardedBadgeSortLinkLink').addEventListener('click', function(event) {
+                      event.preventDefault();
+                      alert('Awarded Badge Sorting Link clicked');
+                    });
+                  </script>
+                </a>
+              </div>
+              <div class="d-flex flex-column gap-1 mb-3">
+
+                <div class="dashboard-badge-card p-3 d-flex gap-3">
+                  <div class="badges-summary-card-image">
+                    <img src="/assets/images/badges/teamwork.svg" alt="Badge 1">
+                  </div>
+                  <div class="d-flex flex-column overflow-hidden flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fs-7 fw-medium text-nowrap-elipsis">Teamwork</span>
+                      <div class="qic-table-points-item points-positive px-1 fs-8">
+                        +700
+                      </div>
+                    </div>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">by Rob Browns</span>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">Great work! It's a pleasure collaborating with you!</span>
+                  </div>
+                </div>
+                <div class="dashboard-badge-card p-3 d-flex gap-3">
+                  <div class="badges-summary-card-image">
+                    <img src="/assets/images/badges/collaboration.svg" alt="Badge 1">
+                  </div>
+                  <div class="d-flex flex-column overflow-hidden flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fs-7 fw-medium text-nowrap-elipsis">Together We Thrive!</span>
+                      <div class="qic-table-points-item points-positive px-1 fs-8">
+                        +700
+                      </div>
+                    </div>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">by Rob Browns</span>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">Great work! It's a pleasure collaborating with you!</span>
+                  </div>
+                </div>
+                <div class="dashboard-badge-card p-3 d-flex gap-3">
+                  <div class="badges-summary-card-image">
+                    <img src="/assets/images/badges/together-we-thrive.svg" alt="Badge 1">
+                  </div>
+                  <div class="d-flex flex-column overflow-hidden flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fs-7 fw-medium text-nowrap-elipsis">Together We Thrive!</span>
+                      <div class="qic-table-points-item points-negative px-1 fs-8">
+                        -500
+                      </div>
+                    </div>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">by Rob Browns</span>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">Great work! It's a pleasure collaborating with you!</span>
+                  </div>
+                </div>
+                <div class="dashboard-badge-card p-3 d-flex gap-3">
+                  <div class="badges-summary-card-image">
+                    <img src="/assets/images/badges/united-we-stand.svg" alt="Badge 1">
+                  </div>
+                  <div class="d-flex flex-column overflow-hidden flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fs-7 fw-medium text-nowrap-elipsis">United We Stand!</span>
+                      <div class="qic-table-points-item points-positive px-1 fs-8">
+                        +1700
+                      </div>
+                    </div>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">by Rob Browns</span>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">Great work! It's a pleasure collaborating with you!</span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="d-flex gap-2 mt-auto mb-3">
+                <div class="qic-secondary-circle">
+                  <i class="bi bi-lightbulb-fill text-secondary"></i>
+                </div>
+
+                <div class="d-flex flex-column">
+                  <span class="fs-7 fw-medium">Got a deserving colleague in mind?</span>
+                  <span class="fs-8 text-body-secondary">Award with a Badge to show your appreciation.</span>
+                </div>
+              </div>
+              <button class="button-secondary w-100">Award Badge</button>
             </div>
           </div>
         </div>

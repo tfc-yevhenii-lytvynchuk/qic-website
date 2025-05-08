@@ -72,13 +72,14 @@ body .bg-blue-transparent {
 body .border-default {
   border-color: var(--default-border-color) !important;
 }
+
 .qic-tab-links {
   height: 36px;
-  width: 100%;
   display: flex;
   gap: 24px;
   overflow-x: auto;
 }
+
 .qic-tab-links a {
   height: fit-content
 }
@@ -236,6 +237,19 @@ button:disabled {
   align-items: center;
   justify-content: center;
 }
+
+.qic-secondary-circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: #d9e4f1
+}
+
 body ul {
   padding: 0;
   margin: 0;
@@ -488,4 +502,28 @@ body .modal-dialog {
   body .modal-dialog {
     margin: 0 !important;
   }
+}
+.badges-summary-card-image {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  min-height: 64px;
+  border-radius: var(--default-border-radius);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+}
+.badges-summary-card-image img {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.text-nowrap-elipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
