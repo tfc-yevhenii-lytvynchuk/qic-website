@@ -169,6 +169,19 @@
         gap: 24px;
       }
     }
+    .dashboard-hot-task-card {
+      background: #F3F5F5;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 300px;
+    }
+    @media screen and (max-width: 576px) {
+      .dashboard-hot-task-card {
+        min-width:286px;
+      }
+    }
   </style>
 </head>
 
@@ -646,6 +659,85 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <section id="hot-tasks-section">
+        <div class="qic-card-container">
+          <h5><i class="bi bi-fire text-primary me-1"></i>Hot Tasks</h5>
+          <div class="d-flex gap-3 mt-3 w-100 overflow-x-auto pb-2">
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold">New Quiz is available for you</span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2">Get <span class="fw-medium text-primary">+530</span> Points for completing it!</p>
+              <a href="" class="button-primary w-100 mt-auto">Take Quiz</a>
+            </div>
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold">
+                  You have
+                  <span class="text-primary fw-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M10 4.17285C6.78689 4.17285 4.17285 6.78689 4.17285 10C4.17285 13.2131 6.78689 15.8271 10 15.8271C13.2131 15.8271 15.8271 13.2131 15.8271 10C15.8271 6.78689 13.2131 4.17285 10 4.17285ZM12.6292 10L10 12.6292L7.37077 10L10 7.37077L12.6292 10Z" fill="var(--primary-color)"/>
+                      <path d="M16.364 3.63602C14.6641 1.93618 12.404 1 10 1C7.59602 1 5.33593 1.93618 3.63602 3.63602C1.93618 5.33593 1 7.59602 1 10C1 12.404 1.93618 14.6641 3.63602 16.364C5.33593 18.0638 7.59602 19 10 19C12.404 19 14.6641 18.0638 16.364 16.364C18.0638 14.6641 19 12.404 19 10C19 7.59602 18.0638 5.33593 16.364 3.63602ZM10 16.8818C6.20534 16.8818 3.11816 13.7947 3.11816 10C3.11816 6.20534 6.20534 3.11816 10 3.11816C13.7947 3.11816 16.8818 6.20534 16.8818 10C16.8818 13.7947 13.7947 16.8818 10 16.8818Z" fill="var(--primary-color)"/>
+                    </svg>
+                    14,245
+                  </span>
+                  Points
+                </span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2">Maybe tou want award someone?</p>
+              <a href="/badges-summary.html" class="button-primary w-100 mt-auto">Award a Badge</a>
+            </div>
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quasi velit explicabo dignissimos optio ipsam corrupti eos magnam ad libero placeat, repellendus quaerat reiciendis laborum dicta itaque labore ex hic?</span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sint at dignissimos blanditiis autem, nulla vero quis perspiciatis veniam. A repellendus excepturi quaerat sed, nemo voluptatum non dicta eaque odio!</p>
+              <a href="" class="button-primary w-100 mt-auto">Test</a>
+            </div>
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quasi velit explicabo dignissimos optio ipsam corrupti eos magnam ad libero placeat, repellendus quaerat reiciendis laborum dicta itaque labore ex hic?</span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sint at dignissimos blanditiis autem, nulla vero quis perspiciatis veniam. A repellendus excepturi quaerat sed, nemo voluptatum non dicta eaque odio!</p>
+              <a href="" class="button-primary w-100 mt-auto">Test</a>
+            </div>
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quasi velit explicabo dignissimos optio ipsam corrupti eos magnam ad libero placeat, repellendus quaerat reiciendis laborum dicta itaque labore ex hic?</span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sint at dignissimos blanditiis autem, nulla vero quis perspiciatis veniam. A repellendus excepturi quaerat sed, nemo voluptatum non dicta eaque odio!</p>
+              <a href="" class="button-primary w-100 mt-auto">Test</a>
+            </div>
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quasi velit explicabo dignissimos optio ipsam corrupti eos magnam ad libero placeat, repellendus quaerat reiciendis laborum dicta itaque labore ex hic?</span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sint at dignissimos blanditiis autem, nulla vero quis perspiciatis veniam. A repellendus excepturi quaerat sed, nemo voluptatum non dicta eaque odio!</p>
+              <a href="" class="button-primary w-100 mt-auto">Test</a>
+            </div>
+
+  
+          </div>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              document.querySelectorAll('.close-hot-task-card-button').forEach(button => {
+                button.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Close Hot Task Card Button clicked');
+                });
+              });
+            });
+          </script>
+        </div>
+
       </section>
 
       <section id="summary-section">
