@@ -16,9 +16,9 @@ body {
   background-position: center;
 }
 .qic-container {
-  max-width: var(--page-container-width);
-  margin: 0 auto;
-  padding: 0 64px;
+  max-width: var(--page-container-width) !important;
+  margin: 0 auto !important;
+  padding: 0 64px !important;
 }
 section {
   padding-top: 64px;
@@ -28,7 +28,7 @@ section:last-of-type {
 }
 @media (max-width: 768px) {
   .qic-container {
-    padding: 0 18px;
+    padding: 0 18px !important;
   }
   section {
     padding: 16px 0px;
@@ -36,13 +36,6 @@ section:last-of-type {
   section:last-of-type {
     padding-bottom: 16px;
   }
-}
-
-.qic-nav-bar {
-  background: var(--nav-bar-background-color);
-  z-index: 999;
-  position: sticky;
-  top: 0
 }
 
 body .text-primary {
@@ -133,9 +126,11 @@ body a {
   position: relative;
   text-wrap: nowrap
 }
-
-a.nav-item-link:hover:before,
-a.nav-item-link.active-link:before {
+.nav-item a.nav-link {
+  width: fit-content  ;
+}
+.nav-item a.nav-link:hover:before,
+.nav-item a.nav-link.active:before {
   content: "";
   position: absolute;
   left: 0;
@@ -143,6 +138,44 @@ a.nav-item-link.active-link:before {
   height: 2px;
   width: 100%;
   background: var(--primary-color) 
+}
+
+.navbar .navbar-toggler {
+  background: black;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none !important;
+}
+.navbar-toggler[aria-expanded="true"] .bi-list {
+  display: none;
+}
+.navbar-toggler[aria-expanded="false"] .bi-x-lg {
+  display: none;
+}
+.navbar-toggler[aria-expanded="true"] .bi-x-lg {
+  display: block;
+}
+.navbar-toggler[aria-expanded="false"] .bi-list {
+  display: block;
+}
+.navbar .nav-item.dropdown {
+  position: static !important;
+}
+
+.navbar .nav-item.dropdown .dropdown-menu {
+  border: none !important;
+}
+@media (min-width: 992px) {
+  .qic-nav-dropdown-menu-content {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 100vw;
+  }
 }
 
 a.animated-link-with-arrow .bi {
@@ -322,35 +355,15 @@ i.bi:hover {
   }
 }
 
-.qic-nav-bar nav {
-  padding-top: 20px;
-  padding-bottom: 20px
-}
-
-.qic-nav-bar nav .qic-logo {
-  height: 24px
-}
-
-.qic-nav-bar .mock-box {
-  width: 40px;
-  height: 40px;
-  background-color: #f3f5f5;
-  border-radius: var(--default-border-radius);
-}
-
-.qic-nav-bar .mock-item {
+.navbar .mock-item {
   border-radius: var(--default-border-radius);
   color: black;
 }
-.qic-nav-bar .mock-item:hover {
+.navbar .mock-item:hover {
   background-color: #f3f5f5
 }
 
-.qic-nav-bar .mock-item:hover .mock-box {
-  background-color: #fff
-}
-
-.qic-nav-bar .main-nav-menu {
+.navbar .main-nav-menu {
   max-height: 456px
 }
 .nav-shop-link {
@@ -360,9 +373,9 @@ i.bi:hover {
   border-radius: var(--default-border-radius) 0 0  var(--default-border-radius);
 
 }
-.qic-nav-bar .about-program-block {
+.navbar .about-program-block {
   margin-top: 16px;
-  width: 365px;
+  width: 340px;
   height: 216px;
   background-image: var(--nav-support-background-image-url);
   transition: .3s;
@@ -370,14 +383,49 @@ i.bi:hover {
   color: var(--about-program-block-text-color);
 }
 
- .qic-nav-bar .about-program-block span {
+.navbar .about-program-block span {
   color: var(--about-program-block-text-color) !important;
 }
 
-.qic-nav-bar .about-program-block .bi {
+.navbar .about-program-block .bi {
   transition: .3s
 }
+.qic-navbar-controls {
+  gap: 24px;
+}
+@media (max-width: 996px) {
+  .qic-navbar-controls {
+    background: #F3F5F5;
+    border-radius: var(--default-border-radius);
+    margin-bottom: 16px;
+    gap: 0;
+  }
+  .qic-navbar-controls-item {
+    border-radius: var(--default-border-radius);
+    padding: 16px;
+  }
+  .qic-navbar-controls-item:not(:last-child) {
+    border-bottom: 1px solid #ECECEC;
+  }
+  .navbar  .navbar-nav {
+    gap: 0 !important;
+  }
+  .navbar-nav .nav-item a.nav-link.active:before  {
+    display: none !important;
+  }
+  .navbar-nav .nav-item a.nav-link:hover:before {
+    display: none !important;
+  }
+  .navbar-nav .nav-item a.nav-link  {
+    width: 100%;
+    font-weight: 600;
+    padding: 16px 0 !important;
+  }
+  .navbar-nav .nav-item:not(:last-child)  {
+    border-bottom: 1px solid #ECECEC;
 
+  }
+}
 .qic-header-banner {
   background-image: var(--check-in-background-image-url);
   background-repeat: no-repeat;
