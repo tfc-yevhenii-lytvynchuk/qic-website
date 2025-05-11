@@ -23,9 +23,7 @@ body {
 section {
   padding-top: 64px;
 }
-section:last-of-type {
-  padding-bottom: 64px;
-}
+
 @media (max-width: 768px) {
   .qic-container {
     padding: 0 18px !important;
@@ -33,9 +31,7 @@ section:last-of-type {
   section {
     padding: 16px 0px;
   }
-  section:last-of-type {
-    padding-bottom: 16px;
-  }
+
 }
 
 body .text-primary {
@@ -98,12 +94,6 @@ body .table>tbody tr td {
   text-wrap: nowrap;
   font-size: 12px;
 }
-.qic-table-points-item img {
-  width: 12px;
-  height: 12px;
-  min-width: 12px;
-  min-height: 12px;
-}
 .qic-table-points-item.points-positive {
   background-color: var(--success-color);
 }
@@ -126,11 +116,11 @@ body a {
   position: relative;
   text-wrap: nowrap
 }
-.nav-item a.nav-link {
+a.nav-link {
   width: fit-content  ;
 }
-.nav-item a.nav-link:hover:before,
-.nav-item a.nav-link.active:before {
+a.nav-link:hover:before,
+a.nav-link.active:before {
   content: "";
   position: absolute;
   left: 0;
@@ -438,7 +428,7 @@ i.bi:hover {
   border-radius: var(--default-border-radius);
   display: flex;
   gap: 24px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 40px;
 }
@@ -479,7 +469,8 @@ select.form-select {
 }
 
 .qic-footer {
-
+  padding-top: 64px;
+  margin-top: auto;
 }
 .qic-footer-baner {
   background: var(--login-footer-background-image-url) center center/cover no-repeat, #F3F5F5;
@@ -504,6 +495,9 @@ select.form-select {
   border-radius: var(--default-border-radius);
 }
 @media (max-width: 576px) {
+  .qic-footer {
+    padding-top: 16px;
+  }
   .qic-footer-baner {
     padding: 72px 0
   }

@@ -9,7 +9,6 @@
 :root {
   --font-family: FontExample1;
   --logo-url: url(/assets/images/Logo.png);
-
   --login-background-image-url: url(/assets/images/turner-reception-bg.png);
   
   --primary-color: #FF4026;
@@ -30,6 +29,12 @@
 
   --login-footer-background-image-url: url(/assets/images/turner-reception-bg.png);
 
+
+  --dashboard-reward-program-order: 5;
+  --dashboard-personalized-offers-order: 4;
+  --dashboard-hot-tasks-order: 3;
+  --dashboard-summary-order: 2;
+  --dashboard-your-quizes-order: 1;
   /**
   * 0 or 1 values to rearange the order of the cards in the summary section
   default values are 1 - meaning positioning the cards in the order of the html structure
@@ -63,25 +68,11 @@
   --nav-support-background-image-url: url(/assets/images/samples-temp/bg_support2.webp);
   --check-in-background-image-url: url(/assets/images/samples-temp/bg_banner3.webp);
   --about-program-block-text-color: white;
-} */
 
-/* EXAPMLE CONFIG VARIANT 3*/
+  --login-footer-background-image-url: url(/assets/images/turner-reception-bg.png);
 
-/* @font-face {
-  font-family: FontExample2;
-  src: url("../fonts/font2.ttf") format("truetype");
-}
 
-:root {
-  --font-family: FontExample2;
-  --logo-url: url(/assets/images/samples-temp/siemens-logo.png);
-  --primary-color: #3BC8BE;
-  --secondary-color: #000028;
-  --success-color: #1c6604;
-  --primary-button-text-color: white;
-  --nav-bar-background-color: #000028;
-  --main-text-color: white;
-  --page-container-width: 1800px;
-  --body-background-color: #000028;
-  --default-border-radius: 8px; 
+  --dashboard-summary-section-ranking-order: 1;
+  --dashboard-summary-section-badges-order: 1;
+  --dashboard-summary-section-instant-reward-order: 1;
 } */
