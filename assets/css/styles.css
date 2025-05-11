@@ -620,3 +620,7 @@ body .modal-dialog {
   background: radial-gradient(circle at center, transparent 50%, red 50%);
   transform: translate(-50%, -50%);
 }
+
+.breadcrumb-item.active {
+  color: var(--primary-color) !important;
+}
