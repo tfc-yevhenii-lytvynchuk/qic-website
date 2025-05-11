@@ -4,10 +4,12 @@
 <head>
   <meta charset="utf-8">
   <title>QIC Dashboard</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/assets/css/config.css">
   <link rel="stylesheet" href="/assets/css/styles.css">
-
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/fonts/bootstrap-icons.css">
 
@@ -186,47 +188,121 @@
 </head>
 
 <body>
-  <div class="qic-nav-bar d-flex align-items-center">
-    <nav class="qic-container d-flex gap-5 align-items-center align-items-start w-100">
-      <div class="nav-logo d-flex qic-logo h-2rem me-sm-1 me-auto"></div>
-      <!-- <img src="assets/images/Logo.png" alt class="d-flex qic-logo h-2rem me-sm-1 me-auto"> -->
-      <ul class="d-none d-sm-flex gap-3 gap-lg-5 align-items-center me-auto">
-        <li><a href="#" class="nav-item-link active-link">Dashboard</a></li>
-        <li><a href="form.html" class="nav-item-link">Form</a></li>
-        <li>
-          <div class="dropdown">
-            <a data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-offset="0,30" href="#" class="dropdown-toggle nav-item-link">Shop</a>
-            <div class="dropdown-menu min-vw-100 fixed-top">
-              <div class="qic-container w-100 py-4">
-                <div class="d-flex justify-content-between">
-                  <div class="d-flex gap-5 flex-wrap">
+  <nav class="navbar sticky-top navbar-expand-lg bg-white py-3">
+    <div class="container-fluid qic-container">
+      <a class="navbar-brand" href="#"><div class="nav-logo d-flex qic-logo h-2rem me-sm-1 me-auto"></div></a>
+      <div class="d-flex d-lg-none ms-auto me-2">
+        <div class="nav-points-count d-flex align-items-center gap-2 py-2 px-3 bg-body-secondary text-black">
+          <img width="18" height="18" src="/assets/images/points-icon-ff4026.svg">
+          <span>14,245</span></div><a href="#" class="nav-shop-link d-flex align-items-center py-2 px-3 button-primary">
+          Shop </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list text-white"></i>
+        <i class="bi bi-x-lg text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search">
+          <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
+          <button class="button-primary px-3" type="submit"><i class="bi bi-search text-white"></i></button>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const navbarSearchForm = document.getElementById('navbar-search-form');
+              const searchInput = document.querySelector('input[name="search"]');
+              navbarSearchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert(searchInput.value);
+              });
+            });
+          </script>
+        </form>
+        <div class="qic-navbar-controls d-flex flex-column flex-lg-row" style="order: 4;">
+          <a href="#" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
+            <span><i class="bi bi-bell-fill"></i></span>
+            <span class="d-block d-lg-none">Notifications</span>
+          </a>
+          <div class="qic-navbar-controls-item dropdown">
+            <a data-bs-toggle="dropdown" href="#" class="dropdown-toggle d-flex align-items-center gap-2 cursor-pointer">
+              <i class="bi bi-person-fill"></i>
+              <span class="text-nowrap"> My Profile </span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
+                <div class="d-flex flex-column text-black"><span class="fw-bold">Profile Settings</span>
+                  <span class="text-body-secondary fs-7">Subinfo</span>
+                </div>
+              </a>
+              <a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
+                <div class="d-flex flex-column text-black"><span class="fw-bold">Program Guide</span>
+                  <span class="text-body-secondary fs-7">Subinfo</span>
+                </div>
+              </a>
+              <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white gap-3">
+                <span class="text-nowrap">Need to Exit?</span>
+                <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('logoutLink').addEventListener('click', function() {
+                      alert('Logout link clicked');
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
+            <span><i class="bi bi-bag-fill"></i></span>
+            <span class="d-block d-lg-none">Cart</span>
+            <div class="d-flex d-lg-none gap-2 align-items-center justify-content-between ms-auto bg-white px-2 py-1">
+              <span class="fs-7 fw-medium">5 items</span>
+              <span class="fs-7 fw-medium d-flex align-items-center gap-1"><img src="/assets/images/points-icon-ff4026.svg" width="16" height="16" alt=""> 14,245</span>
+            </div>
+          </a>
+        </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+          <li class="nav-item">
+            <a class="nav-link active p-0" href="/dashboard.html">Dashboard</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Shop
+            </a>
+            <div class="dropdown-menu">
+              <div class="qic-nav-dropdown-menu-content py-4">
+                <div class="d-flex justify-content-between qic-container flex-wrap">
+                  <div class="d-flex gap-3 gap-lg-5 flex-wrap flex-column flex-sm-row">
                     <div class="d-flex flex-column"><span class="text-body-secondary fs-7">CATEGORIES</span>
                       <div class="d-flex flex-column overflow-y-auto main-nav-menu">
                         <a href="#" id="category1Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
                           <div class="d-flex flex-column">
                             <span class="fw-bold">Category 1</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                           <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
                           <script>
-                            document.getElementById('category1Link').addEventListener('click', function(event) {
-                              event.preventDefault();
-                              alert('Category 1 selected');
+                            document.addEventListener('DOMContentLoaded', function() {
+                              document.getElementById('category1Link').addEventListener('click', function() {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                alert('Category 1 clicked');
+                              });
                             });
                           </script>
                         </a>
                         <a href="#" id="category2Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
                           <div class="d-flex flex-column">
                             <span class="fw-bold">Category 2</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                           <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
                           <script>
-                            document.getElementById('category2Link').addEventListener('click', function(event) {
-                              event.preventDefault();
-                              alert('Category 2 selected');
+                            document.addEventListener('DOMContentLoaded', function() {
+                              document.getElementById('category2Link').addEventListener('click', function() {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                alert('Category 2 clicked');
+                              });
                             });
                           </script>
                         </a>
@@ -236,54 +312,60 @@
                       <span class="text-body-secondary fs-7">Category 1 /</span>
                       <div class="d-flex flex-column overflow-y-auto main-nav-menu">
                         <a href="#" id="subcategory1Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
-                          <div class="d-flex flex-column">
-                            <span class="fw-bold">Subcategory 1</span>
-                            <span class="text-body-secondary fs-7">Subinfo</span>
-                          </div>
-                        </a>
-                        <script>
-                          document.getElementById('subcategory1Link').addEventListener('click', function(event) {
-                            event.preventDefault();
-                            alert('Subcategory 1 selected');
-                          });
-                        </script>
-                        <a href="#" id="subcategory2Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
-                          <div class="d-flex flex-column">
-                            <span class="fw-bold">Subcategory 1</span>
-                            <span class="text-body-secondary fs-7">Subinfo</span>
-                          </div>
-                        </a>
-                        <script>
-                          document.getElementById('subcategory2Link').addEventListener('click', function(event) {
-                            event.preventDefault();
-                            alert('Subcategory 2 selected');
-                          });
-                        </script>
-                        <a href="#" id="subcategory3Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
-                          <div class="d-flex flex-column">
-                            <span class="fw-bold">Subcategory 1</span>
-                            <span class="text-body-secondary fs-7">Subinfo</span>
-                          </div>
-                        </a>
-                        <script>
-                          document.getElementById('subcategory3Link').addEventListener('click', function(event) {
-                            event.preventDefault();
-                            alert('Subcategory 3 selected');
-                          });
-                        </script>
-                        <a href="#" id="subcategory4Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
                           <div class="d-flex flex-column">
                             <span class="fw-bold">Subcategory 1</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                           <script>
-                            document.getElementById('subcategory4Link').addEventListener('click', function(event) {
-                              event.preventDefault();
-                              alert('Subcategory 4 selected');
+                            document.addEventListener('DOMContentLoaded', function() {
+                              document.getElementById('subcategory1Link').addEventListener('click', function() {
+                                event.preventDefault();
+                                alert('Subcategory 1 clicked');
+                              });
+                            });
+                          </script>
+                        </a>
+      
+                        <a href="#" id="subcategory2Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                          <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                              document.getElementById('subcategory2Link').addEventListener('click', function() {
+                                event.preventDefault();
+                                alert('Subcategory 2 clicked');
+                              });
+                            });
+                          </script>
+                        </a>
+                        <a href="#" id="subcategory3Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                          <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                              document.getElementById('subcategory3Link').addEventListener('click', function() {
+                                event.preventDefault();
+                                alert('Subcategory 3 clicked');
+                              });
+                            });
+                          </script>
+                        </a>
+      
+                        <a href="#" id="subcategory4Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Subcategory 1</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                          <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                              document.getElementById('subcategory4Link').addEventListener('click', function() {
+                                event.preventDefault();
+                                alert('Subcategory 4 clicked');
+                              });
                             });
                           </script>
                         </a>
@@ -292,14 +374,12 @@
                     <div class="d-flex flex-column"><span class="text-body-secondary fs-7">PERSONAL</span>
                       <div class="d-flex flex-column overflow-y-auto main-nav-menu">
                         <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
                           <div class="d-flex flex-column">
                             <span class="fw-bold">My Orders</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                         </a>
                         <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
                           <div class="d-flex flex-column">
                             <span class="fw-bold">My Wishlist</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
@@ -308,7 +388,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="d-none d-lg-block"><span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                  <div>
+                    <span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
                     <div class="about-program-block d-flex flex-column gap-1 p-4">
                       <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
                         <span class="fw-bold">PROGRAM GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
@@ -326,7 +407,7 @@
                             <span class="fw-bold">Have a question?</span>
                             <span class="text-body-secondary fs-7">Send us a note</span>
                           </div>
-                          <a href="form.html" class="button-secondary px-3 ms-auto">Contact</a>
+                          <a href="/form.html" class="button-secondary px-3 ms-auto">Contact</a>
                         </div>
                       </div>
                     </div>
@@ -334,34 +415,32 @@
                 </div>
               </div>
             </div>
-          </div>
-        </li>
-        <li>
-          <div class="dropdown">
-            <a data-bs-toggle="dropdown" data-bs-auto-close="outside" data-bs-offset="0,30" class="dropdown-toggle nav-item-link">Points</a>
-            <div class="dropdown-menu min-vw-100 fixed-top">
-              <div class="qic-container w-100 py-4">
-                <div class="d-flex justify-content-between">
-                  <div class="d-flex gap-5 flex-wrap">
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Points
+            </a>
+            <div class="dropdown-menu">
+              <div class="qic-nav-dropdown-menu-content py-4">
+                <div class="d-flex justify-content-between qic-container flex-wrap">
+                  <div class="d-flex gap-3 gap-lg-5 flex-wrap flex-column flex-sm-row">
                     <div class="d-flex flex-column">
                       <span class="text-body-secondary fs-7">GENERAL</span>
                       <div class="d-flex flex-column overflow-y-auto main-nav-menu">
                         <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
                           <div class="d-flex flex-column">
                             <span class="fw-bold">Points Summary</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                         </a>
                         <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
                           <div class="d-flex flex-column">
                             <span class="fw-bold">Quizzes</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                         </a>
                         <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="mock-box"></div>
                           <div class="d-flex flex-column">
                             <span class="fw-bold">Ranking</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
@@ -369,8 +448,43 @@
                         </a>
                       </div>
                     </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">POINTS ACTIONS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Deposit Points</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Award Points</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">CARDS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Deposit Cards</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Instant Rewards</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <div class="d-none d-lg-block"><span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                  <div>
+                    <span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
                     <div class="about-program-block d-flex flex-column gap-1 p-4">
                       <a 
                         class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">PROGRAM
@@ -388,7 +502,7 @@
                             <span class="fw-bold">Have a question?</span>
                             <span class="text-body-secondary fs-7">Send us a note</span>
                           </div>
-                           <a href="form.html" class="button-secondary px-3 ms-auto">Contact</a>
+                           <a href="/form.html" class="button-secondary px-3 ms-auto">Contact</a>
                         </div>
                       </div>
                     </div>
@@ -396,57 +510,97 @@
                 </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-      </ul>
-      <div class="d-xl-flex d-none">
-        <div class="nav-points-count d-flex align-items-center gap-2 py-2 px-3 bg-body-secondary text-black">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g id="Icon_points" clip-path="url(#clip0_541_6916)"><g id="Group">
-            <path id="Vector" d="M8.0001 3.33862C5.42961 3.33862 3.33838 5.42986 3.33838 8.00034C3.33838 10.5708 5.42961 12.6621 8.0001 12.6621C10.5706 12.6621 12.6618 10.5708 12.6618 8.00034C12.6618 5.42986 10.5706 3.33862 8.0001 3.33862ZM10.1035 8.00034L8.0001 10.1037L5.89671 8.00034L8.0001 5.89696L10.1035 8.00034Z" fill="var(--primary-color)"/>
-            <path id="Vector_2" d="M13.0915 2.90895C11.7316 1.54908 9.92348 0.80014 8.00029 0.80014C6.07711 0.80014 4.26903 1.54908 2.90911 2.90895C1.54923 4.26888 0.800293 6.07695 0.800293 8.00014C0.800293 9.92333 1.54923 11.7314 2.90911 13.0913C4.26903 14.4512 6.07711 15.2001 8.00029 15.2001C9.92348 15.2001 11.7316 14.4512 13.0915 13.0913C14.4514 11.7314 15.2003 9.92333 15.2003 8.00014C15.2003 6.07695 14.4514 4.26888 13.0915 2.90895ZM8.00029 13.5056C4.96457 13.5056 2.49482 11.0359 2.49482 8.00014C2.49482 4.96441 4.96457 2.49467 8.00029 2.49467C11.036 2.49467 13.5058 4.96441 13.5058 8.00014C13.5058 11.0359 11.036 13.5056 8.00029 13.5056Z" fill="var(--primary-color)"/>
-            </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
-          </svg>
-          <span>14,245</span></div><a href="#" class="nav-shop-link d-flex align-items-center py-2 px-3 button-primary">
-          Shop </a>
-      </div>
-      <div class="d-lg-flex d-none justify-content-center gap-4">
-        <a href="#"><i class="bi bi-bell-fill"></i></a>
-        <a href="#"><i class="bi bi-search"></i></a>
-      </div>
-      <div class="dropdown">
-        <a data-bs-toggle="dropdown" href="#" class="dropdown-toggle d-flex align-items-center gap-3 cursor-pointer">
-          <i class="bi bi-person-fill"></i>
-          <span class="text-nowrap d-lg-flex d-none"> My Profile </span>
-        </a>
-        <div class="dropdown-menu">
-          <div class="p-3 pb-1"><a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
-              <div class="mock-box"></div>
-              <div class="d-flex flex-column text-black"><span class="fw-bold">Profile Settings</span>
-                <span class="text-body-secondary fs-7">Subinfo</span>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Social
+            </a>
+            <div class="dropdown-menu">
+              <div class="qic-nav-dropdown-menu-content py-4">
+                <div class="d-flex justify-content-between qic-container flex-wrap">
+                  <div class="d-flex gap-3 gap-lg-5 flex-wrap flex-column flex-sm-row">
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">BADGES</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="/badges-summary.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Badges Summary</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="/badges-summary.html?award-badge=true" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Award a Badge</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">USER ACTIONS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Nominate User</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">CARDS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Virtual Cards</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a 
+                        class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">PROGRAM
+                          GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a  class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">SALES
+                          REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">LATEST
+                          NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100"><i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                           <a href="/form.html" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </a>
-            <a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
-              <div class="mock-box"></div>
-              <div class="d-flex flex-column text-black"><span class="fw-bold">Program Guide</span><span
-                  class="text-body-secondary fs-7">Subinfo</span></div>
-            </a>
-          </div>
-          <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white">
-            <span>Need to Exit?</span>
-            <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
-            <script>
-              document.getElementById('logoutLink').addEventListener('click', function(event) {
-                event.preventDefault();
-                alert('Logout');
-              });
-            </script>
-          </div>
+            </div>
+          </li>
+  
+        </ul>
+        <div class="d-none d-lg-flex me-3">
+          <div class="nav-points-count d-flex align-items-center gap-2 py-2 px-3 bg-body-secondary text-black">
+            <img width="18" height="18" src="/assets/images/points-icon-ff4026.svg">
+            <span>14,245</span></div><a href="#" class="nav-shop-link d-flex align-items-center py-2 px-3 button-primary">
+            Shop </a>
         </div>
+
+
       </div>
-      <a href="#" class="d-lg-flex d-none"><i class="bi bi-bag-fill"></i></a>
-    </nav>
-  </div>
+    </div>
+  </nav>
 
   <main class="dashboard-main mt-3">
     <div class="qic-container d-flex flex-column">
@@ -628,9 +782,17 @@
         </div>
         <div class="d-flex gap-3 mt-3 w-100 overflow-x-auto pb-2">
           <div class="product-card p-3 d-flex flex-column gap-2 relative">
-            <form  class="product-card-favorite cursor-pointer">
+            <form id="add-to-favorites-form" class="product-card-favorite cursor-pointer">
               <input type="hidden" name="productId" value="000-000-000-000">
               <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('add-to-favorites-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert('Add to Favorites form submitted');
+                  });
+                });
+              </script>
             </form>
             <div class="product-image-container flex-grow-1">
               <img src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
@@ -643,15 +805,31 @@
                 </g></g><defs><clipPath id="clip0_541_6916"><rect width="16" height="16" fill="white"/></clipPath></defs>
               </svg>1,500
             </span>
-            <form class="w-100" action="">
+            <form id="add-to-cart-form" class="w-100" action="">
               <input type="hidden" name="productId" value="000-000-000-000">
               <button type="submit" class="button-outlined w-100 px-3 py-2"> Add to Cart </button>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('add-to-cart-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert('Add to cart form submitted');
+                  });
+                });
+              </script>
             </form>
           </div>
           <div class="product-card p-3 d-flex flex-column gap-2 relative">
-            <form  class="product-card-favorite cursor-pointer">
+            <form id="remove-from-cart-form" class="product-card-favorite cursor-pointer">
               <input type="hidden" name="productId" value="000-000-000-000">
               <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert('Remove from favorites form submitted');
+                  });
+                });
+              </script>
             </form>
             <div class="product-image-container flex-grow-1">
               <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
@@ -986,7 +1164,7 @@
                   <span class="fs-8 text-body-secondary">Award with a Badge to show your appreciation.</span>
                 </div>
               </div>
-              <button class="button-secondary w-100">Award Badge</button>
+              <a href="/badges-summary.html?award-badge=true" class="button-secondary w-100">Award Badge</a>
             </div>
           </div>
         </div>

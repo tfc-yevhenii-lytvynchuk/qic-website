@@ -7,6 +7,10 @@
 
 -[Badges Summary](/badges-summary.html)
 
+-[Logged in template](/templates/logged-in-page-template.html)
+
+-[Logged out template](/templates/logged-out-page-template.html)
+
 ## Description
 Project showcasing pure html, css, js website wich can be used as template for .NET .asp pages, with some level of css configurability.
 

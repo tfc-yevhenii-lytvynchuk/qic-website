@@ -382,7 +382,11 @@ i.bi:hover {
   border-radius: var(--default-border-radius);
   color: var(--about-program-block-text-color);
 }
-
+@media (max-width: 576px) {
+  .navbar .about-program-block {
+    width: 320px;
+  }
+}
 .navbar .about-program-block span {
   color: var(--about-program-block-text-color) !important;
 }
