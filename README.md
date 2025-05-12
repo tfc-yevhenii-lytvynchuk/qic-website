@@ -6,9 +6,9 @@
 For this reason when previewing sources on local machine - either open website on static local server or from root of the disk.
 
 ## Milestone 1
--[Login / Reset Password steps](/login/login.html)
+-Login / Reset Password steps
 
--[Dashboard](/dashboard.html)
+-Dashboard
   - Customizable layout through CSS variables in config.css:
     - Layout Order Control:
       ```css
@@ -30,14 +30,14 @@ For this reason when previewing sources on local machine - either open website o
       3. Set to 0 to move a section before its siblings
       4. Refresh the page to see changes
 
--[Badges Summary](/badges-summary.html)
+-Badges Summary
   - Table-cards views modes switch.
   - Award badge flow using modals.
 
--[Logged in template](/templates/logged-in-page-template.html)
+-Logged in template
   - Footer and Header page template for logged-in users.
 
--[Logged out template](/templates/logged-out-page-template.html)
+-Logged out template
   - Footer and Header page template for logged-out users.
 
 ## Description
@@ -46,12 +46,12 @@ Project showcasing pure html, css, js website wich can be used as template for .
 ## Features
 - Pure HTML, CSS, and JavaScript pages
 - Customizable UI through configuration files:
-  - Located in `assets/css/config.css`
+  - Located in `/assets/css/config.css`
   - Contains 2 example configurations
   - Switch between configurations by uncommenting different sections, then refresh the page.
   - Can be included in your pages using:
     ```html
-    <link rel="stylesheet" href="assets/css/config.css">
+    <link rel="stylesheet" href="/assets/css/config.css">
     ```
   - config.css contains 2 versions in one file but it is possible to create separate files for each version and just change link href when including it on some page, or use 1 file when building different versions by changing variable values. Just be sure that structure(names of variables) is the same.
 
@@ -62,10 +62,10 @@ Project showcasing pure html, css, js website wich can be used as template for .
 
 Required files for proper UI functionality:
 - CSS:
-  - `assets/css/bootstrap.min.css`
-  - `assets/fonts/bootstrap-icons.css`
+  - `/assets/css/bootstrap.min.css`
+  - `/assets/fonts/bootstrap-icons.css`
 - JavaScript:
-  - `assets/js/bootstrap-bundle.min.js`
+  - `/assets/js/bootstrap-bundle.min.js`
 
 Documentation: [Bootstrap v5.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 
