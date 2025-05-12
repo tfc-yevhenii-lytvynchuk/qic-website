@@ -54,6 +54,7 @@ Project showcasing pure html, css, js website wich can be used as template for .
     <link rel="stylesheet" href="/assets/css/config.css">
     ```
   - config.css contains 2 versions in one file but it is possible to create separate files for each version and just change link href when including it on some page, or use 1 file when building different versions by changing variable values. Just be sure that structure(names of variables) is the same.
+  - Each page imports styles fro, global `/assets/css/styles.css` file. But styles that are only related to the page in question are defined in <style> tag of <head> of the page.
 
 ## Technologies Used
 
