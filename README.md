@@ -1,4 +1,5 @@
 # QIC UI HTML, CSS, JS project
+-[Sources zip](/assets/sources-zip.zip)
 
 ## Milestone 1
 -[Login / Reset Password steps](/login/login.html)
