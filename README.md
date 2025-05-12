@@ -4,6 +4,7 @@
 
 **Note:** Absolute paths to `/assets/` folders are used everywhere for consistent imports and to avoid relative path usage like `../../../assets`.
 For this reason when previewing sources on local machine - either open website on static local server or from root of the disk.
+This way if assets folder is transfered to wwwroot of .NET app -> all imports in html files should work right away.
 
 ## Milestone 1
 -Login / Reset Password steps
