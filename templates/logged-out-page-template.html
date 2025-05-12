@@ -36,12 +36,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search">
-          <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
+          <input id="navbar-search-input" class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
           <button class="button-primary px-3" type="submit"><i class="bi bi-search text-white"></i></button>
           <script>
             document.addEventListener('DOMContentLoaded', function() {
               const navbarSearchForm = document.getElementById('navbar-search-form');
-              const searchInput = document.querySelector('input[name="search"]');
+              const searchInput = document.getElementById('navbar-search-input');
               navbarSearchForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 alert(searchInput.value);

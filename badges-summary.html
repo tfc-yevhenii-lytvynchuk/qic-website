@@ -129,12 +129,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search">
-          <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
+          <input id="navbar-search-input" class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
           <button class="button-primary px-3" type="submit"><i class="bi bi-search text-white"></i></button>
           <script>
             document.addEventListener('DOMContentLoaded', function() {
               const navbarSearchForm = document.getElementById('navbar-search-form');
-              const searchInput = document.querySelector('input[name="search"]');
+              const searchInput = document.getElementById('navbar-search-input');
               navbarSearchForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 alert(searchInput.value);
@@ -934,7 +934,7 @@
               <a class="button-outlined px-4" data-bs-toggle="modal">Back</a>
               <button type="submit" id="submit-badge-type-btn" class="button-secondary px-4">Next</button>
               <!-- NEXT MODAL TRIGGER HIDDEN BUTTON -->
-              <button id="go-to-award-badge-user-select-modal" class="d-none" data-bs-target="#awardBadgeUserSelectModal" data-bs-toggle="modal"></button>
+              <a id="go-to-award-badge-user-select-modal" class="d-none" data-bs-target="#awardBadgeUserSelectModal" data-bs-toggle="modal"></a>
               <!-- NEXT MODAL TRIGGER HIDDEN BUTTON -->
               <script>
                 document.addEventListener('DOMContentLoaded', function() {
@@ -989,7 +989,7 @@
                 <label for="userSearch" class="form-label fs-8 text-uppercase fw-medium">user search</label>
                 <div class="d-flex">
                   <input type="text" id="userSearch" name="userSearch" required class="form-control" placeholder="Search user by First Name, Last Name, Location or User ID">
-                  <button id="userSearchBtn" class="button-secondary px-2" >Search</button>
+                  <button data-bs-target="#awardBadgeUserAdvancedSearchModal" data-bs-toggle="modal" id="userSearchBtn" class="button-secondary px-2" >Search</button>
                   <script>
                     document.addEventListener('DOMContentLoaded', function() {
                       const userSearchBtn = document.getElementById('userSearchBtn');
@@ -997,7 +997,6 @@
                       if (!userSearchBtn || !userSearchInput) return;
                       userSearchBtn.addEventListener('click', function(event) {
                         event.preventDefault(); 
-                        alert('search: ' + userSearchInput.value);
                       });
                     });
                   </script>
@@ -1083,6 +1082,56 @@
                   alert(event.target.userSearch.value + ' ' + event.target.badgeSearch.value + ' ' + event.target.addPoints.value + ' ' + event.target.badgeComment.value);
                   //OPEN NEXT MODAL
                   goToBadgeAwardSuccessModal.click();
+                });
+              });
+            </script>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- AWARD BADGE USER ADVANCED SEARCH MODAL -->
+  <div class="modal fade" id="awardBadgeUserAdvancedSearchModal" aria-hidden="true" aria-labelledby="awardBadgeUserAdvancedSearchModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-flex flex-column gap-2 align-items-start">
+          <h1 class="modal-title fs-5" >Advanced User Search</h1>
+        </div>
+        <div class="modal-body">
+          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="award-badge-user-advanced-search-form">
+            <div class="row g-4">
+              <div class="col-12 col-sm-6">
+                <label for="firstName" class="form-label fs-8 text-uppercase fw-medium">Search by First Name</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter User First Name" required minlength="3" maxlength="50">
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="lastName" class="form-label fs-8 text-uppercase fw-medium">Search by Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter User Last Name" required minlength="3" maxlength="50">
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="userID" class="form-label fs-8 text-uppercase fw-medium">Search by User ID</label>
+                <input type="text" id="userID" name="userID" class="form-control" placeholder="Enter User ID here" required minlength="3" maxlength="50">
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="location" class="form-label fs-8 text-uppercase fw-medium">Search by Location</label>
+                <input type="text" id="location" name="location" class="form-control" placeholder="Enter User Location" required minlength="3" maxlength="50">
+              </div>
+            </div>
+            <div class="modal-footer d-flex gap-3 justify-content-between">
+              <a class="button-outlined px-4" data-bs-toggle="modal" data-bs-target="#awardBadgeUserSelectModal">Back</a>
+              <button type="submit" class="button-secondary px-4">Search</button>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const awardBadgeUserAdvancedSearchForm = document.getElementById('award-badge-user-advanced-search-form');
+                const goToAwardBadgeUserSelectModal = document.getElementById('go-to-award-badge-user-select-modal');
+                if (!goToAwardBadgeUserSelectModal || !awardBadgeUserAdvancedSearchForm) return;
+                awardBadgeUserAdvancedSearchForm.addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  alert(event.target.firstName.value + ' ' + event.target.lastName.value + ' ' + event.target.userID.value + ' ' + event.target.location.value);
+                  goToAwardBadgeUserSelectModal.click();
                 });
               });
             </script>
