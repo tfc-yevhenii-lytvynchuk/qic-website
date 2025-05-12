@@ -4,12 +4,36 @@
 -[Login / Reset Password steps](/login/login.html)
 
 -[Dashboard](/dashboard.html)
+  - Customizable layout through CSS variables in config.css:
+    - Layout Order Control:
+      ```css
+      --dashboard-reward-program-order: <value: number>;      /* Controls order of reward program section */
+      --dashboard-personalized-offers-order: <value: number>;  /* Controls order of personalized offers section */
+      --dashboard-hot-tasks-order: <value: number>;           /* Controls order of hot tasks section */
+      --dashboard-summary-order: <value: number>;             /* Controls order of summary section */
+      --dashboard-your-quizes-order: <value: number>;         /* Controls order of quizzes section */
+      ```
+    - Summary Section Card Ordering:
+      ```css
+      --dashboard-summary-section-ranking-order: <value: number>;      /* Controls ranking card position relative to progress */
+      --dashboard-summary-section-badges-order: <value: number>;       /* Controls badges card position relative to rest of section*/
+      --dashboard-summary-section-instant-reward-order: <value: number>; /* Controls instant reward card position relative to progres/ranking block */
+      ```
+    - Usage:
+      1. Open `assets/css/config.css`
+      2. Modify the order values (lower numbers appear first)
+      3. Set to 0 to move a section before its siblings
+      4. Refresh the page to see changes
 
 -[Badges Summary](/badges-summary.html)
+  - Table-cards views modes switch.
+  - Award badge flow using modals.
 
 -[Logged in template](/templates/logged-in-page-template.html)
+  - Footer and Header page template for logged-in users.
 
 -[Logged out template](/templates/logged-out-page-template.html)
+  - Footer and Header page template for logged-out users.
 
 ## Description
 Project showcasing pure html, css, js website wich can be used as template for .NET .asp pages, with some level of css configurability.
@@ -24,10 +48,7 @@ Project showcasing pure html, css, js website wich can be used as template for .
     ```html
     <link rel="stylesheet" href="assets/css/config.css">
     ```
-  - config.css contains 3 versions in one file but it is possible to create separate files for each version and just change link href when including it on some page. Just be sure that structure(names of variables) is the same.
-
-<!-- - To avoid managing/editing multiple css files for all pages in applicatio(in this demo its only 2 but can be much more) styles fow all pages are in one file called styles.css. This way blocks from one page can be copied into another if needed without looking what css must be copied too. This increases css sizes on all pages but this should not become an issue since bootstrap css classes are mostly used for styling the UI. -->
-  
+  - config.css contains 2 versions in one file but it is possible to create separate files for each version and just change link href when including it on some page, or use 1 file when building different versions by changing variable values. Just be sure that structure(names of variables) is the same.
 
 ## Technologies Used
 ### Bootstrap
