@@ -15,6 +15,13 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+@media screen and (max-width: 992px) {
+  nav.navbar.sticky-top {
+    max-height: 100vh;
+    overflow: auto;
+  }
+}
+
 .qic-container {
   max-width: var(--page-container-width) !important;
   margin: 0 auto !important;
