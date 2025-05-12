@@ -47,7 +47,7 @@
 
 /* EXAPMLE CONFIG VARIANT 2*/
 
-/* @font-face {
+@font-face {
   font-family: FontExample2;
   src: url("../fonts/font2.ttf") format("truetype");
 }
@@ -81,4 +81,4 @@
   --dashboard-summary-section-ranking-order: 0;
   --dashboard-summary-section-badges-order: 1;
   --dashboard-summary-section-instant-reward-order: 0;
-} */
+}

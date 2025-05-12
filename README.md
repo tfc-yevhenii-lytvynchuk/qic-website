@@ -8,16 +8,16 @@
     - Layout Order Control:
       ```css
       --dashboard-reward-program-order: <value: number>;      /* Controls order of reward program section */
-      --dashboard-personalized-offers-order: <value: number>;  /* Controls order of personalized offers section */
+      --dashboard-personalized-offers-order: <value: number>; /* Controls order of personalized offers section */
       --dashboard-hot-tasks-order: <value: number>;           /* Controls order of hot tasks section */
       --dashboard-summary-order: <value: number>;             /* Controls order of summary section */
       --dashboard-your-quizes-order: <value: number>;         /* Controls order of quizzes section */
       ```
     - Summary Section Card Ordering:
       ```css
-      --dashboard-summary-section-ranking-order: <value: number>;      /* Controls ranking card position relative to progress */
-      --dashboard-summary-section-badges-order: <value: number>;       /* Controls badges card position relative to rest of section*/
-      --dashboard-summary-section-instant-reward-order: <value: number>; /* Controls instant reward card position relative to progres/ranking block */
+      --dashboard-summary-section-ranking-order: <value: 0 or 1>;        /* Controls ranking card position relative to progress */
+      --dashboard-summary-section-badges-order: <value: 0 or 1>;         /* Controls badges card position relative to rest of section*/
+      --dashboard-summary-section-instant-reward-order: <value: 0 or 1>; /* Controls instant reward card position relative to progres/ranking block */
       ```
     - Usage:
       1. Open `assets/css/config.css`
@@ -42,7 +42,7 @@ Project showcasing pure html, css, js website wich can be used as template for .
 - Pure HTML, CSS, and JavaScript pages
 - Customizable UI through configuration files:
   - Located in `assets/css/config.css`
-  - Contains 3 example configurations
+  - Contains 2 example configurations
   - Switch between configurations by uncommenting different sections, then refresh the page.
   - Can be included in your pages using:
     ```html
