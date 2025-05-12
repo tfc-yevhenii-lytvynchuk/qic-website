@@ -22,6 +22,13 @@ body {
   }
 }
 
+nav.navbar .dropdown-menu[data-bs-popper] {
+  top: 97%;
+}
+.navbar.navbar {
+  border-bottom: 1px solid #EEE;
+}
+
 .qic-container {
   max-width: var(--page-container-width) !important;
   margin: 0 auto !important;
@@ -166,7 +173,10 @@ a.nav-link.active:before {
 
 .navbar .nav-item.dropdown .dropdown-menu {
   border: none !important;
+  border-bottom: 1px solid #EEE !important;
+  border-top: 1px solid #EEE !important;
 }
+
 @media (min-width: 992px) {
   .qic-nav-dropdown-menu-content {
     width: 100vw;
