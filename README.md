@@ -51,6 +51,7 @@ Project showcasing pure html, css, js website wich can be used as template for .
   - config.css contains 2 versions in one file but it is possible to create separate files for each version and just change link href when including it on some page, or use 1 file when building different versions by changing variable values. Just be sure that structure(names of variables) is the same.
 
 ## Technologies Used
+
 ### Bootstrap
 > **Note**: Bootstrap files should not be modified to avoid unexpected behaviors. And should be included on all pages.
 
@@ -68,3 +69,16 @@ Documentation: [Bootstrap v5.3](https://getbootstrap.com/docs/5.3/getting-starte
 
 Documentation: [Bootstrap v5.3](https://icons.getbootstrap.com/?q=home#usage)
 
+### Security Headers
+> **Note**: These security headers are included in all pages for enhanced security.
+
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:;">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+```
+
+These headers provide:
+- Content Security Policy (CSP): Restricts resource loading to same origin, with exceptions for inline scripts/styles and HTTPS images
+- X-Content-Type-Options: Prevents MIME type sniffing
+- Referrer Policy: Controls how much referrer information is sent with requests
