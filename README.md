@@ -1,5 +1,9 @@
 # QIC UI HTML, CSS, JS project
--[Sources zip](/sources-zip.zip)
+
+## Usage
+
+**Note:** Absolute paths to `/assets/` folders are used everywhere for consistent imports and to avoid relative path usage like `../../../assets`.
+For this reason when previewing sources on local machine - either open website on static local server or from root of the disk.
 
 ## Milestone 1
 -[Login / Reset Password steps](/login/login.html)
