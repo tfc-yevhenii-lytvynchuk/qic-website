@@ -8,8 +8,8 @@
 
 :root {
   --font-family: FontExample1;
-  --logo-url: url(/assets/images/Logo.png);
-  --login-background-image-url: url(/assets/images/turner-reception-bg.png);
+  --logo-url: url(../images/Logo.png);
+  --login-background-image-url: url(../images/turner-reception-bg.png);
   
   --primary-color: #FF4026;
   --secondary-color: #0A5DD0;
@@ -23,11 +23,11 @@
   --default-border-radius: 0px;
   --default-border-color: #DFDFDF;
 
-  --nav-support-background-image-url: url(/assets/images/bg_support.png);
-  --check-in-background-image-url: url(/assets/images/turner-reception-bg.png);
+  --nav-support-background-image-url: url(../images/bg_support.png);
+  --check-in-background-image-url: url(../images/turner-reception-bg.png);
   --about-program-block-text-color: black;
 
-  --login-footer-background-image-url: url(/assets/images/turner-reception-bg.png);
+  --login-footer-background-image-url: url(../images/turner-reception-bg.png);
   --bs-breadcrumb-divider: '>';
 
   --dashboard-reward-program-order: 1;
@@ -54,7 +54,7 @@
 
 :root {
   --font-family: FontExample2;
-  --logo-url: url(/assets/images/samples-temp/bosch-logo.svg);
+  --logo-url: url(../images/images/samples-temp/bosch-logo.svg);
   --primary-color: #0A5DD0;
   --secondary-color: #FF4026;
   --success-color: #1c6604;
@@ -65,11 +65,11 @@
   --body-background-color: #dfe2e2;
   --default-border-radius: 8px;
 
-  --nav-support-background-image-url: url(/assets/images/samples-temp/bg_support2.webp);
-  --check-in-background-image-url: url(/assets/images/samples-temp/bg_banner3.webp);
+  --nav-support-background-image-url: url(../images/images/samples-temp/bg_support2.webp);
+  --check-in-background-image-url: url(../images/images/samples-temp/bg_banner3.webp);
   --about-program-block-text-color: white;
 
-  --login-footer-background-image-url: url(/assets/images/turner-reception-bg.png);
+  --login-footer-background-image-url: url(../images/images/turner-reception-bg.png);
   --bs-breadcrumb-divider: '>';
 
   --dashboard-reward-program-order: 5;
