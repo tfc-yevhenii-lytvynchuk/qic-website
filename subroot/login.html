@@ -8,11 +8,11 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/config.css">
-  <link rel="stylesheet" href="/assets/css/styles.css">
-  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/fonts/bootstrap-icons.css">
-  <link rel="stylesheet" href="/assets/css/login-styles.css">
+  <link rel="stylesheet" href="assets/css/config.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/login-styles.css">
 </head>
 
 <body class="login-bg d-flex align-items-center justify-content-center w-100">
@@ -22,7 +22,7 @@
       <form class="login-card w-100" autocomplete="on" id="login-form">
         <div class="d-flex gap-3 align-content-center mb-4 flex-column flex-sm-row justify-content-center align-items-center">
           <div class="login-logo d-flex align-items-center justify-content-center">
-            <img src="/assets/images/logo-white.svg" alt="QIC Logo" class="img-fluid">
+            <img src="assets/images/logo-white.svg" alt="QIC Logo" class="img-fluid">
           </div>
           <div class="d-flex flex-column gap-2">
             <h1 class="fw-bold fs-2 mb-0">Welcome back!</h1>
@@ -56,7 +56,7 @@
         <div class="mt-auto">
           <button type="submit" class="button-primary w-100 h-3rem">Log In</button>
         </div>
-        <a href="/login/login-reset-request.html" class="animated-link-with-arrow d-flex gap-3 align-items-center justify-content-center mt-2">
+        <a href="login-reset-request.html" class="animated-link-with-arrow d-flex gap-3 align-items-center justify-content-center mt-2">
           <span class="fw-bold">FORGOT PASSWORD?</span><i class="bi bi-arrow-right text-primary fs-4"></i>
         </a>
       </form>
@@ -71,7 +71,7 @@
             // PLACEHOLDER CODE, PLEASE IMPLEMENT
             e.preventDefault();
             alert(loginInput.value + ' ' + passwordInput.value + ' ' + rememberMeInput.value);
-            window.location.href = '/dashboard.html';
+            window.location.href = 'dashboard.html';
           });
         });
       </script>
@@ -84,7 +84,7 @@
       </div>
     </div>
   </main>
-  <script src="/assets/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
   <script>
     // Password visibility toggle
     document.addEventListener('DOMContentLoaded', function() {

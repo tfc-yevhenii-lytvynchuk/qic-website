@@ -8,11 +8,11 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/config.css">
-  <link rel="stylesheet" href="/assets/css/styles.css">
-  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/fonts/bootstrap-icons.css">
-  <link rel="stylesheet" href="/assets/css/login-styles.css">
+  <link rel="stylesheet" href="assets/css/config.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/login-styles.css">
 </head>
 
 <body class="login-bg d-flex align-items-center justify-content-center w-100">
@@ -32,7 +32,7 @@
         </div>
  
         <div class="d-flex justify-content-between">
-          <a href="/login/login.html" class="button-outlined px-4">Cancel</a>
+          <a href="login.html" class="button-outlined px-4">Cancel</a>
           <button type="submit" class="button-primary px-4" id="reset-password-code-submit">Verify Code</button>
         </div>
         <script>
@@ -44,14 +44,14 @@
               // PLACEHOLDER CODE, PLEASE IMPLEMENT
               e.preventDefault();
               alert(confirmationCodeInput.value);
-              window.location.href = '/login/login-reset.html';
+              window.location.href = 'login-reset.html';
             });
           });
         </script>
       </form>
     </div>
   </main>
-  <script src="/assets/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
 
