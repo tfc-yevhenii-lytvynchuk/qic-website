@@ -460,13 +460,37 @@
             <span class="fs-5 fw-medium text-nowrap">7 available Quizzes</span>
             <div class="d-flex gap-4">
               <div class="d-flex align-items-center border-default border border-1">
-                <span id="badges-grid-view" class="badges-view-switch">
+                <span id="quizzes-grid-view" class="qic-view-switch">
                   <i class="bi bi-grid-fill"></i>
                 </span>
-                <span id="badges-list-view" class="badges-view-switch active-badges-view">
+                <span id="quizzes-list-view" class="qic-view-switch active-view-switch">
                   <i class="bi bi-list-ul"></i>
                 </span>
-   
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    // PLACEHOLDER VIEW SWITCH LOGIC
+                    const quizzesGridView = document.getElementById('quizzes-grid-view');
+                    const quizzesListView = document.getElementById('quizzes-list-view');
+                    const quizzesSummaryTable = document.getElementById('quizzes-summary-table');
+                    const quizzesSummaryCards = document.getElementById('quizzes-summary-cards');
+                    if (!quizzesGridView || !quizzesListView || !quizzesSummaryTable || !quizzesSummaryCards) return;
+
+                    quizzesGridView.addEventListener('click', function(event) {
+                      alert('Grid view selected');
+                      quizzesGridView.classList.add('active-view-switch');
+                      quizzesListView.classList.remove('active-view-switch');
+                      quizzesSummaryTable.classList.add('d-none');
+                      quizzesSummaryCards.classList.remove('d-none');
+                    });
+                    quizzesListView.addEventListener('click', function(event) {
+                      alert('List view selected');
+                      quizzesListView.classList.add('active-view-switch');
+                      quizzesGridView.classList.remove('active-view-switch');
+                      quizzesSummaryTable.classList.remove('d-none');
+                      quizzesSummaryCards.classList.add('d-none');
+                    });
+                  });
+                </script>
               </div>
             </div>
           </div>
@@ -509,7 +533,7 @@
            
           </div>
 
-          <div>
+          <div id="quizzes-summary-table">
             <div class="table-responsive">
               <table class="table table-hover align-middle">
                 <thead>
@@ -579,7 +603,7 @@
               </table>
             </div>
           </div>
-          <div>
+          <div id="quizzes-summary-cards">
             <div class="row g-3">
               <div class="col-12 col-md-6 col-lg-4">
                 <div class="qic-qiz-card" style="background: #A3E19E;">
