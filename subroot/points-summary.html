@@ -18,9 +18,15 @@
   .points-summary-balance {
     width: 370px;
   }
+  .points-summary-filters-form {
+    width: 500px;
+  }
   @media (max-width: 576px) {
     .points-summary-balance {
       width: 100%;
+    }
+    .points-summary-filters-form {
+      width: 300px;
     }
   }
 </style>
@@ -499,6 +505,75 @@
           <div class="d-flex justify-content-between gap-3 mb-3 mb-lg-4 flex-column flex-lg-row">
             <span class="fs-5 fw-medium text-nowrap">3 Points Transactions</span>
             <div class="d-flex gap-4">
+
+              <div class="dropdown">
+                <button type="button" id="filtersButton" class="button-secondary px-2" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" data-bs-auto-close="outside">
+                  <i class="bi bi-sliders text-white me-2"></i>
+                  Filters
+                </button>
+                <div class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
+                  <form class="points-summary-filters-form px-3 py-4 bg-white d-flex flex-column gap-3">
+                    <span class="fs-7 pb-3 border-bottom border-gray-100 w-100">Filters</span>
+                    <div>
+                      <label for="points-amount" class="form-label">By points amount</label>
+                      <select name="points-amount" id="points-amount" class="form-select" aria-placeholder="Select a filter">
+                        <option value="Option1">Option1</option>
+                        <option value="Option2">Option2</option>
+                        <option value="Option3">Option3</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label for="transaction-type" class="form-label">By Transaction Type</label>
+                      <select name="transaction-type" id="transaction-type" class="form-select" aria-placeholder="Select a filter">
+                        <option value="Option1">Option1</option>
+                        <option value="Option2">Option2</option>
+                        <option value="Option3">Option3</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label for="source" class="form-label">By source</label>
+                      <select name="source" id="source" class="form-select" aria-placeholder="Select a filter">
+                        <option value="Option1">Option1</option>
+                        <option value="Option2">Option2</option>
+                        <option value="Option3">Option3</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label for="custom-text-filter" class="form-label">Custom text filter</label>
+                      <input type="text" name="custom-text-filter" id="custom-text-filter" class="form-control" placeholder="Enter a custom text filter">
+                    </div>
+                    <div>
+                      <label for="date-range" class="form-label">By date range</label>
+                      <div class="d-flex gap-3 flex-column flex-md-row">
+                        <input type="date" name="date-range" id="date-range" class="form-control" placeholder="Select a start date">
+                        <input type="date" name="date-range" id="date-range" class="form-control" placeholder="Select a end date">
+                      </div>
+                    </div>
+                    <div class="d-flex gap-3 align-content-center flex-wrap">
+                      <!-- EXAMPLE CHECKBOX INPUTS-->
+                      <div class="d-flex gap-2 align-items-center">
+                        <input type="checkbox" name="custom-checkbox1" id="custom-checkbox1" class="form-check-input">
+                        <label for="custom-checkbox1">Custom checkbox1</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <input type="checkbox" name="custom-checkbox2" id="custom-checkbox2" class="form-check-input">
+                        <label for="custom-checkbox2">Custom checkbox2</label>
+                      </div>
+                      <div class="d-flex gap-2 align-items-center">
+                        <input type="checkbox" name="custom-checkbox3" id="custom-checkbox3" class="form-check-input">
+                        <label for="custom-checkbox3">Custom checkbox3</label>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between gap-3">
+                      <button type="reset" class="button-outlined px-3">Reset</button>
+                      <button type="submit" class="button-primary px-3">Apply</button>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
               <form id="sortBadgesForm" action="">
                 <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="sortBadges" name="sortBadges">
                   <option value="newest">Sort by newest</option>

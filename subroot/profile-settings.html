@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
-  <link rel="stylesheet" href="assets/css/datepicker.material.css">
 
   <style>
     .profile-settings .avatar-container {
@@ -700,27 +699,11 @@
                   </div>
                   <div class="col-md-6 d-flex flex-column">
                     <label for="hireDate" class="form-label">Hire Date</label>
-                    <div class="position-relative">
-                      <input type="text" id="hireDate" name="hireDate" required class="form-control w-100" placeholder="Enter hire date" autocomplete="off">
-                      <i class="bi bi-calendar-fill position-absolute top-50 end-0 translate-middle-y me-3 pe-none"></i>
-                    </div>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        new Datepicker('#hireDate');
-                      });
-                    </script>
+                    <input type="date" id="hireDate" name="hireDate" required class="form-control w-100" placeholder="Enter hire date" autocomplete="off">
                   </div>
                   <div class="col-md-6 d-flex flex-column">
                     <label for="hireTermDate" class="form-label">Hire Term Date</label>
-                    <div class="position-relative">
-                      <input type="text" id="hireTermDate" name="hireTermDate" required class="form-control w-100" placeholder="Enter hire date" autocomplete="off">
-                      <i class="bi bi-calendar-fill position-absolute top-50 end-0 translate-middle-y me-3 pe-none"></i>
-                    </div>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        new Datepicker('#hireTermDate');
-                      });
-                    </script>
+                    <input type="date" id="hireTermDate" name="hireTermDate" required class="form-control w-100" placeholder="Enter hire term date" autocomplete="off">
                   </div>
                 </div>
               </div>
@@ -916,7 +899,6 @@
 
   </footer>
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>
-  <script src="assets/js/datepicker.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
 
