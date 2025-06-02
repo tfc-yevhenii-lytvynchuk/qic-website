@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Profile Settings</title>
+  <title>QIC Dashboard</title>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -12,29 +12,18 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
-  <style>
-    .profile-settings .avatar-container {
-      background: #f7f5f7
-    }
-    .profile-settings .avatar-container .avatar-container-img {
-      width: 40px;
-      height: 40px;
-      min-height: 40px;
-      min-width: 40px;
-      border-radius: 50%
-    }
-
-    .profile-settings #profile-settings {
-      background-color: #fdfdfd;
-      border-radius: var(--default-border-radius);
-    }
-
-    .profile-settings #profile-settings .form-row-description {
-      min-width: 250px
-    }
-  </style>
 </head>
 
+<style>
+  .points-summary-balance {
+    width: 370px;
+  }
+  @media (max-width: 576px) {
+    .points-summary-balance {
+      width: 100%;
+    }
+  }
+</style>
 <body>
   <nav class="navbar sticky-top navbar-expand-lg bg-white py-3">
     <div class="container-fluid qic-container">
@@ -78,7 +67,7 @@
               <span class="text-nowrap"> My Profile </span>
             </a>
             <div class="dropdown-menu">
-              <a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
+              <a href="profile-settings.html" class="p-3 d-flex gap-3 text-nowrap mock-item">
                 <div class="d-flex flex-column text-black"><span class="fw-bold">Profile Settings</span>
                   <span class="text-body-secondary fs-7">Subinfo</span>
                 </div>
@@ -110,7 +99,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
                   <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
                   <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                </svg>
+                </svg>  
                 14,245
               </span>
             </div>
@@ -118,7 +107,7 @@
         </div>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
           <li class="nav-item">
-            <a class="nav-link active p-0" href="dashboard.html">Dashboard</a>
+            <a class="nav-link p-0" href="dashboard.html">Dashboard</a>
           </li>
 
           <li class="nav-item dropdown">
@@ -264,7 +253,7 @@
                             <span class="fw-bold">Have a question?</span>
                             <span class="text-body-secondary fs-7">Send us a note</span>
                           </div>
-                          <a href="form.html" class="button-secondary px-3 ms-auto">Contact</a>
+                          <a href="" class="button-secondary px-3 ms-auto">Contact</a>
                         </div>
                       </div>
                     </div>
@@ -275,7 +264,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle p-0 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Points
             </a>
             <div class="dropdown-menu">
@@ -285,9 +274,9 @@
                     <div class="d-flex flex-column">
                       <span class="text-body-secondary fs-7">GENERAL</span>
                       <div class="d-flex flex-column overflow-y-auto main-nav-menu">
-                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                        <a href="points-summary.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="d-flex flex-column">
-                            <span class="fw-bold">Points Summary</span>
+                            <span class="fw-bold text-primary">Points Summary</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                         </a>
@@ -359,7 +348,7 @@
                             <span class="fw-bold">Have a question?</span>
                             <span class="text-body-secondary fs-7">Send us a note</span>
                           </div>
-                           <a href="form.html" class="button-secondary px-3 ms-auto">Contact</a>
+                           <a href="" class="button-secondary px-3 ms-auto">Contact</a>
                         </div>
                       </div>
                     </div>
@@ -436,7 +425,7 @@
                             <span class="fw-bold">Have a question?</span>
                             <span class="text-body-secondary fs-7">Send us a note</span>
                           </div>
-                           <a href="form.html" class="button-secondary px-3 ms-auto">Contact</a>
+                           <a href="" class="button-secondary px-3 ms-auto">Contact</a>
                         </div>
                       </div>
                     </div>
@@ -461,149 +450,256 @@
       </div>
     </div>
   </nav>
-  <nav class="qic-container w-100 mt-4"  aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="dashboard.html"><i class="bi bi-house-fill text-secondary me-1 mb-1"></i>Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Library</li>
-    </ol>
-  </nav>
-  <main class="profile-settings mt-3 text-black">
+  <main class="mt-3">
     <div class="qic-container">
-      <form id="profile-settings" action="" class="p-3 p-lg-5">
-        <h2>Profile Settings</h2>
-        <p class="text-color-secondary">Edit your profile details and customize the entire platform for yourself.</p>
-        <div class="qic-tab-links mt-4">
-          <a href="#" id="ProfileFormLink" class="nav-link fw-medium h-max active text-black">
-            Update Profile
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('ProfileFormLink').addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Profile Form Link clicked');
-                });
-              });
-            </script>
-          </a>
-          <a href="#" id="PrivacyFormLink" class="nav-link fw-medium h-max text-black">Privacy
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('PrivacyFormLink').addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Privacy Form Link clicked');
-                });
-              });
-            </script>
-          </a>
-          <a href="#" id="DeliveryAddressFormLink" class="nav-link fw-medium h-max text-black">Delivery Address
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('DeliveryAddressFormLink').addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Delivery Address Form Link clicked');
-                });
-              });
-            </script>
-          </a>
-          <a href="#" id="NotificationsFormLink" class="nav-link fw-medium h-max text-black">Notifications
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('NotificationsFormLink').addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Notifications Form Link clicked');
-                });
-              });
-            </script>
-          </a>
+      <header class="qic-header-banner justify-content-between">
+        <div class="d-flex flex-column gap-2 text-white gap-3">
+          <h1 class="fs-4">Points Summary</h1>
+          <span>All your actions with points are collected here. View earned and spent points in detail!</span>
         </div>
-        <div class="p-3 p-lg-5 d-flex flex-column gap-4 bg-white text-black">
-          <div class="d-flex gap-4 justify-content-between align-content-start flex-column flex-lg-row pb-4 border-bottom border-gray-100">
-            <div class="form-row-description d-flex text-nowrap gap-3">
-              <div class="qic-secondary-circle"><i class="bi bi-info-circle-fill text-secondary"></i></div>
-              <div class="d-flex flex-column">
-                <p class="fw-medium">Main User Info</p>
-                <p class="text-color-secondary fs-7">How other can recognize you?</p>
-              </div>
-            </div>
-            <div class="d-flex flex-column gap-3 flex-grow-1">
-              <div class="avatar-container p-4 d-flex gap-3 justify-content-between flex-column flex-md-row">
-                <div class="d-flex me-5 text-nowrap gap-3">
-                  <img src="assets/images/avatar.png" alt="avatar" class="avatar-container-img">
-                  <div class="d-flex flex-column">
-                    <p class="fw-medium">Current avatar</p>
-                    <p class="text-color-secondary fs-7">avatar.png</p>
-                  </div>
-                </div>
-                <div class="flex-grow-1">
-                  <label for="avatar" class="form-label">Avatar</label>
-                  <input type="file" id="avatar" name="avatar" accept="image/*" required class="form-control" placeholder="Choose an avatar file">
-                </div>
-              </div>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="firstName" class="form-label">First Name</label>
-                  <input type="text" id="firstName" name="firstName" required class="form-control" placeholder="Enter your first name" minlength="3" maxlength="20">
-                </div>
-                <div class="col-md-6">
-                  <label for="lastName" class="form-label">Last Name</label>
-                  <input type="text" id="lastName" name="lastName" required class="form-control" placeholder="Enter your last name" minlength="3" maxlength="20">
-                </div>
-                <div class="col-md-6">
-                  <div class="d-flex justify-content-between">
-                    <label for="loginName" class="form-label">Login Name</label>
-                  </div>
-                  <div class="input-group">
-                    <span class="input-group-text">@</span>
-                    <input type="text" id="loginName" name="loginName" required class="form-control" placeholder="Choose a login name" minlength="3" maxlength="20">
-                  </div>
-                  <small class="text-muted">Will be used as your ID</small>
-                </div>
-                <div class="col-md-6">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password">
-                </div>
-              </div>
+        <div class="qic-card-small-container points-summary-balance">
+          <div class="d-flex flex-column gap-3">
+            <span class="row g-0">
+              <span class="col-8">Earned</span>
+              <span class="col-4 d-flex align-items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                12,335  
+              </span>
+            </span>
+            <span class="row g-0">
+              <span class="col-8">Redeemed</span>
+              <span class="col-4 d-flex align-items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                5,335  
+              </span>
+            </span>
+            <span class="row g-0 fw-bold">
+              <span class="col-8">Balance</span>
+              <span class="col-4 d-flex align-items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                 7,335
+              </span>
+            </span>
+
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <div class="qic-card-container">
+          <div class="d-flex justify-content-between gap-3 mb-3 mb-lg-4 flex-column flex-lg-row">
+            <span class="fs-5 fw-medium text-nowrap">3 Points Transactions</span>
+            <div class="d-flex gap-4">
+              <form id="sortBadgesForm" action="">
+                <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="sortBadges" name="sortBadges">
+                  <option value="newest">Sort by newest</option>
+                  <option value="oldest">Sort by oldest</option>
+                  <option value="name">Sort by name</option>
+                  <option value="points">Sort by points</option>
+                </select>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('sortBadges').addEventListener('change', function(event) {
+                      alert(event.target.value);
+                    });
+                  });
+                </script>
+              </form>
             </div>
           </div>
-          <div class="d-flex gap-4 justify-content-between align-content-start flex-column flex-lg-row pb-4 border-bottom border-gray-100">
-            <div class="form-row-description d-flex text-nowrap gap-3">
-              <div class="qic-secondary-circle"><i class="bi bi-telephone-fill text-secondary"></i></div>
-              <div class="d-flex flex-column">
-                <p class="fw-medium">Contact Info</p>
-                <p class="text-color-secondary fs-7">How to reach you?</p>
-              </div>
-            </div>
-            <div class="d-flex flex-column gap-3 flex-grow-1">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="company" class="form-label">Company</label>
-                  <!-- <input type="text"  class="form-control" > -->
-                  <select class="form-select" aria-label="Default select example" placeholder="Enter company name"  id="company" name="company" required>
-                    <option value="1">Company 1</option>
-                    <option value="2">Company 2</option>
-                    <option value="3">Company 3</option>
-                    <option value="4">Company 4</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="locationId" class="form-label">Location ID</label>
-                  <input type="text" id="locationId" name="locationId" required class="form-control" placeholder="Enter location ID" minlength="3" maxlength="20">
-                </div>
-                <div class="col-md-6">
-                  <label for="phone" class="form-label">Phone Number</label>
-                  <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phone" name="phone" required class="form-control" placeholder="Enter phone number">
-                  <small class="text-muted">Format: 123-456-7890</small>
-                </div>
-                <div class="col-md-6">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" id="email" name="email" required class="form-control" placeholder="Enter email address">
-                </div>
-              </div>
+
+          <div class="qic-tab-links gap-3 mt-4 w-100">
+            <a href="#" id="AllPointsLink" class="nav-link fw-medium h-max text-black active">
+              All
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('AllPointsLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('All Points Link clicked');
+                  });
+                });
+              </script>
+            </a>
+            <a href="#" id="EarnedPointsLink" class="nav-link fw-medium h-max text-black">
+              Earned
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('EarnedPointsLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('Earned Points Link clicked');
+                  });
+                });
+              </script>
+            </a>
+
+            <a href="#" id="AwardedPointsLink" class="nav-link fw-medium h-max text-black">
+              Awarded
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('AwardedPointsLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('Awarded Points Link clicked');
+                  });
+                });
+              </script>
+            </a>
+
+            <a href="#" id="SpendedPointsLink" class="nav-link fw-medium h-max text-black">
+              Spended
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('SpendedPointsLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('Spended Points Link clicked');
+                  });
+                });
+              </script>
+            </a>
+           
+          </div>
+
+          <div id="badges-summary-table" class="badges-summary-table">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th scope="col">POINTS</th>
+                    <th scope="col">TYPE</th>
+                    <th scope="col">SOURCE</th>
+                    <th scope="col">DATE</th>
+                    <th scope="col">DESCRIPTION</th>
+                    <th scope="col">DETAILS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="qic-table-points-item points-positive">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
+                          <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
+                          <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
+                        </svg>
+                        +700
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Badge Award</td>
+                    <td class="text-nowrap">
+                      Mike Minson
+                    </td>
+                    <td class="text-nowrap">Jan 12, 2025</td>
+                    <td>
+                      <span class="qic-table-description-text">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia exercitationem fugit magnam voluptate nobis doloribus provident quod, aliquid ducimus optio nesciunt fugiat inventore reiciendis porro asperiores dolor error alias a!
+                      </span>
+                    </td>
+                    <td class="text-center">
+                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="qic-table-points-item points-negative">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
+                          <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
+                          <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
+                        </svg>
+                        -1700
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Code Redeeming</td>
+                    <td class="text-nowrap">
+                      Instant Reward Code
+                    </td>
+                    <td class="text-nowrap">Jan 12, 2025</td>
+                    <td>
+                      <span class="qic-table-description-text">
+                        Code: 23123-13423412-1231231
+                      </span>
+                    </td>
+                    <td class="text-center">
+                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="qic-table-points-item points-neutral">
+                        No points
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Shop Purchase</td>
+                    <td class="text-nowrap">
+                      Sony Extra Bass Smartphone Headset
+                    </td>
+                    <td class="text-nowrap">Jan 12, 2025</td>
+                    <td>
+                      <span class="qic-table-description-text">
+                        Order #12331
+                      </span>
+                    </td>
+                    <td class="text-center">
+                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-        </div><button type="submit" class="button-primary">Save Changes</button>
-      </form>
+
+          <nav class="qic-paginator" aria-label="badges pagination">
+            <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page">
+              <option value="15">15 per page</option>
+              <option value="30">30 per page</option>
+              <option value="45">45 per page</option>
+            </select>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link active" href="#" aria-current="page">1</a></li>
+              <li class="page-item"><a class="page-link" href="?page=2" >2</a></li>
+              <li class="page-item"><a class="page-link" href="?page=3" >3</a></li>
+              <i class="bi bi-three-dots d-flex align-items-end mx-3 pointer-events-none"></i>
+              <li class="page-item"><a class="page-link" href="?page=9" >9</a></li>
+              <li class="page-item"><a class="page-link" href="?page=10" >10</a></li>
+            </ul>
+            <div class="d-flex gap-3">
+              <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4">Previous</button>
+              <button id="qic-paginator-next-page-button" class="button-outlined px-4">Next</button>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                // PLACEHOLDER PAGINATION LOGIC
+                const previousPageButton = document.getElementById('qic-paginator-previous-page-button');
+                const nextPageButton = document.getElementById('qic-paginator-next-page-button');
+                const pageSizeSelect = document.getElementById('page-size-select');
+                if (!previousPageButton || !nextPageButton || !pageSizeSelect) return;
+                previousPageButton.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Previous page button clicked');
+                });
+                nextPageButton.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Next page button clicked');
+                });
+                pageSizeSelect.addEventListener('change', function(event) {
+                  event.preventDefault();
+                  alert(event.target.value);
+                });
+              });
+            </script>
+          </nav>
+        </div>
+      </section>
+
     </div>
   </main>
+  
   <footer class="qic-footer">
     <div class="qic-footer-baner">
       <div class="qic-container">
@@ -683,7 +779,12 @@
     </div>
 
   </footer>
-  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
-</body>
 
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+    });
+  </script>
+</body>
 </html>

@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>QIC Dashboard</title>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:;">
+  <title>Profile Settings</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,43 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/datepicker.material.css">
+
+  <style>
+    .profile-settings .avatar-container {
+      background: #f7f5f7
+    }
+    .profile-settings .avatar-container .avatar-container-img {
+      width: 40px;
+      height: 40px;
+      min-height: 40px;
+      min-width: 40px;
+      border-radius: 50%
+    }
+
+    .profile-settings #profile-settings {
+      background-color: #fdfdfd;
+      border-radius: var(--default-border-radius);
+    }
+
+    .profile-settings #profile-settings .form-row-description {
+      min-width: 250px
+    }
+    .profile-settings-toggle {
+      background: #F3F5F5;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .unsaved-changes-indicator-block {
+      border: 1px solid #E3E3E3;
+      background: #F3F5F5;
+      padding: 24px;
+      border-radius: var(--default-border-radius);
+    }
+  </style>
 </head>
 
 <body>
@@ -52,13 +89,13 @@
             <span class="d-block d-lg-none">Notifications</span>
           </a>
           <div class="qic-navbar-controls-item dropdown">
-            <a data-bs-toggle="dropdown" href="#" class="dropdown-toggle d-flex align-items-center gap-2 cursor-pointer">
+            <a data-bs-toggle="dropdown" href="#" class="dropdown-toggle d-flex align-items-center gap-2 cursor-pointer nav-link active">
               <i class="bi bi-person-fill"></i>
               <span class="text-nowrap"> My Profile </span>
             </a>
             <div class="dropdown-menu">
               <a href="profile-settings.html" class="p-3 d-flex gap-3 text-nowrap mock-item">
-                <div class="d-flex flex-column text-black"><span class="fw-bold">Profile Settings</span>
+                <div class="d-flex flex-column text-black"><span class="fw-bold text-primary">Profile Settings</span>
                   <span class="text-body-secondary fs-7">Subinfo</span>
                 </div>
               </a>
@@ -89,7 +126,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
                   <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
                   <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                </svg>  
+                </svg>
                 14,245
               </span>
             </div>
@@ -254,7 +291,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle p-0 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Points
             </a>
             <div class="dropdown-menu">
@@ -272,7 +309,7 @@
                         </a>
                         <a href="quizzes.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="d-flex flex-column">
-                            <span class="fw-bold text-primary">Quizzes</span>
+                            <span class="fw-bold">Quizzes</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                         </a>
@@ -435,318 +472,370 @@
             <span>14,245</span></div><a href="#" class="nav-shop-link d-flex align-items-center py-2 px-3 button-primary">
             Shop </a>
         </div>
-
-
       </div>
     </div>
   </nav>
-  <main>
+
+  <main class="profile-settings mt-4 text-black">
     <div class="qic-container">
-      <section id="example-section1">
-        <div class="qic-card-container">
-          <div class="d-flex justify-content-between gap-3 mb-3 mb-lg-4 flex-column flex-lg-row">
-            <span class="fs-5 fw-medium text-nowrap">7 available Quizzes</span>
-            <div class="d-flex gap-4">
-              <div class="d-flex align-items-center border-default border border-1">
-                <span id="quizzes-grid-view" class="qic-view-switch">
-                  <i class="bi bi-grid-fill"></i>
-                </span>
-                <span id="quizzes-list-view" class="qic-view-switch active-view-switch">
-                  <i class="bi bi-list-ul"></i>
-                </span>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    // PLACEHOLDER VIEW SWITCH LOGIC
-                    const quizzesGridView = document.getElementById('quizzes-grid-view');
-                    const quizzesListView = document.getElementById('quizzes-list-view');
-                    const quizzesSummaryTable = document.getElementById('quizzes-summary-table');
-                    const quizzesSummaryCards = document.getElementById('quizzes-summary-cards');
-                    if (!quizzesGridView || !quizzesListView || !quizzesSummaryTable || !quizzesSummaryCards) return;
-
-                    quizzesGridView.addEventListener('click', function(event) {
-                      alert('Grid view selected');
-                      quizzesGridView.classList.add('active-view-switch');
-                      quizzesListView.classList.remove('active-view-switch');
-                      quizzesSummaryTable.classList.add('d-none');
-                      quizzesSummaryCards.classList.remove('d-none');
-                    });
-                    quizzesListView.addEventListener('click', function(event) {
-                      alert('List view selected');
-                      quizzesListView.classList.add('active-view-switch');
-                      quizzesGridView.classList.remove('active-view-switch');
-                      quizzesSummaryTable.classList.remove('d-none');
-                      quizzesSummaryCards.classList.add('d-none');
-                    });
-                  });
-                </script>
-              </div>
-            </div>
+      <form id="profile-settings" action="" class="qic-card-container">
+        <div class="d-flex justify-content-between gap-3 flex-wrap">
+          <div>
+            <h2>Profile Settings</h2>
+            <p class="text-color-secondary">Edit your profile details and customize the entire platform for yourself.</p>
           </div>
-
-          <div class="qic-tab-links gap-3 mt-4 w-100">
-            <a href="#" id="allQuizzesLink" class="nav-link fw-medium h-max text-black active">
-              All
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('allQuizzesLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('All Quizzes Link clicked');
-                  });
-                });
-              </script>
-            </a>
-            <a href="#" id="completedQuizzesLink" class="nav-link fw-medium h-max text-black">
-              Completed
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('completedQuizzesLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Completed Quizzes Link clicked');
-                  });
-                });
-              </script>
-            </a>
-
-            <a href="#" id="failedQuizzesLink" class="nav-link fw-medium h-max text-black">
-              Failed
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('failedQuizzesLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Failed Quizzes Link clicked');
-                  });
-                });
-              </script>
-            </a>
-           
-          </div>
-
-          <div id="quizzes-summary-table">
-            <div class="table-responsive">
-              <table class="table table-hover align-middle">
-                <thead>
-                  <tr>
-                    <th scope="col">NAME</th>
-                    <th scope="col">DATES</th>
-                    <th scope="col">POINTS</th>
-                    <th scope="col">ACTIONS</th>
-                    <th scope="col">DETAILES</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <span class="qic-table-description-text">A very long name for the Quiz name for test purpose to see how it’s workA very long name for the Quiz name for test purpose to see how it’s workA very long name for the Quiz name for test purpose to see how it’s work</span>
-                    </td>
-                    <td class="text-nowrap">Started Jan 6.</td>
-                    <td>
-                      <div class="qic-table-points-item points-negative">
-                        <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
-                          <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
-                          <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
-                        </svg>
-                        -1500
-                      </div>
-                    </td>
-                    <td><button class="button-secondary px-2">Continue</button></td>
-                    <td class="text-center">
-                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span class="qic-table-description-text">Safety Quiz #2</span>
-                    </td>
-                    <td class="text-nowrap">Started Jan 6.</td>
-                    <td>
-                      <div class="qic-table-points-item points-positive">
-                        <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
-                          <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
-                          <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
-                        </svg>
-                        +1500
-                      </div>
-                    </td>
-                    <td><button class="button-secondary px-2">Continue</button></td>
-                    <td class="text-center">
-                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span class="qic-table-description-text">Safety Quiz #3</span>
-                    </td>
-                    <td class="text-nowrap">Started Jan 6.</td>
-                    <td>
-                      <div class="qic-table-points-item points-neutral">
-                        No points
-                      </div>
-                    </td>
-                    <td><button class="button-secondary px-2">Continue</button></td>
-                    <td class="text-center">
-                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+          <div class="unsaved-changes-indicator-block d-flex align-items-center gap-3">
+            <div class="qic-secondary-circle d-none d-lg-flex"><i class="bi bi-cloud-download text-secondary"></i></div>
+            <div class="d-flex flex-column">
+              <span class="fw-medium">You have unsaved changes</span>
+              <span class="text-color-secondary fs-7 d-none d-lg-block">Changes may be lost if you exit without saving</span>
             </div>
+            <button class="button-primary text-nowrap px-2">Save Changes</button>
           </div>
-          <div id="quizzes-summary-cards">
-            <div class="row g-3">
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="qic-qiz-card" style="background: #A3E19E;">
-                  <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
-                  <p class="fs-5 fw-medium line-clamp-3">A very long name for the Quiz name for test purpose to see how it’s workA very long name for the Quiz name for test purpose to see how it’s workA very long name for the Quiz name for test purpose to see how it’s work</p>
-                  <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
-                  </div>
-                  <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
-                    <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
-                    <div class="d-flex align-items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
-                        <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
-                        <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                      </svg>
-                      <span class="fw-medium">+5,760</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="qic-qiz-card" style="background: #F1CE75;">
-                  <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
-                  <p class="fs-5 fw-medium line-clamp-3">Safety Quiz #3</p>
-                  <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
-                  </div>
-                  <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
-                    <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
-                    <div class="d-flex align-items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
-                        <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
-                        <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                      </svg>
-                      <span class="fw-medium">+5,760</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="qic-qiz-card" style="background: #D1D3EC;">
-                  <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
-                  <p class="fs-5 fw-medium line-clamp-3">Safety Quiz #2</p>
-                  <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
-                  </div>
-                  <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
-                    <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
-                    <div class="d-flex align-items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
-                        <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
-                        <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                      </svg>
-                      <span class="fw-medium">+5,760</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="qic-qiz-card" style="background: #D1D3EC;">
-                  <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
-                  <p class="fs-5 fw-medium line-clamp-3">Safety Quiz #2</p>
-                  <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
-                  </div>
-                  <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
-                    <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
-                    <div class="d-flex align-items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
-                        <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
-                        <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                      </svg>
-                      <span class="fw-medium">+5,760</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="qic-qiz-card" style="background: #D1D3EC;">
-                  <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
-                  <p class="fs-5 fw-medium line-clamp-3">Safety Quiz #2</p>
-                  <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
-                    <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
-                  </div>
-                  <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
-                    <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
-                    <div class="d-flex align-items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
-                        <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
-                        <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                      </svg>
-                      <span class="fw-medium">+5,760</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          
-          </div>
-
-          <nav class="qic-paginator" aria-label="quizzes pagination">
-            <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page">
-              <option value="15">15 per page</option>
-              <option value="30">30 per page</option>
-              <option value="45">45 per page</option>
-            </select>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link active" href="#" aria-current="page">1</a></li>
-              <li class="page-item"><a class="page-link" href="?page=2" >2</a></li>
-              <li class="page-item"><a class="page-link" href="?page=3" >3</a></li>
-              <i class="bi bi-three-dots d-flex align-items-end mx-3 pointer-events-none"></i>
-              <li class="page-item"><a class="page-link" href="?page=9" >9</a></li>
-              <li class="page-item"><a class="page-link" href="?page=10" >10</a></li>
-            </ul>
-            <div class="d-flex gap-3">
-              <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4">Previous</button>
-              <button id="qic-paginator-next-page-button" class="button-outlined px-4">Next</button>
-            </div>
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                // PLACEHOLDER PAGINATION LOGIC
-                const previousPageButton = document.getElementById('qic-paginator-previous-page-button');
-                const nextPageButton = document.getElementById('qic-paginator-next-page-button');
-                const pageSizeSelect = document.getElementById('page-size-select');
-                if (!previousPageButton || !nextPageButton || !pageSizeSelect) return;
-                previousPageButton.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Previous page button clicked');
-                });
-                nextPageButton.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Next page button clicked');
-                });
-                pageSizeSelect.addEventListener('change', function(event) {
-                  event.preventDefault();
-                  alert(event.target.value);
-                });
-              });
-            </script>
-          </nav>
         </div>
-      </section>
+
+        <div class="mt-4 p-3 p-lg-5 d-flex flex-column gap-4 gap-lg-5 bg-white text-black border">
+          <!-- MAIN USER INFO -->
+          <div class="d-flex gap-4 gap-lg-5 justify-content-between align-content-start flex-column flex-lg-row  pb-4 pb-lg-5 border-bottom border-gray-100">
+            <div class="d-flex justify-content-between">
+              <div class="form-row-description d-flex text-nowrap gap-3">
+                <div class="qic-secondary-circle"><i class="bi bi-person-vcard text-secondary"></i></div>
+                <div class="d-flex flex-column">
+                  <p class="fw-medium mb-2">Main User Info</p>
+                  <p class="text-color-secondary fs-7">How other can recognize you?</p>
+                </div>
+              </div>
+              <button class="profile-settings-toggle d-flex d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#main-user-info" aria-expanded="true" aria-controls="main-user-info">
+                <i class="bi bi-chevron-down fs-6 text-primary"></i>
+              </button>
+            </div>
+            <div id="main-user-info" class="collapse show flex-grow-1">
+              <div class=" d-flex flex-column gap-3 flex-grow-1">
+                <!-- <div class="avatar-container p-4 d-flex gap-3 justify-content-between flex-column flex-md-row">
+                  <div class="d-flex me-5 text-nowrap gap-3">
+                    <img src="assets/images/avatar.png" alt="avatar" class="avatar-container-img">
+                    <div class="d-flex flex-column">
+                      <p class="fw-medium">Current avatar</p>
+                      <p class="text-color-secondary fs-7">avatar.png</p>
+                    </div>
+                  </div>
+                  <div class="flex-grow-1">
+                    <label for="avatar" class="form-label">Avatar</label>
+                    <input type="file" id="avatar" name="avatar" accept="image/*" required class="form-control" placeholder="Choose an avatar file">
+                  </div>
+                </div> -->
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required class="form-control" placeholder="Enter your first name" minlength="3" maxlength="20" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="middleName" class="form-label">Middle Name</label>
+                    <input type="text" id="middleName" name="middleName" required class="form-control" placeholder="Enter your middle name" minlength="3" maxlength="20" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required class="form-control" placeholder="Enter your last name" minlength="3" maxlength="20" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="companyName" class="form-label">Company Name</label>
+                    <input type="text" id="companyName" name="companyName" required class="form-control" placeholder="Enter your company name" minlength="3" maxlength="20" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECURITY -->
+          <div class="d-flex gap-4 gap-lg-5 justify-content-between align-content-start flex-column flex-lg-row  pb-4 pb-lg-5 border-bottom border-gray-100">
+            <div class="d-flex justify-content-between">
+              <div class="form-row-description d-flex text-nowrap gap-3">
+                <div class="qic-secondary-circle"><i class="bi bi-shield-check text-secondary"></i></div>
+                <div class="d-flex flex-column">
+                  <p class="fw-medium mb-2">Security</p>
+                  <p class="text-color-secondary fs-7">Lorem ipsum</p>
+                </div>
+              </div>
+              <button class="profile-settings-toggle d-flex d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#security" aria-expanded="true" aria-controls="security">
+                <i class="bi bi-chevron-down fs-6 text-primary"></i>
+              </button>
+            </div>
+            <div id="security" class="collapse show flex-grow-1">
+              <div class="d-flex flex-column gap-3 flex-grow-1">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="d-flex justify-content-between">
+                      <label for="loginName" class="form-label">Login Name</label>
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-text">@</span>
+                      <input type="text" id="loginName" name="loginName" required class="form-control" placeholder="Choose a login name" minlength="3" maxlength="20">
+                    </div>
+                    <small class="text-muted">Will be used as your ID</small>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" autocomplete="current-password" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTACT INFO -->
+          <div class="d-flex gap-4 gap-lg-5 justify-content-between align-content-start flex-column flex-lg-row  pb-4 pb-lg-5 border-bottom border-gray-100">
+            <div class="d-flex justify-content-between">
+              <div class="form-row-description d-flex text-nowrap gap-3">
+                <div class="qic-secondary-circle"><i class="bi bi-telephone text-secondary"></i></div>
+                <div class="d-flex flex-column">
+                  <p class="fw-medium mb-2">Contact Info</p>
+                  <p class="text-color-secondary fs-7">Lorem ipsum</p>
+                </div>
+              </div>
+              <button class="profile-settings-toggle d-flex d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#contact-info" aria-expanded="true" aria-controls="contact-info">
+                <i class="bi bi-chevron-down fs-6 text-primary"></i>
+              </button>
+            </div>
+            <div id="contact-info" class="collapse show flex-grow-1">
+              <div class="d-flex flex-column gap-3 flex-grow-1">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phone" name="phone" required class="form-control" placeholder="Enter phone number">
+                    <small class="text-muted">Format: 123-456-7890</small>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" required class="form-control" placeholder="Enter email address" autocomplete="email">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADDRESS -->
+          <div class="d-flex gap-4 gap-lg-5 justify-content-between align-content-start flex-column flex-lg-row  pb-4 pb-lg-5 border-bottom border-gray-100">
+            <div class="d-flex justify-content-between">
+              <div class="form-row-description d-flex text-nowrap gap-3">
+                <div class="qic-secondary-circle"><i class="bi bi-geo text-secondary"></i></div>
+                <div class="d-flex flex-column">
+                  <p class="fw-medium mb-2">Address</p>
+                  <p class="text-color-secondary fs-7">Lorem ipsum</p>
+                </div>
+              </div>
+              <button class="profile-settings-toggle d-flex d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#address" aria-expanded="true" aria-controls="address">
+                <i class="bi bi-chevron-down fs-6 text-primary"></i>
+              </button>
+            </div>
+            <div id="address" class="collapse show flex-grow-1">
+              <div class="d-flex flex-column gap-3 flex-grow-1">
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label for="addressLine1" class="form-label">Address Line 1</label>
+                    <input type="text" id="addressLine1" name="addressLine1" required class="form-control" placeholder="Enter address line 1">
+                  </div>
+                  <div class="col-12">
+                    <label for="addressLine2" class="form-label">Address Line 2</label>
+                    <input type="text" id="addressLine2" name="addressLine2" required class="form-control" placeholder="Enter address line 2">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" id="city" name="city" required class="form-control" placeholder="Enter city">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="state" class="form-label">State / Province</label>
+                    <select type="text" id="state" name="state" required class="form-select" placeholder="Enter state">
+                      <option value="TN">Tennessee</option>
+                      <option value="AL">Alabama</option>
+                      <option value="AK">Alaska</option>
+                      <option value="AZ">Arizona</option>
+                      <option value="AR">Arkansas</option>
+                      <option value="CA">California</option>
+                      <option value="CO">Colorado</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="zip" class="form-label">ZIP</label>
+                    <input type="text" id="zip" name="zip" required class="form-control" placeholder="Enter zip / postal code">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="country" class="form-label">Country</label>
+                    <select type="text" id="country" name="country" required class="form-select" placeholder="Enter country">
+                      <option value="US">United States</option>
+                      <option value="CA">Canada</option>
+                      <option value="MX">Mexico</option>
+                      <option value="UK">United Kingdom</option>
+                      <option value="AU">Australia</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACCOUNT INFO -->
+          <div class="d-flex gap-4 gap-lg-5 justify-content-between align-content-start flex-column flex-lg-row  pb-4 pb-lg-5 border-bottom border-gray-100">
+            <div class="d-flex justify-content-between">
+              <div class="form-row-description d-flex text-nowrap gap-3">
+                <div class="qic-secondary-circle"><i class="bi bi-display text-secondary"></i></div>
+                <div class="d-flex flex-column">
+                  <p class="fw-medium mb-2">Account Info</p>
+                  <p class="text-color-secondary fs-7">Lorem ipsum</p>
+                </div>
+              </div>
+              <button class="profile-settings-toggle d-flex d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#account-info" aria-expanded="true" aria-controls="account-info">
+                <i class="bi bi-chevron-down fs-6 text-primary"></i>
+              </button>
+            </div>
+            <div id="account-info" class="collapse show flex-grow-1">
+              <div class="d-flex flex-column gap-3 flex-grow-1">
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label for="accountStatus" class="form-label">Account Status</label>
+                    <select type="text" id="accountStatus" name="accountStatus" required class="form-select" placeholder="Select account status">
+                      <option value="active">Status1</option>
+                      <option value="inactive">Status2</option>
+                      <option value="inactive">Status3</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 d-flex flex-column">
+                    <label for="hireDate" class="form-label">Hire Date</label>
+                    <div class="position-relative">
+                      <input type="text" id="hireDate" name="hireDate" required class="form-control w-100" placeholder="Enter hire date" autocomplete="off">
+                      <i class="bi bi-calendar-fill position-absolute top-50 end-0 translate-middle-y me-3 pe-none"></i>
+                    </div>
+                    <script>
+                      document.addEventListener('DOMContentLoaded', function() {
+                        new Datepicker('#hireDate');
+                      });
+                    </script>
+                  </div>
+                  <div class="col-md-6 d-flex flex-column">
+                    <label for="hireTermDate" class="form-label">Hire Term Date</label>
+                    <div class="position-relative">
+                      <input type="text" id="hireTermDate" name="hireTermDate" required class="form-control w-100" placeholder="Enter hire date" autocomplete="off">
+                      <i class="bi bi-calendar-fill position-absolute top-50 end-0 translate-middle-y me-3 pe-none"></i>
+                    </div>
+                    <script>
+                      document.addEventListener('DOMContentLoaded', function() {
+                        new Datepicker('#hireTermDate');
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- PARTICIPANT INFO -->
+           <div class="d-flex gap-4 gap-lg-5 justify-content-between align-content-start flex-column flex-lg-row  pb-4 pb-lg-5 border-bottom border-gray-100">
+            <div class="d-flex justify-content-between">
+              <div class="form-row-description d-flex text-nowrap gap-3">
+                <div class="qic-secondary-circle"><i class="bi bi-person-raised-hand text-secondary"></i></div>
+                <div class="d-flex flex-column">
+                  <p class="fw-medium mb-2">Participant Info</p>
+                  <p class="text-color-secondary fs-7">Lorem ipsum</p>
+                </div>
+              </div>
+              <button class="profile-settings-toggle d-flex d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#participant-info" aria-expanded="true" aria-controls="participant-info">
+                <i class="bi bi-chevron-down fs-6 text-primary"></i>
+              </button>
+            </div>
+            <div id="participant-info" class="collapse show flex-grow-1">
+              <div class="d-flex flex-column gap-3 flex-grow-1">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="participantType" class="form-label">Participant Type</label>
+                    <select type="text" id="participantType" name="participantType" required class="form-select" placeholder="Select participant type">
+                      <option value="type1">Type Name 1</option>
+                      <option value="type2">Type Name 2</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="participantLocationID" class="form-label">Participant Location ID</label>
+                    <select type="text" id="participantLocationID" name="participantLocationID" required class="form-select" placeholder="Select participant location ID">
+                      <option value="location1">Location Name 1</option>
+                      <option value="location2">Location Name 2</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        
+        <!-- COMMUNICATION -->
+        <div class="d-flex gap-4 gap-lg-5 justify-content-between align-content-start flex-column flex-lg-row pb-4 pb-lg-5 border-bottom border-gray-100">
+          <div class="d-flex justify-content-between">
+            <div class="form-row-description d-flex text-nowrap gap-3">
+              <div class="qic-secondary-circle"><i class="bi bi-telephone text-secondary"></i></div>
+              <div class="d-flex flex-column">
+                <p class="fw-medium mb-2">Communication</p>
+                <p class="text-color-secondary fs-7">Lorem ipsum</p>
+              </div>
+            </div>
+            <button class="profile-settings-toggle d-flex d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#communication" aria-expanded="true" aria-controls="communication">
+              <i class="bi bi-chevron-down fs-6 text-primary"></i>
+            </button>
+          </div>
+          <div id="communication" class="collapse show flex-grow-1">
+            <div class="d-flex flex-column gap-3 flex-grow-1">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="emailOptIn" class="form-label">Email Opt In</label>
+                  <select type="text" id="emailOptIn" name="emailOptIn" required class="form-select" placeholder="Select email opt in">
+                    <option value="optIn">Opt In</option>
+                    <option value="optOut">Opt Out</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="preferredCommunicationMethod" class="form-label">Preferred Communication Method</label>
+                  <select type="text" id="preferredCommunicationMethod" name="preferredCommunicationMethod" required class="form-select" placeholder="Select preferred communication method">
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="text">Text</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="lastDateAccountVerified" class="form-label">Last Date Account Verified</label>
+                  <input type="text" id="lastDateAccountVerified" name="lastDateAccountVerified" required class="form-control" placeholder="Enter last date account verified">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CUSTOM FIELDS -->
+        <div class="d-flex gap-4 gap-lg-5 justify-content-between align-content-start flex-column flex-lg-row pb-4 pb-lg-5 border-bottom border-gray-100">
+          <div class="d-flex justify-content-between">
+            <div class="form-row-description d-flex text-nowrap gap-3">
+              <div class="qic-secondary-circle"><i class="bi bi-code text-secondary"></i></div>
+              <div class="d-flex flex-column">
+                <p class="fw-medium mb-2">Custom Title</p>
+                <p class="text-color-secondary fs-7">Lorem ipsum</p>
+              </div>
+            </div>
+            <button class="profile-settings-toggle d-flex d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#custom-title" aria-expanded="true" aria-controls="custom-title">
+              <i class="bi bi-chevron-down fs-6 text-primary"></i>
+            </button>
+          </div>
+          <div id="custom-title" class="collapse show flex-grow-1">
+            <div class="d-flex flex-column gap-3 flex-grow-1">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="customField1" class="form-label">Custom Field 1</label>
+                  <input type="text" id="customField1" name="customField1" required class="form-control" placeholder="Enter custom field 1">
+                </div>
+                <div class="col-md-6">
+                  <label for="customField2" class="form-label">Custom Field 2</label>
+                  <input type="text" id="customField2" name="customField2" required class="form-control" placeholder="Enter custom field 2">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </main>
-  
   <footer class="qic-footer">
     <div class="qic-footer-baner">
       <div class="qic-container">
@@ -826,12 +915,13 @@
     </div>
 
   </footer>
-
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/js/datepicker.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
 
     });
   </script>
 </body>
+
 </html>

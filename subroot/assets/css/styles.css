@@ -659,3 +659,19 @@ body .modal-dialog {
 .qic-view-switch.active-view-switch i {
   color: white;
 }
+
+.qic-table-description-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  font-style: italic;
+  min-width: 160px;
+  color: #434343;
+}
+
+.datepicker {
+  width: 100%;
+}

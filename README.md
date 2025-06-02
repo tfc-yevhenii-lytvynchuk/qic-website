@@ -89,3 +89,21 @@ These headers provide:
 - Content Security Policy (CSP): Restricts resource loading to same origin, with exceptions for inline scripts/styles and HTTPS images
 - X-Content-Type-Options: Prevents MIME type sniffing
 - Referrer Policy: Controls how much referrer information is sent with requests
+
+### Datepicker.js
+> **Note**: A lightweight, dependency-free date picker library used for date input fields.
+
+Required files for proper date picker functionality:
+- CSS:
+  - `assets/css/datepicker.material.css`
+- JavaScript:
+  - `assets/js/datepicker.js`
+
+Documentation: [Datepicker.js](https://wwilsman.github.io/Datepicker.js/)
+
+Features:
+- Lightweight and dependency-free
+- Material Design theme
+- Customizable date selection
+- Support for date ranges
+- Mobile-friendly interface
