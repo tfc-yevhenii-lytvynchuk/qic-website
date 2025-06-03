@@ -69,9 +69,6 @@ body .bg-secondary {
 body .bg-success {
   background-color: var(--success-color) !important;
 }
-body .bg-blue-transparent {
-  background-color: #D9E4F1 !important;
-}
 body .border-default {
   border-color: var(--default-border-color) !important;
 }
