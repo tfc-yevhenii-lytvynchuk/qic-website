@@ -81,6 +81,7 @@ body .border-default {
   display: flex;
   gap: 24px;
   overflow-x: auto;
+  margin-bottom: 16px;
 }
 
 .qic-tab-links a {

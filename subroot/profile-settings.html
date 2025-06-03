@@ -8,6 +8,17 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="assets/css/config.css" as="style">
+  <link rel="preload" href="assets/css/styles.css" as="style">
+  <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="assets/fonts/bootstrap-icons.css" as="style">
+  
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="assets/fonts/bootstrap-icons.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- Regular CSS loading -->
   <link rel="stylesheet" href="assets/css/config.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -312,7 +323,7 @@
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                         </a>
-                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                        <a href="leaderboard.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="d-flex flex-column">
                             <span class="fw-bold">Ranking</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>

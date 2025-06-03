@@ -8,9 +8,20 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="assets/css/config.css" as="style">
+  <link rel="preload" href="assets/css/styles.css" as="style">
+  <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="assets/fonts/bootstrap-icons.css" as="style">
+  <link rel="preload" href="assets/css/login-styles.css" as="style">
+  
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="assets/fonts/bootstrap-icons.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- Regular CSS loading -->
   <link rel="stylesheet" href="assets/css/config.css">
   <link rel="stylesheet" href="assets/css/styles.css">
-
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
   <link rel="stylesheet" href="assets/css/login-styles.css">

@@ -8,6 +8,17 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="assets/css/config.css" as="style">
+  <link rel="preload" href="assets/css/styles.css" as="style">
+  <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="assets/fonts/bootstrap-icons.css" as="style">
+  
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="assets/fonts/bootstrap-icons.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- Regular CSS loading -->
   <link rel="stylesheet" href="assets/css/config.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -690,11 +701,16 @@
                     class="fs-7 text-body-secondary">Shop, Badges, etc!</span></div>
               </div>
             </div>
-            <div class="d-flex justify-content-between flex-wrap mt-3"><a href
-                class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">LEARN
-                  MORE</span><i class="bi bi-arrow-right text-primary fs-4"></i></a><a href
-                class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">ONBOARDING
-                  AGAIN</span><i class="bi bi-arrow-right text-primary fs-4"></i></a></div>
+            <div class="d-flex justify-content-between flex-wrap mt-3">
+              <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                <span class="fw-bold">LEARN MORE</span>
+                <i class="bi bi-arrow-right text-primary fs-4"></i>
+              </a>
+              <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                <span class="fw-bold">ONBOARDING AGAIN</span>
+                <i class="bi bi-arrow-right text-primary fs-4"></i>
+              </a>
+            </div>
           </div>
           <div class="points-summary p-4 p-md-5 bg-white text-black d-flex flex-column gap-3">
             <h5 class="fw-bold">Points Summary</h5>
@@ -811,7 +827,10 @@
               </script>
             </form>
             <div class="product-image-container flex-grow-1">
-              <img src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" 
+                   class="product-image w-100 h-100 object-fit-contain" 
+                   loading="lazy" 
+                   alt="Product image">
             </div>
             <p class="fs-7 fw-bold m-0">Not in cart/in vaforites product example</p>
             <span class="d-flex align-items-center gap-1 fw-medium">
@@ -848,7 +867,10 @@
               </script>
             </form>
             <div class="product-image-container flex-grow-1">
-              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" class="product-image w-100 h-100 object-fit-contain">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" 
+                   class="product-image w-100 h-100 object-fit-contain" 
+                   loading="lazy" 
+                   alt="Product image">
             </div>
             <p class="fs-7 fw-bold m-0">In cart/in vaforites product example</p>
             <span class="d-flex align-items-center gap-1 fw-medium">
@@ -953,7 +975,7 @@
                   <h5>Progress to Goal</h5>
                   <div class="d-flex align-items gap-3">
                     <div class="progress-goal-image">
-                      <img width="48" height="48" src="assets/images/dashboard/progress-goal.png" >
+                      <img width="48" height="48" src="assets/images/dashboard/progress-goal.png" alt="Progress Goal">
                     </div>
                     <div class="d-flex flex-column">
                       <span class="fw-bold">Beginner</span>
@@ -1110,7 +1132,7 @@
 
                 <div class="dashboard-badge-card p-3 d-flex gap-3">
                   <div class="badges-summary-card-image">
-                    <img src="assets/images/badges/teamwork.svg" alt="Badge 1">
+                    <img src="assets/images/badges/teamwork.svg" alt="Badge 1" loading="lazy">
                   </div>
                   <div class="d-flex flex-column overflow-hidden flex-grow-1">
                     <div class="d-flex justify-content-between align-items-center">
@@ -1125,7 +1147,7 @@
                 </div>
                 <div class="dashboard-badge-card p-3 d-flex gap-3">
                   <div class="badges-summary-card-image">
-                    <img src="assets/images/badges/collaboration.svg" alt="Badge 1">
+                    <img src="assets/images/badges/collaboration.svg" alt="Badge 1" loading="lazy">
                   </div>
                   <div class="d-flex flex-column overflow-hidden flex-grow-1">
                     <div class="d-flex justify-content-between align-items-center">
@@ -1140,7 +1162,7 @@
                 </div>
                 <div class="dashboard-badge-card p-3 d-flex gap-3">
                   <div class="badges-summary-card-image">
-                    <img src="assets/images/badges/together-we-thrive.svg" alt="Badge 1">
+                    <img src="assets/images/badges/together-we-thrive.svg" alt="Badge 1" loading="lazy">
                   </div>
                   <div class="d-flex flex-column overflow-hidden flex-grow-1">
                     <div class="d-flex justify-content-between align-items-center">
@@ -1155,7 +1177,7 @@
                 </div>
                 <div class="dashboard-badge-card p-3 d-flex gap-3">
                   <div class="badges-summary-card-image">
-                    <img src="assets/images/badges/united-we-stand.svg" alt="Badge 1">
+                    <img src="assets/images/badges/united-we-stand.svg" alt="Badge 1" loading="lazy">
                   </div>
                   <div class="d-flex flex-column overflow-hidden flex-grow-1">
                     <div class="d-flex justify-content-between align-items-center">
@@ -1380,7 +1402,7 @@
         <div class="d-flex gap-5 flex-wrap align-items-start">
           <div class="d-flex flex-column gap-4 gap-sm-5">
             <div class="d-flex">
-              <img class="qic-footer-logo me-4" src="assets/images/logo-white.svg" alt="QIC Logo" class="qic-footer-logo">
+              <img class="qic-footer-logo me-4" src="assets/images/logo-white.svg" alt="QIC Logo">
               <span class="qic-footer-secondary-text">
                 Custom Employee Rewards <br> and Recognition Programs
               </span>

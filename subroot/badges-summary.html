@@ -8,6 +8,18 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="assets/css/config.css" as="style">
+  <link rel="preload" href="assets/css/styles.css" as="style">
+  <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="assets/fonts/bootstrap-icons.css" as="style">
+  
+  <!-- Preload critical fonts -->
+  <link rel="preload" href="assets/fonts/bootstrap-icons.woff2" as="font" type="font/woff2" crossorigin>
+  
+  
+  <!-- Regular CSS loading -->
   <link rel="stylesheet" href="assets/css/config.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -343,7 +355,7 @@
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                         </a>
-                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                        <a href="leaderboard.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="d-flex flex-column">
                             <span class="fw-bold">Ranking</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
@@ -902,7 +914,7 @@
             </div>
 
             <div class="modal-footer d-flex gap-3 justify-content-between">
-              <a class="button-outlined px-4" data-bs-toggle="modal">Back</a>
+              <a class="button-outlined px-4" data-bs-dismiss="modal">Back</a>
               <button type="submit" id="submit-badge-type-btn" class="button-secondary px-4">Next</button>
               <!-- NEXT MODAL TRIGGER HIDDEN BUTTON -->
               <a id="go-to-award-badge-user-select-modal" class="d-none" data-bs-target="#awardBadgeUserSelectModal" data-bs-toggle="modal"></a>
@@ -1142,7 +1154,7 @@
             </div>
           </div>
           <div class="d-flex gap-3 mt-4">
-            <button id="badge-award-finish-btn" class="button-outlined px-4" data-bs-toggle="modal">Close</button>
+            <button id="badge-award-finish-btn" class="button-outlined px-4" data-bs-dismiss="modal">Close</button>
             <button id="award-another-badge-btn" class="button-primary px-4" data-bs-toggle="modal"  data-bs-target="#selectBadgeTypeModal">Send another Badge</button>
             <script>
               document.addEventListener('DOMContentLoaded', function() {
