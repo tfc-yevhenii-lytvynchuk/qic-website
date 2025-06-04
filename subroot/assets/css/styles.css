@@ -200,6 +200,7 @@ a.animated-link-with-arrow:not(.button-secondary):hover .bi {
 button {
 	border-radius: var(--default-border-radius) !important;
 	border: 0;
+  white-space: nowrap;
 }
 button:disabled {
   opacity: .5 !important;

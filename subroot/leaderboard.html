@@ -616,7 +616,21 @@
         <div class="qic-card-container">
           <div class="d-flex justify-content-between gap-3 mb-3 mb-lg-4 flex-column flex-lg-row">
             <h3 class="fs-5 fw-medium text-nowrap">Participant ranking</h3>
-            <div class="d-flex gap-4">
+            <div class="d-flex gap-4 flex-wrap">
+              <form id="leaderboard-sort-form" action="">
+                <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="leaderboard-sort" name="leaderboard-sort">
+                  <option value="monthly">monthly</option>
+                  <option value="weekly">weekly</option>
+                  <option value="daily">daily</option>
+                </select>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('leaderboard-sort').addEventListener('change', function(event) {
+                      alert(event.target.value);
+                    });
+                  });
+                </script>
+              </form>
               <button id="goToYourPositionButton" type="button" class="button-secondary px-2">
                 Go to your position
                 <script>
@@ -695,22 +709,6 @@
                   </form>
                 </div>
               </div>
-
-              <form id="leaderboard-sort-form" action="">
-                <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="leaderboard-sort" name="leaderboard-sort">
-                  <option value="monthly">monthly</option>
-                  <option value="weekly">weekly</option>
-                  <option value="daily">daily</option>
-                </select>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('leaderboard-sort').addEventListener('change', function(event) {
-                      alert(event.target.value);
-                    });
-                  });
-                </script>
-              </form>
-   
             </div>
           </div>
 
