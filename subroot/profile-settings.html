@@ -534,19 +534,19 @@
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required class="form-control" placeholder="Enter your first name" minlength="3" maxlength="20" required>
+                    <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" minlength="3" maxlength="20" required>
                   </div>
                   <div class="col-md-6">
                     <label for="middleName" class="form-label">Middle Name</label>
-                    <input type="text" id="middleName" name="middleName" required class="form-control" placeholder="Enter your middle name" minlength="3" maxlength="20" required>
+                    <input type="text" id="middleName" name="middleName" class="form-control" placeholder="Enter your middle name" minlength="3" maxlength="20" required>
                   </div>
                   <div class="col-md-6">
                     <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required class="form-control" placeholder="Enter your last name" minlength="3" maxlength="20" required>
+                    <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter your last name" minlength="3" maxlength="20" required>
                   </div>
                   <div class="col-md-6">
                     <label for="companyName" class="form-label">Company Name</label>
-                    <input type="text" id="companyName" name="companyName" required class="form-control" placeholder="Enter your company name" minlength="3" maxlength="20" required>
+                    <input type="text" id="companyName" name="companyName" class="form-control" placeholder="Enter your company name" minlength="3" maxlength="20" required>
                   </div>
                 </div>
               </div>
@@ -576,7 +576,7 @@
                     </div>
                     <div class="input-group">
                       <span class="input-group-text">@</span>
-                      <input type="text" id="loginName" name="loginName" required class="form-control" placeholder="Choose a login name" minlength="3" maxlength="20">
+                      <input type="text" id="loginName" name="loginName" class="form-control" placeholder="Choose a login name" minlength="3" maxlength="20" required>
                     </div>
                     <small class="text-muted">Will be used as your ID</small>
                   </div>
@@ -608,12 +608,12 @@
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phone" name="phone" required class="form-control" placeholder="Enter phone number">
+                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phone" name="phone" class="form-control" placeholder="Enter phone number" required>
                     <small class="text-muted">Format: 123-456-7890</small>
                   </div>
                   <div class="col-md-6">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" required class="form-control" placeholder="Enter email address" autocomplete="email">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter email address" autocomplete="email" required>
                   </div>
                 </div>
               </div>
@@ -639,19 +639,19 @@
                 <div class="row g-3">
                   <div class="col-12">
                     <label for="addressLine1" class="form-label">Address Line 1</label>
-                    <input type="text" id="addressLine1" name="addressLine1" required class="form-control" placeholder="Enter address line 1">
+                    <input type="text" id="addressLine1" name="addressLine1" class="form-control" placeholder="Enter address line 1" required>
                   </div>
                   <div class="col-12">
                     <label for="addressLine2" class="form-label">Address Line 2</label>
-                    <input type="text" id="addressLine2" name="addressLine2" required class="form-control" placeholder="Enter address line 2">
+                    <input type="text" id="addressLine2" name="addressLine2" class="form-control" placeholder="Enter address line 2" required>
                   </div>
                   <div class="col-md-6">
                     <label for="city" class="form-label">City</label>
-                    <input type="text" id="city" name="city" required class="form-control" placeholder="Enter city">
+                    <input type="text" id="city" name="city" class="form-control" placeholder="Enter city" required>
                   </div>
                   <div class="col-md-6">
                     <label for="state" class="form-label">State / Province</label>
-                    <select type="text" id="state" name="state" required class="form-select" placeholder="Enter state">
+                    <select type="text" id="state" name="state" class="form-select" placeholder="Enter state" required>
                       <option value="TN">Tennessee</option>
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
@@ -663,11 +663,11 @@
                   </div>
                   <div class="col-md-6">
                     <label for="zip" class="form-label">ZIP</label>
-                    <input type="text" id="zip" name="zip" required class="form-control" placeholder="Enter zip / postal code">
+                    <input type="text" id="zip" name="zip" class="form-control" placeholder="Enter zip / postal code" required>
                   </div>
                   <div class="col-md-6">
                     <label for="country" class="form-label">Country</label>
-                    <select type="text" id="country" name="country" required class="form-select" placeholder="Enter country">
+                    <select type="text" id="country" name="country" class="form-select" placeholder="Enter country" required>
                       <option value="US">United States</option>
                       <option value="CA">Canada</option>
                       <option value="MX">Mexico</option>
@@ -699,7 +699,7 @@
                 <div class="row g-3">
                   <div class="col-12">
                     <label for="accountStatus" class="form-label">Account Status</label>
-                    <select type="text" id="accountStatus" name="accountStatus" required class="form-select" placeholder="Select account status">
+                    <select type="text" id="accountStatus" name="accountStatus" class="form-select" placeholder="Select account status" required>
                       <option value="active">Status1</option>
                       <option value="inactive">Status2</option>
                       <option value="inactive">Status3</option>
@@ -707,11 +707,11 @@
                   </div>
                   <div class="col-md-6 d-flex flex-column">
                     <label for="hireDate" class="form-label">Hire Date</label>
-                    <input type="date" id="hireDate" name="hireDate" required class="form-control w-100" placeholder="Enter hire date" autocomplete="off">
+                    <input type="date" id="hireDate" name="hireDate" class="form-control w-100" placeholder="Enter hire date" autocomplete="off" required>
                   </div>
                   <div class="col-md-6 d-flex flex-column">
                     <label for="hireTermDate" class="form-label">Hire Term Date</label>
-                    <input type="date" id="hireTermDate" name="hireTermDate" required class="form-control w-100" placeholder="Enter hire term date" autocomplete="off">
+                    <input type="date" id="hireTermDate" name="hireTermDate" class="form-control w-100" placeholder="Enter hire term date" autocomplete="off" required>
                   </div>
                 </div>
               </div>
@@ -737,14 +737,14 @@
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label for="participantType" class="form-label">Participant Type</label>
-                    <select type="text" id="participantType" name="participantType" required class="form-select" placeholder="Select participant type">
+                    <select type="text" id="participantType" name="participantType" class="form-select" placeholder="Select participant type" required>
                       <option value="type1">Type Name 1</option>
                       <option value="type2">Type Name 2</option>
                     </select>
                   </div>
                   <div class="col-md-6">
                     <label for="participantLocationID" class="form-label">Participant Location ID</label>
-                    <select type="text" id="participantLocationID" name="participantLocationID" required class="form-select" placeholder="Select participant location ID">
+                    <select type="text" id="participantLocationID" name="participantLocationID" class="form-select" placeholder="Select participant location ID" required>
                       <option value="location1">Location Name 1</option>
                       <option value="location2">Location Name 2</option>
                     </select>
@@ -773,14 +773,14 @@
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="emailOptIn" class="form-label">Email Opt In</label>
-                  <select type="text" id="emailOptIn" name="emailOptIn" required class="form-select" placeholder="Select email opt in">
+                  <select type="text" id="emailOptIn" name="emailOptIn" class="form-select" placeholder="Select email opt in" required>
                     <option value="optIn">Opt In</option>
                     <option value="optOut">Opt Out</option>
                   </select>
                 </div>
                 <div class="col-md-6">
                   <label for="preferredCommunicationMethod" class="form-label">Preferred Communication Method</label>
-                  <select type="text" id="preferredCommunicationMethod" name="preferredCommunicationMethod" required class="form-select" placeholder="Select preferred communication method">
+                  <select type="text" id="preferredCommunicationMethod" name="preferredCommunicationMethod" class="form-select" placeholder="Select preferred communication method" required>
                     <option value="email">Email</option>
                     <option value="phone">Phone</option>
                     <option value="text">Text</option>
@@ -788,7 +788,7 @@
                 </div>
                 <div class="col-md-6">
                   <label for="lastDateAccountVerified" class="form-label">Last Date Account Verified</label>
-                  <input type="text" id="lastDateAccountVerified" name="lastDateAccountVerified" required class="form-control" placeholder="Enter last date account verified">
+                  <input type="text" id="lastDateAccountVerified" name="lastDateAccountVerified" class="form-control" placeholder="Enter last date account verified" required>
                 </div>
               </div>
             </div>
@@ -814,11 +814,11 @@
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="customField1" class="form-label">Custom Field 1</label>
-                  <input type="text" id="customField1" name="customField1" required class="form-control" placeholder="Enter custom field 1">
+                  <input type="text" id="customField1" name="customField1" class="form-control" placeholder="Enter custom field 1" required>
                 </div>
                 <div class="col-md-6">
                   <label for="customField2" class="form-label">Custom Field 2</label>
-                  <input type="text" id="customField2" name="customField2" required class="form-control" placeholder="Enter custom field 2">
+                  <input type="text" id="customField2" name="customField2" class="form-control" placeholder="Enter custom field 2" required>
                 </div>
               </div>
             </div>

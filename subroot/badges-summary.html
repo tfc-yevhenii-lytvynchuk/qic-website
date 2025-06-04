@@ -965,7 +965,7 @@
               <div class="collapse" id="first-step-collapse">
                 <label for="userSearch" class="form-label fs-8 text-uppercase fw-medium">user search</label>
                 <div class="d-flex">
-                  <input type="text" id="userSearch" name="userSearch" required class="form-control" placeholder="Search user by First Name, Last Name, Location or User ID">
+                  <input type="text" id="userSearch" name="userSearch" class="form-control" placeholder="Search user by First Name, Last Name, Location or User ID" required>
                   <button data-bs-target="#awardBadgeUserAdvancedSearchModal" data-bs-toggle="modal" id="userSearchBtn" class="button-secondary px-2" >Search</button>
                   <script>
                     document.addEventListener('DOMContentLoaded', function() {
@@ -997,7 +997,7 @@
                 <div class="d-flex flex-column gap-3">
                   <div>
                     <label for="badgeSearch" class="form-label fs-8 text-uppercase fw-medium">badge Select</label>
-                    <select type="text" id="badgeSearch" name="badgeSearch" required class="form-select" placeholder="Select Badge" required>
+                    <select type="text" id="badgeSearch" name="badgeSearch" class="form-select" placeholder="Select Badge" required>
                       <option value="1">Teamwork!</option>
                       <option value="2">Collaboration Rocks!</option>
                       <option value="3">Together We Thrive!</option>
@@ -1006,7 +1006,7 @@
                   <div>
                     <label for="addPoints" class="form-label fs-8 text-uppercase fw-medium">add points</label>
                     <div class="d-flex gap-4 align-items-center">
-                      <input type="number" id="addPoints" name="addPoints" required class="form-control" placeholder="Add points" required>
+                      <input type="number" id="addPoints" name="addPoints" class="form-control" placeholder="Add points" required>
                       <span class="text-nowrap"><i class="bi bi-arrow-left-right text-success"></i> 5 turns left</span>
                     </div>
                   </div>
