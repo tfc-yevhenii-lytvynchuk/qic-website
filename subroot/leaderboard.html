@@ -32,6 +32,15 @@
       min-height: 120px;
       object-fit: contain;
     }
+    .leaderboard-user-position-indicator {
+      font-size: 12px;
+      background-color: var(--primary-color);
+      text-transform: uppercase;
+      padding: 3px 6px;
+      border-radius: 6px;
+      color: white;
+      font-weight: 600;
+    }
     .wall-of-fame-badge {
       display: flex;
       align-items: center;
@@ -43,6 +52,7 @@
       font-weight: 600;
       font-size: 12px;
       white-space: nowrap;
+      text-transform: uppercase;
     }
     .wall-of-fame-badge.first-place {
       background-color: #F9C321;
@@ -508,7 +518,7 @@
                 <div style="background: linear-gradient(155deg, #0CCF5A 8.48%, #06692E 91.52%); width: 24px; height: 24px;" class="qic-icon-bg-circle">
                   <img width="24" height="24" src="assets/images/dashboard/rank-2.png" alt="">
                 </div>
-                8th place
+                2nd place
               </span>
             </span>
             <span class="row g-0">
@@ -819,7 +829,7 @@
                         </div>
                       </div>
                     </td>
-                    <td>Emerson Septimus</td>
+                    <td>Emerson Septimus <span class="leaderboard-user-position-indicator">you</span></td>
                     <td>@emerson1234</td>
                     <td>
                       <div class="d-flex gap-2 align-items-center">
