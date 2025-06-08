@@ -121,7 +121,31 @@ body {
   scrollbar-width: thin !important;
   color: var(--main-text-color) !important;
 }
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  height: 5px !important;
+  width: 5px !important;
+  background: transparent;
+}
 
+::-webkit-scrollbar-thumb {
+  -webkit-appearance: none;
+  border-radius: 5px;
+  border: 3.5px solid transparent;
+  background: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background: var(--primary-color);
+}
+
+::-webkit-scrollbar-corner {
+  -webkit-appearance: none;
+}
 body a {
   text-decoration: none;
   color: var(--main-text-color);
@@ -636,8 +660,11 @@ body .modal-dialog {
   background: radial-gradient(circle at center, transparent 50%, red 50%);
   transform: translate(-50%, -50%);
 }
-
-.breadcrumb-item.active {
+body .breadcrumb {
+  margin-bottom: 0;
+  align-items: center;
+}
+body .breadcrumb-item.active {
   color: var(--primary-color) !important;
 }
 .qic-view-switch {
