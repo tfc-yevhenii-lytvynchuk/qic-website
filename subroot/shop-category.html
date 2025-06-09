@@ -15,9 +15,7 @@
   <link rel="stylesheet" href="assets/css/range-input.css">
 </head>
 <style>
-  #shop-search-form {
-    max-width: 486px;
-  }
+
   #shop-category-products .qic-product-card {
     width: 100%;
     min-width: 100%;
@@ -262,7 +260,7 @@
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                         </a>
-                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                        <a href="shop-wishlist.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="d-flex flex-column">
                             <span class="fw-bold">My Wishlist</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
@@ -494,7 +492,7 @@
       <li class="breadcrumb-item active" aria-current="page">Category name</li>
     </ol>
     <div class="d-flex gap-3 flex-grow-1 flex-wrap">
-      <form id="shop-search-form" action="" class="d-flex flex-grow-1 ms-auto">
+      <form id="shop-nav-search-form" action="" class="d-flex flex-grow-1 ms-auto">
         <div class="position-relative w-100">
           <input type="text" name="search" id="shop-search-input" class="form-control" placeholder="Product name, etc...">
           <a href="" class="position-absolute top-50 end-0 translate-middle-y pe-3 text-decoration-underline" data-bs-toggle="modal" data-bs-target="#shopAdvancedSearchModal">Advanced</a>
@@ -504,7 +502,7 @@
         </button>
         <script>
           document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('shop-search-form').addEventListener('submit', function(event) {
+            document.getElementById('shop-nav-search-form').addEventListener('submit', function(event) {
               event.preventDefault();
               alert('Search');
             });
@@ -530,7 +528,7 @@
       <section id="shop-category-products">
         <div class="d-flex gap-md-5 gap-3 flex-column flex-lg-row">
           <aside class="category-filters">
-            <form class="category-filters-form" action="">
+            <form id="shop-category-filters-form" class="category-filters-form" action="">
               <div class="category-filters-header">
                 <span class="fw-bold me-auto">Filters</span>
                 <button type="submit" class="button-secondary px-3">Apply</button>
@@ -628,27 +626,27 @@
                 <div class="collapse mt-3" id="product-category">
                   <div class="scrollable-checkbox-list d-flex flex-column gap-3">
                     <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" name="digitalWorld" id="digitalWorld" class="form-check-input">
+                      <input type="checkbox" class="form-check-input" name="digitalWorld" id="digitalWorld">
                       <label for="digitalWorld">A Digital World</label>
                       <span class="ms-auto text-secondary filter-count">99+</span>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" name="allAboutYou" id="allAboutYou" class="form-check-input">
+                      <input type="checkbox" class="form-check-input" name="allAboutYou" id="allAboutYou">
                       <label for="allAboutYou">All About You</label>
                       <span class="ms-auto text-secondary filter-count">28</span>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" name="noPlaceLikeHome" id="noPlaceLikeHome" class="form-check-input">
+                      <input type="checkbox" class="form-check-input" name="noPlaceLikeHome" id="noPlaceLikeHome">
                       <label for="noPlaceLikeHome">No Place Like Home</label>
                       <span class="ms-auto text-secondary filter-count">15</span>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" name="recreationFitness" id="recreationFitness" class="form-check-input">
+                      <input type="checkbox" class="form-check-input" name="recreationFitness" id="recreationFitness">
                       <label for="recreationFitness">Recreation & Fitness</label>
                       <span class="ms-auto text-secondary filter-count">32</span>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" name="travelEvents" id="travelEvents" class="form-check-input">
+                      <input type="checkbox" class="form-check-input" name="travelEvents" id="travelEvents">
                       <label for="travelEvents">Travel & Events</label>
                       <span class="ms-auto text-secondary filter-count">11</span>
                     </div>
@@ -663,33 +661,41 @@
                 <div class="collapse mt-3" id="brand">
                   <div class="scrollable-checkbox-list d-flex flex-column gap-3">
                     <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" name="apple" id="apple" class="form-check-input">
+                      <input type="checkbox" class="form-check-input" name="apple" id="apple">
                       <label for="apple">Apple</label>
                       <span class="ms-auto text-secondary filter-count">99+</span>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" name="bosch" id="bosch" class="form-check-input">
+                      <input type="checkbox" class="form-check-input" name="bosch" id="bosch">
                       <label for="bosch">Bosch</label>
                       <span class="ms-auto text-secondary filter-count">28</span>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" name="siemens" id="siemens" class="form-check-input">
+                      <input type="checkbox" class="form-check-input" name="siemens" id="siemens">
                       <label for="siemens">Siemens</label>
                       <span class="ms-auto text-secondary filter-count">15</span>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" name="koss" id="koss" class="form-check-input">
+                      <input type="checkbox" class="form-check-input" name="koss" id="koss">
                       <label for="koss">KOSS</label>
                       <span class="ms-auto text-secondary filter-count">32</span>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" name="samsung" id="samsung" class="form-check-input">
+                      <input type="checkbox" class="form-check-input" name="samsung" id="samsung">
                       <label for="samsung">Samsung</label>
                       <span class="ms-auto text-secondary filter-count">11</span>
                     </div>
                   </div>
                 </div>
               </div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('shop-category-filters-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert('filter form submitted');
+                  });
+                });
+              </script>
             </form>
           </aside>
           <div class="">

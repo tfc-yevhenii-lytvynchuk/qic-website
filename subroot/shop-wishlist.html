@@ -14,65 +14,11 @@
   <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
 </head>
 <style>
+  .qic-product-card {
+    width: unset;
+    max-width: 100%;
+  }
 
-  .catalog-item {
-    border: 1px solid #E3E3E3;
-  }
-  .catalog-item-categories {
-    height: 250px;
-    flex: 3;
-    padding: 8px;
-    overflow-y: auto;
-  }
-  .catalog-item-image {
-    position: relative;
-    flex: 2;
-    height: 250px;
-    min-height: 200px;
-    overflow: hidden;
-    display: flex;
-  }
-  .catalog-item-image::before {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background:#00000066
-  }
-  .catalog-item-image-description {
-    position: relative;
-    z-index: 2;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 16px;
-    height: 100%;
-    width: 100%;
-    margin-top: auto;
-  }
-  .catalog-item-image-description p {
-    color: rgba(255, 255, 255, 0.72);
-  }
-  .catalog-item-image img {
-    position: absolute;
-    z-index: 0;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .catalog-item-categories-item {
-    border-bottom: 1px solid #E3E3E3;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-weight: 600;
-  }
 </style>
 <body>
   <nav class="navbar sticky-top navbar-expand-lg bg-white py-3">
@@ -157,11 +103,11 @@
         </div>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
           <li class="nav-item">
-            <a class="nav-link active p-0" href="dashboard.html">Dashboard</a>
+            <a class="nav-link p-0" href="dashboard.html">Dashboard</a>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle p-0 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Shop
             </a>
             <div class="dropdown-menu">
@@ -500,7 +446,7 @@
       </div>
     </div>
   </nav>
-  <nav class="qic-container w-100 mt-4 d-flex justify-content-between align-content-center flex-wrap gap-3"  aria-label="breadcrumb">
+  <nav class="qic-container w-100 mt-4 d-flex justify-content-between align-content-center flex-wrap gap-3" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="dashboard.html"><i class="bi bi-house-fill text-secondary me-1 mb-1"></i>Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Shop Catalog</li>
@@ -523,9 +469,6 @@
           });
         </script>
       </form>
-      <a href="shop-wishlist.html" class="button-secondary px-3">
-        My Wishlist
-      </a>
       <a href="shop-orders-history.html" class="button-outlined px-3">
         My Orders
       </a>
@@ -535,332 +478,383 @@
     <div class="qic-container">
       <header class="qic-header-banner justify-content-between mt-4">
         <div class="d-flex flex-column gap-2 text-white gap-3">
-          <h1 class="fs-4">Your Shop</h1>
-          <span>Buy products for points for yourself or for your friends!</span>
-          <div class="d-flex gap-5 align-items-center flex-wrap">
-            <div class="d-flex gap-3 align-items-center">
-              <div class="qic-secondary-circle bg-white">
-                <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
-                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
-                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                </svg>
-              </div>
-              <div class="d-flex flex-column">
-                <span class="fw-medium fs-5">14,245</span>
-                <span class="fs-8">Balance</span>
-              </div>
-            </div>
-            <div class="d-flex gap-3 align-items-center">
-              <i class="qic-secondary-circle bi bi-truck text-secondary"></i>
-              <div class="d-flex flex-column">
-                <span class="fw-medium fs-5">#1231</span>
-                <span class="fs-8">Last order</span>
-              </div>
-            </div>
-            <a href="" class="button-secondary px-3">View details</a>
-          </div>
+          <h1 class="fs-4">Wishlist</h1>
+          <span>Wishlist description</span>
         </div>
       </header>
 
       <section>
-        <div class="row g-3">
-          <div class="col-12 col-lg-6">
-            <div class="catalog-item d-flex flex-column flex-lg-row">
-              <div class="catalog-item-image">
-                <div class="catalog-item-image-description">
-                  <h3 class="fs-5">A Digital World</h3>
-                  <p>9 categories</p>
-                </div>
-                <img src="assets/images/catalogs/2.png" alt="">
-              </div>
-              <div class="catalog-item-categories">
-                <a href="shop-category.html" class="catalog-item-categories-item">
-                  Camcorders & Digital Cameras
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Computers & Accessories
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  DVD Players & Recorders
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Game Consoles & Accessories
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Game Consoles & Accessories
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-6">
-            <div class="catalog-item d-flex flex-column flex-lg-row">
-              <div class="catalog-item-image">
-                <div class="catalog-item-image-description">
-                  <h3 class="fs-5">All About You</h3>
-                  <p>10 categories</p>
-                </div>
-                <img src="assets/images/catalogs/3.png" alt="">
-              </div>
-              <div class="catalog-item-categories">
-                <a class="catalog-item-categories-item">
-                  Apparel
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Eyewear
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Fragrances
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Jewelry
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Jewelry
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Jewelry
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-        
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-6">
-            <div class="catalog-item d-flex flex-column flex-lg-row">
-              <div class="catalog-item-image">
-                <div class="catalog-item-image-description">
-                  <h3 class="fs-5">No Place Like Home</h3>
-                  <p>24 categories</p>
-                </div>
-                <img src="assets/images/catalogs/1.png" alt="">
-              </div>
-              <div class="catalog-item-categories">
-                <a class="catalog-item-categories-item">
-                  Candles / Diffusers
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Climate & Comfort Control
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Clocks & Curios
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Collectibles
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Collectibles
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-6">
-            <div class="catalog-item d-flex flex-column flex-lg-row">
-              <div class="catalog-item-image">
-                <div class="catalog-item-image-description">
-                  <h3 class="fs-5">Recreation & Fitness</h3>
-                  <p>21 categories</p>
-                </div>
-                <img src="assets/images/catalogs/4.png" alt="">
-              </div>
-              <div class="catalog-item-categories">
-                <a class="catalog-item-categories-item">
-                  Bicycles
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Board Games / Puzzles
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Camping & Outdoors
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Fishing
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Fishing
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-6">
-            <div class="catalog-item d-flex flex-column flex-lg-row">
-              <div class="catalog-item-image">
-                <div class="catalog-item-image-description">
-                  <h3 class="fs-5">Travel & Events</h3>
-                  <p>9 categories</p>
-                </div>
-                <img src="assets/images/catalogs/5.png" alt="">
-              </div>
-              <div class="catalog-item-categories">
-                <a class="catalog-item-categories-item">
-                  Active Escape, North America
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Caribbean Resorts
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Cruises
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Golf / Spa Packages
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-                <a class="catalog-item-categories-item">
-                  Golf / Spa Packages
-                  <i class="bi bi-chevron-right"></i>
-                </a>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-6">
-            <div class="catalog-item d-flex flex-column flex-lg-row">
-              <div class="catalog-item-image">
-                <div class="catalog-item-image-description">
-                  <h3 class="fs-5">Just For You Awards</h3>
-                  <p>Have a special reward in mind?
-                    With Just For You the possibilities are endless.
-                  </p>
-                  <a href="" class="button-secondary mt-3 px-3">
-                    Submit your request
-                  </a>
-                </div>
-                <img src="assets/images/catalogs/6.png" alt="">
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-6">
-            <div class="catalog-item d-flex flex-column flex-lg-row">
-              <div class="catalog-item-image">
-                <div class="catalog-item-image-description">
-                  <h3 class="fs-5">Concierge</h3>
-                  <p>Have a special travel reward in mind?
-                    With Concierge Travel the possibilities are endless.
-                  </p>
-                  <a href="" class="button-secondary mt-3 px-3">
-                    Submit your request
-                  </a>
-                </div>
-                <img src="assets/images/catalogs/7.png" alt="">
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-6">
-            <div class="catalog-item d-flex flex-column flex-lg-row">
-              <div class="catalog-item-image">
-                <div class="catalog-item-image-description">
-                  <h3 class="fs-5">Ticket Jones</h3>
-                </div>
-                <img src="assets/images/catalogs/8.png" alt="">
-              </div>
+        <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-1">
+          <div class="col">
+            <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+                <input type="hidden" name="productId" value="000-000-000-000">
+                <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                      event.preventDefault();
+                      alert('Remove from favorites form submitted');
+                    });
+                  });
+                </script>
+              </form>
+              <div class="qic-product-card-image-container flex-grow-1">
+                <img src="assets/images/products/1.png" 
+                      class="product-image w-100 h-100 object-fit-contain" 
+                      loading="lazy" 
+                      alt="Product image">
+              </div> 
+              <p class="fs-7 fw-bold m-0">Sony Stereo Headphones Headset - Black</p>
+              <span class="d-flex align-items-center gap-1 fw-medium">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                1,500
+              </span>
+              <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
+                Product Details
+              </a>
             </div>
           </div>
           <div class="col">
-          <!-- Recomdnded to keep last item with col class so it fills the gap -->
-          <div class="catalog-item d-flex flex-column flex-lg-row">
-              <div class="catalog-item-image">
-                <div class="catalog-item-image-description">
-                  <h3 class="fs-5">Additional Category</h3>
-                </div>
-                <img src="assets/images/catalogs/9.png" alt="">
-              </div>
+            <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+                <input type="hidden" name="productId" value="000-000-000-000">
+                <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                      event.preventDefault();
+                      alert('Remove from favorites form submitted');
+                    });
+                  });
+                </script>
+              </form>
+              <div class="qic-product-card-image-container flex-grow-1">
+                <img src="assets/images/products/1.png" 
+                      class="product-image w-100 h-100 object-fit-contain" 
+                      loading="lazy" 
+                      alt="Product image">
+              </div> 
+              <p class="fs-7 fw-bold m-0">Sony Stereo Headphones Headset - Black</p>
+              <span class="d-flex align-items-center gap-1 fw-medium">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                1,500
+              </span>
+              <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
+                Product Details
+              </a>
             </div>
           </div>
+          <div class="col">
+            <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+                <input type="hidden" name="productId" value="000-000-000-000">
+                <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                      event.preventDefault();
+                      alert('Remove from favorites form submitted');
+                    });
+                  });
+                </script>
+              </form>
+              <div class="qic-product-card-image-container flex-grow-1">
+                <img src="assets/images/products/1.png" 
+                      class="product-image w-100 h-100 object-fit-contain" 
+                      loading="lazy" 
+                      alt="Product image">
+              </div> 
+              <p class="fs-7 fw-bold m-0">Sony Stereo Headphones Headset - Black</p>
+              <span class="d-flex align-items-center gap-1 fw-medium">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                1,500
+              </span>
+              <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
+                Product Details
+              </a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+                <input type="hidden" name="productId" value="000-000-000-000">
+                <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                      event.preventDefault();
+                      alert('Remove from favorites form submitted');
+                    });
+                  });
+                </script>
+              </form>
+              <div class="qic-product-card-image-container flex-grow-1">
+                <img src="assets/images/products/1.png" 
+                      class="product-image w-100 h-100 object-fit-contain" 
+                      loading="lazy" 
+                      alt="Product image">
+              </div> 
+              <p class="fs-7 fw-bold m-0">Sony Stereo Headphones Headset - Black</p>
+              <span class="d-flex align-items-center gap-1 fw-medium">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                1,500
+              </span>
+              <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
+                Product Details
+              </a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+                <input type="hidden" name="productId" value="000-000-000-000">
+                <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                      event.preventDefault();
+                      alert('Remove from favorites form submitted');
+                    });
+                  });
+                </script>
+              </form>
+              <div class="qic-product-card-image-container flex-grow-1">
+                <img src="assets/images/products/1.png" 
+                      class="product-image w-100 h-100 object-fit-contain" 
+                      loading="lazy" 
+                      alt="Product image">
+              </div> 
+              <p class="fs-7 fw-bold m-0">Sony Stereo Headphones Headset - Black</p>
+              <span class="d-flex align-items-center gap-1 fw-medium">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                1,500
+              </span>
+              <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
+                Product Details
+              </a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+                <input type="hidden" name="productId" value="000-000-000-000">
+                <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                      event.preventDefault();
+                      alert('Remove from favorites form submitted');
+                    });
+                  });
+                </script>
+              </form>
+              <div class="qic-product-card-image-container flex-grow-1">
+                <img src="assets/images/products/1.png" 
+                      class="product-image w-100 h-100 object-fit-contain" 
+                      loading="lazy" 
+                      alt="Product image">
+              </div> 
+              <p class="fs-7 fw-bold m-0">Sony Stereo Headphones Headset - Black</p>
+              <span class="d-flex align-items-center gap-1 fw-medium">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                1,500
+              </span>
+              <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
+                Product Details
+              </a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+                <input type="hidden" name="productId" value="000-000-000-000">
+                <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                      event.preventDefault();
+                      alert('Remove from favorites form submitted');
+                    });
+                  });
+                </script>
+              </form>
+              <div class="qic-product-card-image-container flex-grow-1">
+                <img src="assets/images/products/1.png" 
+                      class="product-image w-100 h-100 object-fit-contain" 
+                      loading="lazy" 
+                      alt="Product image">
+              </div> 
+              <p class="fs-7 fw-bold m-0">Sony Stereo Headphones Headset - Black</p>
+              <span class="d-flex align-items-center gap-1 fw-medium">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                1,500
+              </span>
+              <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
+                Product Details
+              </a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+                <input type="hidden" name="productId" value="000-000-000-000">
+                <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                      event.preventDefault();
+                      alert('Remove from favorites form submitted');
+                    });
+                  });
+                </script>
+              </form>
+              <div class="qic-product-card-image-container flex-grow-1">
+                <img src="assets/images/products/1.png" 
+                      class="product-image w-100 h-100 object-fit-contain" 
+                      loading="lazy" 
+                      alt="Product image">
+              </div> 
+              <p class="fs-7 fw-bold m-0">Sony Stereo Headphones Headset - Black</p>
+              <span class="d-flex align-items-center gap-1 fw-medium">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                1,500
+              </span>
+              <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
+                Product Details
+              </a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+                <input type="hidden" name="productId" value="000-000-000-000">
+                <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                      event.preventDefault();
+                      alert('Remove from favorites form submitted');
+                    });
+                  });
+                </script>
+              </form>
+              <div class="qic-product-card-image-container flex-grow-1">
+                <img src="assets/images/products/1.png" 
+                      class="product-image w-100 h-100 object-fit-contain" 
+                      loading="lazy" 
+                      alt="Product image">
+              </div> 
+              <p class="fs-7 fw-bold m-0">Sony Stereo Headphones Headset - Black</p>
+              <span class="d-flex align-items-center gap-1 fw-medium">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                1,500
+              </span>
+              <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
+                Product Details
+              </a>
+            </div>
+          </div>
+
         </div>
       </section>
     </div>
   </main>
-    <!-- ADVANCED PRODUCT SEARCH MODAL -->
-    <div class="modal fade" id="shopAdvancedSearchModal" aria-hidden="true" aria-labelledby="shopAdvancedSearchModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header d-flex flex-column gap-2 align-items-start">
-            <h1 class="modal-title fs-5" >Advanced Product Search</h1>
-          </div>
-          <div class="modal-body">
-            <form action="" class="d-flex gap-4 flex-wrap flex-column" id="shop-advanced-search-form">
-              <div class="row g-4">
-                <div class="col-12">
-                  <label for="free-search" class="form-label fs-7 text-uppercase fw-medium">Search</label>
-                  <input type="text" id="free-search" name="freeSearch" class="form-control" placeholder="Product name, etc..." required minlength="3" maxlength="50">
-                </div>
-                <div class="col-12 col-sm-6">
-                  <label for="points-amount" class="form-label fs-7 text-uppercase fw-medium">By points amount</label>
-                  <select name="pointsAmount" id="points-amount" class="form-select">
-                    <option value="" disabled selected>Select points amount filter</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <label for="product-type" class="form-label fs-7 text-uppercase fw-medium">By product type</label>
-                  <select name="productType" id="product-type" class="form-select">
-                    <option value="" disabled selected>Select product type filter</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <label for="another-search-type" class="form-label fs-7 text-uppercase fw-medium">By *another search type*</label>
-                  <select name="anotherSearchType" id="another-search-type" class="form-select">
-                    <option value="" disabled selected>Select another search type filter</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                </div>
-                <div class="d-flex align-items-center gap-2 mb-3">
-                  <input class="form-check-input m-0" type="checkbox" id="anotherParameter" name="anotherParameter" value="anotherParameter">
-                  <label for="anotherParameter">
-                    Another parameter
-                  </label>
-                </div>
-              </div>
-              <div class="modal-footer d-flex gap-3 justify-content-between">
-                <a class="button-outlined px-4" data-bs-toggle="modal" data-bs-target="#shopAdvancedSearchModal">Back</a>
-                <button type="submit" class="button-secondary px-4">Search</button>
-              </div>
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  const shopAdvancedSearchForm = document.getElementById('shop-advanced-search-form');
-                  if (!shopAdvancedSearchForm) return;
-                  shopAdvancedSearchForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    alert(event.target.freeSearch.value + ' ' + event.target.pointsAmount.value + ' ' + event.target.productType.value + ' ' + event.target.anotherSearchType.value + ' ' + event.target.anotherParameter.value);
-                  });
-                });
-              </script>
-            </form>
-          </div>
-  
+  <!-- ADVANCED PRODUCT SEARCH MODAL -->
+  <div class="modal fade" id="shopAdvancedSearchModal" aria-hidden="true" aria-labelledby="shopAdvancedSearchModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-flex flex-column gap-2 align-items-start">
+          <h1 class="modal-title fs-5" >Advanced Product Search</h1>
         </div>
+        <div class="modal-body">
+          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="shop-advanced-search-form">
+            <div class="row g-4">
+              <div class="col-12">
+                <label for="free-search" class="form-label fs-7 text-uppercase fw-medium">Search</label>
+                <input type="text" id="free-search" name="freeSearch" class="form-control" placeholder="Product name, etc..." required minlength="3" maxlength="50">
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="points-amount" class="form-label fs-7 text-uppercase fw-medium">By points amount</label>
+                <select name="pointsAmount" id="points-amount" class="form-select">
+                  <option value="" disabled selected>Select points amount filter</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="product-type" class="form-label fs-7 text-uppercase fw-medium">By product type</label>
+                <select name="productType" id="product-type" class="form-select">
+                  <option value="" disabled selected>Select product type filter</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="another-search-type" class="form-label fs-7 text-uppercase fw-medium">By *another search type*</label>
+                <select name="anotherSearchType" id="another-search-type" class="form-select">
+                  <option value="" disabled selected>Select another search type filter</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <input class="form-check-input m-0" type="checkbox" id="anotherParameter" name="anotherParameter" value="anotherParameter">
+                <label for="anotherParameter">
+                  Another parameter
+                </label>
+              </div>
+            </div>
+            <div class="modal-footer d-flex gap-3 justify-content-between">
+              <a class="button-outlined px-4" data-bs-toggle="modal" data-bs-target="#shopAdvancedSearchModal">Back</a>
+              <button type="submit" class="button-secondary px-4">Search</button>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const shopAdvancedSearchForm = document.getElementById('shop-advanced-search-form');
+                if (!shopAdvancedSearchForm) return;
+                shopAdvancedSearchForm.addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  alert(event.target.freeSearch.value + ' ' + event.target.pointsAmount.value + ' ' + event.target.productType.value + ' ' + event.target.anotherSearchType.value + ' ' + event.target.anotherParameter.value);
+                });
+              });
+            </script>
+          </form>
+        </div>
+
       </div>
     </div>
+  </div>
   <footer class="qic-footer">
     <div class="qic-footer-baner">
       <div class="qic-container">
