@@ -86,36 +86,6 @@
       width: 32px;
       height: 32px
     }
-
-    .dashboard-main #personalized-offers .product-card {
-      background-color: #fff;
-      color: black;
-      width: 230px;
-      min-width: 230px;
-      height: 330px;
-      position: relative;
-      border-radius: var(--default-border-radius);
-    }
-
-    .dashboard-main #personalized-offers .product-card .product-image-container {
-      min-height: 0
-    }
-
-    .dashboard-main #personalized-offers .product-card .product-card-favorite {
-      cursor: pointer;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 40px;
-      min-width: 40px;
-      height: 40px;
-      min-height: 40px;
-      background-color: #f7f5f7;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center
-    }
     .progress-goal-image {
       border-radius: 50%;
       background: #F7F5F7;
@@ -763,7 +733,7 @@
 
       <section id="personalized-offers" style="order: var(--dashboard-personalized-offers-order);">
         <div class="d-flex justify-content-between mb-3">
-          <span class="fs-4">Personalized offers</span><a href class="button-outlined px-3 py-2"> Go to Shop </a>
+          <span class="fs-4">Personalized offers</span><a href="shop-main.html" class="button-outlined px-3 py-2"> Go to Shop </a>
         </div>
         <div class="qic-tab-links gap-3">
           <a href="#" id="headphonesSortLinkLink" class="nav-link fw-medium h-max active">
@@ -810,8 +780,8 @@
           </a>
         </div>
         <div class="d-flex gap-3 mt-3 w-100 overflow-x-auto pb-2">
-          <div class="product-card p-3 d-flex flex-column gap-2 relative">
-            <form id="add-to-favorites-form" class="product-card-favorite cursor-pointer">
+          <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+            <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer">
               <input type="hidden" name="productId" value="000-000-000-000">
               <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
               <script>
@@ -823,7 +793,7 @@
                 });
               </script>
             </form>
-            <div class="product-image-container flex-grow-1">
+            <div class="qic-product-card-image-container flex-grow-1">
               <img src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" 
                    class="product-image w-100 h-100 object-fit-contain" 
                    loading="lazy" 
@@ -850,8 +820,8 @@
               </script>
             </form>
           </div>
-          <div class="product-card p-3 d-flex flex-column gap-2 relative">
-            <form id="remove-from-cart-form" class="product-card-favorite cursor-pointer">
+          <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+            <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
               <input type="hidden" name="productId" value="000-000-000-000">
               <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
               <script>
@@ -863,7 +833,7 @@
                 });
               </script>
             </form>
-            <div class="product-image-container flex-grow-1">
+            <div class="qic-product-card-image-container flex-grow-1">
               <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" 
                    class="product-image w-100 h-100 object-fit-contain" 
                    loading="lazy" 

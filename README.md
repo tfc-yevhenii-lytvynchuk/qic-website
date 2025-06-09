@@ -107,3 +107,91 @@ Features:
 - Customizable date selection
 - Support for date ranges
 - Mobile-friendly interface
+
+### Range Slider Component
+> **Note**: A custom, reusable dual-handle range slider component for filtering by numeric ranges (price, points, etc.).
+
+Required files for proper range slider functionality:
+- CSS:
+  - `assets/css/range-input.css`
+- JavaScript:
+  - `assets/js/input-range.js`
+
+#### Features:
+- **Dual-handle slider**: Select minimum and maximum values
+- **Number inputs**: Manual value entry with automatic synchronization
+- **Drag functionality**: Drag the range bar to move both handles simultaneously
+- **Form integration**: Proper form reset support
+- **Multiple instances**: Support for multiple independent sliders on same page
+- **Customizable ranges**: Configure min/max values and initial state
+- **Responsive design**: Works on desktop and mobile devices
+
+#### HTML Structure:
+```html
+<div class="qic-range-slider" id="unique-slider-id">
+  <input type="number" class="min-price" name="range-min"/>
+  <input type="number" class="max-price" name="range-max"/>
+  <div class="qic-range-slider-range">
+    <input type="range" class="min-input"/>
+    <input type="range" class="max-input"/>
+    <div class="qic-range-slider-slider">
+      <div class="qic-range-slider-slider-progress"></div>
+    </div>
+  </div>
+</div>
+```
+
+#### JavaScript Initialization:
+```javascript
+// Initialize a range slider
+initRangeSlider({
+  containerId: 'unique-slider-id',  // Required: ID of the container element
+  min: 0,                          // Optional: Minimum value (default: 0)
+  max: 9999,                       // Optional: Maximum value (default: 9999)
+  initialMin: 0,                   // Optional: Initial minimum value (default: min)
+  initialMax: 5000                 // Optional: Initial maximum value (default: max)
+});
+```
+
+#### Usage Examples:
+
+**Price Range Filter:**
+```javascript
+initRangeSlider({
+  containerId: 'price-filter',
+  min: 0,
+  max: 10000,
+  initialMin: 100,
+  initialMax: 5000
+});
+```
+
+**Points Range Filter:**
+```javascript
+initRangeSlider({
+  containerId: 'points-filter',
+  min: 100,
+  max: 5000,
+  initialMin: 500,
+  initialMax: 3000
+});
+```
+
+#### CSS Classes:
+- `.qic-range-slider` - Main container (requires unique ID)
+- `.min-price`, `.max-price` - Number input fields
+- `.min-input`, `.max-input` - Range input elements
+- `.qic-range-slider-slider-progress` - Visual progress bar
+- `.qic-range-slider-range` - Range inputs container
+- `.qic-range-slider-slider` - Slider track container
+
+#### Form Integration:
+- Automatically detects parent form and handles reset events
+- Restores initial values when form is reset
+- Updates visual state properly after reset
+- Multiple sliders in same form work independently
+
+#### Browser Support:
+- Modern browsers supporting HTML5 range inputs
+- CSS Grid and Flexbox support required
+- Touch events supported for mobile devices

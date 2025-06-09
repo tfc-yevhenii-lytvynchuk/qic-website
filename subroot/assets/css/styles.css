@@ -501,6 +501,7 @@ select.form-select {
   box-shadow: none !important;
   border-radius: var(--default-border-radius) !important;
   background-size: 85%;
+  margin-top: 0;
 }
 .form-check-input:checked {
   background-color: var(--primary-color) !important;
@@ -700,4 +701,35 @@ body .breadcrumb-item.active {
 
 .datepicker {
   width: 100%;
+}
+
+.qic-product-card {
+  background-color: #fff;
+  color: black;
+  width: 228px;
+  min-width: 228px;
+  height: 330px;
+  position: relative;
+  border-radius: var(--default-border-radius);
+  border: 1px solid #F7F5F7;
+}
+
+.qic-product-card .qic-product-card-image-container {
+  min-height: 0
+}
+
+.qic-product-card .qic-product-card-favorite {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  background-color: #f7f5f7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center
 }
