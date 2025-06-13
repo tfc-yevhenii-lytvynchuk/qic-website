@@ -12,51 +12,21 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
-  <link rel="stylesheet" href="assets/css/range-input.css">
 </head>
 <style>
-
-  #shop-category-products .qic-product-card {
-    width: 100%;
-    min-width: 100%;
+  .cart-details-summary {
+    background: #F3F5F5;
   }
-  .category-filters {
-    min-width: 296px;
-    width: 296px;
-    border: 1px solid #DFDFDF;
-    background: white;
+  .cart-item-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
   }
-  @media screen and (max-width: 992px) {
-    .category-filters {
-     width: 100%;
+  @media (max-width: 768px) {
+    .cart-item-image {
+      width: 80px;
+      height: 80px;
     }
-  }
-  .category-filters-header {
-    display: flex;
-    padding: 12px;
-    background-color: white;
-    align-items: center;
-    gap: 16px;
-    border-bottom: 1px solid #DFDFDF;;
-  }
-  .category-filters-header button {
-    height: 32px;
-  }
-  .filter-count {
-    background-color: #F3F5F5;
-    width: 24px;
-    height: 24px;
-    font-weight: 600;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .scrollable-checkbox-list {
-    max-height: 400px;
-    overflow: auto;
-    margin-right: -16px;
-    padding-right: 16px;
   }
 </style>
 <body>
@@ -146,7 +116,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle p-0 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Shop
             </a>
             <div class="dropdown-menu">
@@ -485,11 +455,10 @@
       </div>
     </div>
   </nav>
-  <nav class="qic-container w-100 mt-4 d-flex justify-content-between align-content-center flex-wrap gap-3"  aria-label="breadcrumb">
+  <nav class="qic-container w-100 mt-4 d-flex justify-content-between align-content-center flex-wrap gap-3" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="dashboard.html"><i class="bi bi-house-fill text-secondary me-1 mb-1"></i>Home</a></li>
-      <li class="breadcrumb-item"><a href="shop-main.html">Shop Catalog</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Category name</li>
+      <li class="breadcrumb-item active" aria-current="page">Your Cart</li>
     </ol>
     <div class="d-flex gap-3 flex-grow-1 flex-wrap">
       <form id="shop-nav-search-form" action="" class="d-flex flex-grow-1 ms-auto">
@@ -519,472 +488,249 @@
   </nav>
   <main>
     <div class="qic-container">
-      <header class="qic-header-banner justify-content-between mt-4">
-        <div class="d-flex flex-column gap-2 text-white gap-3">
-          <h1 class="fs-4">A Digital World</h1>
-        </div>
-      </header>
-
-      <section id="shop-category-products">
-        <div class="d-flex gap-md-5 gap-3 flex-column flex-lg-row">
-          <aside class="category-filters">
-            <form id="shop-category-filters-form" class="category-filters-form" action="">
-              <div class="category-filters-header">
-                <span class="fw-bold me-auto">Filters</span>
-                <button type="submit" class="button-secondary px-3">Apply</button>
-                <button type="reset" class="button-primary px-3"><i class="bi bi-trash3-fill text-white"></i></button>
-              </div>
-              <div class="p-3 border-bottom border-light-subtle d-flex align-items-center justify-content-between">
-                <input type="text" class="form-control" name="product-search" minlength="3" maxlength="30" placeholder="Product search">
-              </div>
-              <div class="p-3 border-bottom border-light-subtle">
-                <div class=" d-flex align-items-center justify-content-between">
-                  <span class="fw-medium text-body-secondary fs-8">Price range</span>
-                  <button type="button" data-bs-toggle="collapse" data-bs-target="#price-range-collapse1" aria-expanded="false" aria-controls="price-range-collapse1"><i class="bi bi-chevron-down text-primary"></i></button>
-                </div>
-                <div class="collapse mt-3" id="price-range-collapse1">
-                  <div class="d-flex justify-content-between align-content-center gap-3">
-                    <div>
-                      <label for="price-range-min1" class="form-label text-uppercase fw-medium fs-7 text-body-secondary">From</label>
-                      <input type="number" id="price-range-min1" name="price-range-min1" class="form-control" placeholder="Min" min="0">
-                    </div>
-                    <div>
-                      <label for="price-range-max1" class="form-label text-uppercase fw-medium fs-7 text-body-secondary">To</label>
-                      <input type="number" id="price-range-max1" name="price-range-max1" class="form-control" placeholder="Max" max="9999">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="p-3 border-bottom border-light-subtle">
-                <div class=" d-flex align-items-center justify-content-between">
-                  <span class="fw-medium text-body-secondary fs-8">Price range v2 instance 1</span>
-                  <button type="button" data-bs-toggle="collapse" data-bs-target="#price-range-collapse2" aria-expanded="false" aria-controls="price-range-collapse2"><i class="bi bi-chevron-down text-primary"></i></button>
-                </div>
-                <div class="collapse mt-3" id="price-range-collapse2">
-                  <div class="qic-range-slider" id="price-range-slider-instance1">
-                    <input type="number" class="min-price" name="price-range-min"/>
-                    <input type="number" class="max-price" name="price-range-max"/>
-                    <div class="qic-range-slider-range">
-                      <input type="range" class="min-input"/>
-                      <input type="range" class="max-input"/>
-                      <div class="qic-range-slider-slider">
-                        <div class="qic-range-slider-slider-progress"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <script>
-                    // Initialize the range sliders
-                    document.addEventListener('DOMContentLoaded', function() {
-                      // NUMBER INPUT RANGE SLIDER INITIALIZATION
-                      initRangeSlider({
-                        containerId: 'price-range-slider-instance1',
-                        min: 0,
-                        max: 9999,
-                        initialMin: 0,
-                        initialMax: 4500
-                      });
-                    });
-                  </script>
-                </div>
-              </div>
-              <div class="p-3 border-bottom border-light-subtle">
-                <div class=" d-flex align-items-center justify-content-between">
-                  <span class="fw-medium text-body-secondary fs-8">Price range v2 instance 2</span>
-                  <button type="button" data-bs-toggle="collapse" data-bs-target="#price-range-collapse3" aria-expanded="false" aria-controls="price-range-collapse3"><i class="bi bi-chevron-down text-primary"></i></button>
-                </div>
-                <div class="collapse mt-3" id="price-range-collapse3">
-                  <div class="qic-range-slider" id="price-range-slider-instance2">
-                    <input type="number" class="min-price" name="points-range-min"/>
-                    <input type="number" class="max-price" name="points-range-max"/>
-                    <div class="qic-range-slider-range">
-                      <input type="range" class="min-input"/>
-                      <input type="range" class="max-input"/>
-                      <div class="qic-range-slider-slider">
-                        <div class="qic-range-slider-slider-progress"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                      // NUMBER INPUT RANGE SLIDER INITIALIZATION INSTANCE 2
-                      initRangeSlider({
-                        containerId: 'price-range-slider-instance2',
-                        min: 100,
-                        max: 5000,
-                        initialMin: 100,
-                        initialMax: 5000
-                      }); 
-                    });
-                  </script>
-                </div>
-              </div>
-              <div class="p-3 border-bottom border-light-subtle">
-                <div class=" d-flex align-items-center justify-content-between">
-                  <span class="fw-medium text-body-secondary fs-8">Product Category</span>
-                  <button type="button" data-bs-toggle="collapse" data-bs-target="#product-category" aria-expanded="false" aria-controls="product-category"><i class="bi bi-chevron-down text-primary"></i></button>
-                </div>
-                <div class="collapse mt-3" id="product-category">
-                  <div class="scrollable-checkbox-list d-flex flex-column gap-3">
-                    <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" class="form-check-input" name="digitalWorld" id="digitalWorld">
-                      <label for="digitalWorld">A Digital World</label>
-                      <span class="ms-auto text-secondary filter-count">99+</span>
-                    </div>
-                    <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" class="form-check-input" name="allAboutYou" id="allAboutYou">
-                      <label for="allAboutYou">All About You</label>
-                      <span class="ms-auto text-secondary filter-count">28</span>
-                    </div>
-                    <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" class="form-check-input" name="noPlaceLikeHome" id="noPlaceLikeHome">
-                      <label for="noPlaceLikeHome">No Place Like Home</label>
-                      <span class="ms-auto text-secondary filter-count">15</span>
-                    </div>
-                    <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" class="form-check-input" name="recreationFitness" id="recreationFitness">
-                      <label for="recreationFitness">Recreation & Fitness</label>
-                      <span class="ms-auto text-secondary filter-count">32</span>
-                    </div>
-                    <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" class="form-check-input" name="travelEvents" id="travelEvents">
-                      <label for="travelEvents">Travel & Events</label>
-                      <span class="ms-auto text-secondary filter-count">11</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="p-3 border-bottom border-light-subtle">
-                <div class=" d-flex align-items-center justify-content-between">
-                  <span class="fw-medium text-body-secondary fs-8">Brand</span>
-                  <button type="button" data-bs-toggle="collapse" data-bs-target="#brand" aria-expanded="false" aria-controls="brand"><i class="bi bi-chevron-down text-primary"></i></button>
-                </div>
-                <div class="collapse mt-3" id="brand">
-                  <div class="scrollable-checkbox-list d-flex flex-column gap-3">
-                    <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" class="form-check-input" name="apple" id="apple">
-                      <label for="apple">Apple</label>
-                      <span class="ms-auto text-secondary filter-count">99+</span>
-                    </div>
-                    <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" class="form-check-input" name="bosch" id="bosch">
-                      <label for="bosch">Bosch</label>
-                      <span class="ms-auto text-secondary filter-count">28</span>
-                    </div>
-                    <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" class="form-check-input" name="siemens" id="siemens">
-                      <label for="siemens">Siemens</label>
-                      <span class="ms-auto text-secondary filter-count">15</span>
-                    </div>
-                    <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" class="form-check-input" name="koss" id="koss">
-                      <label for="koss">KOSS</label>
-                      <span class="ms-auto text-secondary filter-count">32</span>
-                    </div>
-                    <div class="d-flex gap-2 align-items-center">
-                      <input type="checkbox" class="form-check-input" name="samsung" id="samsung">
-                      <label for="samsung">Samsung</label>
-                      <span class="ms-auto text-secondary filter-count">11</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('shop-category-filters-form').addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    alert('filter form submitted');
-                  });
-                });
-              </script>
-            </form>
-          </aside>
-          <div class="">
-            <div class="d-flex align-items-center justify-content-between flex-wrap mb-3 mb-lg-4">
-              <h2 class="fs-5 fw-medium text-nowrap">Products</h2>
-              <form id="shop-category-sort-form" action="">
-                <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="shop-category-sort" name="shop-category-sort">
-                  <option value="newest">Sort by newest</option>
-                  <option value="oldest">Sort by oldest</option>
-                  <option value="price-asc">Sort by price (asc)</option>
-                  <option value="price-desc">Sort by price (desc)</option>
-                </select>
+      <section>
+        <div class="qic-card-container border border-light-subtle d-flex flex-column flex-lg-row gap-4">
+          <div class="flex flex-column flex-grow-1">
+            <div class="d-flex justify-content-between align-items-center border-bottom border-light-subtle pb-3">
+              <h1 class="fs-4">Your Cart</h1>
+              <button id="clear-cart-button" class="button-outlined px-3">
+                Clear Cart
                 <script>
                   document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('shop-category-sort').addEventListener('change', function(event) {
-                      alert(event.target.value);
+                    document.getElementById('clear-cart-button').addEventListener('click', function() {
+                      alert('Clear Cart');
                     });
                   });
                 </script>
-              </form>
+              </button>
             </div>
-            <div class="row g-3">
-              <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-                <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-                  <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
-                    <input type="hidden" name="productId" value="000-000-000-000">
-                    <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                          event.preventDefault();
-                          alert('Remove from favorites form submitted');
-                        });
-                      });
-                    </script>
-                  </form>
-                  <div class="qic-product-card-image-container flex-grow-1">
-                    <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" 
-                          class="product-image w-100 h-100 object-fit-contain" 
-                          loading="lazy" 
-                          alt="Product image">
-                  </div> 
-                  <p class="fs-7 fw-bold m-0">Sony Stereo Headphones Headset - Black</p>
-                  <span class="d-flex align-items-center gap-1 fw-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+            <div class="d-flex gap-3 border-bottom border-light-subtle py-3">
+              <img class="cart-item-image" src="assets/images/products/2.png" alt="">
+              <div class="d-flex flex-column gap-3 flex-grow-1">
+                <p class="fw-semibold">Sony Stereo Headphones Headset - Black</p>
+                <div class="d-flex gap-3 align-items-center flex-wrap">
+                  <span class="text-white fs-8 fw-medium bg-success p-1">Available</span>
+                  <span class="text-white fs-8 fw-medium bg-success p-1">In Stock</span>
+                  <span class="ms-auto text-body-secondary fs-8 fw-medium">AAY01105</span>
+                </div>
+                <div class="d-flex gap-3 align-items-center justify-content-between flex-wrap">
+                 <div class="d-flex gap-2 align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">
                       <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
                       <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
                     </svg>
-                    1,500
-                  </span>
-                  <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
-                    Product Details
-                  </a>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-                <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer">
-                    <input type="hidden" name="productId" value="000-000-000-000">
-                    <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('add-to-favorites-form').addEventListener('submit', function(event) {
-                          event.preventDefault();
-                          alert('Add to Favorites form submitted');
-                        });
+                    <span class="fw-semibold">12,200</span>
+                 </div>
+                 <form class="d-flex gap-2 align-items-center">
+                  <input type="number" name="quantity" id="quantity1" class="form-control" placeholder="Quantity" min="1" max="100" value="1">
+                  <button type="submit" id="remove-from-cart-button1" class="button-primary px-3"><i class="bi bi-trash3-fill text-white"></i></button>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      document.getElementById('quantity1').addEventListener('change', function(e) {
+                        e.preventDefault();
+                        alert('Quantity changed');
                       });
-                    </script>
-                  </form>
-                  <div class="qic-product-card-image-container flex-grow-1">
-                    <img src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" class="product-image w-100 h-100 object-fit-contain" loading="lazy" alt="Product image">
-                  </div>
-                  <p class="fs-7 fw-bold m-0">Not in cart/in vaforites product example</p>
-                  <span class="d-flex align-items-center gap-1 fw-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" fill="none">
-                      <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"></path>
-                      <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"></path>
-                    </svg>
-                    1,500
-                  </span>
-                  <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
-                    Product Details
-                  </a>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-                <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer">
-                    <input type="hidden" name="productId" value="000-000-000-000">
-                    <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('add-to-favorites-form').addEventListener('submit', function(event) {
-                          event.preventDefault();
-                          alert('Add to Favorites form submitted');
-                        });
+                      document.getElementById('remove-from-cart-button1').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        alert('Remove from cart');
                       });
-                    </script>
-                  </form>
-                  <div class="qic-product-card-image-container flex-grow-1">
-                    <img src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" class="product-image w-100 h-100 object-fit-contain" loading="lazy" alt="Product image">
-                  </div>
-                  <p class="fs-7 fw-bold m-0">Not in cart/in vaforites product example</p>
-                  <span class="d-flex align-items-center gap-1 fw-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" fill="none">
-                      <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"></path>
-                      <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"></path>
-                    </svg>
-                    1,500
-                  </span>
-                  <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
-                    Product Details
-                  </a>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-                <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer">
-                    <input type="hidden" name="productId" value="000-000-000-000">
-                    <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('add-to-favorites-form').addEventListener('submit', function(event) {
-                          event.preventDefault();
-                          alert('Add to Favorites form submitted');
-                        });
-                      });
-                    </script>
-                  </form>
-                  <div class="qic-product-card-image-container flex-grow-1">
-                    <img src="assets/images/products/2.png" class="product-image w-100 h-100 object-fit-contain" loading="lazy" alt="Product image">
-                  </div>
-                  <p class="fs-7 fw-bold m-0">Not in cart/in vaforites product example</p>
-                  <span class="d-flex align-items-center gap-1 fw-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" fill="none">
-                      <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"></path>
-                      <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"></path>
-                    </svg>
-                    1,500
-                  </span>
-                  <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
-                    Product Details
-                  </a>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-md-4 col-xl-3">
-                <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer">
-                    <input type="hidden" name="productId" value="000-000-000-000">
-                    <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('add-to-favorites-form').addEventListener('submit', function(event) {
-                          event.preventDefault();
-                          alert('Add to Favorites form submitted');
-                        });
-                      });
-                    </script>
-                  </form>
-                  <div class="qic-product-card-image-container flex-grow-1">
-                    <img src="assets/images/products/1.png" class="product-image w-100 h-100 object-fit-contain" loading="lazy" alt="Product image">
-                  </div>
-                  <p class="fs-7 fw-bold m-0">Not in cart/in vaforites product example</p>
-                  <span class="d-flex align-items-center gap-1 fw-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" fill="none">
-                      <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"></path>
-                      <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"></path>
-                    </svg>
-                    1,500
-                  </span>
-                  <a href="shop-item.html" class="button-outlined px-3 py-2 fw-medium">
-                    Product Details
-                  </a>
+                    });
+                  </script>
+                 </form>
                 </div>
               </div>
             </div>
-            <nav class="qic-paginator qic-card-container" aria-label="products pagination">
-              <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page">
-                <option value="15">15 per page</option>
-                <option value="30">30 per page</option>
-                <option value="45">45 per page</option>
-              </select>
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link active" href="#" aria-current="page">1</a></li>
-                <li class="page-item"><a class="page-link" href="?page=2" >2</a></li>
-                <li class="page-item"><a class="page-link" href="?page=3" >3</a></li>
-                <i class="bi bi-three-dots d-flex align-items-end mx-3 pointer-events-none"></i>
-                <li class="page-item"><a class="page-link" href="?page=9" >9</a></li>
-                <li class="page-item"><a class="page-link" href="?page=10" >10</a></li>
-              </ul>
-              <div class="d-flex gap-3">
-                <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4">Previous</button>
-                <button id="qic-paginator-next-page-button" class="button-outlined px-4">Next</button>
+            <div class="d-flex gap-3 border-bottom border-light-subtle py-3">
+              <img class="cart-item-image" src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" alt="">
+              <div class="d-flex flex-column gap-3 flex-grow-1">
+                <p class="fw-semibold">TEST PRODUCTTEST PRODUCTTEST PRODUCTTEST PRODUCTTEST PRODUCTTEST PRODUCT</p>
+                <div class="d-flex gap-3 align-items-center flex-wrap">
+                  <span class="text-white fs-8 fw-medium bg-danger p-1">Unavailable</span>
+                  <span class="text-white fs-8 fw-medium bg-danger p-1">Out of Stock</span>
+                  <span class="ms-auto text-body-secondary fs-8 fw-medium">AAY01105</span>
+                </div>
+                <div class="d-flex gap-3 align-items-center justify-content-between flex-wrap">
+                 <div class="d-flex gap-2 align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">
+                      <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                      <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                    </svg>
+                    <span class="fw-semibold">12,200</span>
+                 </div>
+                 <form class="d-flex gap-2 align-items-center">
+                  <input type="number" name="quantity" id="quantity3" class="form-control" placeholder="Quantity" min="1" max="100" value="1">
+                  <button type="submit" id="remove-from-cart-button3" class="button-primary px-3"><i class="bi bi-trash3-fill text-white"></i></button>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      document.getElementById('quantity3').addEventListener('change', function(e) {
+                        e.preventDefault();
+                        alert('Quantity changed');
+                      });
+                      document.getElementById('remove-from-cart-button3').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        alert('Remove from cart');
+                      });
+                    });
+                  </script>
+                 </form>
+                </div>
               </div>
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  // PLACEHOLDER PAGINATION LOGIC
-                  const previousPageButton = document.getElementById('qic-paginator-previous-page-button');
-                  const nextPageButton = document.getElementById('qic-paginator-next-page-button');
-                  const pageSizeSelect = document.getElementById('page-size-select');
-                  if (!previousPageButton || !nextPageButton || !pageSizeSelect) return;
-                  previousPageButton.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Previous page button clicked');
-                  });
-                  nextPageButton.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Next page button clicked');
-                  });
-                  pageSizeSelect.addEventListener('change', function(event) {
-                    event.preventDefault();
-                    alert(event.target.value);
-                  });
-                });
-              </script>
-            </nav>
+            </div>
+            <div class="d-flex gap-3 border-bottom border-light-subtle py-3">
+              <img class="cart-item-image" src="assets/images/products/1.png" alt="">
+              <div class="d-flex flex-column gap-3 flex-grow-1">
+                <p class="fw-semibold">Sony Stereo Headphones Headset - Black</p>
+                <div class="d-flex gap-3 align-items-center flex-wrap">
+                  <span class="text-white fs-8 fw-medium bg-success p-1">Available</span>
+                  <span class="text-white fs-8 fw-medium bg-success p-1">In Stock</span>
+                  <span class="ms-auto text-body-secondary fs-8 fw-medium">AAY01105</span>
+                </div>
+                <div class="d-flex gap-3 align-items-center justify-content-between flex-wrap">
+                 <div class="d-flex gap-2 align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="none">
+                      <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                      <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                    </svg>
+                    <span class="fw-semibold">12,200</span>
+                 </div>
+                 <form class="d-flex gap-2 align-items-center">
+                  <input type="number" name="quantity" id="quantity2" class="form-control" placeholder="Quantity" min="1" max="100" value="1">
+                  <button type="submit" id="remove-from-cart-button2" class="button-primary px-3"><i class="bi bi-trash3-fill text-white"></i></button>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      document.getElementById('quantity2').addEventListener('change', function(e) {
+                        e.preventDefault();
+                        alert('Quantity changed');
+                      });
+                      document.getElementById('remove-from-cart-button2').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        alert('Remove from cart');
+                      });
+                    });
+                  </script>
+                 </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cart-details-summary qic-card-small-container d-flex flex-column">
+            <span class="text-uppercase fs-8 fw-medium">SUMMARY</span>
+            <div class="d-flex align-items-center justify-content-between gap-4 fw-medium border-bottom border-light-subtle pb-3 mt-3">
+              Points on Account
+              <span class="d-flex align-items-center gap-1 fw-semibold ">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                100,400
+              </span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between gap-4 fw-medium border-bottom border-light-subtle pb-3 mt-3">
+              Product Price
+              <span class="d-flex align-items-center gap-1  fw-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                24,400
+              </span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between gap-4 fw-medium border-bottom border-light-subtle pb-3 mt-3">
+              Points left after purchase
+              <span class="d-flex align-items-center gap-1  fw-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                76,000
+              </span>
+            </div>
+            <div class="d-flex align-items-end justify-content-between flex-wrap mt-auto pt-3">
+              <div class="d-flex flex-column gap-2">
+                <span class="text-uppercase fs-8 text-body-secondary fw-medium">TOTAL</span>
+                <span class="d-flex align-items-center gap-1 fw-semibold">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  24,400
+                </span>
+              </div>
+              <a href="shop-checkout.html" class="button-primary px-3">Checkout</a>
+            </div>
           </div>
         </div>
       </section>
     </div>
   </main>
-    <!-- ADVANCED PRODUCT SEARCH MODAL -->
-    <div class="modal fade" id="shopAdvancedSearchModal" aria-hidden="true" aria-labelledby="shopAdvancedSearchModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header d-flex flex-column gap-2 align-items-start">
-            <h1 class="modal-title fs-5" >Advanced Product Search</h1>
-          </div>
-          <div class="modal-body">
-            <form action="" class="d-flex gap-4 flex-wrap flex-column" id="shop-advanced-search-form">
-              <div class="row g-4">
-                <div class="col-12">
-                  <label for="free-search" class="form-label fs-7 text-uppercase fw-medium">Search</label>
-                  <input type="text" id="free-search" name="freeSearch" class="form-control" placeholder="Product name, etc..." required minlength="3" maxlength="50">
-                </div>
-                <div class="col-12 col-sm-6">
-                  <label for="points-amount" class="form-label fs-7 text-uppercase fw-medium">By points amount</label>
-                  <select name="pointsAmount" id="points-amount" class="form-select">
-                    <option value="" disabled selected>Select points amount filter</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <label for="product-type" class="form-label fs-7 text-uppercase fw-medium">By product type</label>
-                  <select name="productType" id="product-type" class="form-select">
-                    <option value="" disabled selected>Select product type filter</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <label for="another-search-type" class="form-label fs-7 text-uppercase fw-medium">By *another search type*</label>
-                  <select name="anotherSearchType" id="another-search-type" class="form-select">
-                    <option value="" disabled selected>Select another search type filter</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                  </select>
-                </div>
-                <div class="d-flex align-items-center gap-2 mb-3">
-                  <input class="form-check-input m-0" type="checkbox" id="anotherParameter" name="anotherParameter" value="anotherParameter">
-                  <label for="anotherParameter">
-                    Another parameter
-                  </label>
-                </div>
-              </div>
-              <div class="modal-footer d-flex gap-3 justify-content-between">
-                <a class="button-outlined px-4" data-bs-toggle="modal" data-bs-target="#shopAdvancedSearchModal">Back</a>
-                <button type="submit" class="button-secondary px-4">Search</button>
-              </div>
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  const shopAdvancedSearchForm = document.getElementById('shop-advanced-search-form');
-                  if (!shopAdvancedSearchForm) return;
-                  shopAdvancedSearchForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    alert(event.target.freeSearch.value + ' ' + event.target.pointsAmount.value + ' ' + event.target.productType.value + ' ' + event.target.anotherSearchType.value + ' ' + event.target.anotherParameter.value);
-                  });
-                });
-              </script>
-            </form>
-          </div>
-  
+  <!-- ADVANCED PRODUCT SEARCH MODAL -->
+  <div class="modal fade" id="shopAdvancedSearchModal" aria-hidden="true" aria-labelledby="shopAdvancedSearchModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-flex flex-column gap-2 align-items-start">
+          <h1 class="modal-title fs-5" >Advanced Product Search</h1>
         </div>
+        <div class="modal-body">
+          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="shop-advanced-search-form">
+            <div class="row g-4">
+              <div class="col-12">
+                <label for="free-search" class="form-label fs-7 text-uppercase fw-medium">Search</label>
+                <input type="text" id="free-search" name="freeSearch" class="form-control" placeholder="Product name, etc..." required minlength="3" maxlength="50">
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="points-amount" class="form-label fs-7 text-uppercase fw-medium">By points amount</label>
+                <select name="pointsAmount" id="points-amount" class="form-select">
+                  <option value="" disabled selected>Select points amount filter</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="product-type" class="form-label fs-7 text-uppercase fw-medium">By product type</label>
+                <select name="productType" id="product-type" class="form-select">
+                  <option value="" disabled selected>Select product type filter</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="another-search-type" class="form-label fs-7 text-uppercase fw-medium">By *another search type*</label>
+                <select name="anotherSearchType" id="another-search-type" class="form-select">
+                  <option value="" disabled selected>Select another search type filter</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <input class="form-check-input m-0" type="checkbox" id="anotherParameter" name="anotherParameter" value="anotherParameter">
+                <label for="anotherParameter">
+                  Another parameter
+                </label>
+              </div>
+            </div>
+            <div class="modal-footer d-flex gap-3 justify-content-between">
+              <a class="button-outlined px-4" data-bs-toggle="modal" data-bs-target="#shopAdvancedSearchModal">Back</a>
+              <button type="submit" class="button-secondary px-4">Search</button>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const shopAdvancedSearchForm = document.getElementById('shop-advanced-search-form');
+                if (!shopAdvancedSearchForm) return;
+                shopAdvancedSearchForm.addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  alert(event.target.freeSearch.value + ' ' + event.target.pointsAmount.value + ' ' + event.target.productType.value + ' ' + event.target.anotherSearchType.value + ' ' + event.target.anotherParameter.value);
+                });
+              });
+            </script>
+          </form>
+        </div>
+
       </div>
     </div>
+  </div>
   <footer class="qic-footer">
     <div class="qic-footer-baner">
       <div class="qic-container">
@@ -1066,7 +812,10 @@
   </footer>
 
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>
-  <script src="assets/js/input-range.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
 
+    });
+  </script>
 </body>
 </html>
