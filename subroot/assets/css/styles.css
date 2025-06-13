@@ -736,3 +736,7 @@ body .breadcrumb-item.active {
 #shop-nav-search-form {
   max-width: 486px;
 }
+.cart-details-summary {
+  background: #F3F5F5;
+  min-width: 340px;
+}

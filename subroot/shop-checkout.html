@@ -13,7 +13,37 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
 </head>
+<style>
+  .qic-product-card {
+    width: auto;
+    min-width: auto;
+    max-width: 100%;
+  }
 
+  .shop-checkout-step-number {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  .shop-checkout-step-number i.bi {
+    display: none;
+  }
+  .shop-checkout-step-number.bg-success i.bi {
+    display: block;
+  }
+  .shop-checkout-step-number.bg-success span {
+    display: none;
+  }
+</style>
 <body>
   <nav class="navbar sticky-top navbar-expand-lg bg-white py-3">
     <div class="container-fluid qic-container">
@@ -81,7 +111,7 @@
             </div>
           </div>
           <a href="shop-cart-details.html" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
-            <span><i class="bi bi-bag-fill"></i></span>
+            <span><i class="bi bi-bag-fill text-primary"></i></span>
             <span class="d-block d-lg-none">Cart</span>
             <div class="d-flex d-lg-none gap-2 align-items-center justify-content-between ms-auto bg-white px-2 py-1">
               <span class="fs-7 fw-medium">5 items</span>
@@ -97,7 +127,7 @@
         </div>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
           <li class="nav-item">
-            <a class="nav-link active p-0" href="dashboard.html">Dashboard</a>
+            <a class="nav-link p-0" href="dashboard.html">Dashboard</a>
           </li>
 
           <li class="nav-item dropdown">
@@ -440,17 +470,208 @@
       </div>
     </div>
   </nav>
+  <nav class="qic-container w-100 mt-4" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="dashboard.html"><i class="bi bi-house-fill text-secondary me-1 mb-1"></i>Home</a></li>
+      <li class="breadcrumb-item"><a href="shop-cart-details.html">Your Cart</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+    </ol>
+  </nav>
   <main>
     <div class="qic-container">
-      <section id="example-section1">
-        CONTENT SECTION 1
-      </section>
-      <section id="example-section2">
-        CONTENT SECTION 2
+      <section>
+        <div class="qic-card-container">
+          <h1 class="fs-4">Checkout</h1>
+          <form id="shop-checkout-form" action="" class="d-flex flex-column flex-lg-row gap-4">
+            <div class="d-flex gap-4 flex-wrap flex-column flex-grow-1">
+              <div class="p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
+                <div class="d-flex align-items-center gap-3">
+                  <i class="qic-secondary-circle bi bi-arrow-clockwise text-secondary"></i>
+                  <div class="d-flex flex-column me-auto">
+                    <span>Return Policy</span>
+                    <span class="text-body-secondary fs-8">If you have any questions, please read our return policy.</span>
+                  </div>
+                  <a href="" class="button-secondary px-4">Details</a>
+                </div>
+              </div>
+              <!-- USER INFO -->
+              <div class="shop-checkout-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="shop-checkout-step-number">
+                    <span>1</span>
+                    <i class="bi bi-check-lg text-white"></i>
+                  </span>
+                  <div class="d-flex flex-column me-auto">
+                    <span>User Info</span>
+                    <span class="text-body-secondary fs-8">Please clarify your recipient details</span>
+                  </div>
+                  <a class="py-1 px-2 bg-body-secondary collapsed" data-bs-toggle="collapse" href="#user-info-collapse" role="button" aria-expanded="true" aria-controls="user-info-collapse">
+                    <i class="bi bi-chevron-down text-primary"></i>
+                  </a>
+                </div>
+                <div class="collapse show" id="user-info-collapse" >
+                  <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                      <div class="d-flex flex-column">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" minlength="3" maxlength="20" required>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="d-flex flex-column">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter your last name" minlength="3" maxlength="20" required>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="d-flex flex-column">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phone" name="phone" class="form-control" placeholder="Enter phone number" required>
+                        <small class="text-muted">Format: 123-456-7890</small>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="d-flex flex-column">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- DELIVERY INFO -->
+              <div class="shop-checkout-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
+                <div class="d-flex align-items-center gap-3">
+                  <span class="shop-checkout-step-number">
+                    <span>2</span>
+                    <i class="bi bi-check-lg text-white"></i>
+                  </span>
+                  <div class="d-flex flex-column">
+                    <span>Delivery Info</span>
+                    <span class="text-body-secondary fs-8">Tell us where to deliver your order</span>
+                  </div>
+                  <a class="ms-auto py-1 px-2 bg-body-secondary collapsed" data-bs-toggle="collapse" href="#delivery-info-collapse" role="button" aria-expanded="false" aria-controls="delivery-info-collapse">
+                    <i class="bi bi-chevron-down text-primary"></i>
+                  </a>
+                </div>
+                <div class="collapse" id="delivery-info-collapse">
+                  <div class="row g-3">
+                    <div class="col-12 d-flex align-items-center gap-2">
+                      <input class="form-check-input" type="checkbox" value="" name="use-perosnal-info">
+                      <label class="form-check-label" for="use-same-as-personal-address">
+                        Use same as personal address
+                      </label>
+                    </div>
+                    <div class="col-12">
+                      <label for="addressLine1" class="form-label">Address Line 1</label>
+                      <input type="text" id="addressLine1" name="addressLine1" class="form-control" placeholder="Enter address line 1" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="city" class="form-label">City</label>
+                      <input type="text" id="city" name="city" class="form-control" placeholder="Enter city" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="state" class="form-label">State / Province</label>
+                      <select type="text" id="state" name="state" class="form-select" placeholder="Enter state" required>
+                        <option value="TN">Tennessee</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="zip" class="form-label">ZIP</label>
+                      <input type="text" id="zip" name="zip" class="form-control" placeholder="Enter zip / postal code" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="country" class="form-label">Country</label>
+                      <select type="text" id="country" name="country" class="form-select" placeholder="Enter country" required>
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="MX">Mexico</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="AU">Australia</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cart-details-summary qic-card-small-container d-flex flex-column">
+              <span class="text-uppercase fs-8 fw-medium">SUMMARY</span>
+              <div class="d-flex align-items-center justify-content-between gap-4 fw-medium border-bottom border-light-subtle pb-3 mt-3">
+                Points on Account
+                <span class="d-flex align-items-center gap-1 fw-semibold ">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  100,400
+                </span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between gap-4 fw-medium border-bottom border-light-subtle pb-3 mt-3">
+                Product Price
+                <span class="d-flex align-items-center gap-1  fw-semibold">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  24,400
+                </span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between gap-4 fw-medium border-bottom border-light-subtle pb-3 mt-3">
+                Points left after purchase
+                <span class="d-flex align-items-center gap-1  fw-semibold">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  76,000
+                </span>
+              </div>
+              <div class="d-flex align-items-end justify-content-between flex-wrap mt-auto pt-3">
+                <div class="d-flex flex-column gap-2">
+                  <span class="text-uppercase fs-8 text-body-secondary fw-medium">TOTAL</span>
+                  <span class="d-flex align-items-center gap-1 fw-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                      <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                      <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                    </svg>
+                    24,400
+                  </span>
+                </div>
+                <button type="submit" class="button-primary px-3">Place Order</button>
+              </div>
+            </div>
+
+            <script>
+              // PLACEHOLDER FOR CHECKOUT FORM SUBMIT EVENT
+              document.addEventListener('DOMContentLoaded', function() {
+                const shopCheckoutForm = document.getElementById('shop-checkout-form');
+                if (!shopCheckoutForm) return;
+                shopCheckoutForm.addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  alert('checkout');
+                  const valid = true;
+                  if (valid) {
+                    document.querySelectorAll('.shop-checkout-step-number').forEach(function(step) {
+                      step.classList.add('bg-success');
+                    });
+                  }
+
+                });
+              });
+            </script>
+          </form>
+
+        </div>
       </section>
     </div>
   </main>
-  
+
   <footer class="qic-footer">
     <div class="qic-footer-baner">
       <div class="qic-container">
