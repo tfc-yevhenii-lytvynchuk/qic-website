@@ -87,13 +87,13 @@ body .border-default {
 
 body .table>thead tr th {
   background-color: #F3F5F5;
-  font-size: 14px;
-  padding: 16px 24px;
+  font-size: 12px;
+  padding: 16px 20px;
   text-wrap: nowrap;
 }
 body .table>tbody tr td {
   font-size: 16px;
-  padding: 24px;
+  padding: 20px;
   font-weight: 500;
 }
 .qic-table-points-item {
@@ -471,6 +471,7 @@ i.bi:hover {
   justify-content: space-between;
   align-items: center;
   padding: 40px;
+  margin-top: 24px;
 }
 @media (max-width: 992px) {
   .qic-header-banner {
