@@ -40,17 +40,23 @@
     .virtual-card-type-6 {
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('assets/images/virtual-cards/6.png');
     }
-    .virtual-card {
-      padding: 24px;
-      height: 200px;
+    .qic-header-banner {
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      display: flex;
-      flex-direction: column;
     }
-    .virtual-card .button-secondary {
-      width: fit-content;
+    .shop-checkout-step-number {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      min-height: 48px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
     }
   </style>
 </head>
@@ -430,7 +436,7 @@
                       <div class="d-flex flex-column overflow-y-auto main-nav-menu">
                         <a href="points-virtual-card-selector.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="d-flex flex-column">
-                            <span class="fw-bold text-primary">Virtual Cards</span>
+                            <span class="fw-bold">Virtual Cards</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                         </a>
@@ -483,89 +489,137 @@
   </nav>
   <main>
     <div class="qic-container">
-      <header class="qic-header-banner justify-content-between">
+      <header class="qic-header-banner justify-content-between virtual-card-type-2">
         <div class="d-flex flex-column gap-2 text-white gap-3">
-          <h1 class="fs-4">Virtual Cards</h1>
+          <h1 class="fs-4">Virtual Cards - Type 2</h1>
           <span>Virtual Cards title info</span>
         </div>
-        <div class="qic-card-small-container d-flex gap-3 flex-wrap">
+        <div class="qic-card-small-container d-flex gap-3 flex-wrap align-items-center">
           <i class="qic-secondary-circle bi bi-arrow-repeat text-secondary fs-5"></i>
           <div class="d-flex flex-column">
             <span class="fw-medium">Your Turns Budget</span>
             <span class="fs-7 text-body-secondary">Next turns will be in <span class="text-primary">38 days</span></span>
           </div>
+          <span class="text-nowrap"><i class="bi bi-arrow-left-right text-success me-2"></i> 2 turns left</span>
           <a href="points-deposit-card-history.html" class="button-primary px-4">See history</a>
         </div>
       </header>
       <section>
-        <div class="row g-4 text-white">
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="virtual-card virtual-card-type-1">
-              <div class="d-flex justify-content-between align-items-center ">
-                <span class="text-nowrap"><i class="bi bi-arrow-left-right text-success me-2"></i> 2 turns left</span>
-                <span class=" fs-8">Last used: Jan 12, 2025</span>
+        <div class="row g-4">
+          <form class="col d-flex flex-column gap-4">
+            <div class="shop-checkout-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100 bg-white">
+              <div class="d-flex align-items-center gap-3">
+                <span class="shop-checkout-step-number">
+                  <span>1</span>
+                </span>
+                <div class="d-flex flex-column me-auto">
+                  <span>Select recipient</span>
+                  <span class="text-body-secondary fs-8">Select user who you wants to award with a Virtual Cards</span>
+                </div>
+                
               </div>
-              <p class="fs-5 mt-auto">Virtual Card Type 1</p>
-              <a href="points-virtual-card-configurator.html" class="button-secondary px-4 mt-3">Select</a>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="virtual-card virtual-card-type-2">
-              <div class="d-flex justify-content-between align-items-center ">
-                <span class="text-nowrap"><i class="bi bi-arrow-left-right text-success me-2"></i> 2 turns left</span>
-                <span class=" fs-8">Last used: Jan 12, 2025</span>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="userSearch" class="form-label fs-8 text-uppercase fw-medium">user search</label>
+                  <div class="d-flex">
+                    <input type="text" id="userSearch" name="userSearch" class="form-control" placeholder="Search user by First Name, Last Name, Location or User ID" required>
+                    <button data-bs-target="#AdvancedSearchModal" data-bs-toggle="modal" id="userSearchBtn" class="button-secondary px-2" >Search</button>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label for="emails" class="form-label fs-8 text-uppercase fw-medium">CC EMAIL ADDRESS</label>
+                  <div class="d-flex">
+                    <input type="text" id="emails" name="emails" class="form-control" placeholder="Enter email adresses per comma" required>
+                  </div>
+                </div>
+      
               </div>
-              <p class="fs-5 mt-auto">Virtual Card Type 2</p>
-              <a href="points-virtual-card-configurator.html" class="button-secondary px-4 mt-3">Select</a>
             </div>
-          </div>
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="virtual-card virtual-card-type-3">
-              <div class="d-flex justify-content-between align-items-center ">
-                <span class="text-nowrap"><i class="bi bi-arrow-left-right text-success me-2"></i> 2 turns left</span>
-                <span class=" fs-8">Last used: Jan 12, 2025</span>
+            <div class="shop-checkout-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100 bg-white">
+              <div class="d-flex align-items-center gap-3">
+                <span class="shop-checkout-step-number">
+                  <span>2</span>
+                </span>
+                <div class="d-flex flex-column">
+                  <span>Select a Reason</span>
+                  <span class="text-body-secondary fs-8">You can select a reason for a card</span>
+                </div>
               </div>
-              <p class="fs-5 mt-auto">Virtual Card Type 3</p>
-              <a href="points-virtual-card-configurator.html" class="button-secondary px-4 mt-3">Select</a>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="virtual-card virtual-card-type-4">
-              <div class="d-flex justify-content-between align-items-center ">
-                <span class="text-nowrap"><i class="bi bi-arrow-left-right text-danger me-2"></i>No turns left</span>
-                <span class=" fs-8">Last used: Jan 12, 2025</span>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="reason" class="form-label">SELECT REASON</label>
+                  <select type="text" id="reason" name="reason" class="form-select" placeholder="Select reason from list" required>
+                    <option value="r1">Reason 1</option>
+                    <option value="r2">Reason 2</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="comment" class="form-label">ADD COMMENT (OPTIONAL)</label>
+                  <textarea class="form-control" name="comment" id="comment" placeholder="Leave a comment here" maxlength="100"></textarea>
+                </div>
               </div>
-              <p class="fs-5 mt-auto">Virtual Card Type 4</p>
-              <a href="points-virtual-card-configurator.html" class="button-secondary px-4 mt-3">Select</a>
             </div>
-          </div>
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="virtual-card virtual-card-type-5">
-              <div class="d-flex justify-content-between align-items-center ">
-                <span class="text-nowrap"><i class="bi bi-arrow-left-right text-success me-2"></i> 2 turns left</span>
-                <span class=" fs-8">Last used: Jan 12, 2025</span>
-              </div>
-              <p class="fs-5 mt-auto">Virtual Card Type 5</p>
-              <a href="points-virtual-card-configurator.html" class="button-secondary px-4 mt-3">Select</a>
+            <div class="d-flex justify-content-between">
+              <a href="points-virtual-card-selector.html" class="button-outlined px-4">Back</a>
+              <button type="submit" class="button-primary px-4">Submit</button>
             </div>
+          </form>
+          <div class="col-4 d-none d-lg-flex">
+            <img class="img-fluid" src="assets/images/virtual-cards/virtual-card.jpg" alt="">
           </div>
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="virtual-card virtual-card-type-6">
-              <div class="d-flex justify-content-between align-items-center ">
-                <span class="text-nowrap"><i class="bi bi-arrow-left-right text-success me-2"></i> 2 turns left</span>
-                <span class=" fs-8">Last used: Jan 12, 2025</span>  
-              </div>
-              <p class="fs-5 mt-auto">Virtual Card Type 6</p>
-              <a href="points-virtual-card-configurator.html" class="button-secondary px-4 mt-3">Select</a>
-            </div>
-          </div>
-
-
         </div>
       </section>
     </div>
   </main>
+    <!-- AWARD BADGE USER ADVANCED SEARCH MODAL -->
+    <div class="modal fade" id="AdvancedSearchModal" aria-hidden="true" aria-labelledby="AdvancedSearchModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header d-flex flex-column gap-2 align-items-start">
+            <h1 class="modal-title fs-5" >Advanced User Search</h1>
+          </div>
+          <div class="modal-body">
+            <form action="" class="d-flex gap-4 flex-wrap flex-column" id="award-badge-user-advanced-search-form">
+              <div class="row g-4">
+                <div class="col-12 col-sm-6">
+                  <label for="firstName" class="form-label fs-8 text-uppercase fw-medium">Search by First Name</label>
+                  <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter User First Name" required minlength="3" maxlength="50">
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label for="lastName" class="form-label fs-8 text-uppercase fw-medium">Search by Last Name</label>
+                  <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter User Last Name" required minlength="3" maxlength="50">
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label for="userID" class="form-label fs-8 text-uppercase fw-medium">Search by User ID</label>
+                  <input type="text" id="userID" name="userID" class="form-control" placeholder="Enter User ID here" required minlength="3" maxlength="50">
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label for="location" class="form-label fs-8 text-uppercase fw-medium">Search by Location</label>
+                  <input type="text" id="location" name="location" class="form-control" placeholder="Enter User Location" required minlength="3" maxlength="50">
+                </div>
+              </div>
+              <div class="modal-footer d-flex gap-3 justify-content-between">
+                <a class="button-outlined px-4" data-bs-toggle="modal" data-bs-target="#awardBadgeUserSelectModal">Back</a>
+                <button type="submit" class="button-secondary px-4">Search</button>
+              </div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  const awardBadgeUserAdvancedSearchForm = document.getElementById('award-badge-user-advanced-search-form');
+                  const goToAwardBadgeUserSelectModal = document.getElementById('go-to-award-badge-user-select-modal');
+                  if (!goToAwardBadgeUserSelectModal || !awardBadgeUserAdvancedSearchForm) return;
+                  awardBadgeUserAdvancedSearchForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert(event.target.firstName.value + ' ' + event.target.lastName.value + ' ' + event.target.userID.value + ' ' + event.target.location.value);
+                    goToAwardBadgeUserSelectModal.click();
+                  });
+                });
+              </script>
+            </form>
+          </div>
   
+        </div>
+      </div>
+    </div>
   <footer class="qic-footer">
     <div class="qic-footer-baner">
       <div class="qic-container">

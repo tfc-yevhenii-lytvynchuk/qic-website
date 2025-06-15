@@ -486,6 +486,11 @@ input.form-control {
   background: #f7f5f7;
   border-radius: var(--default-border-radius);
 }
+textarea.form-control {
+  border: 1px solid var(--default-border-color);
+  background: #f7f5f7;
+  border-radius: var(--default-border-radius);
+}
 select.form-select {
   border: 1px solid var(--default-border-color);
   background-color: #f7f5f7;
