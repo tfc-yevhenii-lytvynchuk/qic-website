@@ -64,7 +64,7 @@
       border-radius: var(--default-border-radius);
     }
 
-    .dashboard-main #reward-program .welcome .step-circle {
+    .step-circle {
       min-width: 48px;
       min-height: 48px;
       border-radius: 50%;
@@ -166,6 +166,17 @@
       .dashboard-hot-task-card {
         min-width:286px;
       }
+    }
+    .onboarding-indicator {
+      width: 10px;
+      height: 10px;
+      border: 1px solid black;
+      border-radius: 50%;
+      display: flex;
+    }
+    .onboarding-indicator-active {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
     }
   </style>
 </head>
@@ -673,7 +684,7 @@
                 <span class="fw-bold">LEARN MORE</span>
                 <i class="bi bi-arrow-right text-primary fs-4"></i>
               </a>
-              <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+              <a href="#onboarding-modal"  data-bs-toggle="modal" class="animated-link-with-arrow d-flex gap-3 align-items-center">
                 <span class="fw-bold">ONBOARDING AGAIN</span>
                 <i class="bi bi-arrow-right text-primary fs-4"></i>
               </a>
@@ -1436,6 +1447,225 @@
     </div>
 
   </footer>
+
+  <!-- ONBOARDING START MODAL -->
+  <div class="modal fade" id="onboarding-modal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header dashboard-onboarding-modal-header"></div>
+        <div class="modal-body p-3 p-md-4">
+          <p class="fs-5 fw-semibold">Onboarding Title</p>
+          <p class="text-body-secondary">Lorem ipsum odor amet, consectetuer adipiscing elit. Eget tempus habitasse posuere quisque urna amet mauris non. Etiam nisi sagittis imperdiet massa adipiscing.</p>
+          <p class="fs-8 fw-semibold text-uppercase text-body-secondary mt-4">How it works</p>
+          <div class="d-flex gap-3 flex-wrap mt-3">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">1</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Earn Points</span>
+                <span class="fs-7 text-body-secondary">By quizzes and tasks</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">2</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Track your Progress</span>
+                <span class="fs-7 text-body-secondary">To manage your Points</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">3</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Spend Points</span>
+                <span class="fs-7 text-body-secondary">Shop, Badges, etc!</span>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-content-center flex-wrap mt-5">
+            <span></span>
+            <ul class="d-flex gap-2">
+              <li><a href="#onboarding-modal" data-bs-toggle="modal" class="onboarding-indicator onboarding-indicator-active" href="#"></a></li>
+              <li><a href="#onboarding-modal-1" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-2" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-3" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+            </ul>
+            <button data-bs-target="#onboarding-modal-1" data-bs-toggle="modal" class="button-primary px-3">Get Started</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING STEP 1 MODAL -->
+  <div class="modal fade" id="onboarding-modal-1" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header dashboard-onboarding-modal-header"></div>
+        <div class="modal-body p-3 p-md-4">
+          <p class="fs-5 fw-semibold">01. Earn Points</p>
+          <p class="text-body-secondary">Lorem ipsum odor amet, consectetuer adipiscing elit. Eget tempus habitasse posuere quisque urna amet mauris non. Etiam nisi sagittis imperdiet massa adipiscing.</p>
+          <p class="fs-8 fw-semibold text-uppercase text-body-secondary mt-4">How it works</p>
+          <div class="d-flex gap-3 flex-wrap mt-3">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">1</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Complete Quizzes</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">2</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Get Awards</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">3</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Finish Tasks</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-content-center flex-wrap mt-5">
+            <button class="button-outlined px-4" data-bs-target="#onboarding-modal" data-bs-toggle="modal">Back</button>
+            <ul class="d-flex gap-2 align-items-center">
+              <li><a href="#onboarding-modal" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-1" data-bs-toggle="modal" class="onboarding-indicator onboarding-indicator-active"></a></li>
+              <li><a href="#onboarding-modal-2" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-3" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+            </ul>
+            <button data-bs-target="#onboarding-modal-2" data-bs-toggle="modal" class="button-primary px-3">How can I track my Progress?</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING STEP 2 MODAL -->
+  <div class="modal fade" id="onboarding-modal-2" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header dashboard-onboarding-modal-header"></div>
+        <div class="modal-body p-3 p-md-4">
+          <p class="fs-5 fw-semibold">02. Track your Progress</p>
+          <p class="text-body-secondary">Lorem ipsum odor amet, consectetuer adipiscing elit. Eget tempus habitasse posuere quisque urna amet mauris non. Etiam nisi sagittis imperdiet massa adipiscing.</p>
+          <p class="fs-8 fw-semibold text-uppercase text-body-secondary mt-4">How it works</p>
+          <div class="d-flex gap-3 flex-wrap mt-3">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">1</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Account Level</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">2</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Leaderboard Position</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+            </div>
+ 
+          </div>
+          <div class="d-flex justify-content-between align-content-center flex-wrap mt-5">
+            <button class="button-outlined px-4" data-bs-target="#onboarding-modal-1" data-bs-toggle="modal">Back</button>
+            <ul class="d-flex gap-2 align-items-center">
+              <li><a href="#onboarding-modal" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-1" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-2" data-bs-toggle="modal" class="onboarding-indicator onboarding-indicator-active"></a></li>
+              <li><a href="#onboarding-modal-3" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+            </ul>
+            <button data-bs-target="#onboarding-modal-3" data-bs-toggle="modal" class="button-primary px-3">How can I spend my Points?</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING STEP 3 MODAL -->
+  <div class="modal fade" id="onboarding-modal-3" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header dashboard-onboarding-modal-header"></div>
+        <div class="modal-body p-3 p-md-4">
+          <p class="fs-5 fw-semibold">03. Spend Points</p>
+          <p class="text-body-secondary">Lorem ipsum odor amet, consectetuer adipiscing elit. Eget tempus habitasse posuere quisque urna amet mauris non. Etiam nisi sagittis imperdiet massa adipiscing.</p>
+          <p class="fs-8 fw-semibold text-uppercase text-body-secondary mt-4">How it works</p>
+          <div class="d-flex gap-3 flex-wrap mt-3">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">1</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Buy items in Shop</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">2</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Award Users</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+            </div>
+ 
+          </div>
+          <div class="d-flex justify-content-between align-content-center flex-wrap mt-5">
+            <button class="button-outlined px-4" data-bs-target="#onboarding-modal-2" data-bs-toggle="modal">Back</button>
+            <ul class="d-flex gap-2 align-items-center">
+              <li><a href="#onboarding-modal" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-1" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-2" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-3" data-bs-toggle="modal" class="onboarding-indicator onboarding-indicator-active"></a></li>
+            </ul>
+            <button data-bs-target="#onboarding-modal-3" data-bs-toggle="modal" class="text-white bg-success px-3">Let's start!</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>
   <script>
