@@ -23,6 +23,9 @@
   --default-border-radius: 0px;
   --default-border-color: #DFDFDF;
 
+  --progress-goal-bar-fill-background-gradient: linear-gradient(90deg, #FFD026 0%, #FF4026 100%);
+  --secondary-circle-background-color: #d9e4f1;
+  
   --nav-support-background-image-url: url(../images/bg_support.png);
   --check-in-background-image-url: url(../images/turner-reception-bg.png);
   --about-program-block-text-color: black;
@@ -57,7 +60,7 @@
   --logo-url: url(../images/samples-temp/bosch-logo.svg);
   --primary-color: #0A5DD0;
   --secondary-color: #FF4026;
-  --success-color: #1c6604;
+  --success-color: #60c040;
   --primary-button-text-color: white;
   --nav-bar-background-color: rgb(231, 228, 228);
   --main-text-color: black;
@@ -65,7 +68,10 @@
   --body-background-color: #dfe2e2;
   --default-border-radius: 8px;
 
-  --nav-support-background-image-url: url(..images/samples-temp/bg_support2.webp);
+  --progress-goal-bar-fill-background-gradient: linear-gradient(90deg, #aacdff 0%, #0A5DD0 100%);
+  --secondary-circle-background-color: #f7dfdc;
+
+  --nav-support-background-image-url: url(../images/samples-temp/bg_support2.webp);
   --check-in-background-image-url: url(../images/samples-temp/bg_banner3.webp);
   --about-program-block-text-color: white;
 

@@ -20,24 +20,12 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+
+  <style>
+
+  </style>
 </head>
 
-<style>
-  .points-summary-balance {
-    width: 370px;
-  }
-  .points-summary-filters-form {
-    width: 500px;
-  }
-  @media (max-width: 576px) {
-    .points-summary-balance {
-      width: 100%;
-    }
-    .points-summary-filters-form {
-      width: 300px;
-    }
-  }
-</style>
 <body>
   <nav class="navbar sticky-top navbar-expand-lg bg-white py-3">
     <div class="container-fluid qic-container">
@@ -278,7 +266,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle p-0 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Points
             </a>
             <div class="dropdown-menu">
@@ -290,7 +278,7 @@
                       <div class="d-flex flex-column overflow-y-auto main-nav-menu">
                         <a href="points-summary.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
                           <div class="d-flex flex-column">
-                            <span class="fw-bold text-primary">Points Summary</span>
+                            <span class="fw-bold">Points Summary</span>
                             <span class="text-body-secondary fs-7">Subinfo</span>
                           </div>
                         </a>
@@ -373,7 +361,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle p-0 active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Social
             </a>
             <div class="dropdown-menu">
@@ -464,325 +452,64 @@
       </div>
     </div>
   </nav>
-  <main class="mt-3">
+  <main>
     <div class="qic-container">
       <header class="qic-header-banner justify-content-between">
         <div class="d-flex flex-column gap-2 text-white gap-3">
-          <h1 class="fs-4">Points Summary</h1>
-          <span>All your actions with points are collected here. View earned and spent points in detail!</span>
+          <h1 class="fs-4">Deposit Card</h1>
+          <span>Deposit points title info</span>
         </div>
-        <div class="qic-card-small-container points-summary-balance">
-          <div class="d-flex flex-column gap-3">
-            <span class="row g-0">
-              <span class="col-8">Earned</span>
-              <span class="col-4 d-flex align-items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
-                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
-                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                </svg>
-                12,335  
-              </span>
-            </span>
-            <span class="row g-0">
-              <span class="col-8">Redeemed</span>
-              <span class="col-4 d-flex align-items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
-                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
-                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                </svg>
-                5,335  
-              </span>
-            </span>
-            <span class="row g-0 fw-bold">
-              <span class="col-8">Balance</span>
-              <span class="col-4 d-flex align-items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
-                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
-                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
-                </svg>
-                 7,335
-              </span>
-            </span>
-
+        <div class="qic-card-small-container d-flex gap-3 flex-wrap align-items-center">
+          <i class="qic-secondary-circle bi bi-calendar-check-fill text-secondary fs-5"></i>
+          <div class="d-flex flex-column">
+            <span class="fw-medium">Want to see your history?</span>
+            <span class="fs-7 text-body-secondary">Click to see more info</span>
           </div>
+          <a href="points-deposit-card-history.html" class="button-secondary px-4">See history</a>
         </div>
       </header>
-
       <section>
-        <div class="qic-card-container">
-          <div class="d-flex justify-content-between gap-3 mb-3 mb-lg-4 flex-column flex-lg-row">
-            <span class="fs-5 fw-medium text-nowrap">3 Points Transactions</span>
-            <div class="d-flex gap-4">
-
-              <div class="dropdown">
-                <button type="button" id="filtersButton" class="button-secondary px-2" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" data-bs-auto-close="outside">
-                  <i class="bi bi-sliders text-white me-2"></i>
-                  Filters
-                </button>
-                <div class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
-                  <form class="points-summary-filters-form px-3 py-4 bg-white d-flex flex-column gap-3">
-                    <span class="fs-7 pb-3 border-bottom border-gray-100 w-100">Filters</span>
-                    <div>
-                      <label for="points-amount" class="form-label">By points amount</label>
-                      <select name="points-amount" id="points-amount" class="form-select" aria-placeholder="Select a filter">
-                        <option value="Option1">Option1</option>
-                        <option value="Option2">Option2</option>
-                        <option value="Option3">Option3</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label for="transaction-type" class="form-label">By Transaction Type</label>
-                      <select name="transaction-type" id="transaction-type" class="form-select" aria-placeholder="Select a filter">
-                        <option value="Option1">Option1</option>
-                        <option value="Option2">Option2</option>
-                        <option value="Option3">Option3</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label for="source" class="form-label">By source</label>
-                      <select name="source" id="source" class="form-select" aria-placeholder="Select a filter">
-                        <option value="Option1">Option1</option>
-                        <option value="Option2">Option2</option>
-                        <option value="Option3">Option3</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label for="custom-text-filter" class="form-label">Custom text filter</label>
-                      <input type="text" name="custom-text-filter" id="custom-text-filter" class="form-control" placeholder="Enter a custom text filter">
-                    </div>
-                    <div>
-                      <label for="date-range" class="form-label">By date range</label>
-                      <div class="d-flex gap-3 flex-column flex-md-row">
-                        <input type="date" name="date-range" id="date-range" class="form-control" placeholder="Select a start date">
-                        <input type="date" name="date-range" id="date-range" class="form-control" placeholder="Select a end date">
-                      </div>
-                    </div>
-                    <div class="d-flex gap-3 align-content-center flex-wrap">
-                      <!-- EXAMPLE CHECKBOX INPUTS-->
-                      <div class="d-flex gap-2 align-items-center">
-                        <input type="checkbox" name="custom-checkbox1" id="custom-checkbox1" class="form-check-input">
-                        <label for="custom-checkbox1">Custom checkbox1</label>
-                      </div>
-                      <div class="d-flex gap-2 align-items-center">
-                        <input type="checkbox" name="custom-checkbox2" id="custom-checkbox2" class="form-check-input">
-                        <label for="custom-checkbox2">Custom checkbox2</label>
-                      </div>
-                      <div class="d-flex gap-2 align-items-center">
-                        <input type="checkbox" name="custom-checkbox3" id="custom-checkbox3" class="form-check-input">
-                        <label for="custom-checkbox3">Custom checkbox3</label>
-                      </div>
-                    </div>
-                    <div class="d-flex justify-content-between gap-3">
-                      <button type="reset" class="button-outlined px-3">Reset</button>
-                      <button type="submit" class="button-primary px-3">Apply</button>
-                    </div>
-                  </form>
+        <div class="row g-4">
+          <form id="add-new-card-form" class="col d-flex flex-column gap-4">
+            <div class=" p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100 bg-white">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="cardNumber" class="form-label fw-medium">Enter Card Number</label>
+                  <div class="d-flex">
+                    <input type="text" id="cardNumber" name="cardNumber" class="form-control" placeholder="Enter card number" required>
+                  </div>
                 </div>
-
+                <div class="col-12">
+                  <label for="emails" class="form-label fw-medium">Enter Verification Code</label>
+                  <div class="d-flex">
+                    <input type="text" id="verificationCode" name="verificationCode" class="form-control" placeholder="Enter verification code" required>
+                  </div>
+                </div>
+      
               </div>
-              <form action="">
-                <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="sortPoints" name="sortPoints">
-                  <option value="newest">Sort by newest</option>
-                  <option value="oldest">Sort by oldest</option>
-                  <option value="name">Sort by name</option>
-                  <option value="points">Sort by points</option>
-                </select>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('sortPoints').addEventListener('change', function(event) {
-                      alert(event.target.value);
-                    });
-                  });
-                </script>
-              </form>
-            </div>
-          </div>
-
-          <div class="qic-tab-links gap-3 mt-4 w-100">
-            <a href="#" id="AllPointsLink" class="nav-link fw-medium h-max text-black active">
-              All
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('AllPointsLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('All Points Link clicked');
-                  });
-                });
-              </script>
-            </a>
-            <a href="#" id="EarnedPointsLink" class="nav-link fw-medium h-max text-black">
-              Earned
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('EarnedPointsLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Earned Points Link clicked');
-                  });
-                });
-              </script>
-            </a>
-
-            <a href="#" id="AwardedPointsLink" class="nav-link fw-medium h-max text-black">
-              Awarded
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('AwardedPointsLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Awarded Points Link clicked');
-                  });
-                });
-              </script>
-            </a>
-
-            <a href="#" id="SpendedPointsLink" class="nav-link fw-medium h-max text-black">
-              Spended
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('SpendedPointsLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Spended Points Link clicked');
-                  });
-                });
-              </script>
-            </a>
-           
-          </div>
-
-          <div id="badges-summary-table" class="badges-summary-table">
-            <div class="table-responsive">
-              <table class="table table-hover align-middle">
-                <thead>
-                  <tr>
-                    <th scope="col">POINTS</th>
-                    <th scope="col">TYPE</th>
-                    <th scope="col">SOURCE</th>
-                    <th scope="col">DATE</th>
-                    <th scope="col">DESCRIPTION</th>
-                    <th scope="col">DETAILS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="qic-table-points-item points-positive">
-                        <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
-                          <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
-                          <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
-                        </svg>
-                        +700
-                      </div>
-                    </td>
-                    <td class="text-nowrap">Badge Award</td>
-                    <td class="text-nowrap">
-                      Mike Minson
-                    </td>
-                    <td class="text-nowrap">Jan 12, 2025</td>
-                    <td>
-                      <span class="qic-table-description-text">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia exercitationem fugit magnam voluptate nobis doloribus provident quod, aliquid ducimus optio nesciunt fugiat inventore reiciendis porro asperiores dolor error alias a!
-                      </span>
-                    </td>
-                    <td class="text-center">
-                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="qic-table-points-item points-negative">
-                        <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
-                          <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
-                          <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
-                        </svg>
-                        -1700
-                      </div>
-                    </td>
-                    <td class="text-nowrap">Code Redeeming</td>
-                    <td class="text-nowrap">
-                      Instant Reward Code
-                    </td>
-                    <td class="text-nowrap">Jan 12, 2025</td>
-                    <td>
-                      <span class="qic-table-description-text">
-                        Code: 23123-13423412-1231231
-                      </span>
-                    </td>
-                    <td class="text-center">
-                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="qic-table-points-item points-neutral">
-                        No points
-                      </div>
-                    </td>
-                    <td class="text-nowrap">Shop Purchase</td>
-                    <td class="text-nowrap">
-                      Sony Extra Bass Smartphone Headset
-                    </td>
-                    <td class="text-nowrap">Jan 12, 2025</td>
-                    <td>
-                      <span class="qic-table-description-text">
-                        Order #12331
-                      </span>
-                    </td>
-                    <td class="text-center">
-                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <nav class="qic-paginator" aria-label="badges pagination">
-            <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page">
-              <option value="15">15 per page</option>
-              <option value="30">30 per page</option>
-              <option value="45">45 per page</option>
-            </select>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link active" href="#" aria-current="page">1</a></li>
-              <li class="page-item"><a class="page-link" href="?page=2" >2</a></li>
-              <li class="page-item"><a class="page-link" href="?page=3" >3</a></li>
-              <i class="bi bi-three-dots d-flex align-items-end mx-3 pointer-events-none"></i>
-              <li class="page-item"><a class="page-link" href="?page=9" >9</a></li>
-              <li class="page-item"><a class="page-link" href="?page=10" >10</a></li>
-            </ul>
-            <div class="d-flex gap-3">
-              <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4">Previous</button>
-              <button id="qic-paginator-next-page-button" class="button-outlined px-4">Next</button>
+              <div class="d-flex justify-content-between flex-wrap gap-3">
+                <a href="points-virtual-card-selector.html" class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-semibold">HOW DEPOSIT WORKS</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+                <button type="submit" class="button-primary px-4">Submit a Card Number</button>
+              </div>
             </div>
             <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                // PLACEHOLDER PAGINATION LOGIC
-                const previousPageButton = document.getElementById('qic-paginator-previous-page-button');
-                const nextPageButton = document.getElementById('qic-paginator-next-page-button');
-                const pageSizeSelect = document.getElementById('page-size-select');
-                if (!previousPageButton || !nextPageButton || !pageSizeSelect) return;
-                previousPageButton.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Previous page button clicked');
-                });
-                nextPageButton.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Next page button clicked');
-                });
-                pageSizeSelect.addEventListener('change', function(event) {
-                  event.preventDefault();
-                  alert(event.target.value);
-                });
+              document.getElementById('add-new-card-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                alert('Form submitted');
               });
             </script>
-          </nav>
+          </form>
+          <div class="col-4 d-none d-lg-flex">
+            <img class="img-fluid object-fit-cover" src="assets/images/virtual-cards/create-card.png" alt="">
+          </div>
         </div>
       </section>
-
     </div>
   </main>
-  
+ 
   <footer class="qic-footer">
     <div class="qic-footer-baner">
       <div class="qic-container">

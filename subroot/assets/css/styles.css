@@ -310,7 +310,7 @@ button:disabled {
   text-align: center;
   flex-shrink: 0;
   border-radius: 24px;
-  background: #d9e4f1
+  background: var(--secondary-circle-background-color)
 }
 
 body ul {
