@@ -1,45 +1,5 @@
 # QIC UI HTML, CSS, JS project
 
-## Usage
-
-**Note:** Absolute paths to `assets/` folders are used everywhere for consistent imports and to avoid relative path usage like `../../../assets`.
-For this reason when previewing sources on local machine - either open website on static local server or from root of the disk.
-This way if assets folder is transfered to wwwroot of .NET app -> all imports in html files should work right away.
-
-## Milestone 1
--Login / Reset Password steps
-
--Dashboard
-  - Customizable layout through CSS variables in config.css:
-    - Layout Order Control:
-      ```css
-      --dashboard-reward-program-order: <value: number>;      /* Controls order of reward program section */
-      --dashboard-personalized-offers-order: <value: number>; /* Controls order of personalized offers section */
-      --dashboard-hot-tasks-order: <value: number>;           /* Controls order of hot tasks section */
-      --dashboard-summary-order: <value: number>;             /* Controls order of summary section */
-      --dashboard-your-quizes-order: <value: number>;         /* Controls order of quizzes section */
-      ```
-    - Summary Section Card Ordering:
-      ```css
-      --dashboard-summary-section-ranking-order: <value: 0 or 1>;        /* Controls ranking card position relative to progress */
-      --dashboard-summary-section-badges-order: <value: 0 or 1>;         /* Controls badges card position relative to rest of section*/
-      --dashboard-summary-section-instant-reward-order: <value: 0 or 1>; /* Controls instant reward card position relative to progres/ranking block */
-      ```
-    - Usage:
-      1. Open `assets/css/config.css`
-      2. Modify the order values (lower numbers appear first)
-      3. Set to 0 to move a section before its siblings
-      4. Refresh the page to see changes
-
--Badges Summary
-  - Table-cards views modes switch.
-  - Award badge flow using modals.
-
--Logged in template
-  - Footer and Header page template for logged-in users.
-
--Logged out template
-  - Footer and Header page template for logged-out users.
 
 ## Description
 Project showcasing pure html, css, js website wich can be used as template for .NET .asp pages, with some level of css configurability.
@@ -107,6 +67,27 @@ Features:
 - Customizable date selection
 - Support for date ranges
 - Mobile-friendly interface
+- Dashboard
+  - Customizable layout through CSS variables in config.css:
+    - Layout Order Control:
+      ```css
+      --dashboard-reward-program-order: <value: number>;      /* Controls order of reward program section */
+      --dashboard-personalized-offers-order: <value: number>; /* Controls order of personalized offers section */
+      --dashboard-hot-tasks-order: <value: number>;           /* Controls order of hot tasks section */
+      --dashboard-summary-order: <value: number>;             /* Controls order of summary section */
+      --dashboard-your-quizes-order: <value: number>;         /* Controls order of quizzes section */
+      ```
+    - Summary Section Card Ordering:
+      ```css
+      --dashboard-summary-section-ranking-order: <value: 0 or 1>;        /* Controls ranking card position relative to progress */
+      --dashboard-summary-section-badges-order: <value: 0 or 1>;         /* Controls badges card position relative to rest of section*/
+      --dashboard-summary-section-instant-reward-order: <value: 0 or 1>; /* Controls instant reward card position relative to progres/ranking block */
+      ```
+    - Usage:
+      1. Open `assets/css/config.css`
+      2. Modify the order values (lower numbers appear first)
+      3. Set to 0 to move a section before its siblings
+      4. Refresh the page to see changes 
 
 ### Range Slider Component
 > **Note**: A custom, reusable dual-handle range slider component for filtering by numeric ranges (price, points, etc.).
