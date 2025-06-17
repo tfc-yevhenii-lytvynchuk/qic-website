@@ -760,3 +760,6 @@ body .breadcrumb-item.active {
   background: #F3F5F5;
   min-width: 340px;
 }
+.navbar-nav button[data-bs-toggle="tab"]:not(.active) {
+  background-color: transparent;
+}

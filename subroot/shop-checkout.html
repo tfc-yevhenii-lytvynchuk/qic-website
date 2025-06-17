@@ -131,110 +131,107 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
               Shop
             </a>
             <div class="dropdown-menu">
               <div class="qic-nav-dropdown-menu-content py-4">
                 <div class="d-flex justify-content-between qic-container flex-wrap">
                   <div class="d-flex gap-3 gap-lg-5 flex-wrap flex-column flex-sm-row">
-                    <div class="d-flex flex-column"><span class="text-body-secondary fs-7">CATEGORIES</span>
+                    <!-- CATEGORIES TABS TRIGGERS -->
+                    <div class="d-flex flex-column" role="tablist">
+                      <span class="text-body-secondary fs-7">CATEGORIES</span>
                       <div class="d-flex flex-column overflow-y-auto main-nav-menu">
-                        <a href="#" id="category1Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="d-flex flex-column">
-                            <span class="fw-bold">Category 1</span>
-                            <span class="text-body-secondary fs-7">Subinfo</span>
+                        <!-- A Digital World -->
+                        <button class="active" data-bs-toggle="tab" data-bs-target="#digital-world-subcategories" role="tab" aria-selected="true">
+                          <div class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item ">
+                            <div class="d-flex flex-column">
+                              <span class="fw-bold">A Digital World</span>
+                              <span class="text-body-secondary fs-7">Subinfo</span>
+                            </div>
+                            <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
                           </div>
-                          <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
-                          <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                              document.getElementById('category1Link').addEventListener('click', function() {
-                                event.preventDefault();
-                                event.stopPropagation();
-                                alert('Category 1 clicked');
-                              });
-                            });
-                          </script>
-                        </a>
-                        <a href="#" id="category2Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="d-flex flex-column">
-                            <span class="fw-bold">Category 2</span>
-                            <span class="text-body-secondary fs-7">Subinfo</span>
+                        </button>
+     
+                        <!-- All About You -->
+                        <button data-bs-toggle="tab" data-bs-target="#all-about-you-subcategories" role="tab" aria-selected="false">
+                          <div class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                            <div class="d-flex flex-column">
+                              <span class="fw-bold">All About You</span>
+                              <span class="text-body-secondary fs-7">Subinfo</span>
+                            </div>
+                            <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
                           </div>
-                          <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
-                          <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                              document.getElementById('category2Link').addEventListener('click', function() {
-                                event.preventDefault();
-                                event.stopPropagation();
-                                alert('Category 2 clicked');
-                              });
-                            });
-                          </script>
-                        </a>
+                        </button>
+
                       </div>
                     </div>
-                    <div class="d-flex flex-column">
-                      <span class="text-body-secondary fs-7">Category 1 /</span>
-                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
-                        <a href="#" id="subcategory1Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="d-flex flex-column">
-                            <span class="fw-bold">Subcategory 1</span>
-                            <span class="text-body-secondary fs-7">Subinfo</span>
+                     <!-- SUBCATEGORIES TABS -->
+                    <div class="tab-content">
+                      <!-- A Digital World subcategories -->
+                      <div id="digital-world-subcategories" class="tab-pane fade show active" role="tabpanel" aria-labelledby="digital-world-category" tabindex="0">
+                        <div class="d-flex flex-column">
+                          <span class="text-body-secondary fs-7">A Digital World /</span>
+                          <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Camcorders & Digital Cameras</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Computers & Accessories</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">DVD Players & Recorders</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Game Consoles & Accessories</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+
                           </div>
-                          <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                              document.getElementById('subcategory1Link').addEventListener('click', function() {
-                                event.preventDefault();
-                                alert('Subcategory 1 clicked');
-                              });
-                            });
-                          </script>
-                        </a>
-      
-                        <a href="#" id="subcategory2Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="d-flex flex-column">
-                            <span class="fw-bold">Subcategory 1</span>
-                            <span class="text-body-secondary fs-7">Subinfo</span>
+                        </div>
+                      </div>
+                      <!-- All About You subcategories -->
+                      <div id="all-about-you-subcategories" class="tab-pane fade" role="tabpanel" aria-labelledby="all-about-you-category" tabindex="0">
+                        <div class="d-flex flex-column">
+                          <span class="text-body-secondary fs-7">All About You /</span>
+                          <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Apparel</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Eyewear</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Jewelry</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Fragrances</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
                           </div>
-                          <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                              document.getElementById('subcategory2Link').addEventListener('click', function() {
-                                event.preventDefault();
-                                alert('Subcategory 2 clicked');
-                              });
-                            });
-                          </script>
-                        </a>
-                        <a href="#" id="subcategory3Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="d-flex flex-column">
-                            <span class="fw-bold">Subcategory 1</span>
-                            <span class="text-body-secondary fs-7">Subinfo</span>
-                          </div>
-                          <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                              document.getElementById('subcategory3Link').addEventListener('click', function() {
-                                event.preventDefault();
-                                alert('Subcategory 3 clicked');
-                              });
-                            });
-                          </script>
-                        </a>
-      
-                        <a href="#" id="subcategory4Link" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
-                          <div class="d-flex flex-column">
-                            <span class="fw-bold">Subcategory 1</span>
-                            <span class="text-body-secondary fs-7">Subinfo</span>
-                          </div>
-                          <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                              document.getElementById('subcategory4Link').addEventListener('click', function() {
-                                event.preventDefault();
-                                alert('Subcategory 4 clicked');
-                              });
-                            });
-                          </script>
-                        </a>
+                        </div>
                       </div>
                     </div>
                     <div class="d-flex flex-column"><span class="text-body-secondary fs-7">PERSONAL</span>
