@@ -536,7 +536,15 @@
                 </div>
                 <div class="d-flex gap-3 align-items-end">
                   <button type="submit" class="button-primary px-3">Add to Cart</button>
-                  <button type="button" class="button-outlined px-3">Add to Wishlist</button>
+                  <button id="add-to-favorites-button" type="button" class="button-outlined px-3">Add to Wishlist</button>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      document.getElementById('add-to-favorites-button').addEventListener('click', function(event) {
+                        event.preventDefault();
+                        alert('Add to favorites button clicked');
+                      });
+                    });
+                  </script>
                 </div>
               </div>
             </div>
