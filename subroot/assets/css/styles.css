@@ -760,6 +760,11 @@ body .breadcrumb-item.active {
   background: #F3F5F5;
   min-width: 340px;
 }
+@media (max-width: 576px) {
+  .cart-details-summary {
+    min-width: unset;
+  }
+}
 .navbar-nav button[data-bs-toggle="tab"]:not(.active) {
   background-color: transparent;
 }
