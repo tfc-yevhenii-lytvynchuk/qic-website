@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>QIC Dashboard</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="assets/css/config.css" as="style">
+  <link rel="preload" href="assets/css/styles.css" as="style">
+  <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="assets/fonts/bootstrap-icons.css" as="style">
+  
+  <!-- Regular CSS loading -->
+  <link rel="stylesheet" href="assets/css/config.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+
+  <style>
+    #badges-summary-banner .award-badge-link {
+      max-width: 252px;
+    }
+    @media (max-width: 992px) {
+      #badges-summary-banner .award-badge-link {
+       width: 100%;
+       max-width: 100%;
+      }
+      .badges-summary-info {
+        width: 100%;
+      }
+    }
+    .badges-summary-table-badge-image {
+      border-radius: 3px;
+      border: 1px solid #F3F5F5;
+      background: #FDFDFD;
+      width: 24px;
+      height: 24px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .badges-summary-card {
+      padding: 24px;
+      background: #F3F5F5;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-radius: var(--default-border-radius);
+      height: 100%;
+    }
+    .select-badge-type-card {
+      flex: 1;
+    }
+    .select-badge-type-card .form-check-input {
+      width: 32px;
+      height: 32px;
+    }
+    .select-badge-type-card:has(input[type="radio"]:checked) {
+      border-color: var(--primary-color) !important;
+    }
+    .award-badge-user-select-step {
+      min-width: 800px;
+      max-width: 100%;
+    }
+    @media (max-width: 992px) {
+      .award-badge-user-select-step {
+        min-width: 100%;
+      }
+    }
+    .award-badge-user-select-step-number {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      min-height: 48px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg bg-white py-3">
+    <div class="container-fluid qic-container">
+      <a class="navbar-brand" href="#"><div class="nav-logo d-flex qic-logo h-2rem me-sm-1 me-auto"></div></a>
+      <div class="d-flex d-lg-none ms-auto me-2">
+        <div class="nav-points-count d-flex align-items-center gap-2 py-2 px-3 bg-body-secondary text-black">
+          <svg xmlns="http://www.w3.org/2000/svg"  width="18" height="18" viewBox="0 0 32 32" fill="none">
+            <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+            <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+          </svg>
+          <span>14,245</span></div><a href="shop-main.html" class="nav-shop-link d-flex align-items-center py-2 px-3 button-primary">
+          Shop </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list text-white"></i>
+        <i class="bi bi-x-lg text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search">
+          <input id="navbar-search-input" class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
+          <button class="button-primary px-3" type="submit"><i class="bi bi-search text-white"></i></button>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const navbarSearchForm = document.getElementById('navbar-search-form');
+              const searchInput = document.getElementById('navbar-search-input');
+              navbarSearchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert(searchInput.value);
+              });
+            });
+          </script>
+        </form>
+        <div class="qic-navbar-controls d-flex flex-column flex-lg-row" style="order: 4;">
+          <a href="#" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
+            <span><i class="bi bi-bell-fill"></i></span>
+            <span class="d-block d-lg-none">Notifications</span>
+          </a>
+          <div class="qic-navbar-controls-item dropdown">
+            <a data-bs-toggle="dropdown" href="#" class="dropdown-toggle d-flex align-items-center gap-2 cursor-pointer">
+              <i class="bi bi-person-fill"></i>
+              <span class="text-nowrap"> My Profile </span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="profile-settings.html" class="p-3 d-flex gap-3 text-nowrap mock-item">
+                <div class="d-flex flex-column text-black"><span class="fw-bold">Profile Settings</span>
+                  <span class="text-body-secondary fs-7">Subinfo</span>
+                </div>
+              </a>
+              <a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
+                <div class="d-flex flex-column text-black"><span class="fw-bold">Program Guide</span>
+                  <span class="text-body-secondary fs-7">Subinfo</span>
+                </div>
+              </a>
+              <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white gap-3">
+                <span class="text-nowrap">Need to Exit?</span>
+                <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('logoutLink').addEventListener('click', function() {
+                      alert('Logout link clicked');
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+          <a href="shop-cart-details.html" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
+            <span><i class="bi bi-bag-fill"></i></span>
+            <span class="d-block d-lg-none">Cart</span>
+            <div class="d-flex d-lg-none gap-2 align-items-center justify-content-between ms-auto bg-white px-2 py-1">
+              <span class="fs-7 fw-medium">5 items</span>
+              <span class="fs-7 fw-medium d-flex align-items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                14,245
+              </span>
+            </div>
+          </a>
+        </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+          <li class="nav-item">
+            <a class="nav-link p-0" href="dashboard.html">Dashboard</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+              Shop
+            </a>
+            <div class="dropdown-menu">
+              <div class="qic-nav-dropdown-menu-content py-4">
+                <div class="d-flex justify-content-between qic-container flex-wrap">
+                  <div class="d-flex gap-3 gap-lg-5 flex-wrap flex-column flex-sm-row">
+                    <!-- CATEGORIES TABS TRIGGERS -->
+                    <div class="d-flex flex-column" role="tablist">
+                      <span class="text-body-secondary fs-7">CATEGORIES</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <!-- A Digital World -->
+                        <button class="active" data-bs-toggle="tab" data-bs-target="#digital-world-subcategories" role="tab" aria-selected="true">
+                          <div class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item ">
+                            <div class="d-flex flex-column">
+                              <span class="fw-bold">A Digital World</span>
+                              <span class="text-body-secondary fs-7">Subinfo</span>
+                            </div>
+                            <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
+                          </div>
+                        </button>
+     
+                        <!-- All About You -->
+                        <button data-bs-toggle="tab" data-bs-target="#all-about-you-subcategories" role="tab" aria-selected="false">
+                          <div class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                            <div class="d-flex flex-column">
+                              <span class="fw-bold">All About You</span>
+                              <span class="text-body-secondary fs-7">Subinfo</span>
+                            </div>
+                            <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
+                          </div>
+                        </button>
+
+                      </div>
+                    </div>
+                     <!-- SUBCATEGORIES TABS -->
+                    <div class="tab-content">
+                      <!-- A Digital World subcategories -->
+                      <div id="digital-world-subcategories" class="tab-pane fade show active" role="tabpanel" aria-labelledby="digital-world-category" tabindex="0">
+                        <div class="d-flex flex-column">
+                          <span class="text-body-secondary fs-7">A Digital World /</span>
+                          <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Camcorders & Digital Cameras</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Computers & Accessories</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">DVD Players & Recorders</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Game Consoles & Accessories</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- All About You subcategories -->
+                      <div id="all-about-you-subcategories" class="tab-pane fade" role="tabpanel" aria-labelledby="all-about-you-category" tabindex="0">
+                        <div class="d-flex flex-column">
+                          <span class="text-body-secondary fs-7">All About You /</span>
+                          <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Apparel</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Eyewear</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Jewelry</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Fragrances</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column"><span class="text-body-secondary fs-7">PERSONAL</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="shop-orders-history.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">My Orders</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="shop-wishlist.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">My Wishlist</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">PROGRAM GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">SALES REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">LATEST NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100">
+                          <i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                          <a href="" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Points
+            </a>
+            <div class="dropdown-menu">
+              <div class="qic-nav-dropdown-menu-content py-4">
+                <div class="d-flex justify-content-between qic-container flex-wrap">
+                  <div class="d-flex gap-3 gap-lg-5 flex-wrap flex-column flex-sm-row">
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">GENERAL</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="points-summary.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Points Summary</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="quizzes.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Quizzes</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="leaderboard.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Ranking</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">POINTS ACTIONS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="points-virtual-card-selector.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Deposit Points</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Award Points</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">CARDS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="points-deposit-card-history.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Deposit Cards</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Instant Rewards</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a 
+                        class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">PROGRAM
+                          GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a  class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">SALES
+                          REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">LATEST
+                          NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100"><i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                           <a href="" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Social
+            </a>
+            <div class="dropdown-menu">
+              <div class="qic-nav-dropdown-menu-content py-4">
+                <div class="d-flex justify-content-between qic-container flex-wrap">
+                  <div class="d-flex gap-3 gap-lg-5 flex-wrap flex-column flex-sm-row">
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">BADGES</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="badges-summary.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold text-primary">Badges Summary</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="badges-summary.html?award-badge=true" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Award a Badge</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">USER ACTIONS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Nominate User</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">CARDS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="points-virtual-card-selector.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Virtual Cards</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a 
+                        class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">PROGRAM
+                          GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a  class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">SALES
+                          REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">LATEST
+                          NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100"><i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                           <a href="" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+  
+        </ul>
+        <div class="d-none d-lg-flex me-3">
+          <div class="nav-points-count d-flex align-items-center gap-2 py-2 px-3 bg-body-secondary text-black">
+            <svg xmlns="http://www.w3.org/2000/svg"  width="18" height="18" viewBox="0 0 32 32" fill="none">
+              <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+              <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+            </svg>
+            <span>14,245</span>
+          </div>
+          <a href="shop-main.html" class="nav-shop-link d-flex align-items-center py-2 px-3 button-primary">Shop</a>
+        </div>
+
+
+      </div>
+    </div>
+  </nav>
+
+  <main class="mt-3">
+    <div class="qic-container">
+      <header id="badges-summary-banner" class="qic-header-banner justify-content-between">
+        <div class="d-flex flex-column gap-2 text-white gap-3">
+          <h1 class="fs-4">Badges Summary</h1>
+          <span>All your badges are collected here. View earned and awarded badges in detail!</span>
+          <div class="award-badge-link qic-card-small-container d-flex gap-3 align-items-center justify-content-between text-black py-3">
+            <div class="d-flex flex-column">
+              <p class="fw-medium">Award a Badge</p>
+              <p class="text-body-secondary fs-7">With or without points</p>
+            </div>
+            <a id="award-badge-start-btn" data-bs-target="#selectBadgeTypeModal" data-bs-toggle="modal" class="qic-icon-bg-circle bg-primary"><i class="bi bi-arrow-right-circle-fill text-white"></i></a>
+          </div>
+        </div>
+        <div class="qic-card-small-container badges-summary-info ">
+          <div class="d-flex gap-3 align-items-center pb-3 border-bottom border-light-subtle">
+              <i class="qic-secondary-circle bi bi-lightbulb-fill text-secondary"></i>
+            <div class="d-flex flex-column">
+              <p class="fw-medium">Want more info about Badges?</p>
+              <p class="text-body-secondary fs-7">We summarize all information below.</p>
+            </div>
+          </div>
+          <div class="d-flex flex-column gap-3 pt-3">
+            <div class="d-flex justify-content-between fw-medium">
+              <span>Earned</span>
+              <span><i class="bi bi-patch-check-fill text-success"></i> 6 badges</span>
+            </div>
+            <div class="d-flex justify-content-between fw-medium">
+              <span>Awarded</span>
+              <span><i class="bi bi-patch-check-fill text-secondary"></i> 3 badges</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <div class="qic-card-container">
+          <div class="d-flex justify-content-between gap-3 mb-3 mb-lg-4 flex-column flex-lg-row">
+            <span class="fs-5 fw-medium text-nowrap">9 Badges</span>
+            <div class="d-flex gap-4">
+              <form id="sortBadgesForm" action="">
+                <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="sortBadges" name="sortBadges">
+                  <option value="newest">Sort by newest</option>
+                  <option value="oldest">Sort by oldest</option>
+                  <option value="name">Sort by name</option>
+                  <option value="points">Sort by points</option>
+                </select>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('sortBadges').addEventListener('change', function(event) {
+                      alert(event.target.value);
+                    });
+                  });
+                </script>
+              </form>
+              <div class="d-flex align-items-center border-default border border-1">
+                <span id="badges-grid-view" class="qic-view-switch">
+                  <i class="bi bi-grid-fill"></i>
+                </span>
+                <span id="badges-list-view" class="qic-view-switch active-view-switch">
+                  <i class="bi bi-list-ul"></i>
+                </span>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    // PLACEHOLDER VIEW SWITCH LOGIC
+                    const badgesGridView = document.getElementById('badges-grid-view');
+                    const badgesListView = document.getElementById('badges-list-view');
+                    const badgesSummaryTable = document.getElementById('badges-summary-table');
+                    const badgesSummaryCards = document.getElementById('badges-summary-cards');
+                    if (!badgesGridView || !badgesListView || !badgesSummaryTable || !badgesSummaryCards) return;
+
+                    badgesGridView.addEventListener('click', function(event) {
+                      alert('Grid view selected');
+                      badgesGridView.classList.add('active-view-switch');
+                      badgesListView.classList.remove('active-view-switch');
+                      badgesSummaryTable.classList.add('d-none');
+                      badgesSummaryCards.classList.remove('d-none');
+                    });
+                    badgesListView.addEventListener('click', function(event) {
+                      alert('List view selected');
+                      badgesListView.classList.add('active-view-switch');
+                      badgesGridView.classList.remove('active-view-switch');
+                      badgesSummaryTable.classList.remove('d-none');
+                      badgesSummaryCards.classList.add('d-none');
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+
+          <div class="qic-tab-links gap-3 mt-4 w-100">
+            <a href="#" id="AllBadgesLink" class="nav-link fw-medium h-max text-black active">
+              All
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('AllBadgesLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('All Badges Link clicked');
+                  });
+                });
+              </script>
+            </a>
+            <a href="#" id="EarnedBadgesLink" class="nav-link fw-medium h-max text-black">
+              Earned
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('EarnedBadgesLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('Earned Badges Link clicked');
+                  });
+                });
+              </script>
+            </a>
+
+            <a href="#" id="AwardedBadgesLink" class="nav-link fw-medium h-max text-black">
+              Awarded
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('AwardedBadgesLink').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('Awarded Badges Link clicked');
+                  });
+                });
+              </script>
+            </a>
+           
+          </div>
+
+          <div id="badges-summary-table" class="badges-summary-table">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th scope="col">BADGE NAME</th>
+                    <th scope="col">SOURCE</th>
+                    <th scope="col">POINTS</th>
+                    <th scope="col">DATE</th>
+                    <th scope="col">DESCRIPTION</th>
+                    <th scope="col">DETAILS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-nowrap">
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="badges-summary-table-badge-image">
+                          <img src="assets/images/badges/teamwork.svg" alt="Badge 1">
+                        </div>
+                        <span>Teamwork!</span>
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Mike Minson</td>
+                    <td>
+                      <div class="qic-table-points-item points-neutral">
+                        No points
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Jan 12, 2025</td>
+                    <td>
+                      <span class="qic-table-description-text">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia exercitationem fugit magnam voluptate nobis doloribus provident quod, aliquid ducimus optio nesciunt fugiat inventore reiciendis porro asperiores dolor error alias a!
+                      </span>
+                    </td>
+                    <td class="text-center">
+                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-nowrap">
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="badges-summary-table-badge-image">
+                          <img src="assets/images/badges/collaboration.svg" alt="Badge 1">
+                        </div>
+                        <span>Collaboration Rocks!</span>
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Hanna Franci</td>
+                    <td>
+                      <div class="qic-table-points-item points-positive">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
+                          <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
+                          <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
+                        </svg>
+                        +700
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Jan 12, 2025</td>
+                    <td>
+                      <span class="qic-table-description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</span>
+                    </td>
+                    <td class="text-center">
+                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-nowrap">
+                      <div class="d-flex align-items-center gap-2">
+                        <div class="badges-summary-table-badge-image">
+                          <img src="assets/images/badges/together-we-thrive.svg" alt="Badge 1">
+                        </div>
+                        <span>Together We Thrive!</span>
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Ahmad Bergson</td>
+                    <td>
+                      <div class="qic-table-points-item points-negative">
+                        <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
+                          <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
+                          <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
+                        </svg>
+                        -1500
+                      </div>
+                    </td>
+                    <td class="text-nowrap">Jan 12, 2025</td>
+                    <td>
+                      <span class="qic-table-description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</span>
+                    </td>
+                    <td class="text-center">
+                      <i class="bi bi-three-dots-vertical cursor-pointer"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="badges-summary-cards" class="badges-summary-cards">
+            <div class="row g-3">
+              <div class="col-12 col-md-6 col-xl-4">
+                <div class="badges-summary-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="badges-summary-card-image">
+                      <img src="assets/images/badges/teamwork.svg" alt="Badge 1">
+                    </div>
+                    <div class="qic-table-points-item points-positive">
+                      <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
+                        <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
+                        <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
+                      </svg>
+                      +700
+                    </div>
+                    <span class="text-body-secondary fs-7 ms-auto text-nowrap">Jan 12, 2025</span>
+                  </div>
+                  <div class="d-flex flex-column mt-auto">
+                    <span>Collaboration Rocks!</span>
+                    <span class="text-body-secondary fs-8">for Kaylynn Dorwart</span>
+                    <span class="qic-table-description-text fs-8 mt-2">"Awesome job! It's fantastic working together with you!""Awesome job! It's fantastic working together with you!""Awesome job! It's fantastic working together with you!""Awesome job! It's fantastic working together with you!""Awesome job! It's fantastic working together with you!""Awesome job! It's fantastic working together with you!"</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4">
+                <div class="badges-summary-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="badges-summary-card-image">
+                      <img src="assets/images/badges/collaboration.svg" alt="Badge 1">
+                    </div>
+                    <div class="qic-table-points-item points-negative">
+                      <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
+                        <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
+                        <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
+                      </svg>
+                      -1500
+                    </div>
+                    <span class="text-body-secondary fs-7 ms-auto text-nowrap">Jan 12, 2025</span>
+                  </div>
+                  <div class="d-flex flex-column mt-auto">
+                    <span>Teamwork!</span>
+                    <span class="text-body-secondary fs-8">for Brandon Philips</span>
+                    <span class="qic-table-description-text fs-8 mt-2">"Awesome job! It's fantastic working together with you!"</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4">
+                <div class="badges-summary-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="badges-summary-card-image">
+                      <img src="assets/images/badges/together-we-thrive.svg" alt="Badge 1">
+                    </div>
+                    <div class="qic-table-points-item points-positive">
+                      <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
+                        <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
+                        <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
+                      </svg>
+                      +700
+                    </div>
+                    <span class="text-body-secondary fs-7 ms-auto text-nowrap">Jan 12, 2025</span>
+                  </div>
+                  <div class="d-flex flex-column mt-auto">
+                    <span>Teamwork!</span>
+                    <span class="text-body-secondary fs-8">for Brandon Philips</span>
+                    <span class="qic-table-description-text fs-8 mt-2">"Awesome job! It's fantastic working together with you!"</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4">
+                <div class="badges-summary-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="badges-summary-card-image">
+                      <img src="assets/images/badges/united-we-stand.svg" alt="Badge 1">
+                    </div>
+                    <div class="qic-table-points-item points-neutral">
+                      No points
+                    </div>
+                    <span class="text-body-secondary fs-7 ms-auto text-nowrap">Jan 12, 2025</span>
+                  </div>
+                  <div class="d-flex flex-column mt-auto">
+                    <span>Teamwork!</span>
+                    <span class="text-body-secondary fs-8">for Brandon Philips</span>
+                    <span class="qic-table-description-text fs-8 mt-2">"Awesome job! It's fantastic working together with you!"</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          
+          </div>
+
+          <nav class="qic-paginator" aria-label="badges pagination">
+            <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page">
+              <option value="15">15 per page</option>
+              <option value="30">30 per page</option>
+              <option value="45">45 per page</option>
+            </select>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link active" href="#" aria-current="page">1</a></li>
+              <li class="page-item"><a class="page-link" href="?page=2" >2</a></li>
+              <li class="page-item"><a class="page-link" href="?page=3" >3</a></li>
+              <i class="bi bi-three-dots d-flex align-items-end mx-3 pointer-events-none"></i>
+              <li class="page-item"><a class="page-link" href="?page=9" >9</a></li>
+              <li class="page-item"><a class="page-link" href="?page=10" >10</a></li>
+            </ul>
+            <div class="d-flex gap-3">
+              <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4">Previous</button>
+              <button id="qic-paginator-next-page-button" class="button-outlined px-4">Next</button>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                // PLACEHOLDER PAGINATION LOGIC
+                const previousPageButton = document.getElementById('qic-paginator-previous-page-button');
+                const nextPageButton = document.getElementById('qic-paginator-next-page-button');
+                const pageSizeSelect = document.getElementById('page-size-select');
+                if (!previousPageButton || !nextPageButton || !pageSizeSelect) return;
+                previousPageButton.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Previous page button clicked');
+                });
+                nextPageButton.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Next page button clicked');
+                });
+                pageSizeSelect.addEventListener('change', function(event) {
+                  event.preventDefault();
+                  alert(event.target.value);
+                });
+              });
+            </script>
+          </nav>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- SELECT BADGE TYPE MODAL -->
+  <div class="modal fade" id="selectBadgeTypeModal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-flex flex-column gap-2 align-items-start">
+          <h1 class="modal-title fs-5" >Select a Badge type</h1>
+          <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+        </div>
+        <div class="modal-body">
+          <form action="" id="select-badge-type-form">
+            <div class="d-flex gap-4 flex-wrap mb-3">
+              <div class="select-badge-type-card p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle">
+                <input class="form-check-input" type="radio" name="badgeType" id="withPoints" value="withPoints" checked>
+                <label class="form-check-label fw-bold " for="withPoints">
+                  Point Badge
+                  <p class="fs-8 text-body-secondary fw-normal text-nowrap">Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+                </label>
+              </div>
+              <div class="select-badge-type-card p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle">
+                <input class="form-check-input" type="radio" name="badgeType" id="withoutPoints" value="withoutPoints">
+                <label class="form-check-label fw-bold" for="withoutPoints">
+                  Non-Point Badge
+                  <p class="fs-8 text-body-secondary fw-normal text-nowrap">Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+                </label>
+              </div>
+            </div>
+
+            <div class="modal-footer d-flex gap-3 justify-content-between">
+              <a class="button-outlined px-4" data-bs-dismiss="modal">Back</a>
+              <button type="submit" id="submit-badge-type-btn" class="button-secondary px-4">Next</button>
+              <!-- NEXT MODAL TRIGGER HIDDEN BUTTON -->
+              <a id="go-to-award-badge-user-select-modal" class="d-none" data-bs-target="#awardBadgeUserSelectModal" data-bs-toggle="modal"></a>
+              <!-- NEXT MODAL TRIGGER HIDDEN BUTTON -->
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  const submitSelectBadgeTypeBtn = document.getElementById('submit-badge-type-btn');
+                  const selectBadgeTypeForm = document.getElementById('select-badge-type-form');
+                  const goToAwardBadgeUserSelectModal = document.getElementById('go-to-award-badge-user-select-modal');
+                  if (!submitSelectBadgeTypeBtn || !selectBadgeTypeForm || !goToAwardBadgeUserSelectModal) return;
+                  //PLACEHOLDER BADGE TYPE FORM SUBMIT LOGIC
+                  selectBadgeTypeForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const badgeType = selectBadgeTypeForm.badgeType.value;
+                    if (badgeType) {
+                      alert(badgeType);
+                      //OPEN NEXT MODAL
+                      goToAwardBadgeUserSelectModal.click();
+                    }
+                  });
+                });
+              </script>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- AWARD BADGE USER SELECT MODAL -->
+  <div class="modal fade" id="awardBadgeUserSelectModal" aria-hidden="true" aria-labelledby="awardBadgeUserSelectModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-flex flex-column gap-2 align-items-start">
+          <h1 class="modal-title fs-5" >Award a Badge</h1>
+          <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+        </div>
+        <div class="modal-body">
+          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="award-badge-user-select-form">
+            <!-- STEP 1 -->
+            <div class="award-badge-user-select-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
+              <div class="d-flex align-items-center gap-3">
+                <span class="award-badge-user-select-step-number">1</span>
+                <div class="d-flex flex-column me-auto">
+                  <span>Select a User</span>
+                  <span class="text-body-secondary fs-8">Select user who you wants to award with a Badge</span>
+                </div>
+                <a class="py-1 px-2 bg-body-secondary" data-bs-toggle="collapse" href="#first-step-collapse" role="button" aria-expanded="false" aria-controls="first-step-collapse">
+                  <i class="bi bi-chevron-down text-primary"></i>
+                </a>
+              </div>
+              <div class="collapse" id="first-step-collapse">
+                <label for="userSearch" class="form-label fs-8 text-uppercase fw-medium">user search</label>
+                <div class="d-flex">
+                  <input type="text" id="userSearch" name="userSearch" class="form-control" placeholder="Search user by First Name, Last Name, Location or User ID" required>
+                  <button data-bs-target="#awardBadgeUserAdvancedSearchModal" data-bs-toggle="modal" id="userSearchBtn" class="button-secondary px-2" >Search</button>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      const userSearchBtn = document.getElementById('userSearchBtn');
+                      const userSearchInput = document.getElementById('userSearch');
+                      if (!userSearchBtn || !userSearchInput) return;
+                      userSearchBtn.addEventListener('click', function(event) {
+                        event.preventDefault(); 
+                      });
+                    });
+                  </script>
+
+                </div>
+              </div>
+            </div>
+            <!-- STEP 2 -->
+            <div class="award-badge-user-select-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
+              <div class="d-flex align-items-center gap-3">
+                <span class="award-badge-user-select-step-number">2</span>
+                <div class="d-flex flex-column">
+                  <span>Select a Badge</span>
+                  <span class="text-body-secondary fs-8">You can select a Badge with or without points amount</span>
+                </div>
+                <a class="ms-auto py-1 px-2 bg-body-secondary" data-bs-toggle="collapse" href="#second-step-collapse" role="button" aria-expanded="false" aria-controls="second-step-collapse">
+                  <i class="bi bi-chevron-down text-primary"></i>
+                </a>
+              </div>
+              <div class="collapse" id="second-step-collapse">
+                <div class="d-flex flex-column gap-3">
+                  <div>
+                    <label for="badgeSearch" class="form-label fs-8 text-uppercase fw-medium">badge Select</label>
+                    <select type="text" id="badgeSearch" name="badgeSearch" class="form-select" placeholder="Select Badge" required>
+                      <option value="1">Teamwork!</option>
+                      <option value="2">Collaboration Rocks!</option>
+                      <option value="3">Together We Thrive!</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="addPoints" class="form-label fs-8 text-uppercase fw-medium">add points</label>
+                    <div class="d-flex gap-4 align-items-center">
+                      <input type="number" id="addPoints" name="addPoints" class="form-control" placeholder="Add points" required>
+                      <span class="text-nowrap"><i class="bi bi-arrow-left-right text-success"></i> 5 turns left</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- STEP 3 -->
+            <div class="award-badge-user-select-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
+              <div class="d-flex align-items-center gap-3">
+                <span class="award-badge-user-select-step-number">3</span>
+                <div class="d-flex flex-column">
+                  <span>Add personal wish</span>
+                  <span class="text-body-secondary fs-8">Say something with your badge!</span>
+                </div>
+                <a class="ms-auto py-1 px-2 bg-body-secondary" data-bs-toggle="collapse" href="#third-step-collapse" role="button" aria-expanded="false" aria-controls="third-step-collapse">
+                  <i class="bi bi-chevron-down text-primary"></i>
+                </a>
+              </div>
+              <div class="collapse" id="third-step-collapse">
+                <label for="badgeComment" class="form-label fs-8 text-uppercase fw-medium">ADD COMMENT (OPTIONAL)</label>
+                <input type="text" id="badgeComment" name="badgeComment" class="form-control" placeholder="Add comment here, 100 symbols max" maxlength="100">
+              </div>
+            </div>
+            <div class="modal-footer d-flex gap-3 justify-content-between">
+              <button class="button-outlined px-4" data-bs-target="#selectBadgeTypeModal" data-bs-toggle="modal">Back</button>
+              <button id="send-badge-btn" class="button-primary px-4">Send Badge</button>
+              <!-- SEND BADGE BUTTON HIDDEN TRIGGER -->
+              <button id="go-to-badge-award-success-modal" class="d-none" data-bs-target="#badgeAwardSuccessModal" data-bs-toggle="modal"></button>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const sendBadgeBtn = document.getElementById('send-badge-btn');
+                const goToBadgeAwardSuccessModal = document.getElementById('go-to-badge-award-success-modal');
+                const awardBadgeUserSelectForm = document.getElementById('award-badge-user-select-form');
+                if (!sendBadgeBtn || !goToBadgeAwardSuccessModal || !awardBadgeUserSelectForm) return;
+
+                sendBadgeBtn.addEventListener('click', function(event) {
+                  if (!awardBadgeUserSelectForm.checkValidity()) {
+                    //OPEN ALL STEPS IF FORM IS NOT VALID
+                    const allStepsCollapses = document.querySelectorAll('.award-badge-user-select-step .collapse');
+                    allStepsCollapses.forEach(collapse => {
+                      collapse.classList.add('show');
+                    });
+                  }
+                });
+
+                //PLACEHOLDER SEND BADGE BUTTON FORM SUBMIT LOGIC
+                awardBadgeUserSelectForm.addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  alert(event.target.userSearch.value + ' ' + event.target.badgeSearch.value + ' ' + event.target.addPoints.value + ' ' + event.target.badgeComment.value);
+                  //OPEN NEXT MODAL
+                  goToBadgeAwardSuccessModal.click();
+                });
+              });
+            </script>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- AWARD BADGE USER ADVANCED SEARCH MODAL -->
+  <div class="modal fade" id="awardBadgeUserAdvancedSearchModal" aria-hidden="true" aria-labelledby="awardBadgeUserAdvancedSearchModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-flex flex-column gap-2 align-items-start">
+          <h1 class="modal-title fs-5" >Advanced User Search</h1>
+        </div>
+        <div class="modal-body">
+          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="award-badge-user-advanced-search-form">
+            <div class="row g-4">
+              <div class="col-12 col-sm-6">
+                <label for="firstName" class="form-label fs-8 text-uppercase fw-medium">Search by First Name</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter User First Name" required minlength="3" maxlength="50">
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="lastName" class="form-label fs-8 text-uppercase fw-medium">Search by Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter User Last Name" required minlength="3" maxlength="50">
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="userID" class="form-label fs-8 text-uppercase fw-medium">Search by User ID</label>
+                <input type="text" id="userID" name="userID" class="form-control" placeholder="Enter User ID here" required minlength="3" maxlength="50">
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="location" class="form-label fs-8 text-uppercase fw-medium">Search by Location</label>
+                <input type="text" id="location" name="location" class="form-control" placeholder="Enter User Location" required minlength="3" maxlength="50">
+              </div>
+            </div>
+            <div class="modal-footer d-flex gap-3 justify-content-between">
+              <a class="button-outlined px-4" data-bs-toggle="modal" data-bs-target="#awardBadgeUserSelectModal">Back</a>
+              <button type="submit" class="button-secondary px-4">Search</button>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const awardBadgeUserAdvancedSearchForm = document.getElementById('award-badge-user-advanced-search-form');
+                const goToAwardBadgeUserSelectModal = document.getElementById('go-to-award-badge-user-select-modal');
+                if (!goToAwardBadgeUserSelectModal || !awardBadgeUserAdvancedSearchForm) return;
+                awardBadgeUserAdvancedSearchForm.addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  alert(event.target.firstName.value + ' ' + event.target.lastName.value + ' ' + event.target.userID.value + ' ' + event.target.location.value);
+                  goToAwardBadgeUserSelectModal.click();
+                });
+              });
+            </script>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- BADGE AWARD SUCCESS MODAL -->
+  <div class="modal fade" id="badgeAwardSuccessModal" aria-hidden="true" aria-labelledby="badgeAwardSuccessModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3 p-sm-5">
+        <div class="modal-header d-flex flex-column gap-2 align-items-start text-center">
+          <h1 class="modal-title fs-3 w-100 text-center" >Badge sended!</h1>
+          <p class="text-center w-100">Lorem ipsum odor amet, consectetuer adipiscing elit..</p>
+        </div>
+        <div class="modal-body d-flex flex-column align-items-center justify-content-center">
+          <div class="badges-summary-card">
+            <div class="d-flex align-items-start gap-3">
+              <div class="badges-summary-card-image">
+                <img src="assets/images/badges/teamwork.svg" alt="Badge 1">
+              </div>
+              <div class="qic-table-points-item points-positive">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="12" height="12" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="white"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="white"/>
+                </svg>
+                +700
+              </div>
+            </div>
+            <div class="d-flex flex-column mt-auto">
+              <span>Collaboration Rocks!</span>
+              <span class="text-body-secondary fs-8">for Brandon Philips</span>
+              <span class="qic-table-description-text fs-8 mt-2">"Awesome job! It's fantastic working together with you!"</span>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mt-4">
+            <button id="badge-award-finish-btn" class="button-outlined px-4" data-bs-dismiss="modal">Close</button>
+            <button id="award-another-badge-btn" class="button-primary px-4" data-bs-toggle="modal"  data-bs-target="#selectBadgeTypeModal">Send another Badge</button>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                const badgeAwardFinishBtn = document.getElementById('badge-award-finish-btn');
+                const awardBadgeUserSelectForm = document.getElementById('award-badge-user-select-form');
+                const awardAnotherBadgeBtn = document.getElementById('award-another-badge-btn');
+                if (!badgeAwardFinishBtn || !awardBadgeUserSelectForm) return;
+                badgeAwardFinishBtn.addEventListener('click', function(event) {
+                  //RESET USER SELECT FORM
+                  awardBadgeUserSelectForm.reset();
+                });
+                awardAnotherBadgeBtn.addEventListener('click', function(event) {
+                  //RESET USER SELECT FORM
+                  awardBadgeUserSelectForm.reset();
+                });
+              });
+            </script>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="qic-footer">
+    <div class="qic-footer-baner">
+      <div class="qic-container">
+        <h2 class="text-white">
+          Making a Difference <br> in the Lives of Our People, <br> Customers, and Community
+        </h2>
+      </div>
+    </div>
+    <div class="qic-footer-content">
+      <div class="qic-container">
+        <div class="d-flex gap-5 flex-wrap align-items-start">
+          <div class="d-flex flex-column gap-4 gap-sm-5">
+            <div class="d-flex">
+              <img class="qic-footer-logo me-4" src="assets/images/logo-white.svg" alt="QIC Logo" class="qic-footer-logo">
+              <span class="qic-footer-secondary-text">
+                Custom Employee Rewards <br> and Recognition Programs
+              </span>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="qic-footer-secondary-text text-uppercase fw-medium">social</span>
+              <ul class="d-flex gap-3 fs-4">
+                <li><a href="#"><i class="bi bi-globe text-white"></i></a></li>
+                <li><a href="#"><i class="bi bi-facebook text-white"></i></a></li>
+                <li><a href="#"><i class="bi bi-instagram text-white"></i></a></li>
+                <li><a href="#"><i class="bi bi-twitter-x text-white"></i></a></li>
+              </ul>
+            </div> 
+          </div>
+          <div class="d-flex flex-column gap-3">
+            <span class="qic-footer-secondary-text text-uppercase fw-medium">about</span>
+            <ul class="d-flex flex-column gap-3 text-white">
+              <li><a class="text-white" href="#">About Program</a></li>
+              <li><a class="text-white" href="#">About QIC</a></li>
+              <li><a class="text-white" href="#">Latest News</a></li>
+            </ul>
+          </div>
+          <div class="d-flex flex-column gap-3">
+            <span class="qic-footer-secondary-text text-uppercase fw-medium">help</span>
+            <ul class="d-flex flex-column gap-3 text-white">
+              <li><a class="text-white" href="#">Contacts</a></li>
+              <li><a class="text-white" href="#">FAQ Center</a></li>
+              <li><a class="text-white" href="#">Feedback</a></li>
+            </ul>
+          </div>
+          <div class="d-flex flex-column gap-3 me-auto">
+            <span class="qic-footer-secondary-text text-uppercase fw-medium">terms</span>
+            <ul class="d-flex flex-column gap-3 text-white">
+              <li><a class="text-white" href="#">Terms of Use</a></li>
+              <li><a class="text-white" href="#">Privacy Policy</a></li>
+              <li><a class="text-white" href="#">Program Terms</a></li>
+            </ul>
+          </div>
+          <div class="qic-footer-newsletter p-4 bg-white d-flex flex-column gap-3 flex-grow-1">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="qic-icon-bg-circle bg-primary">
+                <i class="bi bi-newspaper text-white fs-4"></i>
+              </div>
+              <div class="d-flex flex-column">
+                <span class="fw-medium">Get our latest news!</span>
+                <span class="fs-8 text-body-secondary">Join our newsletter for updates.</span>
+              </div>
+            </div>
+            <form id="qic-footer-newsletter-form" class="d-flex">
+              <input type="email" name="email" placeholder="Enter your email" class="form-control" required autocomplete="email">
+              <button type="submit" class="button-primary">Subscribe</button>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('qic-footer-newsletter-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert(event.target.email.value);
+                  });
+                });
+              </script>
+            </form>
+          </div>
+        </div>
+        <div class="qic-footer-bottom d-flex flex-wrap align-items-center justify-content-between pt-4 mt-4">
+          <a href="dashboard.html" class="text-white d-flex align-items-center gap-2 text-decoration-underline">
+            <i class="bi bi-house-door-fill text-white"></i>
+            To Home Page
+          </a>
+          <div class="qic-footer-secondary-text">© 2025 QIC. All rights reserved.</div>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      //EXAMPLE FLOW OF STARTING AWARD BADGE PROCESS FROM ANOTHER PAGE
+      const urlParams = new URLSearchParams(window.location.search);
+      const awardBadge = urlParams.get('award-badge');
+      if (awardBadge) {
+        document.getElementById('award-badge-start-btn').click();
+      }
+    });
+  </script>
+</body>
+</html>

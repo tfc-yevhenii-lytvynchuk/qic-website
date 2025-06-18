@@ -1,0 +1,90 @@
+
+/* EXAPMLE CONFIG VARIANT 1*/
+
+@font-face {
+  font-family: FontExample1;
+  src: url("../fonts/font1.ttf") format("truetype");
+}
+
+:root {
+  --font-family: FontExample1;
+  --logo-url: url(../images/Logo.png);
+  --login-background-image-url: url(../images/turner-reception-bg.png);
+  
+  --primary-color: #FF4026;
+  --secondary-color: #0A5DD0;
+  --success-color: #3BB512;
+  --danger-color: #dc3545;
+  --primary-button-text-color: white;
+  --nav-bar-background-color: white;
+  --main-text-color: black;
+  --page-container-width: 1440px;
+  --body-background-color: #F3F5F5;
+  --default-border-radius: 0px;
+  --default-border-color: #DFDFDF;
+
+  --progress-goal-bar-fill-background-gradient: linear-gradient(90deg, #FFD026 0%, #FF4026 100%);
+  --secondary-circle-background-color: #d9e4f1;
+  
+  --nav-support-background-image-url: url(../images/bg_support.png);
+  --check-in-background-image-url: url(../images/turner-reception-bg.png);
+  --about-program-block-text-color: black;
+
+  --login-footer-background-image-url: url(../images/turner-reception-bg.png);
+  --bs-breadcrumb-divider: '>';
+
+  --dashboard-reward-program-order: 1;
+  --dashboard-personalized-offers-order: 2;
+  --dashboard-hot-tasks-order: 3;
+  --dashboard-summary-order: 4;
+  --dashboard-your-quizes-order: 5;
+  /**
+  * 0 or 1 values to rearange the order of the cards in the summary section
+  default values are 1 - meaning positioning the cards in the order of the html structure
+  reducing the value will move the card BEEFORE its sibling
+  **/
+  --dashboard-summary-section-ranking-order: 1;
+  --dashboard-summary-section-badges-order: 1;
+  --dashboard-summary-section-instant-reward-order: 1;
+}
+
+/* EXAPMLE CONFIG VARIANT 2*/
+
+/* @font-face {
+  font-family: FontExample2;
+  src: url("../fonts/font2.ttf") format("truetype");
+}
+
+:root {
+  --font-family: FontExample2;
+  --logo-url: url(../images/samples-temp/bosch-logo.svg);
+  --primary-color: #0A5DD0;
+  --secondary-color: #FF4026;
+  --success-color: #60c040;
+  --primary-button-text-color: white;
+  --nav-bar-background-color: rgb(231, 228, 228);
+  --main-text-color: black;
+  --page-container-width: 1800px;
+  --body-background-color: #dfe2e2;
+  --default-border-radius: 8px;
+
+  --progress-goal-bar-fill-background-gradient: linear-gradient(90deg, #aacdff 0%, #0A5DD0 100%);
+  --secondary-circle-background-color: #f7dfdc;
+
+  --nav-support-background-image-url: url(../images/samples-temp/bg_support2.webp);
+  --check-in-background-image-url: url(../images/samples-temp/bg_banner3.webp);
+  --about-program-block-text-color: white;
+
+  --login-footer-background-image-url: url(../images/turner-reception-bg.png);
+  --bs-breadcrumb-divider: '>';
+
+  --dashboard-reward-program-order: 5;
+  --dashboard-personalized-offers-order: 4;
+  --dashboard-hot-tasks-order: 3;
+  --dashboard-summary-order: 2;
+  --dashboard-your-quizes-order: 1;
+
+  --dashboard-summary-section-ranking-order: 0;
+  --dashboard-summary-section-badges-order: 1;
+  --dashboard-summary-section-instant-reward-order: 0;
+} */

@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>QIC Dashboard</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="assets/css/config.css" as="style">
+  <link rel="preload" href="assets/css/styles.css" as="style">
+  <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="assets/fonts/bootstrap-icons.css" as="style">
+  
+  <!-- Regular CSS loading -->
+  <link rel="stylesheet" href="assets/css/config.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+
+  <style>
+    .dashboard-main #dashboard-banner .check-in {
+      border-radius: var(--default-border-radius);
+    }
+    .dashboard-main #dashboard-banner .check-in .text-green {
+      color: var(--success-color)
+    }
+
+    .dashboard-main #dashboard-banner .check-in-image {
+      width: 40px;
+      height: 40px
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .dashboard-main #dashboard-banner .check-in .check-in-btn {
+      color: #fff;
+      background: linear-gradient(30deg, #7fb512, #126eb5, #7fb512);
+      background-size: 200% 100%;
+      animation: gradient 5s ease-out infinite;
+      border-radius: var(--default-border-radius);
+    }
+    .dashboard-main #dashboard-banner .check-in .check-in-btn:hover {
+      background: linear-gradient(90deg, #3BB512, #12A4B5) !important;
+    }
+    .dashboard-main #dashboard-banner .check-in .check-in-btn-inactive {
+      border-radius: var(--default-border-radius);
+    }
+    .dashboard-main #reward-program .welcome {
+      flex: 7;
+      border-radius: var(--default-border-radius);
+    }
+
+    .step-circle {
+      min-width: 48px;
+      min-height: 48px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 24px;
+      background-color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center
+    }
+
+    .dashboard-main #reward-program .points-summary {
+      flex: 3;
+      border-radius: var(--default-border-radius);
+    }
+
+    .dashboard-main #reward-program .points-summary .points-summary-icon {
+      width: 32px;
+      height: 32px
+    }
+    .progress-goal-image {
+      border-radius: 50%;
+      background: #F7F5F7;
+    }
+    .progress-goal-percent {
+      background-color: var(--primary-color);
+      font-size: 24px;
+      padding: 3px 8px;
+      color: white;
+      height: fit-content;
+      border-radius: 4px;
+    }
+    .progress-goal-bar {
+      background: #F7F5F7;
+      width: 100%;
+      height: 16px;
+      position: relative;
+      margin: 24px 0;
+    }
+    .progress-goal-bar-fill {
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: var(--progress-goal-bar-fill-background-gradient);
+    }
+    .progress-goal-bar-fill::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(50%, -50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: white;
+      border: 6px solid var(--primary-color);
+    }
+    .dashboard-badge-card {
+      background-color: #F3F5F5;
+      border-radius: var(--default-border-radius);
+    }
+    .dashboard-badge-card .qic-table-points-item {
+      width: fit-content;
+    }
+
+    #badges-summary-container:not(:only-child) {
+      max-width:33.333333333333336%;
+    }
+
+    @media (max-width: 1200px) {
+      #badges-summary-container:not(:only-child) {
+        max-width: 50%;
+      }
+    }
+    .summary-section-grid {
+      row-gap: 24px;
+    }
+    @media (max-width: 992px) {
+      #badges-summary-container {
+        max-width: 100% !important;
+      }
+      .summary-section-grid {
+        flex-direction: column;
+        display: flex;
+        gap: 24px;
+      }
+    }
+    .dashboard-hot-task-card {
+      background: #F3F5F5;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 300px;
+    }
+    @media screen and (max-width: 576px) {
+      .dashboard-hot-task-card {
+        min-width:286px;
+      }
+    }
+    .onboarding-indicator {
+      width: 10px;
+      height: 10px;
+      border: 1px solid black;
+      border-radius: 50%;
+      display: flex;
+    }
+    .onboarding-indicator-active {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg bg-white py-3">
+    <div class="container-fluid qic-container">
+      <a class="navbar-brand" href="#"><div class="nav-logo d-flex qic-logo h-2rem me-sm-1 me-auto"></div></a>
+      <div class="d-flex d-lg-none ms-auto me-2">
+        <div class="nav-points-count d-flex align-items-center gap-2 py-2 px-3 bg-body-secondary text-black">
+          <svg xmlns="http://www.w3.org/2000/svg"  width="18" height="18" viewBox="0 0 32 32" fill="none">
+            <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+            <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+          </svg>
+          <span>14,245</span></div><a href="shop-main.html" class="nav-shop-link d-flex align-items-center py-2 px-3 button-primary">
+          Shop </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list text-white"></i>
+        <i class="bi bi-x-lg text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search">
+          <input id="navbar-search-input" class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
+          <button class="button-primary px-3" type="submit"><i class="bi bi-search text-white"></i></button>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const navbarSearchForm = document.getElementById('navbar-search-form');
+              const searchInput = document.getElementById('navbar-search-input');
+              navbarSearchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert(searchInput.value);
+              });
+            });
+          </script>
+        </form>
+        <div class="qic-navbar-controls d-flex flex-column flex-lg-row" style="order: 4;">
+          <a href="#" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
+            <span><i class="bi bi-bell-fill"></i></span>
+            <span class="d-block d-lg-none">Notifications</span>
+          </a>
+          <div class="qic-navbar-controls-item dropdown">
+            <a data-bs-toggle="dropdown" href="#" class="dropdown-toggle d-flex align-items-center gap-2 cursor-pointer">
+              <i class="bi bi-person-fill"></i>
+              <span class="text-nowrap"> My Profile </span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="profile-settings.html" class="p-3 d-flex gap-3 text-nowrap mock-item">
+                <div class="d-flex flex-column text-black"><span class="fw-bold">Profile Settings</span>
+                  <span class="text-body-secondary fs-7">Subinfo</span>
+                </div>
+              </a>
+              <a href="#" class="p-3 d-flex gap-3 text-nowrap mock-item">
+                <div class="d-flex flex-column text-black"><span class="fw-bold">Program Guide</span>
+                  <span class="text-body-secondary fs-7">Subinfo</span>
+                </div>
+              </a>
+              <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white gap-3">
+                <span class="text-nowrap">Need to Exit?</span>
+                <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('logoutLink').addEventListener('click', function() {
+                      alert('Logout link clicked');
+                    });
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+          <a href="shop-cart-details.html" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
+            <span><i class="bi bi-bag-fill"></i></span>
+            <span class="d-block d-lg-none">Cart</span>
+            <div class="d-flex d-lg-none gap-2 align-items-center justify-content-between ms-auto bg-white px-2 py-1">
+              <span class="fs-7 fw-medium">5 items</span>
+              <span class="fs-7 fw-medium d-flex align-items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                  <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                  <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                </svg>
+                14,245
+              </span>
+            </div>
+          </a>
+        </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+          <li class="nav-item">
+            <a class="nav-link active p-0" href="dashboard.html">Dashboard</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+              Shop
+            </a>
+            <div class="dropdown-menu">
+              <div class="qic-nav-dropdown-menu-content py-4">
+                <div class="d-flex justify-content-between qic-container flex-wrap">
+                  <div class="d-flex gap-3 gap-lg-5 flex-wrap flex-column flex-sm-row">
+                    <!-- CATEGORIES TABS TRIGGERS -->
+                    <div class="d-flex flex-column" role="tablist">
+                      <span class="text-body-secondary fs-7">CATEGORIES</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <!-- A Digital World -->
+                        <button class="active" data-bs-toggle="tab" data-bs-target="#digital-world-subcategories" role="tab" aria-selected="true">
+                          <div class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item ">
+                            <div class="d-flex flex-column">
+                              <span class="fw-bold">A Digital World</span>
+                              <span class="text-body-secondary fs-7">Subinfo</span>
+                            </div>
+                            <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
+                          </div>
+                        </button>
+     
+                        <!-- All About You -->
+                        <button data-bs-toggle="tab" data-bs-target="#all-about-you-subcategories" role="tab" aria-selected="false">
+                          <div class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                            <div class="d-flex flex-column">
+                              <span class="fw-bold">All About You</span>
+                              <span class="text-body-secondary fs-7">Subinfo</span>
+                            </div>
+                            <i class="bi bi-arrow-right text-primary fs-5 ms-3"></i>
+                          </div>
+                        </button>
+
+                      </div>
+                    </div>
+                     <!-- SUBCATEGORIES TABS -->
+                    <div class="tab-content">
+                      <!-- A Digital World subcategories -->
+                      <div id="digital-world-subcategories" class="tab-pane fade show active" role="tabpanel" aria-labelledby="digital-world-category" tabindex="0">
+                        <div class="d-flex flex-column">
+                          <span class="text-body-secondary fs-7">A Digital World /</span>
+                          <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Camcorders & Digital Cameras</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Computers & Accessories</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">DVD Players & Recorders</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Game Consoles & Accessories</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!-- All About You subcategories -->
+                      <div id="all-about-you-subcategories" class="tab-pane fade" role="tabpanel" aria-labelledby="all-about-you-category" tabindex="0">
+                        <div class="d-flex flex-column">
+                          <span class="text-body-secondary fs-7">All About You /</span>
+                          <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Apparel</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Eyewear</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Jewelry</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                            <a href="shop-category.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                              <div class="d-flex flex-column">
+                                <span class="fw-bold">Fragrances</span>
+                                <span class="text-body-secondary fs-7">Subinfo</span>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column"><span class="text-body-secondary fs-7">PERSONAL</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="shop-orders-history.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">My Orders</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="shop-wishlist.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">My Wishlist</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">PROGRAM GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">SALES REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <a href class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                        <span class="fw-bold">LATEST NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                      </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100">
+                          <i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                          <a href="" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Points
+            </a>
+            <div class="dropdown-menu">
+              <div class="qic-nav-dropdown-menu-content py-4">
+                <div class="d-flex justify-content-between qic-container flex-wrap">
+                  <div class="d-flex gap-3 gap-lg-5 flex-wrap flex-column flex-sm-row">
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">GENERAL</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="points-summary.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Points Summary</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="quizzes.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Quizzes</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="leaderboard.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item ">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Ranking</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">POINTS ACTIONS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="points-virtual-card-selector.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Deposit Points</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Award Points</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">CARDS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="points-deposit-card-history.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Deposit Cards</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Instant Rewards</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a 
+                        class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">PROGRAM
+                          GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a  class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">SALES
+                          REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">LATEST
+                          NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100"><i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                           <a href="" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Social
+            </a>
+            <div class="dropdown-menu">
+              <div class="qic-nav-dropdown-menu-content py-4">
+                <div class="d-flex justify-content-between qic-container flex-wrap">
+                  <div class="d-flex gap-3 gap-lg-5 flex-wrap flex-column flex-sm-row">
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">BADGES</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="badges-summary.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Badges Summary</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                        <a href="badges-summary.html?award-badge=true" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Award a Badge</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">USER ACTIONS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="#" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Nominate User</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="text-body-secondary fs-7">CARDS</span>
+                      <div class="d-flex flex-column overflow-y-auto main-nav-menu">
+                        <a href="points-virtual-card-selector.html" class="p-3 d-flex align-items-center gap-3 text-nowrap mock-item">
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Virtual Cards</span>
+                            <span class="text-body-secondary fs-7">Subinfo</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="text-body-secondary fs-7">ABOUT PROGRAM</span>
+                    <div class="about-program-block d-flex flex-column gap-1 p-4">
+                      <a 
+                        class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">PROGRAM
+                          GUIDE</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a  class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">SALES
+                          REFERAL</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                        <a class="animated-link-with-arrow d-flex gap-3 align-items-center"><span class="fw-bold">LATEST
+                          NEWS</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+                        </a>
+                      <div class="d-flex align-items-center justify-content-between mt-1">
+                        <div class="d-flex gap-2 w-100"><i class="bi bi-question-circle-fill color-secondary fs-3"></i>
+                          <div class="d-flex flex-column">
+                            <span class="fw-bold">Have a question?</span>
+                            <span class="text-body-secondary fs-7">Send us a note</span>
+                          </div>
+                           <a href="" class="button-secondary px-3 ms-auto">Contact</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+  
+        </ul>
+        <div class="d-none d-lg-flex me-3">
+          <div class="nav-points-count d-flex align-items-center gap-2 py-2 px-3 bg-body-secondary text-black">
+            <svg xmlns="http://www.w3.org/2000/svg"  width="18" height="18" viewBox="0 0 32 32" fill="none">
+              <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+              <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+            </svg>
+            <span>14,245</span></div><a href="shop-main.html" class="nav-shop-link d-flex align-items-center py-2 px-3 button-primary">
+            Shop </a>
+        </div>
+
+
+      </div>
+    </div>
+  </nav>
+
+  <main class="dashboard-main mt-3">
+    <div class="qic-container d-flex flex-column">
+      <header id="dashboard-banner" class="qic-header-banner">
+        <div class="d-flex flex-column gap-2 text-white">
+          <h1 class="fs-4">Good afternoon, James Torquinn</h1>
+          <span>Jan 7, 2025 <span class="text-primary">|</span> 04:30 PM</span>
+        </div>
+        <div class="check-in bg-white text-black p-3 p-sm-4 d-flex gap-2 align-items-center flex-column flex-sm-row">
+          <div class="d-flex gap-2">
+            <div class="qic-icon-bg-circle bg-success"><i class="bi bi-calendar-check-fill text-white"></i></div>
+            <div class="d-flex flex-column me-4">
+              <span class="fw-bold">Daily check-in: <span class="text-green fw-medium">12 days</span></span>
+              <span class="fs-7 text-body-secondary">Complete 3 more days to claim bonus points!</span>
+            </div>
+          </div>
+
+          <a href="#" id="checkInBtn" class="check-in-btn d-flex align-items-center gap-2 px-3 py-2">
+            <span>Claim</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 4.17285C6.78689 4.17285 4.17285 6.78689 4.17285 10C4.17285 13.2131 6.78689 15.8271 10 15.8271C13.2131 15.8271 15.8271 13.2131 15.8271 10C15.8271 6.78689 13.2131 4.17285 10 4.17285ZM12.6292 10L10 12.6292L7.37077 10L10 7.37077L12.6292 10Z" fill="white" />
+              <path d="M16.364 3.63602C14.6641 1.93618 12.404 1 10 1C7.59602 1 5.33593 1.93618 3.63602 3.63602C1.93618 5.33593 1 7.59602 1 10C1 12.404 1.93618 14.6641 3.63602 16.364C5.33593 18.0638 7.59602 19 10 19C12.404 19 14.6641 18.0638 16.364 16.364C18.0638 14.6641 19 12.404 19 10C19 7.59602 18.0638 5.33593 16.364 3.63602ZM10 16.8818C6.20534 16.8818 3.11816 13.7947 3.11816 10C3.11816 6.20534 6.20534 3.11816 10 3.11816C13.7947 3.11816 16.8818 6.20534 16.8818 10C16.8818 13.7947 13.7947 16.8818 10 16.8818Z" fill="white" />
+            </svg>
+            <span>+50</span>
+          </a>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              document.getElementById('checkInBtn').addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Daily check-in button clicked');
+              });
+            });
+          </script>
+          <div class="check-in-btn-inactive d-flex align-items-center gap-2 px-3 py-2 bg-body-secondary">
+            <i class="bi bi-alarm-fill"></i><span class="text-nowrap">23h 59m</span>
+          </div>
+        </div>
+      </header>
+
+      <section id="reward-program" style="order: var(--dashboard-reward-program-order);">
+        <div class="d-flex gap-4 flex-column flex-lg-row">
+          <div class="welcome p-4 p-md-5 bg-white text-black d-flex gap-2 flex-column">
+            <h2>Welcome to Rewards Program!</h2>
+            <p class="text-body-secondary">We are glad to see you here! Earn points for activity and exchange them
+              for valuable gifts. Your first rewards are already waiting for you!</p>
+            <div class="d-flex gap-3 flex-wrap">
+              <div class="d-flex gap-3 align-items-center">
+                <div class="step-circle">1</div>
+                <div class="d-flex flex-column"><span class="fw-bold fs-5">Earn Points</span><span
+                    class="fs-7 text-body-secondary">By quizzes and tasks</span></div><svg
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z"
+                    fill="var(--primary-color)" style="opacity: 0.5;" />
+                </svg>
+              </div>
+              <div class="d-flex gap-3 align-items-center">
+                <div class="step-circle">2</div>
+                <div class="d-flex flex-column"><span class="fw-bold fs-5">Track your Progress</span><span
+                    class="fs-7 text-body-secondary">To manage your Points</span></div><svg
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z"
+                    fill="var(--primary-color)" style="opacity: 0.5;" />
+                </svg>
+              </div>
+              <div class="d-flex gap-3 align-items-center">
+                <div class="step-circle">3</div>
+                <div class="d-flex flex-column"><span class="fw-bold fs-5">Spend Points</span><span
+                    class="fs-7 text-body-secondary">Shop, Badges, etc!</span></div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between flex-wrap mt-3">
+              <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                <span class="fw-bold">LEARN MORE</span>
+                <i class="bi bi-arrow-right text-primary fs-4"></i>
+              </a>
+              <a href="#onboarding-modal"  data-bs-toggle="modal" class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                <span class="fw-bold">ONBOARDING AGAIN</span>
+                <i class="bi bi-arrow-right text-primary fs-4"></i>
+              </a>
+            </div>
+          </div>
+          <div class="points-summary p-4 p-md-5 bg-white text-black d-flex flex-column gap-3">
+            <h5 class="fw-bold">Points Summary</h5>
+            <div class="d-flex align-items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg"  width="28" height="28" viewBox="0 0 32 32" fill="none">
+                <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+              </svg>
+              <div class="d-flex flex-column"><span class="fs-3 fw-bold">14,245</span><span
+                  class="fs-7 text-body-secondary fw-medium">Total Balance</span></div>
+            </div>
+            <div class="d-flex flex-column gap-2">
+              <div class="row align-items-center">
+                <div class="col-8"><span class="fw-medium">Earned</span></div>
+                <div class="col-4">
+                  <span class="d-flex align-items-center gap-1 fw-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                      <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                      <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                    </svg>
+                    12,245
+                  </span>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-8"><span class="fw-medium">Awarded</span></div>
+                <div class="col-4">
+                  <span class="d-flex align-items-center gap-1 fw-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                      <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                      <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                    </svg>
+                      1,500
+                    </span>
+                  </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-8"><span class="fw-medium">Available for Redemption</span></div>
+                <div class="col-4">
+                  <span class="d-flex align-items-center gap-1 fw-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                      <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                      <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                    </svg>
+                    500
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="personalized-offers" style="order: var(--dashboard-personalized-offers-order);">
+        <div class="d-flex justify-content-between mb-3">
+          <span class="fs-4">Personalized offers</span><a href="shop-main.html" class="button-outlined px-3 py-2"> Go to Shop </a>
+        </div>
+        <div class="qic-tab-links gap-3">
+          <a href="#" id="headphonesSortLinkLink" class="nav-link fw-medium h-max active">
+            Headphones
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('headphonesSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Headphones Sorting Link clicked');
+                });
+              });  
+            </script>
+          </a>
+          <a href="#" id="gameConsolesSortLinkLink" class="nav-link fw-medium h-max">
+            Game Consoles
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('gameConsolesSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Game Consoles Sorting Link clicked');
+                });
+              });
+            </script>
+          </a>
+          <a href="#" id="boardGamesSortLinkLink" class="nav-link fw-medium h-max">Board Games
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('boardGamesSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Board Games Sorting Link clicked');
+                });
+              });
+            </script>
+          </a>
+          <a href="#" id="cookwareBakewareSortLinkLink" class="nav-link fw-medium h-max">Cookware &amp; Bakeware
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('cookwareBakewareSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Cookware &amp; Bakeware Sorting Link clicked');
+                });
+              });
+            </script>
+          </a>
+        </div>
+        <div class="d-flex gap-3 mt-3 w-100 overflow-x-auto pb-2">
+          <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+            <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('add-to-favorites-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert('Add to Favorites form submitted');
+                  });
+                });
+              </script>
+            </form>
+            <div class="qic-product-card-image-container flex-grow-1">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" 
+                   class="product-image w-100 h-100 object-fit-contain" 
+                   loading="lazy" 
+                   alt="Product image">
+            </div>
+            <p class="fs-7 fw-bold m-0">Not in cart/in vaforites product example</p>
+            <span class="d-flex align-items-center gap-1 fw-medium">
+              <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+              </svg>
+              1,500
+            </span>
+            <form id="add-to-cart-form" class="w-100" action="">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="button-outlined w-100 px-3 py-2"> Add to Cart </button>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('add-to-cart-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert('Add to cart form submitted');
+                  });
+                });
+              </script>
+            </form>
+          </div>
+          <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
+            <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+              <input type="hidden" name="productId" value="000-000-000-000">
+              <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert('Remove from favorites form submitted');
+                  });
+                });
+              </script>
+            </form>
+            <div class="qic-product-card-image-container flex-grow-1">
+              <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" 
+                   class="product-image w-100 h-100 object-fit-contain" 
+                   loading="lazy" 
+                   alt="Product image">
+            </div>
+            <p class="fs-7 fw-bold m-0">In cart/in vaforites product example</p>
+            <span class="d-flex align-items-center gap-1 fw-medium">
+              <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 32 32" fill="none">
+                <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+              </svg>
+              1,500
+            </span>
+            <div href class="button-success px-3 py-2 fw-medium">
+              <i class="bi bi-check2 text-success me-1"></i> InCart
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="hot-tasks-section" style="order: var(--dashboard-hot-tasks-order);">
+        <div class="qic-card-container">
+          <h5><i class="bi bi-fire text-primary me-1"></i>Hot Tasks</h5>
+          <div class="d-flex gap-3 mt-3 w-100 overflow-x-auto pb-2">
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold">New Quiz is available for you</span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2">Get <span class="fw-medium text-primary">+530</span> Points for completing it!</p>
+              <a href="" class="button-primary w-100 mt-auto">Take Quiz</a>
+            </div>
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold">
+                  You have
+                  <span class="text-primary fw-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M10 4.17285C6.78689 4.17285 4.17285 6.78689 4.17285 10C4.17285 13.2131 6.78689 15.8271 10 15.8271C13.2131 15.8271 15.8271 13.2131 15.8271 10C15.8271 6.78689 13.2131 4.17285 10 4.17285ZM12.6292 10L10 12.6292L7.37077 10L10 7.37077L12.6292 10Z" fill="var(--primary-color)"/>
+                      <path d="M16.364 3.63602C14.6641 1.93618 12.404 1 10 1C7.59602 1 5.33593 1.93618 3.63602 3.63602C1.93618 5.33593 1 7.59602 1 10C1 12.404 1.93618 14.6641 3.63602 16.364C5.33593 18.0638 7.59602 19 10 19C12.404 19 14.6641 18.0638 16.364 16.364C18.0638 14.6641 19 12.404 19 10C19 7.59602 18.0638 5.33593 16.364 3.63602ZM10 16.8818C6.20534 16.8818 3.11816 13.7947 3.11816 10C3.11816 6.20534 6.20534 3.11816 10 3.11816C13.7947 3.11816 16.8818 6.20534 16.8818 10C16.8818 13.7947 13.7947 16.8818 10 16.8818Z" fill="var(--primary-color)"/>
+                    </svg>
+                    14,245
+                  </span>
+                  Points
+                </span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2">Maybe tou want award someone?</p>
+              <a href="badges-summary.html" class="button-primary w-100 mt-auto">Award a Badge</a>
+            </div>
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quasi velit explicabo dignissimos optio ipsam corrupti eos magnam ad libero placeat, repellendus quaerat reiciendis laborum dicta itaque labore ex hic?</span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sint at dignissimos blanditiis autem, nulla vero quis perspiciatis veniam. A repellendus excepturi quaerat sed, nemo voluptatum non dicta eaque odio!</p>
+              <a href="" class="button-primary w-100 mt-auto">Test</a>
+            </div>
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quasi velit explicabo dignissimos optio ipsam corrupti eos magnam ad libero placeat, repellendus quaerat reiciendis laborum dicta itaque labore ex hic?</span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sint at dignissimos blanditiis autem, nulla vero quis perspiciatis veniam. A repellendus excepturi quaerat sed, nemo voluptatum non dicta eaque odio!</p>
+              <a href="" class="button-primary w-100 mt-auto">Test</a>
+            </div>
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quasi velit explicabo dignissimos optio ipsam corrupti eos magnam ad libero placeat, repellendus quaerat reiciendis laborum dicta itaque labore ex hic?</span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sint at dignissimos blanditiis autem, nulla vero quis perspiciatis veniam. A repellendus excepturi quaerat sed, nemo voluptatum non dicta eaque odio!</p>
+              <a href="" class="button-primary w-100 mt-auto">Test</a>
+            </div>
+            <div class="dashboard-hot-task-card">
+              <div class="d-flex align-items-start justify-content-between">
+                <span class="fw-bold line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quasi velit explicabo dignissimos optio ipsam corrupti eos magnam ad libero placeat, repellendus quaerat reiciendis laborum dicta itaque labore ex hic?</span>
+                <button class="close-hot-task-card-button"><i class="bi bi-x-circle-fill text-black"></i></button>
+              </div>
+              <p class="fs-7 mb-2 line-clamp-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sint at dignissimos blanditiis autem, nulla vero quis perspiciatis veniam. A repellendus excepturi quaerat sed, nemo voluptatum non dicta eaque odio!</p>
+              <a href="" class="button-primary w-100 mt-auto">Test</a>
+            </div>
+
+  
+          </div>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              document.querySelectorAll('.close-hot-task-card-button').forEach(button => {
+                button.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Close Hot Task Card Button clicked');
+                });
+              });
+            });
+          </script>
+        </div>
+
+      </section>
+
+      <section id="summary-section" style="order: var(--dashboard-summary-order);">
+        <div class="summary-section-grid row">
+          <div class="col d-flex flex-column gap-4" style="order: 1;">
+            <div class="row h-100  row-gap-4 flex-column flex-sm-row"  style="order: 1;">
+              <div style="order: 1;" class="col">
+                <div class="qic-card-container h-100 d-flex flex-column">
+                  <h5>Progress to Goal</h5>
+                  <div class="d-flex align-items gap-3">
+                    <div class="progress-goal-image">
+                      <img width="48" height="48" src="assets/images/dashboard/progress-goal.png" alt="Progress Goal">
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">Beginner</span>
+                      <span class="fs-7 text-body-secondary">Level 2</span>
+                    </div>
+                    <span class="progress-goal-percent ms-auto">
+                      80%
+                    </span>
+                  </div>
+
+                  <div class="progress-goal-bar">
+                    <div class="progress-goal-bar-fill" style="width: 80%;"></div>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-3">
+                    <span class="fs-7 text-body-secondary">4,898 left</span>
+                    <span class="fs-7 text-body-secondary">25,101 / 30,000</span>
+                  </div>
+
+                  <button class="button-outlined w-100 mt-auto">See progress bonuses</button>
+                </div>
+              </div>
+              <div style="order: var(--dashboard-summary-section-ranking-order);" class="col">
+                <div class="qic-card-container h-100 d-flex flex-column">
+                  <h5 class="text-center">Your Ranking</h5>
+                  <div class="d-flex justify-content-around">
+
+                    <div class="d-flex flex-column align-items-center gap-1">
+                      <div style="background: #0C57CF4D;" class="qic-icon-bg-circle">
+                        <img width="24" height="24" src="assets/images/dashboard/rank-1.png" alt="">
+                      </div>
+                      <span class="fs-8 text-body-secondary">-1,231</span>
+                    </div>
+
+                    <div class="d-flex flex-column mb-2">
+                      <div style="background: linear-gradient(155deg, #0CCF5A 8.48%, #06692E 91.52%); width: 64px; height: 64px;" class="qic-icon-bg-circle">
+                        <img width="42" height="42" src="assets/images/dashboard/rank-2.png" alt="">
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center gap-1">
+                      <div style="background: #0CA5CF4D;" class="qic-icon-bg-circle">
+                        <img width="24" height="24" src="assets/images/dashboard/rank-3.png" alt="">
+                      </div>
+                      <span class="fs-8 text-body-secondary">+711</span>
+                    </div>
+
+                  </div>
+
+                  <div class="d-flex flex-column align-items-center gap-2 mb-2">
+                    <h6 class="fs-5 fw-medium">14th place</h6>
+                    <p class="fs-8 text-body-secondary">You better than 56% of users!</p>
+                  </div>
+
+                  <a href="leaderboard.html" class="button-primary w-100 mt-auto">Leaderboard</a>
+                </div>
+              </div>
+            </div>
+            <div style="order: var(--dashboard-summary-section-instant-reward-order);" class="row h-100">
+              <div class="col">
+                <div class="qic-card-container h-100 d-flex flex-column">
+                  <div class="d-flex justify-content-between mb-3 flex-wrap">
+                    <h5>Instant Reward Code</h5>
+                    <div class="qic-tab-links gap-3">
+                      <a href="#" id="instantRewardSortLinkLink" class="nav-link fw-medium h-max active">
+                        Instant Reward
+                        <script>
+                          document.addEventListener('DOMContentLoaded', function() {
+                            document.getElementById('instantRewardSortLinkLink').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              alert('Instant Reward Sorting Link clicked');
+                            });
+                          });
+                        </script>
+                      </a>
+                      <a href="#" id="rewardCodeSortLinkLink" class="nav-link fw-medium h-max">
+                        Reward Code
+                        <script>
+                          document.addEventListener('DOMContentLoaded', function() {
+                            document.getElementById('rewardCodeSortLinkLink').addEventListener('click', function(event) {
+                              event.preventDefault();
+                              alert('Reward Code Sorting Link clicked');
+                            });
+                          });
+                        </script>
+                      </a>
+                    </div>
+                  </div>
+                  <form action="" id="instantRewardCodeForm">
+                    <div class="d-flex mb-4">
+                      <input type="text" name="rewardCode" id="rewardCode" placeholder="Enter your code here" class="form-control" required minlength="6" maxlength="6">
+                      <button type="submit" class="button-primary text-nowrap px-2">Submit Code</button>
+                    </div>
+                  </form>
+                  <div class="d-flex gap-3 justify-content-between flex-wrap mb-3 mt-auto">
+                    <div class="d-flex gap-2">
+                      <i class="qic-secondary-circle bi bi-question-circle-fill text-secondary"></i>
+                      <div class="d-flex flex-column">
+                        <span class="fs-7 fw-medium">Need your Rewards history?</span>
+                        <span class="fs-8 text-body-secondary">We store data about all the codes you enter</span>
+                      </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                      <i class="qic-secondary-circle bi bi-gift-fill text-secondary"></i>
+                      <div class="d-flex flex-column">
+                        <span class="fs-7 fw-medium">You have <span class="text-primary fw-bold">2</span> Reward Code</span>
+                        <span class="fs-8 text-body-secondary">Redeem this codes to have your rewards!</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between gap-3 flex-wrap">
+                    <button class="button-outlined px-4">See all claimed rewards</button>
+                    <a href="" class="animated-link-with-arrow d-flex gap-3 align-items-center text-uppercase"><span class="fw-bold">Learn more</span><i class="bi bi-arrow-right text-primary fs-4"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="badges-summary-container" class="col" style="order: var(--dashboard-summary-section-badges-order);">
+            <div class="qic-card-container h-100 d-flex flex-column">
+              <div class="d-flex justify-content-between gap-3 flex-wrap align-items-center mb-2">
+                <h5>Badges</h5>
+                <a href="badges-summary.html" class="button-outlined px-3">View all</a>
+              </div>
+              <div class="qic-tab-links gap-3">
+                <a href="#" id="earnedBadgeSortLinkLink" class="nav-link fw-medium h-max active">
+                  Earned
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      document.getElementById('earnedBadgeSortLinkLink').addEventListener('click', function(event) {
+                        event.preventDefault();
+                        alert('Earned Badge Sorting Link clicked');
+                      });
+                    });
+                  </script>
+                </a>
+                <a href="#" id="awardedBadgeSortLinkLink" class="nav-link fw-medium h-max">
+                  Awarded
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      document.getElementById('awardedBadgeSortLinkLink').addEventListener('click', function(event) {
+                        event.preventDefault();
+                        alert('Awarded Badge Sorting Link clicked');
+                      });
+                    });
+                  </script>
+                </a>
+              </div>
+              <div class="d-flex flex-column gap-1 mb-3">
+
+                <div class="dashboard-badge-card p-3 d-flex gap-3">
+                  <div class="badges-summary-card-image">
+                    <img src="assets/images/badges/teamwork.svg" alt="Badge 1" loading="lazy">
+                  </div>
+                  <div class="d-flex flex-column overflow-hidden flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fs-7 fw-medium text-nowrap-elipsis">Teamwork</span>
+                      <div class="qic-table-points-item points-positive px-1 fs-8">
+                        +700
+                      </div>
+                    </div>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">by Rob Browns</span>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">Great work! It's a pleasure collaborating with you!</span>
+                  </div>
+                </div>
+                <div class="dashboard-badge-card p-3 d-flex gap-3">
+                  <div class="badges-summary-card-image">
+                    <img src="assets/images/badges/collaboration.svg" alt="Badge 1" loading="lazy">
+                  </div>
+                  <div class="d-flex flex-column overflow-hidden flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fs-7 fw-medium text-nowrap-elipsis">Together We Thrive!</span>
+                      <div class="qic-table-points-item points-positive px-1 fs-8">
+                        +700
+                      </div>
+                    </div>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">by Rob Browns</span>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">Great work! It's a pleasure collaborating with you!</span>
+                  </div>
+                </div>
+                <div class="dashboard-badge-card p-3 d-flex gap-3">
+                  <div class="badges-summary-card-image">
+                    <img src="assets/images/badges/together-we-thrive.svg" alt="Badge 1" loading="lazy">
+                  </div>
+                  <div class="d-flex flex-column overflow-hidden flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fs-7 fw-medium text-nowrap-elipsis">Together We Thrive!</span>
+                      <div class="qic-table-points-item points-negative px-1 fs-8">
+                        -500
+                      </div>
+                    </div>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">by Rob Browns</span>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">Great work! It's a pleasure collaborating with you!</span>
+                  </div>
+                </div>
+                <div class="dashboard-badge-card p-3 d-flex gap-3">
+                  <div class="badges-summary-card-image">
+                    <img src="assets/images/badges/united-we-stand.svg" alt="Badge 1" loading="lazy">
+                  </div>
+                  <div class="d-flex flex-column overflow-hidden flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fs-7 fw-medium text-nowrap-elipsis">United We Stand!</span>
+                      <div class="qic-table-points-item points-positive px-1 fs-8">
+                        +1700
+                      </div>
+                    </div>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">by Rob Browns</span>
+                    <span class="fs-8 text-body-secondary text-nowrap-elipsis">Great work! It's a pleasure collaborating with you!</span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="d-flex gap-2 mt-auto mb-3">
+                <i class="qic-secondary-circle bi bi-lightbulb-fill text-secondary"></i>
+                <div class="d-flex flex-column">
+                  <span class="fs-7 fw-medium">Got a deserving colleague in mind?</span>
+                  <span class="fs-8 text-body-secondary">Award with a Badge to show your appreciation.</span>
+                </div>
+              </div>
+              <a href="badges-summary.html?award-badge=true" class="button-secondary w-100">Award Badge</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="your-quizes" style="order: var(--dashboard-your-quizes-order);">
+        <div class="d-flex justify-content-between mb-3">
+          <span class="fs-4">Your Quizzes</span><a href="quizzes.html" class="button-outlined px-3 py-2"> View all </a>
+        </div>
+        <div class="qic-tab-links gap-3">
+          <a href="#" id="startedSortLinkLink" class="nav-link fw-medium h-max active">
+            Started
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('startedSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Started Sorting Link clicked');
+                });
+              });
+            </script>
+          </a>
+          <a href="#" id="failedSortLinkLink" class="nav-link fw-medium h-max">
+            Failed
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('failedSortLinkLink').addEventListener('click', function(event) {
+                  event.preventDefault();
+                  alert('Failed Sorting Link clicked');
+                });
+              });
+            </script>
+          </a>
+        </div>
+        <div class="row gy-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="qic-qiz-card" style="background: #A3E19E;">
+              <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
+              <p class="fs-5 fw-medium line-clamp-3">A very long name for the Quiz name for test purpose to see how it's workA very long name for the Quiz name for test purpose to see how it's workA very long name for the Quiz name for test purpose to see how it's work</p>
+              <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
+              </div>
+              <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
+                <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
+                <div class="d-flex align-items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  <span class="fw-medium">+5,760</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="qic-qiz-card" style="background: #F1CE75;">
+              <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
+              <p class="fs-5 fw-medium line-clamp-3">Safety Quiz #3</p>
+              <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
+              </div>
+              <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
+                <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
+                <div class="d-flex align-items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  <span class="fw-medium">+5,760</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="qic-qiz-card" style="background: #D1D3EC;">
+              <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
+              <p class="fs-5 fw-medium line-clamp-3">Safety Quiz #2</p>
+              <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
+              </div>
+              <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
+                <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
+                <div class="d-flex align-items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  <span class="fw-medium">+5,760</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="qic-qiz-card" style="background: #D1D3EC;">
+              <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
+              <p class="fs-5 fw-medium line-clamp-3">Safety Quiz #2</p>
+              <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
+              </div>
+              <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
+                <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
+                <div class="d-flex align-items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  <span class="fw-medium">+5,760</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="qic-qiz-card" style="background: #D1D3EC;">
+              <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
+              <p class="fs-5 fw-medium line-clamp-3">Safety Quiz #2</p>
+              <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
+              </div>
+              <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
+                <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
+                <div class="d-flex align-items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  <span class="fw-medium">+5,760</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="qic-qiz-card" style="background: #D1D3EC;">
+              <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
+              <p class="fs-5 fw-medium line-clamp-3">Safety Quiz #2</p>
+              <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
+              </div>
+              <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
+                <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
+                <div class="d-flex align-items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  <span class="fw-medium">+5,760</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="qic-qiz-card" style="background: #D1D3EC;">
+              <span class="ms-auto fs-8 text-body-secondary">Started Jan 6.</span>
+              <p class="fs-5 fw-medium line-clamp-3">Safety Quiz #2</p>
+              <div class="d-flex gap-3 align-items-center text-body-secondary fs-8 mt-auto">
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-clock-fill text-body-secondary"></i>15 min.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-chat-fill text-body-secondary"></i>11.</span>
+                <span class="d-flex gap-1 align-items-center"><i class="bi bi-bar-chart-fill text-body-secondary"></i>Beginner</span>
+              </div>
+              <div class="d-flex gap-2 align-items-center flex-wrap justify-content-between">
+                <a href="#" class="button-outlined bg-white text-black border-0 px-3">Continue</a>
+                <div class="d-flex align-items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" viewBox="0 0 32 32" fill="none">
+                    <path d="M16.0002 6.67667C10.8592 6.67667 6.67676 10.8591 6.67676 16.0001C6.67676 21.1411 10.8592 25.3235 16.0002 25.3235C21.1412 25.3235 25.3236 21.1411 25.3236 16.0001C25.3236 10.8591 21.1412 6.67667 16.0002 6.67667ZM20.207 16.0001L16.0002 20.2069L11.7934 16.0001L16.0002 11.7933L20.207 16.0001Z" fill="var(--primary-color)"/>
+                    <path d="M26.1825 5.81754C23.4626 3.0978 19.8465 1.59991 16.0001 1.59991C12.1537 1.59991 8.53758 3.0978 5.81772 5.81754C3.09798 8.5374 1.6001 12.1535 1.6001 15.9999C1.6001 19.8463 3.09798 23.4624 5.81772 26.1823C8.53758 28.902 12.1537 30.3999 16.0001 30.3999C19.8465 30.3999 23.4626 28.902 26.1825 26.1823C28.9022 23.4624 30.4001 19.8463 30.4001 15.9999C30.4001 12.1535 28.9022 8.5374 26.1825 5.81754ZM16.0001 27.0109C9.92864 27.0109 4.98916 22.0714 4.98916 15.9999C4.98916 9.92846 9.92864 4.98898 16.0001 4.98898C22.0716 4.98898 27.011 9.92846 27.011 15.9999C27.011 22.0714 22.0716 27.0109 16.0001 27.0109Z" fill="var(--primary-color)"/>
+                  </svg>
+                  <span class="fw-medium">+5,760</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="qic-footer">
+    <div class="qic-footer-baner">
+      <div class="qic-container">
+        <h2 class="text-white">
+          Making a Difference <br> in the Lives of Our People, <br> Customers, and Community
+        </h2>
+      </div>
+    </div>
+    <div class="qic-footer-content">
+      <div class="qic-container">
+        <div class="d-flex gap-5 flex-wrap align-items-start">
+          <div class="d-flex flex-column gap-4 gap-sm-5">
+            <div class="d-flex">
+              <img class="qic-footer-logo me-4" src="assets/images/logo-white.svg" alt="QIC Logo">
+              <span class="qic-footer-secondary-text">
+                Custom Employee Rewards <br> and Recognition Programs
+              </span>
+            </div>
+            <div class="d-flex flex-column">
+              <span class="qic-footer-secondary-text text-uppercase fw-medium">social</span>
+              <ul class="d-flex gap-3 fs-4">
+                <li><a href="#"><i class="bi bi-globe text-white"></i></a></li>
+                <li><a href="#"><i class="bi bi-facebook text-white"></i></a></li>
+                <li><a href="#"><i class="bi bi-instagram text-white"></i></a></li>
+                <li><a href="#"><i class="bi bi-twitter-x text-white"></i></a></li>
+              </ul>
+            </div> 
+          </div>
+          <div class="d-flex flex-column gap-3">
+            <span class="qic-footer-secondary-text text-uppercase fw-medium">about</span>
+            <ul class="d-flex flex-column gap-3 text-white">
+              <li><a class="text-white" href="#">About Program</a></li>
+              <li><a class="text-white" href="#">About QIC</a></li>
+              <li><a class="text-white" href="#">Latest News</a></li>
+            </ul>
+          </div>
+          <div class="d-flex flex-column gap-3">
+            <span class="qic-footer-secondary-text text-uppercase fw-medium">help</span>
+            <ul class="d-flex flex-column gap-3 text-white">
+              <li><a class="text-white" href="#">Contacts</a></li>
+              <li><a class="text-white" href="#">FAQ Center</a></li>
+              <li><a class="text-white" href="#">Feedback</a></li>
+            </ul>
+          </div>
+          <div class="d-flex flex-column gap-3 me-auto">
+            <span class="qic-footer-secondary-text text-uppercase fw-medium">terms</span>
+            <ul class="d-flex flex-column gap-3 text-white">
+              <li><a class="text-white" href="#">Terms of Use</a></li>
+              <li><a class="text-white" href="#">Privacy Policy</a></li>
+              <li><a class="text-white" href="#">Program Terms</a></li>
+            </ul>
+          </div>
+          <div class="qic-footer-newsletter p-4 bg-white d-flex flex-column gap-3 flex-grow-1">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="qic-icon-bg-circle bg-primary">
+                <i class="bi bi-newspaper text-white fs-4"></i>
+              </div>
+              <div class="d-flex flex-column">
+                <span class="fw-medium">Get our latest news!</span>
+                <span class="fs-8 text-body-secondary">Join our newsletter for updates.</span>
+              </div>
+            </div>
+            <form id="qic-footer-newsletter-form" class="d-flex">
+              <input type="email" name="email" placeholder="Enter your email" class="form-control" required autocomplete="email">
+              <button type="submit" class="button-primary">Subscribe</button>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  document.getElementById('qic-footer-newsletter-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    alert(event.target.email.value);
+                  });
+                });
+              </script>
+            </form>
+          </div>
+        </div>
+        <div class="qic-footer-bottom d-flex flex-wrap align-items-center justify-content-between pt-4 mt-4">
+          <a href="dashboard.html" class="text-white d-flex align-items-center gap-2 text-decoration-underline">
+            <i class="bi bi-house-door-fill text-white"></i>
+            To Home Page
+          </a>
+          <div class="qic-footer-secondary-text">© 2025 QIC. All rights reserved.</div>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- ONBOARDING START MODAL -->
+  <div class="modal fade" id="onboarding-modal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header dashboard-onboarding-modal-header"></div>
+        <div class="modal-body p-3 p-md-4">
+          <p class="fs-5 fw-semibold">Onboarding Title</p>
+          <p class="text-body-secondary">Lorem ipsum odor amet, consectetuer adipiscing elit. Eget tempus habitasse posuere quisque urna amet mauris non. Etiam nisi sagittis imperdiet massa adipiscing.</p>
+          <p class="fs-8 fw-semibold text-uppercase text-body-secondary mt-4">How it works</p>
+          <div class="d-flex gap-3 flex-wrap mt-3">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">1</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Earn Points</span>
+                <span class="fs-7 text-body-secondary">By quizzes and tasks</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">2</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Track your Progress</span>
+                <span class="fs-7 text-body-secondary">To manage your Points</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">3</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Spend Points</span>
+                <span class="fs-7 text-body-secondary">Shop, Badges, etc!</span>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-content-center flex-wrap mt-5">
+            <span></span>
+            <ul class="d-flex gap-2">
+              <li><a href="#onboarding-modal" data-bs-toggle="modal" class="onboarding-indicator onboarding-indicator-active" href="#"></a></li>
+              <li><a href="#onboarding-modal-1" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-2" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-3" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+            </ul>
+            <button data-bs-target="#onboarding-modal-1" data-bs-toggle="modal" class="button-primary px-3">Get Started</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING STEP 1 MODAL -->
+  <div class="modal fade" id="onboarding-modal-1" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header dashboard-onboarding-modal-header"></div>
+        <div class="modal-body p-3 p-md-4">
+          <p class="fs-5 fw-semibold">01. Earn Points</p>
+          <p class="text-body-secondary">Lorem ipsum odor amet, consectetuer adipiscing elit. Eget tempus habitasse posuere quisque urna amet mauris non. Etiam nisi sagittis imperdiet massa adipiscing.</p>
+          <p class="fs-8 fw-semibold text-uppercase text-body-secondary mt-4">How it works</p>
+          <div class="d-flex gap-3 flex-wrap mt-3">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">1</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Complete Quizzes</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">2</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Get Awards</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">3</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Finish Tasks</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-content-center flex-wrap mt-5">
+            <button class="button-outlined px-4" data-bs-target="#onboarding-modal" data-bs-toggle="modal">Back</button>
+            <ul class="d-flex gap-2 align-items-center">
+              <li><a href="#onboarding-modal" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-1" data-bs-toggle="modal" class="onboarding-indicator onboarding-indicator-active"></a></li>
+              <li><a href="#onboarding-modal-2" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-3" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+            </ul>
+            <button data-bs-target="#onboarding-modal-2" data-bs-toggle="modal" class="button-primary px-3">How can I track my Progress?</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING STEP 2 MODAL -->
+  <div class="modal fade" id="onboarding-modal-2" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header dashboard-onboarding-modal-header"></div>
+        <div class="modal-body p-3 p-md-4">
+          <p class="fs-5 fw-semibold">02. Track your Progress</p>
+          <p class="text-body-secondary">Lorem ipsum odor amet, consectetuer adipiscing elit. Eget tempus habitasse posuere quisque urna amet mauris non. Etiam nisi sagittis imperdiet massa adipiscing.</p>
+          <p class="fs-8 fw-semibold text-uppercase text-body-secondary mt-4">How it works</p>
+          <div class="d-flex gap-3 flex-wrap mt-3">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">1</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Account Level</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">2</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Leaderboard Position</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+            </div>
+ 
+          </div>
+          <div class="d-flex justify-content-between align-content-center flex-wrap mt-5">
+            <button class="button-outlined px-4" data-bs-target="#onboarding-modal-1" data-bs-toggle="modal">Back</button>
+            <ul class="d-flex gap-2 align-items-center">
+              <li><a href="#onboarding-modal" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-1" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-2" data-bs-toggle="modal" class="onboarding-indicator onboarding-indicator-active"></a></li>
+              <li><a href="#onboarding-modal-3" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+            </ul>
+            <button data-bs-target="#onboarding-modal-3" data-bs-toggle="modal" class="button-primary px-3">How can I spend my Points?</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING STEP 3 MODAL -->
+  <div class="modal fade" id="onboarding-modal-3" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header dashboard-onboarding-modal-header"></div>
+        <div class="modal-body p-3 p-md-4">
+          <p class="fs-5 fw-semibold">03. Spend Points</p>
+          <p class="text-body-secondary">Lorem ipsum odor amet, consectetuer adipiscing elit. Eget tempus habitasse posuere quisque urna amet mauris non. Etiam nisi sagittis imperdiet massa adipiscing.</p>
+          <p class="fs-8 fw-semibold text-uppercase text-body-secondary mt-4">How it works</p>
+          <div class="d-flex gap-3 flex-wrap mt-3">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">1</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Buy items in Shop</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M0.890555 12.995L17.3831 14.826L15.9431 17.2885C15.5061 18.0385 16.4496 18.8235 17.1076 18.26L23.7291 12.585C24.0866 12.278 24.0866 11.724 23.7291 11.417L17.1076 5.74201C16.4491 5.17551 15.5061 5.96351 15.9431 6.71051L17.3801 9.17601L0.890555 11.0045C-0.292445 11.1325 -0.293445 12.8665 0.890555 12.995Z" fill="var(--primary-color)" style="opacity: 0.5;" />
+              </svg>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="step-circle">2</div>
+              <div class="d-flex flex-column">
+                <span class="fw-bold fs-5">Award Users</span>
+                <a class="animated-link-with-arrow d-flex gap-3 align-items-center">
+                  <span class="fw-bold">LEARN MORE</span>
+                  <i class="bi bi-arrow-right text-primary fs-4"></i>
+                </a>
+              </div>
+            </div>
+ 
+          </div>
+          <div class="d-flex justify-content-between align-content-center flex-wrap mt-5">
+            <button class="button-outlined px-4" data-bs-target="#onboarding-modal-2" data-bs-toggle="modal">Back</button>
+            <ul class="d-flex gap-2 align-items-center">
+              <li><a href="#onboarding-modal" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-1" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-2" data-bs-toggle="modal" class="onboarding-indicator"></a></li>
+              <li><a href="#onboarding-modal-3" data-bs-toggle="modal" class="onboarding-indicator onboarding-indicator-active"></a></li>
+            </ul>
+            <button data-bs-target="#onboarding-modal-3" data-bs-toggle="modal" class="text-white bg-success px-3">Let's start!</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+    });
+  </script>
+</body>
+</html>
