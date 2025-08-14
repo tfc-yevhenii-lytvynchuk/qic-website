@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>QIC Login</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="assets/css/config.css" as="style">
+  <link rel="preload" href="assets/css/styles.css" as="style">
+  <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+  <link rel="preload" href="assets/fonts/bootstrap-icons.css" as="style">
+  <link rel="preload" href="assets/css/login-styles.css" as="style">
+  
+  <!-- Regular CSS loading -->
+  <link rel="stylesheet" href="assets/css/config.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/login-styles.css">
+  <style>
+    .login-bg {
+      background-position: 85%;
+    }
+    .login-v2-right {
+      max-width: 618px;
+    }
+  </style>
+</head>
+
+<body class="bg-white">
+  <main class="row w-100 h-100 flex-grow-1 g-0">
+    <div class="d-none d-md-flex col-7 login-bg text-white justify-content-center pb-5">
+      <div class="login-v2-right d-flex flex-column gap-3 justify-content-end h-100 p-5">
+        <h1 class="fs-2">Making a Difference in the Lives of Our People, Customers, 
+          and Community
+        </h1>
+        <div class="d-flex gap-3 mb-5">
+          <img height="32" src="assets/images/logo-white.svg" alt="QIC Logo" >
+          <p class="fs-8 text-light">
+            Custom Employee Rewards and Recognition Programs <br>
+            powered by QIC
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-5 d-flex align-items-center">
+      <div class="qic-login-container">
+        <form class="login-card w-100" autocomplete="on" id="login-form">
+          <div class="d-flex flex-column gap-3 align-content-center mb-4 justify-content-center align-items-center">
+            <div class="login-logo d-flex align-items-center justify-content-center">
+              <img src="assets/images/logo-white.svg" alt="QIC Logo" class="img-fluid">
+            </div>
+            <div class="d-flex flex-column gap-2 text-center">
+              <h1 class="fw-bold fs-2 mb-0">Welcome back!</h1>
+              <div class="text-body-secondary">Let's login to the system</div>
+            </div>
+          </div>
+          <div class="d-flex flex-column gap-4">
+            <div>
+              <div class="d-flex justify-content-between">
+                <label for="login" class="form-label fw-semibold">Login</label>
+                <small class="text-muted">Your ID, email or phone</small>
+              </div>
+              <input type="text" class="form-control" id="login" name="login" autocomplete="on" placeholder="Your ID, email or phone" required autofocus>
+            </div>
+            <div>
+              <label for="password" class="form-label fw-semibold">Password</label>
+              <div class="input-group relative">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" autocomplete="current-password" required>
+                <button class="toggle-password" type="button" id="togglePassword" tabindex="-1" aria-label="Show password">
+                  <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+                </button>
+              </div>
+              <script>
+                // Password visibility toggle
+                document.addEventListener('DOMContentLoaded', function() {
+                  const togglePassword = document.getElementById('togglePassword');
+                  const passwordInput = document.getElementById('password');
+                  const icon = document.getElementById('togglePasswordIcon');
+                  togglePassword.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    icon.classList.toggle('bi-eye');
+                    icon.classList.toggle('bi-eye-slash');
+                  });
+                });
+              </script>
+            </div>
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe" value="true">
+              <label for="rememberMe">
+                Remember me for 30 days
+              </label>
+            </div>
+          </div>
+          <div class="mt-auto">
+            <button type="submit" class="button-primary w-100 h-3rem">Log In</button>
+          </div>
+          <a href="login-reset-request.html" class="animated-link-with-arrow d-flex gap-3 align-items-center justify-content-center mt-4">
+            <span class="fw-bold">FORGOT PASSWORD?</span><i class="bi bi-arrow-right text-primary fs-4"></i>
+          </a>
+          <span class="text-center mt-2">Need help? <a class="text-decoration-underline text-primary" href="logged-out-page-template.html">Reach out to our support</a></span>
+        </form>
+        <script>
+          // LOGIN FORM SUBMIT EVENT
+          document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('login-form');
+            const loginInput = document.getElementById('login');  
+            const passwordInput = document.getElementById('password');
+            const rememberMeInput = document.getElementById('rememberMe');
+            loginForm.addEventListener('submit', function(e) {
+              // PLACEHOLDER CODE, PLEASE IMPLEMENT
+              e.preventDefault();
+              alert(loginInput.value + ' ' + passwordInput.value + ' ' + rememberMeInput.value);
+              window.location.href = 'dashboard.html';
+            });
+          });
+        </script>
+        <div class="login-register w-100 d-flex justify-content-between align-items-center bg-white">
+          <div class="d-flex flex-column">
+            <div class="fw-bold">Don't have account?</div>
+            <div class="text-body-secondary text-start fs-7">Just register in &gt;5 min</div>
+          </div>
+          <a href="#" class="button-secondary px-4">Register</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+  
+      });
+    </script>
+</body>
+
+</html>

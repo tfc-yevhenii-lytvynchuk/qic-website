@@ -1,7 +1,8 @@
-body.login-bg {
+.login-bg {
   min-height: 100vh;
   background: var(--login-background-image-url) center center/cover no-repeat, #F3F5F5;
 }
+
 .qic-login-container {
   width: 100%;
   max-width: 560px;
