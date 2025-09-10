@@ -53,8 +53,8 @@ This is a comprehensive sitemap for the QIC (Quality Incentive Center) website, 
 - **`shop-wishlist.html`** - Saved items and wishlists
 
 ### 6. Template Files (Development)
-- **`logged-in-page-template.html`** - Template for authenticated pages
-- **`logged-out-page-template.html`** - Template for public pages
+- **`LoggedInTemplate.html`** - Template for authenticated pages
+- **`LoggedOutTemplate.html`** - Template for public pages
 
 ## Navigation Structure
 
