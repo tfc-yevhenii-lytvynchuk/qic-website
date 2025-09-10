@@ -38,19 +38,9 @@
         <i class="bi bi-x-lg text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search">
+        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search" onsubmit="alert(event.target.search.value);">
           <input id="navbar-search-input" class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
           <button class="button-primary px-3" type="submit"><i class="bi bi-search text-white"></i></button>
-          <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              const navbarSearchForm = document.getElementById('navbar-search-form');
-              const searchInput = document.getElementById('navbar-search-input');
-              navbarSearchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert(searchInput.value);
-              });
-            });
-          </script>
         </form>
         <div class="qic-navbar-controls d-flex flex-column flex-lg-row" style="order: 4;">
           <a href="#" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
@@ -75,14 +65,7 @@
               </a>
               <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white gap-3">
                 <span class="text-nowrap">Need to Exit?</span>
-                <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('logoutLink').addEventListener('click', function() {
-                      alert('Logout link clicked');
-                    });
-                  });
-                </script>
+                <a href="#" id="logoutLink" class="text-white text-decoration-underline" onclick="alert('Logout link clicked');">Logout</a>
               </div>
             </div>
           </div>
@@ -449,7 +432,7 @@
       <li class="breadcrumb-item active" aria-current="page">Shop Catalog</li>
     </ol>
     <div class="d-flex gap-3 flex-grow-1 flex-wrap">
-      <form id="shop-nav-search-form" action="" class="d-flex flex-grow-1 ms-auto">
+      <form id="shop-nav-search-form" action="" class="d-flex flex-grow-1 ms-auto" onsubmit="alert(event.target.search.value);">
         <div class="position-relative w-100">
           <input type="text" name="search" id="shop-search-input" class="form-control" placeholder="Product name, etc...">
           <a href="" class="position-absolute top-50 end-0 translate-middle-y pe-3 text-decoration-underline" data-bs-toggle="modal" data-bs-target="#shopAdvancedSearchModal">Advanced</a>
@@ -457,14 +440,6 @@
         <button type="submit" class="button-primary">
           Search
         </button>
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('shop-nav-search-form').addEventListener('submit', function(event) {
-              event.preventDefault();
-              alert('Search');
-            });
-          });
-        </script>
       </form>
       <a href="shop-orders-history.html" class="button-outlined px-3">
         My Orders
@@ -484,17 +459,9 @@
         <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
           <div class="col">
             <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer" onclick="alert('Remove from favorites form submitted');">
                 <input type="hidden" name="productId" value="000-000-000-000">
                 <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                      event.preventDefault();
-                      alert('Remove from favorites form submitted');
-                    });
-                  });
-                </script>
               </form>
               <div class="qic-product-card-image-container flex-grow-1">
                 <img src="assets/images/products/1.png" 
@@ -517,17 +484,9 @@
           </div>
           <div class="col">
             <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer" onclick="alert('Remove from favorites form submitted');">
                 <input type="hidden" name="productId" value="000-000-000-000">
                 <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                      event.preventDefault();
-                      alert('Remove from favorites form submitted');
-                    });
-                  });
-                </script>
               </form>
               <div class="qic-product-card-image-container flex-grow-1">
                 <img src="assets/images/products/1.png" 
@@ -550,17 +509,9 @@
           </div>
           <div class="col">
             <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer" onclick="alert('Remove from favorites form submitted');">
                 <input type="hidden" name="productId" value="000-000-000-000">
                 <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                      event.preventDefault();
-                      alert('Remove from favorites form submitted');
-                    });
-                  });
-                </script>
               </form>
               <div class="qic-product-card-image-container flex-grow-1">
                 <img src="assets/images/products/1.png" 
@@ -583,17 +534,9 @@
           </div>
           <div class="col">
             <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer" onclick="alert('Remove from favorites form submitted');">
                 <input type="hidden" name="productId" value="000-000-000-000">
                 <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                      event.preventDefault();
-                      alert('Remove from favorites form submitted');
-                    });
-                  });
-                </script>
               </form>
               <div class="qic-product-card-image-container flex-grow-1">
                 <img src="assets/images/products/1.png" 
@@ -616,17 +559,9 @@
           </div>
           <div class="col">
             <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer" onclick="alert('Remove from favorites form submitted');">
                 <input type="hidden" name="productId" value="000-000-000-000">
                 <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                      event.preventDefault();
-                      alert('Remove from favorites form submitted');
-                    });
-                  });
-                </script>
               </form>
               <div class="qic-product-card-image-container flex-grow-1">
                 <img src="assets/images/products/1.png" 
@@ -649,17 +584,9 @@
           </div>
           <div class="col">
             <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer" onclick="alert('Remove from favorites form submitted');">
                 <input type="hidden" name="productId" value="000-000-000-000">
                 <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                      event.preventDefault();
-                      alert('Remove from favorites form submitted');
-                    });
-                  });
-                </script>
               </form>
               <div class="qic-product-card-image-container flex-grow-1">
                 <img src="assets/images/products/1.png" 
@@ -682,17 +609,9 @@
           </div>
           <div class="col">
             <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer" onclick="alert('Remove from favorites form submitted');">
                 <input type="hidden" name="productId" value="000-000-000-000">
                 <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                      event.preventDefault();
-                      alert('Remove from favorites form submitted');
-                    });
-                  });
-                </script>
               </form>
               <div class="qic-product-card-image-container flex-grow-1">
                 <img src="assets/images/products/1.png" 
@@ -715,17 +634,9 @@
           </div>
           <div class="col">
             <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer" onclick="alert('Remove from favorites form submitted');">
                 <input type="hidden" name="productId" value="000-000-000-000">
                 <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                      event.preventDefault();
-                      alert('Remove from favorites form submitted');
-                    });
-                  });
-                </script>
               </form>
               <div class="qic-product-card-image-container flex-grow-1">
                 <img src="assets/images/products/1.png" 
@@ -748,17 +659,9 @@
           </div>
           <div class="col">
             <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+              <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer" onclick="alert('Remove from favorites form submitted');">
                 <input type="hidden" name="productId" value="000-000-000-000">
                 <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                      event.preventDefault();
-                      alert('Remove from favorites form submitted');
-                    });
-                  });
-                </script>
               </form>
               <div class="qic-product-card-image-container flex-grow-1">
                 <img src="assets/images/products/1.png" 
@@ -791,7 +694,7 @@
           <h1 class="modal-title fs-5" >Advanced Product Search</h1>
         </div>
         <div class="modal-body">
-          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="shop-advanced-search-form">
+          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="shop-advanced-search-form" onsubmit="alert(event.target.freeSearch.value + ' ' + event.target.pointsAmount.value + ' ' + event.target.productType.value + ' ' + event.target.anotherSearchType.value + ' ' + event.target.anotherParameter.value);">
             <div class="row g-4">
               <div class="col-12">
                 <label for="free-search" class="form-label fs-7 text-uppercase fw-medium">Search</label>
@@ -835,16 +738,6 @@
               <a class="button-outlined px-4" data-bs-toggle="modal" data-bs-target="#shopAdvancedSearchModal">Back</a>
               <button type="submit" class="button-secondary px-4">Search</button>
             </div>
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                const shopAdvancedSearchForm = document.getElementById('shop-advanced-search-form');
-                if (!shopAdvancedSearchForm) return;
-                shopAdvancedSearchForm.addEventListener('submit', function(event) {
-                  event.preventDefault();
-                  alert(event.target.freeSearch.value + ' ' + event.target.pointsAmount.value + ' ' + event.target.productType.value + ' ' + event.target.anotherSearchType.value + ' ' + event.target.anotherParameter.value);
-                });
-              });
-            </script>
           </form>
         </div>
 

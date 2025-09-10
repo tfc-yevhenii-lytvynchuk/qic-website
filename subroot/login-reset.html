@@ -87,78 +87,73 @@
           <a href="login.html" class="button-outlined px-4">Cancel</a>
           <button type="submit" class="button-primary px-4" id="set-new-password-submit">Set New Password</button>
         </div>
-        <script>
-          // SET NEW PASSWORD FORM SUBMIT EVENT
-          document.addEventListener('DOMContentLoaded', function() {
-            const setNewPasswordForm = document.getElementById('set-new-password-form');
-            const oldPassword = document.getElementById('old-password');
-            const newPassword = document.getElementById('new-password');
-            const confirmNewPassword = document.getElementById('confirm-new-password');
-            newPassword.addEventListener('input', function() {
-              const password = newPassword.value;
-              // PLACEHOLDER CODE, PLEASE IMPLEMENT PASSWORD STRENGTH CHECKING
-              const strong = password.length >= 8;
-              if (strong) {
-                newPassword.dataset.passwordReliability = 'reliable';
-              } else {
-                newPassword.dataset.passwordReliability = 'unreliable';
-              }
-            });
-            setNewPasswordForm.addEventListener('submit', function(e) {
-              e.preventDefault();
-              
-              // Clear any previous error messages
-              document.querySelectorAll('.error-message').forEach(el => el.remove());
 
-              // PLACEHOLDER CODE, PLEASE IMPLEMENT
-              // Validate old password (in a real app, this would be checked against the server)
-              if (!oldPassword.value) {
-                showError(oldPassword, 'Please enter your current password');
-                return;
-              }
-
-              // Check if passwords match
-              if (newPassword.value !== confirmNewPassword.value) {
-                showError(confirmNewPassword, 'Passwords do not match');
-                showError(newPassword, 'Passwords do not match');
-                return;
-              }
-              
-              // PLACEHOLDER CODE, PLEASE IMPLEMENT
-              alert('New password set successfully: ' + newPassword.value);
-              window.location.href = 'login-reset-success.html';
-            });
-            
-            function showError(input, message) {
-              const errorDiv = document.createElement('div');
-              errorDiv.className = 'error-message text-danger mt-1';
-              errorDiv.textContent = message;
-              input.parentNode.appendChild(errorDiv);
-              input.focus();
-            }
-          });
-        </script>
-          <script>
-            // Password visibility toggle
-            document.addEventListener('DOMContentLoaded', function() {
-              const togglePassword = document.getElementById('togglePassword');
-              const passwordInput = document.getElementById('old-password');
-              const icon = document.getElementById('togglePasswordIcon');
-              togglePassword.addEventListener('click', function() {
-                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                passwordInput.setAttribute('type', type);
-                icon.classList.toggle('bi-eye');
-                icon.classList.toggle('bi-eye-slash');
-              });
-            });
-          </script>
       </form>
     </div>
   </main>
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    function showError(input, message) {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'error-message text-danger mt-1';
+      errorDiv.textContent = message;
+      input.parentNode.appendChild(errorDiv);
+      input.focus();
+    }
+    function validatioSetup() {
+      const setNewPasswordForm = document.getElementById('set-new-password-form');
+      const oldPassword = document.getElementById('old-password');
+      const newPassword = document.getElementById('new-password');
+      const confirmNewPassword = document.getElementById('confirm-new-password');
+      newPassword.addEventListener('input', function() {
+        const password = newPassword.value;
+        // PLACEHOLDER CODE, PLEASE IMPLEMENT PASSWORD STRENGTH CHECKING
+        const strong = password.length >= 8;
+        if (strong) {
+          newPassword.dataset.passwordReliability = 'reliable';
+        } else {
+          newPassword.dataset.passwordReliability = 'unreliable';
+        }
+      });
+      setNewPasswordForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Clear any previous error messages
+        document.querySelectorAll('.error-message').forEach(el => el.remove());
 
+        // PLACEHOLDER CODE, PLEASE IMPLEMENT
+        // Validate old password (in a real app, this would be checked against the server)
+        if (!oldPassword.value) {
+          showError(oldPassword, 'Please enter your current password');
+          return;
+        }
+
+        // Check if passwords match
+        if (newPassword.value !== confirmNewPassword.value) {
+          showError(confirmNewPassword, 'Passwords do not match');
+          showError(newPassword, 'Passwords do not match');
+          return;
+        }
+        
+        // PLACEHOLDER CODE, PLEASE IMPLEMENT
+        alert('New password set successfully: ' + newPassword.value);
+        window.location.href = 'login-reset-success.html';
+      });
+    }
+    function toggleSetup() {
+      const togglePassword = document.getElementById('togglePassword');
+      const passwordInput = document.getElementById('old-password');
+      const icon = document.getElementById('togglePasswordIcon');
+      togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        icon.classList.toggle('bi-eye');
+        icon.classList.toggle('bi-eye-slash');
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      validatioSetup();
+      toggleSetup();
     });
   </script>
 </body>

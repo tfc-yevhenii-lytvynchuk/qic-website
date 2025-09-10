@@ -28,7 +28,7 @@
   <main class="d-flex flex-column justify-content-center align-items-center min-vh-100 w-100 gap-1">
     <!-- RESET PASSWORD EMAIL FORM -->
     <div class="qic-login-container">
-      <form class="login-card w-100 justify-content-center" autocomplete="on" id="reset-password-email-form">
+      <form class="login-card w-100 justify-content-center" autocomplete="on" id="reset-password-email-form" onsubmit="alert(event.target.email.value);">
         <div class="d-flex flex-column gap-4 mb-5">
           <div class="d-flex flex-column">
             <h1 class="fs-5">Reset Password</h1>
@@ -44,19 +44,6 @@
           <button type="submit" class="button-primary px-4" id="reset-password-email-submit">Send Email</button>
         </div>
       </form>
-      <script>
-        // FORM SUBMIT EVENT
-        document.addEventListener('DOMContentLoaded', function() {
-          const resetPasswordEmailForm = document.getElementById('reset-password-email-form');
-          const emailInput = document.getElementById('email');
-          resetPasswordEmailForm.addEventListener('submit', function(e) {
-            // PLACEHOLDER CODE, PLEASE IMPLEMENT
-            e.preventDefault();
-            alert(emailInput.value);
-            window.location.href = 'login-reset-confirm.html';
-          });
-        });
-      </script>
     </div>
   </main>
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>

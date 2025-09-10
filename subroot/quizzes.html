@@ -40,19 +40,9 @@
         <i class="bi bi-x-lg text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search">
+        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search" onsubmit="alert(event.target.search.value);">
           <input id="navbar-search-input" class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
           <button class="button-primary px-3" type="submit"><i class="bi bi-search text-white"></i></button>
-          <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              const navbarSearchForm = document.getElementById('navbar-search-form');
-              const searchInput = document.getElementById('navbar-search-input');
-              navbarSearchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert(searchInput.value);
-              });
-            });
-          </script>
         </form>
         <div class="qic-navbar-controls d-flex flex-column flex-lg-row" style="order: 4;">
           <a href="#" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
@@ -77,14 +67,7 @@
               </a>
               <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white gap-3">
                 <span class="text-nowrap">Need to Exit?</span>
-                <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('logoutLink').addEventListener('click', function() {
-                      alert('Logout link clicked');
-                    });
-                  });
-                </script>
+                <a href="#" id="logoutLink" class="text-white text-decoration-underline" onclick="alert('Logout link clicked');">Logout</a>
               </div>
             </div>
           </div>
@@ -477,71 +460,21 @@
                 <span id="quizzes-list-view" class="qic-view-switch active-view-switch">
                   <i class="bi bi-list-ul"></i>
                 </span>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    // PLACEHOLDER VIEW SWITCH LOGIC
-                    const quizzesGridView = document.getElementById('quizzes-grid-view');
-                    const quizzesListView = document.getElementById('quizzes-list-view');
-                    const quizzesSummaryTable = document.getElementById('quizzes-summary-table');
-                    const quizzesSummaryCards = document.getElementById('quizzes-summary-cards');
-                    if (!quizzesGridView || !quizzesListView || !quizzesSummaryTable || !quizzesSummaryCards) return;
-
-                    quizzesGridView.addEventListener('click', function(event) {
-                      alert('Grid view selected');
-                      quizzesGridView.classList.add('active-view-switch');
-                      quizzesListView.classList.remove('active-view-switch');
-                      quizzesSummaryTable.classList.add('d-none');
-                      quizzesSummaryCards.classList.remove('d-none');
-                    });
-                    quizzesListView.addEventListener('click', function(event) {
-                      alert('List view selected');
-                      quizzesListView.classList.add('active-view-switch');
-                      quizzesGridView.classList.remove('active-view-switch');
-                      quizzesSummaryTable.classList.remove('d-none');
-                      quizzesSummaryCards.classList.add('d-none');
-                    });
-                  });
-                </script>
               </div>
             </div>
           </div>
 
           <div class="qic-tab-links gap-3 mt-4 w-100">
-            <a href="#" id="allQuizzesLink" class="nav-link fw-medium h-max text-black active">
+            <a href="#" id="allQuizzesLink" class="nav-link fw-medium h-max text-black active" onclick="alert('All Quizzes Link clicked');">
               All
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('allQuizzesLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('All Quizzes Link clicked');
-                  });
-                });
-              </script>
             </a>
-            <a href="#" id="completedQuizzesLink" class="nav-link fw-medium h-max text-black">
+            <a href="#" id="completedQuizzesLink" class="nav-link fw-medium h-max text-black" onclick="alert('Completed Quizzes Link clicked');">
               Completed
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('completedQuizzesLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Completed Quizzes Link clicked');
-                  });
-                });
-              </script>
             </a>
 
-            <a href="#" id="failedQuizzesLink" class="nav-link fw-medium h-max text-black">
+            <a href="#" id="failedQuizzesLink" class="nav-link fw-medium h-max text-black" onclick="alert('Failed Quizzes Link clicked');">
               Failed
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('failedQuizzesLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Failed Quizzes Link clicked');
-                  });
-                });
-              </script>
             </a>
-           
           </div>
 
           <div id="quizzes-summary-table">
@@ -726,7 +659,7 @@
           </div>
 
           <nav class="qic-paginator" aria-label="quizzes pagination">
-            <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page">
+            <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page" onchange="alert(event.target.value);">
               <option value="15">15 per page</option>
               <option value="30">30 per page</option>
               <option value="45">45 per page</option>
@@ -740,30 +673,9 @@
               <li class="page-item"><a class="page-link" href="?page=10" >10</a></li>
             </ul>
             <div class="d-flex gap-3">
-              <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4">Previous</button>
-              <button id="qic-paginator-next-page-button" class="button-outlined px-4">Next</button>
+              <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4" onclick="alert('Previous page button clicked');">Previous</button>
+              <button id="qic-paginator-next-page-button" class="button-outlined px-4" onclick="alert('Next page button clicked');">Next</button>
             </div>
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                // PLACEHOLDER PAGINATION LOGIC
-                const previousPageButton = document.getElementById('qic-paginator-previous-page-button');
-                const nextPageButton = document.getElementById('qic-paginator-next-page-button');
-                const pageSizeSelect = document.getElementById('page-size-select');
-                if (!previousPageButton || !nextPageButton || !pageSizeSelect) return;
-                previousPageButton.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Previous page button clicked');
-                });
-                nextPageButton.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Next page button clicked');
-                });
-                pageSizeSelect.addEventListener('change', function(event) {
-                  event.preventDefault();
-                  alert(event.target.value);
-                });
-              });
-            </script>
           </nav>
         </div>
       </section>
@@ -852,8 +764,31 @@
 
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    function setupQuizzesViewSwitch() {
+      // PLACEHOLDER VIEW SWITCH LOGIC
+      const quizzesGridView = document.getElementById('quizzes-grid-view');
+      const quizzesListView = document.getElementById('quizzes-list-view');
+      const quizzesSummaryTable = document.getElementById('quizzes-summary-table');
+      const quizzesSummaryCards = document.getElementById('quizzes-summary-cards');
+      if (!quizzesGridView || !quizzesListView || !quizzesSummaryTable || !quizzesSummaryCards) return;
 
+      quizzesGridView.addEventListener('click', function(event) {
+        alert('Grid view selected');
+        quizzesGridView.classList.add('active-view-switch');
+        quizzesListView.classList.remove('active-view-switch');
+        quizzesSummaryTable.classList.add('d-none');
+        quizzesSummaryCards.classList.remove('d-none');
+      });
+      quizzesListView.addEventListener('click', function(event) {
+        alert('List view selected');
+        quizzesListView.classList.add('active-view-switch');
+        quizzesGridView.classList.remove('active-view-switch');
+        quizzesSummaryTable.classList.remove('d-none');
+        quizzesSummaryCards.classList.add('d-none');
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      setupQuizzesViewSwitch();
     });
   </script>
 </body>

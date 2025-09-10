@@ -73,19 +73,9 @@
         <i class="bi bi-x-lg text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search">
+        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search" onsubmit="alert(event.target.search.value);">
           <input id="navbar-search-input" class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
           <button class="button-primary px-3" type="submit"><i class="bi bi-search text-white"></i></button>
-          <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              const navbarSearchForm = document.getElementById('navbar-search-form');
-              const searchInput = document.getElementById('navbar-search-input');
-              navbarSearchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert(searchInput.value);
-              });
-            });
-          </script>
         </form>
         <div class="qic-navbar-controls d-flex flex-column flex-lg-row" style="order: 4;">
           <a href="#" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
@@ -110,14 +100,8 @@
               </a>
               <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white gap-3">
                 <span class="text-nowrap">Need to Exit?</span>
-                <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('logoutLink').addEventListener('click', function() {
-                      alert('Logout link clicked');
-                    });
-                  });
-                </script>
+                <a href="#" id="logoutLink" class="text-white text-decoration-underline" onclick="alert('Logout link clicked');">Logout</a>
+                
               </div>
             </div>
           </div>

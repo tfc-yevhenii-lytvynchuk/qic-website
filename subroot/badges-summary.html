@@ -107,19 +107,9 @@
         <i class="bi bi-x-lg text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search">
+        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search" onsubmit="alert(event.target.search.value);">
           <input id="navbar-search-input" class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
           <button class="button-primary px-3" type="submit"><i class="bi bi-search text-white"></i></button>
-          <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              const navbarSearchForm = document.getElementById('navbar-search-form');
-              const searchInput = document.getElementById('navbar-search-input');
-              navbarSearchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert(searchInput.value);
-              });
-            });
-          </script>
         </form>
         <div class="qic-navbar-controls d-flex flex-column flex-lg-row" style="order: 4;">
           <a href="#" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
@@ -144,14 +134,7 @@
               </a>
               <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white gap-3">
                 <span class="text-nowrap">Need to Exit?</span>
-                <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('logoutLink').addEventListener('click', function() {
-                      alert('Logout link clicked');
-                    });
-                  });
-                </script>
+                <a href="#" id="logoutLink" class="text-white text-decoration-underline" onclick="alert('Logout link clicked');">Logout</a>
               </div>
             </div>
           </div>
@@ -554,20 +537,13 @@
           <div class="d-flex justify-content-between gap-3 mb-3 mb-lg-4 flex-column flex-lg-row">
             <span class="fs-5 fw-medium text-nowrap">9 Badges</span>
             <div class="d-flex gap-4">
-              <form id="sortBadgesForm" action="">
-                <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="sortBadges" name="sortBadges">
+              <form id="sortBadgesForm" action="" >
+                <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="sortBadges" name="sortBadges" onchange="alert(event.target.value);">
                   <option value="newest">Sort by newest</option>
                   <option value="oldest">Sort by oldest</option>
                   <option value="name">Sort by name</option>
                   <option value="points">Sort by points</option>
                 </select>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('sortBadges').addEventListener('change', function(event) {
-                      alert(event.target.value);
-                    });
-                  });
-                </script>
               </form>
               <div class="d-flex align-items-center border-default border border-1">
                 <span id="badges-grid-view" class="qic-view-switch">
@@ -576,69 +552,20 @@
                 <span id="badges-list-view" class="qic-view-switch active-view-switch">
                   <i class="bi bi-list-ul"></i>
                 </span>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    // PLACEHOLDER VIEW SWITCH LOGIC
-                    const badgesGridView = document.getElementById('badges-grid-view');
-                    const badgesListView = document.getElementById('badges-list-view');
-                    const badgesSummaryTable = document.getElementById('badges-summary-table');
-                    const badgesSummaryCards = document.getElementById('badges-summary-cards');
-                    if (!badgesGridView || !badgesListView || !badgesSummaryTable || !badgesSummaryCards) return;
-
-                    badgesGridView.addEventListener('click', function(event) {
-                      alert('Grid view selected');
-                      badgesGridView.classList.add('active-view-switch');
-                      badgesListView.classList.remove('active-view-switch');
-                      badgesSummaryTable.classList.add('d-none');
-                      badgesSummaryCards.classList.remove('d-none');
-                    });
-                    badgesListView.addEventListener('click', function(event) {
-                      alert('List view selected');
-                      badgesListView.classList.add('active-view-switch');
-                      badgesGridView.classList.remove('active-view-switch');
-                      badgesSummaryTable.classList.remove('d-none');
-                      badgesSummaryCards.classList.add('d-none');
-                    });
-                  });
-                </script>
               </div>
             </div>
           </div>
 
           <div class="qic-tab-links gap-3 mt-4 w-100">
-            <a href="#" id="AllBadgesLink" class="nav-link fw-medium h-max text-black active">
+            <a href="#" id="AllBadgesLink" class="nav-link fw-medium h-max text-black active" onclick="alert('All Badges Link clicked');">
               All
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('AllBadgesLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('All Badges Link clicked');
-                  });
-                });
-              </script>
             </a>
-            <a href="#" id="EarnedBadgesLink" class="nav-link fw-medium h-max text-black">
+            <a href="#" id="EarnedBadgesLink" class="nav-link fw-medium h-max text-black" onclick="alert('Earned Badges Link clicked');">
               Earned
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('EarnedBadgesLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Earned Badges Link clicked');
-                  });
-                });
-              </script>
             </a>
 
-            <a href="#" id="AwardedBadgesLink" class="nav-link fw-medium h-max text-black">
+            <a href="#" id="AwardedBadgesLink" class="nav-link fw-medium h-max text-black" onclick="alert('Awarded Badges Link clicked');">
               Awarded
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('AwardedBadgesLink').addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Awarded Badges Link clicked');
-                  });
-                });
-              </script>
             </a>
            
           </div>
@@ -833,7 +760,7 @@
           </div>
 
           <nav class="qic-paginator" aria-label="badges pagination">
-            <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page">
+            <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page" onchange="alert(event.target.value);">
               <option value="15">15 per page</option>
               <option value="30">30 per page</option>
               <option value="45">45 per page</option>
@@ -847,30 +774,9 @@
               <li class="page-item"><a class="page-link" href="?page=10" >10</a></li>
             </ul>
             <div class="d-flex gap-3">
-              <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4">Previous</button>
-              <button id="qic-paginator-next-page-button" class="button-outlined px-4">Next</button>
+              <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4" onclick="alert('Previous page button clicked');">Previous</button>
+              <button id="qic-paginator-next-page-button" class="button-outlined px-4" onclick="alert('Next page button clicked');">Next</button>
             </div>
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                // PLACEHOLDER PAGINATION LOGIC
-                const previousPageButton = document.getElementById('qic-paginator-previous-page-button');
-                const nextPageButton = document.getElementById('qic-paginator-next-page-button');
-                const pageSizeSelect = document.getElementById('page-size-select');
-                if (!previousPageButton || !nextPageButton || !pageSizeSelect) return;
-                previousPageButton.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Previous page button clicked');
-                });
-                nextPageButton.addEventListener('click', function(event) {
-                  event.preventDefault();
-                  alert('Next page button clicked');
-                });
-                pageSizeSelect.addEventListener('change', function(event) {
-                  event.preventDefault();
-                  alert(event.target.value);
-                });
-              });
-            </script>
           </nav>
         </div>
       </section>
@@ -887,7 +793,10 @@
           <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
         </div>
         <div class="modal-body">
-          <form action="" id="select-badge-type-form">
+          <form action="" id="select-badge-type-form"
+            onsubmit="event.preventDefault();alert(event.target.badgeType.value);document.getElementById('go-to-award-badge-user-select-modal').click()"
+          >
+
             <div class="d-flex gap-4 flex-wrap mb-3">
               <div class="select-badge-type-card p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle">
                 <input class="form-check-input" type="radio" name="badgeType" id="withPoints" value="withPoints" checked>
@@ -910,25 +819,6 @@
               <button type="submit" id="submit-badge-type-btn" class="button-secondary px-4">Next</button>
               <!-- NEXT MODAL TRIGGER HIDDEN BUTTON -->
               <a id="go-to-award-badge-user-select-modal" class="d-none" data-bs-target="#awardBadgeUserSelectModal" data-bs-toggle="modal"></a>
-              <!-- NEXT MODAL TRIGGER HIDDEN BUTTON -->
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  const submitSelectBadgeTypeBtn = document.getElementById('submit-badge-type-btn');
-                  const selectBadgeTypeForm = document.getElementById('select-badge-type-form');
-                  const goToAwardBadgeUserSelectModal = document.getElementById('go-to-award-badge-user-select-modal');
-                  if (!submitSelectBadgeTypeBtn || !selectBadgeTypeForm || !goToAwardBadgeUserSelectModal) return;
-                  //PLACEHOLDER BADGE TYPE FORM SUBMIT LOGIC
-                  selectBadgeTypeForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    const badgeType = selectBadgeTypeForm.badgeType.value;
-                    if (badgeType) {
-                      alert(badgeType);
-                      //OPEN NEXT MODAL
-                      goToAwardBadgeUserSelectModal.click();
-                    }
-                  });
-                });
-              </script>
             </div>
           </form>
 
@@ -947,9 +837,15 @@
           <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
         </div>
         <div class="modal-body">
-          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="award-badge-user-select-form">
+          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="award-badge-user-select-form"
+            onsubmit="
+              event.preventDefault();
+              alert(event.target.userSearch.value + ' ' + event.target.badgeSearch.value + ' ' + event.target.addPoints.value + ' ' + event.target.badgeComment.value);
+              document.getElementById('go-to-badge-award-success-modal').click();
+            "
+          >
             <!-- STEP 1 -->
-            <div class="award-badge-user-select-step p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
+            <div class="award-badge-user-select-step  p-3 p-sm-4 d-flex flex-column gap-3 border border-light-subtle w-100">
               <div class="d-flex align-items-center gap-3">
                 <span class="award-badge-user-select-step-number">1</span>
                 <div class="d-flex flex-column me-auto">
@@ -960,22 +856,11 @@
                   <i class="bi bi-chevron-down text-primary"></i>
                 </a>
               </div>
-              <div class="collapse" id="first-step-collapse">
+              <div class="collapse show" id="first-step-collapse">
                 <label for="userSearch" class="form-label fs-8 text-uppercase fw-medium">user search</label>
                 <div class="d-flex">
                   <input type="text" id="userSearch" name="userSearch" class="form-control" placeholder="Search user by First Name, Last Name, Location or User ID" required>
                   <button data-bs-target="#awardBadgeUserAdvancedSearchModal" data-bs-toggle="modal" id="userSearchBtn" class="button-secondary px-2" >Search</button>
-                  <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                      const userSearchBtn = document.getElementById('userSearchBtn');
-                      const userSearchInput = document.getElementById('userSearch');
-                      if (!userSearchBtn || !userSearchInput) return;
-                      userSearchBtn.addEventListener('click', function(event) {
-                        event.preventDefault(); 
-                      });
-                    });
-                  </script>
-
                 </div>
               </div>
             </div>
@@ -991,7 +876,7 @@
                   <i class="bi bi-chevron-down text-primary"></i>
                 </a>
               </div>
-              <div class="collapse" id="second-step-collapse">
+              <div class="collapse show" id="second-step-collapse">
                 <div class="d-flex flex-column gap-3">
                   <div>
                     <label for="badgeSearch" class="form-label fs-8 text-uppercase fw-medium">badge Select</label>
@@ -1023,7 +908,7 @@
                   <i class="bi bi-chevron-down text-primary"></i>
                 </a>
               </div>
-              <div class="collapse" id="third-step-collapse">
+              <div class="collapse show" id="third-step-collapse">
                 <label for="badgeComment" class="form-label fs-8 text-uppercase fw-medium">ADD COMMENT (OPTIONAL)</label>
                 <input type="text" id="badgeComment" name="badgeComment" class="form-control" placeholder="Add comment here, 100 symbols max" maxlength="100">
               </div>
@@ -1034,32 +919,6 @@
               <!-- SEND BADGE BUTTON HIDDEN TRIGGER -->
               <button id="go-to-badge-award-success-modal" class="d-none" data-bs-target="#badgeAwardSuccessModal" data-bs-toggle="modal"></button>
             </div>
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                const sendBadgeBtn = document.getElementById('send-badge-btn');
-                const goToBadgeAwardSuccessModal = document.getElementById('go-to-badge-award-success-modal');
-                const awardBadgeUserSelectForm = document.getElementById('award-badge-user-select-form');
-                if (!sendBadgeBtn || !goToBadgeAwardSuccessModal || !awardBadgeUserSelectForm) return;
-
-                sendBadgeBtn.addEventListener('click', function(event) {
-                  if (!awardBadgeUserSelectForm.checkValidity()) {
-                    //OPEN ALL STEPS IF FORM IS NOT VALID
-                    const allStepsCollapses = document.querySelectorAll('.award-badge-user-select-step .collapse');
-                    allStepsCollapses.forEach(collapse => {
-                      collapse.classList.add('show');
-                    });
-                  }
-                });
-
-                //PLACEHOLDER SEND BADGE BUTTON FORM SUBMIT LOGIC
-                awardBadgeUserSelectForm.addEventListener('submit', function(event) {
-                  event.preventDefault();
-                  alert(event.target.userSearch.value + ' ' + event.target.badgeSearch.value + ' ' + event.target.addPoints.value + ' ' + event.target.badgeComment.value);
-                  //OPEN NEXT MODAL
-                  goToBadgeAwardSuccessModal.click();
-                });
-              });
-            </script>
           </form>
         </div>
 
@@ -1075,7 +934,13 @@
           <h1 class="modal-title fs-5" >Advanced User Search</h1>
         </div>
         <div class="modal-body">
-          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="award-badge-user-advanced-search-form">
+          <form action="" class="d-flex gap-4 flex-wrap flex-column" id="award-badge-user-advanced-search-form"
+            onsubmit="
+              event.preventDefault();
+              alert(event.target.firstName.value + ' ' + event.target.lastName.value + ' ' + event.target.userID.value + ' ' + event.target.location.value);
+              document.getElementById('go-to-award-badge-user-select-modal').click();
+            "
+          >
             <div class="row g-4">
               <div class="col-12 col-sm-6">
                 <label for="firstName" class="form-label fs-8 text-uppercase fw-medium">Search by First Name</label>
@@ -1098,18 +963,7 @@
               <a class="button-outlined px-4" data-bs-toggle="modal" data-bs-target="#awardBadgeUserSelectModal">Back</a>
               <button type="submit" class="button-secondary px-4">Search</button>
             </div>
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                const awardBadgeUserAdvancedSearchForm = document.getElementById('award-badge-user-advanced-search-form');
-                const goToAwardBadgeUserSelectModal = document.getElementById('go-to-award-badge-user-select-modal');
-                if (!goToAwardBadgeUserSelectModal || !awardBadgeUserAdvancedSearchForm) return;
-                awardBadgeUserAdvancedSearchForm.addEventListener('submit', function(event) {
-                  event.preventDefault();
-                  alert(event.target.firstName.value + ' ' + event.target.lastName.value + ' ' + event.target.userID.value + ' ' + event.target.location.value);
-                  goToAwardBadgeUserSelectModal.click();
-                });
-              });
-            </script>
+
           </form>
         </div>
 
@@ -1146,24 +1000,8 @@
             </div>
           </div>
           <div class="d-flex gap-3 mt-4">
-            <button id="badge-award-finish-btn" class="button-outlined px-4" data-bs-dismiss="modal">Close</button>
-            <button id="award-another-badge-btn" class="button-primary px-4" data-bs-toggle="modal"  data-bs-target="#selectBadgeTypeModal">Send another Badge</button>
-            <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                const badgeAwardFinishBtn = document.getElementById('badge-award-finish-btn');
-                const awardBadgeUserSelectForm = document.getElementById('award-badge-user-select-form');
-                const awardAnotherBadgeBtn = document.getElementById('award-another-badge-btn');
-                if (!badgeAwardFinishBtn || !awardBadgeUserSelectForm) return;
-                badgeAwardFinishBtn.addEventListener('click', function(event) {
-                  //RESET USER SELECT FORM
-                  awardBadgeUserSelectForm.reset();
-                });
-                awardAnotherBadgeBtn.addEventListener('click', function(event) {
-                  //RESET USER SELECT FORM
-                  awardBadgeUserSelectForm.reset();
-                });
-              });
-            </script>
+            <button id="badge-award-finish-btn" class="button-outlined px-4" data-bs-dismiss="modal" onclick="document.getElementById('award-badge-user-select-form').reset()">Close</button>
+            <button id="award-another-badge-btn" class="button-primary px-4" data-bs-toggle="modal"  data-bs-target="#selectBadgeTypeModal"onclick="document.getElementById('award-badge-user-select-form').reset()">Send another Badge</button>
           </div>
         </div>
 
@@ -1233,17 +1071,9 @@
                 <span class="fs-8 text-body-secondary">Join our newsletter for updates.</span>
               </div>
             </div>
-            <form id="qic-footer-newsletter-form" class="d-flex">
+            <form id="qic-footer-newsletter-form" class="d-flex" onsubmit="alert(event.target.email.value);">
               <input type="email" name="email" placeholder="Enter your email" class="form-control" required autocomplete="email">
               <button type="submit" class="button-primary">Subscribe</button>
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('qic-footer-newsletter-form').addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    alert(event.target.email.value);
-                  });
-                });
-              </script>
             </form>
           </div>
         </div>
@@ -1260,7 +1090,34 @@
   </footer>
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>
   <script>
+
+    function setupBadgesViewSwitch() {
+      // PLACEHOLDER VIEW SWITCH LOGIC
+      const badgesGridView = document.getElementById('badges-grid-view');
+      const badgesListView = document.getElementById('badges-list-view');
+      const badgesSummaryTable = document.getElementById('badges-summary-table');
+      const badgesSummaryCards = document.getElementById('badges-summary-cards');
+      if (!badgesGridView || !badgesListView || !badgesSummaryTable || !badgesSummaryCards) return;
+
+      badgesGridView.addEventListener('click', function(event) {
+        alert('Grid view selected');
+        badgesGridView.classList.add('active-view-switch');
+        badgesListView.classList.remove('active-view-switch');
+        badgesSummaryTable.classList.add('d-none');
+        badgesSummaryCards.classList.remove('d-none');
+      });
+      badgesListView.addEventListener('click', function(event) {
+        alert('List view selected');
+        badgesListView.classList.add('active-view-switch');
+        badgesGridView.classList.remove('active-view-switch');
+        badgesSummaryTable.classList.remove('d-none');
+        badgesSummaryCards.classList.add('d-none');
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
+      setupBadgesViewSwitch();
+
       //EXAMPLE FLOW OF STARTING AWARD BADGE PROCESS FROM ANOTHER PAGE
       const urlParams = new URLSearchParams(window.location.search);
       const awardBadge = urlParams.get('award-badge');

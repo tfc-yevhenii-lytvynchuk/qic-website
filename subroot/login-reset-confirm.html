@@ -28,7 +28,7 @@
   <main class="d-flex flex-column justify-content-center align-items-center min-vh-100 w-100 gap-1">
     <!-- RESET PASSWORD CODE FORM -->
     <div class="qic-login-container">
-      <form class="login-card w-100 justify-content-center" autocomplete="on" id="reset-password-code-form">
+      <form class="login-card w-100 justify-content-center" autocomplete="on" id="reset-password-code-form" onsubmit="alert(event.target.confirmation-code.value);">
         <div class="d-flex flex-column gap-4 mb-5">
           <div class="d-flex flex-column">
             <h1 class="fs-5">Reset Password</h1>
@@ -44,19 +44,6 @@
           <a href="login.html" class="button-outlined px-4">Cancel</a>
           <button type="submit" class="button-primary px-4" id="reset-password-code-submit">Verify Code</button>
         </div>
-        <script>
-          // RESET PASSWORD CODE CONFIRMATION FORM SUBMIT EVENT
-          document.addEventListener('DOMContentLoaded', function() {
-            const resetPasswordCodeForm = document.getElementById('reset-password-code-form');
-            const confirmationCodeInput = document.getElementById('confirmation-code');
-            resetPasswordCodeForm.addEventListener('submit', function(e) {
-              // PLACEHOLDER CODE, PLEASE IMPLEMENT
-              e.preventDefault();
-              alert(confirmationCodeInput.value);
-              window.location.href = 'login-reset.html';
-            });
-          });
-        </script>
       </form>
     </div>
   </main>

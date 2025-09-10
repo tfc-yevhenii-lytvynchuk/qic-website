@@ -77,19 +77,9 @@
         <i class="bi bi-x-lg text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search">
+        <form id="navbar-search-form" class="d-flex d-lg-none my-3" role="search" onsubmit="alert(event.target.search.value);">
           <input id="navbar-search-input" class="form-control" name="search" type="search" placeholder="Search" aria-label="Search" required autocomplete="on"/>
           <button class="button-primary px-3" type="submit"><i class="bi bi-search text-white"></i></button>
-          <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              const navbarSearchForm = document.getElementById('navbar-search-form');
-              const searchInput = document.getElementById('navbar-search-input');
-              navbarSearchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert(searchInput.value);
-              });
-            });
-          </script>
         </form>
         <div class="qic-navbar-controls d-flex flex-column flex-lg-row" style="order: 4;">
           <a href="#" class="qic-navbar-controls-item d-flex gap-2 align-items-center">
@@ -114,14 +104,7 @@
               </a>
               <div class="px-3 py-2 bg-primary d-flex justify-content-between text-white gap-3">
                 <span class="text-nowrap">Need to Exit?</span>
-                <a href="#" id="logoutLink" class="text-white text-decoration-underline">Logout</a>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('logoutLink').addEventListener('click', function() {
-                      alert('Logout link clicked');
-                    });
-                  });
-                </script>
+                <a href="#" id="logoutLink" class="text-white text-decoration-underline" onclick="alert('Logout link clicked');">Logout</a>
               </div>
             </div>
           </div>
@@ -489,7 +472,7 @@
       <li class="breadcrumb-item active" aria-current="page">Category name</li>
     </ol>
     <div class="d-flex gap-3 flex-grow-1 flex-wrap">
-      <form id="shop-nav-search-form" action="" class="d-flex flex-grow-1 ms-auto">
+      <form id="shop-nav-search-form" action="" class="d-flex flex-grow-1 ms-auto" onsubmit="alert(event.target.search.value);">
         <div class="position-relative w-100">
           <input type="text" name="search" id="shop-search-input" class="form-control" placeholder="Product name, etc...">
           <a href="" class="position-absolute top-50 end-0 translate-middle-y pe-3 text-decoration-underline" data-bs-toggle="modal" data-bs-target="#shopAdvancedSearchModal">Advanced</a>
@@ -497,14 +480,6 @@
         <button type="submit" class="button-primary">
           Search
         </button>
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('shop-nav-search-form').addEventListener('submit', function(event) {
-              event.preventDefault();
-              alert('Search');
-            });
-          });
-        </script>
       </form>
       <a href="shop-wishlist.html" class="button-secondary px-3">
         My Wishlist
@@ -525,7 +500,7 @@
       <section id="shop-category-products">
         <div class="d-flex gap-md-5 gap-3 flex-column flex-lg-row">
           <aside class="category-filters">
-            <form id="shop-category-filters-form" class="category-filters-form" action="">
+            <form id="shop-category-filters-form" class="category-filters-form" action="" onsubmit="alert('filter form submitted');">
               <div class="category-filters-header">
                 <span class="fw-bold me-auto">Filters</span>
                 <button type="submit" class="button-secondary px-3">Apply</button>
@@ -569,19 +544,7 @@
                       </div>
                     </div>
                   </div>
-                  <script>
-                    // Initialize the range sliders
-                    document.addEventListener('DOMContentLoaded', function() {
-                      // NUMBER INPUT RANGE SLIDER INITIALIZATION
-                      initRangeSlider({
-                        containerId: 'price-range-slider-instance1',
-                        min: 0,
-                        max: 9999,
-                        initialMin: 0,
-                        initialMax: 4500
-                      });
-                    });
-                  </script>
+
                 </div>
               </div>
               <div class="p-3 border-bottom border-light-subtle">
@@ -601,18 +564,6 @@
                       </div>
                     </div>
                   </div>
-                  <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                      // NUMBER INPUT RANGE SLIDER INITIALIZATION INSTANCE 2
-                      initRangeSlider({
-                        containerId: 'price-range-slider-instance2',
-                        min: 100,
-                        max: 5000,
-                        initialMin: 100,
-                        initialMax: 5000
-                      }); 
-                    });
-                  </script>
                 </div>
               </div>
               <div class="p-3 border-bottom border-light-subtle">
@@ -685,49 +636,26 @@
                   </div>
                 </div>
               </div>
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  document.getElementById('shop-category-filters-form').addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    alert('filter form submitted');
-                  });
-                });
-              </script>
             </form>
           </aside>
           <div class="">
             <div class="d-flex align-items-center justify-content-between flex-wrap mb-3 mb-lg-4">
               <h2 class="fs-5 fw-medium text-nowrap">Products</h2>
-              <form id="shop-category-sort-form" action="">
+              <form id="shop-category-sort-form" action="" onchange="alert(event.target.value);">
                 <select class="form-select" aria-label="Sort by" placeholder="Sort by"  id="shop-category-sort" name="shop-category-sort">
                   <option value="newest">Sort by newest</option>
                   <option value="oldest">Sort by oldest</option>
                   <option value="price-asc">Sort by price (asc)</option>
                   <option value="price-desc">Sort by price (desc)</option>
                 </select>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('shop-category-sort').addEventListener('change', function(event) {
-                      alert(event.target.value);
-                    });
-                  });
-                </script>
               </form>
             </div>
             <div class="row g-3">
               <div class="col-12 col-sm-6 col-md-4 col-xl-3">
                 <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-                  <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer">
+                  <form id="remove-from-cart-form" class="qic-product-card-favorite cursor-pointer" onsubmit="alert('Remove from favorites form submitted');">
                     <input type="hidden" name="productId" value="000-000-000-000">
                     <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart-fill text-primary"></i></button>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('remove-from-cart-form').addEventListener('submit', function(event) {
-                          event.preventDefault();
-                          alert('Remove from favorites form submitted');
-                        });
-                      });
-                    </script>
                   </form>
                   <div class="qic-product-card-image-container flex-grow-1">
                     <img src="https://media3.bsh-group.com/Product_Shots/300x300/24870967_B5ACJ7AG3_STP_def.webp" 
@@ -750,17 +678,9 @@
               </div>
               <div class="col-12 col-sm-6 col-md-4 col-xl-3">
                 <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer">
+                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer" onsubmit="alert('Add to Favorites form submitted');">
                     <input type="hidden" name="productId" value="000-000-000-000">
                     <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('add-to-favorites-form').addEventListener('submit', function(event) {
-                          event.preventDefault();
-                          alert('Add to Favorites form submitted');
-                        });
-                      });
-                    </script>
                   </form>
                   <div class="qic-product-card-image-container flex-grow-1">
                     <img src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" class="product-image w-100 h-100 object-fit-contain" loading="lazy" alt="Product image">
@@ -780,17 +700,9 @@
               </div>
               <div class="col-12 col-sm-6 col-md-4 col-xl-3">
                 <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer">
+                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer" onsubmit="alert('Add to Favorites form submitted');">
                     <input type="hidden" name="productId" value="000-000-000-000">
                     <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('add-to-favorites-form').addEventListener('submit', function(event) {
-                          event.preventDefault();
-                          alert('Add to Favorites form submitted');
-                        });
-                      });
-                    </script>
                   </form>
                   <div class="qic-product-card-image-container flex-grow-1">
                     <img src="https://media3.bsh-group.com/Product_Shots/300x300/20320812_KI1416DD1_STP_def.webp" class="product-image w-100 h-100 object-fit-contain" loading="lazy" alt="Product image">
@@ -810,17 +722,9 @@
               </div>
               <div class="col-12 col-sm-6 col-md-4 col-xl-3">
                 <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer">
+                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer" onsubmit="alert('Add to Favorites form submitted');">
                     <input type="hidden" name="productId" value="000-000-000-000">
                     <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('add-to-favorites-form').addEventListener('submit', function(event) {
-                          event.preventDefault();
-                          alert('Add to Favorites form submitted');
-                        });
-                      });
-                    </script>
                   </form>
                   <div class="qic-product-card-image-container flex-grow-1">
                     <img src="assets/images/products/2.png" class="product-image w-100 h-100 object-fit-contain" loading="lazy" alt="Product image">
@@ -840,17 +744,9 @@
               </div>
               <div class="col-12 col-sm-6 col-md-4 col-xl-3">
                 <div class="qic-product-card p-3 d-flex flex-column gap-2 relative">
-                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer">
+                  <form id="add-to-favorites-form" class="qic-product-card-favorite cursor-pointer" onsubmit="alert('Add to Favorites form submitted');">
                     <input type="hidden" name="productId" value="000-000-000-000">
                     <button type="submit" class="bg-transparent"><i class="bi fs-5 bi-suit-heart"></i></button>
-                    <script>
-                      document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('add-to-favorites-form').addEventListener('submit', function(event) {
-                          event.preventDefault();
-                          alert('Add to Favorites form submitted');
-                        });
-                      });
-                    </script>
                   </form>
                   <div class="qic-product-card-image-container flex-grow-1">
                     <img src="assets/images/products/1.png" class="product-image w-100 h-100 object-fit-contain" loading="lazy" alt="Product image">
@@ -870,7 +766,7 @@
               </div>
             </div>
             <nav class="qic-paginator qic-card-container" aria-label="products pagination">
-              <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page">
+              <select id="page-size-select" name="page-size-select" class="form-select" aria-label="Select page" onchange="alert(event.target.value);">
                 <option value="15">15 per page</option>
                 <option value="30">30 per page</option>
                 <option value="45">45 per page</option>
@@ -884,30 +780,9 @@
                 <li class="page-item"><a class="page-link" href="?page=10" >10</a></li>
               </ul>
               <div class="d-flex gap-3">
-                <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4">Previous</button>
-                <button id="qic-paginator-next-page-button" class="button-outlined px-4">Next</button>
+                <button disabled id="qic-paginator-previous-page-button" class="button-outlined px-4" onclick="alert('Previous page button clicked');">Previous</button>
+                <button id="qic-paginator-next-page-button" class="button-outlined px-4" onclick="alert('Next page button clicked');">Next</button>
               </div>
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  // PLACEHOLDER PAGINATION LOGIC
-                  const previousPageButton = document.getElementById('qic-paginator-previous-page-button');
-                  const nextPageButton = document.getElementById('qic-paginator-next-page-button');
-                  const pageSizeSelect = document.getElementById('page-size-select');
-                  if (!previousPageButton || !nextPageButton || !pageSizeSelect) return;
-                  previousPageButton.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Previous page button clicked');
-                  });
-                  nextPageButton.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    alert('Next page button clicked');
-                  });
-                  pageSizeSelect.addEventListener('change', function(event) {
-                    event.preventDefault();
-                    alert(event.target.value);
-                  });
-                });
-              </script>
             </nav>
           </div>
         </div>
@@ -922,7 +797,7 @@
             <h1 class="modal-title fs-5" >Advanced Product Search</h1>
           </div>
           <div class="modal-body">
-            <form action="" class="d-flex gap-4 flex-wrap flex-column" id="shop-advanced-search-form">
+            <form action="" class="d-flex gap-4 flex-wrap flex-column" id="shop-advanced-search-form" onsubmit="alert(event.target.freeSearch.value + ' ' + event.target.pointsAmount.value + ' ' + event.target.productType.value + ' ' + event.target.anotherSearchType.value + ' ' + event.target.anotherParameter.value);">
               <div class="row g-4">
                 <div class="col-12">
                   <label for="free-search" class="form-label fs-7 text-uppercase fw-medium">Search</label>
@@ -966,16 +841,6 @@
                 <a class="button-outlined px-4" data-bs-toggle="modal" data-bs-target="#shopAdvancedSearchModal">Back</a>
                 <button type="submit" class="button-secondary px-4">Search</button>
               </div>
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  const shopAdvancedSearchForm = document.getElementById('shop-advanced-search-form');
-                  if (!shopAdvancedSearchForm) return;
-                  shopAdvancedSearchForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    alert(event.target.freeSearch.value + ' ' + event.target.pointsAmount.value + ' ' + event.target.productType.value + ' ' + event.target.anotherSearchType.value + ' ' + event.target.anotherParameter.value);
-                  });
-                });
-              </script>
             </form>
           </div>
   
@@ -1064,6 +929,25 @@
 
   <script src="assets/js/bootstrap.bundle.min.js" defer></script>
   <script src="assets/js/input-range.js" defer></script>
-
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // NUMBER INPUT RANGE SLIDER INITIALIZATION
+      initRangeSlider({
+        containerId: 'price-range-slider-instance1',
+        min: 0,
+        max: 9999,
+        initialMin: 0,
+        initialMax: 4500
+      });
+      // NUMBER INPUT RANGE SLIDER INITIALIZATION INSTANCE 2
+      initRangeSlider({
+        containerId: 'price-range-slider-instance2',
+        min: 100,
+        max: 5000,
+        initialMin: 100,
+        initialMax: 5000
+      }); 
+    });
+  </script>
 </body>
 </html>
