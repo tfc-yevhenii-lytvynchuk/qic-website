@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>QIC Dashboard</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/config.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/fonts/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/range-input.css">
+</head>
+<body>
+  <main>
+    <div class="qic-container">
+      <header class="qic-header-banner justify-content-between mt-4">
+        <div class="d-flex flex-column gap-2 text-white gap-3">
+          <h1 class="fs-4">Test Page</h1>
+        </div>
+      </header>
+
+      <section>
+        <form action="" onsubmit="alert('submit');">
+          <label for="testField1">Test Field 1</label>
+          <input type="text" id="testField1" name="testField1" class="form-control" placeholder="Enter test field 1" required maxlength="100">
+
+          <label for="testField1">Test Field 2</label>
+          <input type="text" id="testField2" name="testField2" class="form-control" placeholder="Enter test field 2" disabled maxlength="100">
+
+          <label for="testField3">Test Field 3</label>
+          <select name="testField3" id="testField3" class="form-select" placeholder="Enter test field 3" required>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+
+          <label for="testField3">Test Field 3</label>
+          <input type="text" id="testField3" name="testField3" class="form-control" placeholder="Enter test field 2" required maxlength="100">
+
+          <button type="button" class="button-primary px-3" onclick="alert('Regular button clicked')">Regular</button>
+          <button type="submit" class="button-primary px-3">Submit</button>
+        </form>
+      </section>
+    </div>
+  </main>
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+     
+    });
+  </script>
+</body>
+</html>
